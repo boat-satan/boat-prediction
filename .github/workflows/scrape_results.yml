@@ -8,25 +8,21 @@ on:
         required: true
         type: string
       pids:
-        description: "場コード（例: 01,02,03 または 'all'）"
+        description: "場コード（01,02,… or 'all'）"
         required: false
         default: "all"
         type: string
       races:
-        description: "レース番号（例: 1,2,3 または 'all'）"
+        description: "レース番号（1,2,… or 'all'）"
         required: false
         default: "all"
         type: string
       skip_existing:
-        description: "既存ファイルはスキップする？"
+        description: "既存ファイルをスキップ"
         required: false
         default: "true"
         type: choice
         options: ["true","false"]
-
-  # 任意：定期実行したい場合は有効化
-  # schedule:
-  #   - cron: "20 6 * * *"  # JST 15:20 相当（UTCで指定）
 
 concurrency:
   group: fetch-results-${{ github.ref }}
@@ -42,7 +38,6 @@ jobs:
       PIDS_INPUT: ${{ inputs.pids }}
       RACES_INPUT: ${{ inputs.races }}
       SKIP_EXISTING: ${{ inputs.skip_existing }}
-      # スクリプトの場所（必要に応じて変更）
       SCRIPT_PATH: scripts/fetch-result-official.js
 
     steps:
@@ -54,9 +49,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install runtime deps (cheerio)
+      - name: Install deps (cheerio)
         run: |
-          # ルートに package.json がある場合は npm ci に差し替え可
           npm init -y >/dev/null 2>&1 || true
           npm i cheerio@^1 --no-audit --no-fund
 
@@ -64,35 +58,44 @@ jobs:
         run: |
           test -f "$SCRIPT_PATH" || { echo "Not found: $SCRIPT_PATH"; exit 1; }
           node -v
-          node -e "console.log('cheerio version', require('cheerio/package.json').version)"
+          node -e "console.log('cheerio', require('cheerio/package.json').version)"
 
       - name: Build PID / RACE lists
         id: build_lists
         shell: bash
         run: |
-          # 場コード
+          # === PIDS ===
           if [ "$PIDS_INPUT" = "all" ] || [ -z "$PIDS_INPUT" ]; then
-            # 01〜24 を生成（SG/PG等の増減があれば調整）
-            PIDS=$(printf "%02d " $(seq 1 24))
+            PIDS=$(printf "%02d," $(seq 1 24) | sed 's/,$//')
           else
-            # カンマ区切り → 2桁ゼロ埋め
-            PIDS=$(echo "$PIDS_INPUT" | tr ',' ' ' | awk '{for(i=1;i<=NF;i++){printf("%02d ", $i+0)}}')
+            PIDS=$(echo "$PIDS_INPUT" | tr ' ' ',' | sed 's/,,*/,/g' | sed 's/^,\|,$//g')
+            # 各要素を2桁化
+            TMP=""
+            IFS=',' read -ra ARR <<< "$PIDS"
+            for x in "${ARR[@]}"; do
+              n=$(printf "%02d" $((10#$x)))
+              TMP="${TMP}${n},"
+            done
+            PIDS="${TMP%,}"
           fi
 
-          # レース番号
+          # === RACES ===
           if [ "$RACES_INPUT" = "all" ] || [ -z "$RACES_INPUT" ]; then
-            RACES=$(seq 1 12)
+            RACES=$(seq -s, 1 12)
           else
-            RACES=$(echo "$RACES_INPUT" | tr ',' ' ')
+            RACES=$(echo "$RACES_INPUT" | tr ' ' ',' | sed 's/,,*/,/g' | sed 's/^,\|,$//g')
           fi
-
-          echo "pids=$PIDS"        >> $GITHUB_OUTPUT
-          echo "races=$RACES"      >> $GITHUB_OUTPUT
-          echo "date=$DATE"        >> $GITHUB_OUTPUT
-          echo "skip=$SKIP_EXISTING" >> $GITHUB_OUTPUT
 
           echo "PIDS: $PIDS"
           echo "RACES: $RACES"
+
+          # 👇 GITHUB_OUTPUT は1行で渡す（改行NG）
+          {
+            echo "pids=${PIDS}"
+            echo "races=${RACES}"
+            echo "date=${DATE}"
+            echo "skip=${SKIP_EXISTING}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Fetch results
         shell: bash
@@ -104,16 +107,14 @@ jobs:
           PIDS="${{ steps.build_lists.outputs.pids }}"
           RACES="${{ steps.build_lists.outputs.races }}"
 
-          echo "Running for DATE=$DATE"
+          echo "Running DATE=$DATE"
           mkdir -p data/results
 
-          # 失敗しても全体続行したい場合は set +e にして個別に記録してもOK
-          for PID in $PIDS; do
-            for R in $RACES; do
+          for PID in $(echo "$PIDS" | tr ',' ' '); do
+            for R in $(echo "$RACES" | tr ',' ' '); do
               echo "::group::Fetch jcd=${PID} rno=${R}"
               node "$SCRIPT_PATH" "$DATE" "$PID" "$R" || echo "[warn] failed: $DATE $PID $R"
               echo "::endgroup::"
-              # polite delay（公式に優しく）
               sleep 1
             done
           done
@@ -132,6 +133,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: results-${{ inputs.date }}
-          path: |
-            data/results
+          path: data/results
           if-no-files-found: ignore
