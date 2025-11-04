@@ -6,17 +6,27 @@ on:
       start_date:
         description: "開始日 (YYYYMMDD)"
         required: true
-        default: "20250101"
+        default: "20251101"
       end_date:
         description: "終了日 (YYYYMMDD)"
         required: true
-        default: "20250103"
+        default: "20251101"
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Show repo tree (debug)
+        run: |
+          pwd
+          ls -la
+          echo "---- find fast script ----"
+          find . -maxdepth 3 -type f -name 'scripts/scrape_boatrace_results_fast.py' -print
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,11 +36,22 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 lxml
 
-      - name: Run scraper
+      - name: Run fast scraper
         env:
           START_DATE: ${{ github.event.inputs.start_date }}
-          END_DATE: ${{ github.event.inputs.end_date }}
-        run: python scripts/scrape_boatrace_results.py
+          END_DATE:   ${{ github.event.inputs.end_date }}
+          MAX_WORKERS: "4"   # 2→4に増やして高速化
+          SLEEP: "1.2"       # 適応スリープの下限
+          ALLOW_FALLBACK_ALL: "false"  # 開催場検出失敗時に全24場へ落ちない
+        run: |
+          set -e
+          SCRIPT="$(git ls-files | grep -E '(^|/)scrape_boatrace_results_fast\.py$' | head -n1)"
+          if [ -z "$SCRIPT" ]; then
+            echo "::error::scrape_boatrace_results_fast.py が見つかりません"
+            exit 1
+          fi
+          echo "Using script: $SCRIPT"
+          python "$SCRIPT"
 
       - name: Commit and push results
         run: |
@@ -38,4 +59,5 @@ jobs:
           git config user.email "actions@github.com"
           git add data/results
           git diff --cached --quiet || git commit -m "update results ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
+          git pull --rebase
           git push
