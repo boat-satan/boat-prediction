@@ -1,4 +1,4 @@
-name: scrape-boatrace-results
+name: scrape-boatrace-node
 
 on:
   workflow_dispatch:
@@ -12,38 +12,43 @@ on:
         required: true
         default: "20251101"
       jcds:
-        description: "場コード（例: 03,07,12）。空なら自動検出"
+        description: "場コード(例: 03,07,12)。空なら自動検出"
         required: false
         default: ""
+      skip_existing:
+        description: "既存JSONをスキップ"
+        required: false
+        default: "true"
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.11"
+          node-version: '20'
 
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4 lxml
+      - name: Install deps
+        run: npm -v && node -v
 
-      - name: Run vFast3 (venue-parallel)
+      - name: Run range (Node, parallel)
         env:
-          START_DATE: ${{ github.event.inputs.start_date }}
-          END_DATE:   ${{ github.event.inputs.end_date }}
-          JCDS:       ${{ github.event.inputs.jcds }}   # ← 手動で「03,07,12」等を渡せる
-          MAX_WORKERS: "6"   # 場の並列数（4〜6推奨）
-          SLEEP: "1.0"       # 同一場内の最小インターバル
-          ALLOW_FALLBACK_ALL: "false"  # hosting取れない日はスキップ
-        run: python scripts/scrape_boatrace_results.py
+          SKIP_EXISTING: ${{ github.event.inputs.skip_existing }}
+          CONCURRENCY: "8"   # ← 同時実行（まずは6〜8推奨）
+          SLEEP_MS: "600"    # ← 礼儀として少しだけ待つ
+        run: |
+          node scripts/run-range-official.js \
+            "${{ github.event.inputs.start_date }}" \
+            "${{ github.event.inputs.end_date }}" \
+            "${{ github.event.inputs.jcds }}"
 
-      - name: Commit and push results
+      - name: Commit & push results
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
