@@ -4,67 +4,43 @@ on:
   workflow_dispatch:
     inputs:
       start_date:
-        description: "開始日 (YYYYMMDD)"
+        description: "開始日 YYYYMMDD"
         required: true
         default: "20251101"
       end_date:
-        description: "終了日 (YYYYMMDD)"
+        description: "終了日 YYYYMMDD"
         required: true
         default: "20251101"
+      jcds:
+        description: "場コード(例: 03,07,12)。空なら自動検出"
+        required: false
+        default: ""
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    permissions:
-      contents: write
+    permissions: { contents: write }
     steps:
       - uses: actions/checkout@v4
-
-      - name: Show repo tree (debug)
-        run: |
-          pwd
-          ls -la
-          echo "---- list scripts ----"
-          ls -la scripts || true
-          echo "---- search scraper ----"
-          find . -maxdepth 3 -type f -name '*boatrace*py' -print || true
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
         run: pip install requests beautifulsoup4 lxml
-
-      - name: Run fast scraper (scripts/)
+      - name: Run vFast3 (parallel by venue)
         env:
           START_DATE: ${{ github.event.inputs.start_date }}
           END_DATE:   ${{ github.event.inputs.end_date }}
-          MAX_WORKERS: "4"         # 並列数（まずは4。増やしすぎ注意）
-          SLEEP: "1.2"             # 適応スリープの基準
-          ALLOW_FALLBACK_ALL: "false"  # 開催場検出失敗時に全場へ行かずスキップ
-        run: |
-          set -e
-          if [ -f scripts/scrape_boatrace_results_fast.py ]; then
-            python scripts/scrape_boatrace_results_fast.py
-          else
-            # 念のため自動検出
-            SCRIPT="$(git ls-files | grep -E '(^|/)(scripts?/)?scrape_boatrace_results\.py$' | head -n1)"
-            if [ -z "$SCRIPT" ]; then
-              echo "::error::scrape_boatrace_results.py が見つかりません"
-              exit 1
-            fi
-            echo "Running: $SCRIPT"
-            python "$SCRIPT"
-          fi
-
-      - name: Commit and push results
+          JCDS:       ${{ github.event.inputs.jcds }}
+          MAX_WORKERS: "6"     # ← 場の並列数。まずは4〜6
+          SLEEP: "1.0"         # 場内の連続アクセス間隔
+          ALLOW_FALLBACK_ALL: "false"
+        run: python scripts/scrape_boatrace_results.py
+      - name: Commit & push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/results
-          git diff --cached --quiet || git commit -m "update results ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
+          git diff --cached --quiet || git commit -m "results ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} jcds=${{ github.event.inputs.jcds }}"
           git pull --rebase
           git push
