@@ -1,58 +1,137 @@
-name: scrape-boatrace-node
+name: fetch-results
 
 on:
   workflow_dispatch:
     inputs:
-      start_date:
-        description: "開始日 YYYYMMDD"
+      date:
+        description: "開催日 (YYYYMMDD)"
         required: true
-        default: "20251101"
-      end_date:
-        description: "終了日 YYYYMMDD"
-        required: true
-        default: "20251101"
-      jcds:
-        description: "場コード(例: 03,07,12)。空なら自動検出"
+        type: string
+      pids:
+        description: "場コード（例: 01,02,03 または 'all'）"
         required: false
-        default: ""
+        default: "all"
+        type: string
+      races:
+        description: "レース番号（例: 1,2,3 または 'all'）"
+        required: false
+        default: "all"
+        type: string
       skip_existing:
-        description: "既存JSONをスキップ"
+        description: "既存ファイルはスキップする？"
         required: false
         default: "true"
+        type: choice
+        options: ["true","false"]
+
+  # 任意：定期実行したい場合は有効化
+  # schedule:
+  #   - cron: "20 6 * * *"  # JST 15:20 相当（UTCで指定）
+
+concurrency:
+  group: fetch-results-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  scrape:
+  run:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    permissions:
-      contents: write
+    timeout-minutes: 30
+
+    env:
+      DATE: ${{ inputs.date }}
+      PIDS_INPUT: ${{ inputs.pids }}
+      RACES_INPUT: ${{ inputs.races }}
+      SKIP_EXISTING: ${{ inputs.skip_existing }}
+      # スクリプトの場所（必要に応じて変更）
+      SCRIPT_PATH: scripts/fetch-result-official.js
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
-      - name: Install deps
-        run: npm -v && node -v
+      - name: Install runtime deps (cheerio)
+        run: |
+          # ルートに package.json がある場合は npm ci に差し替え可
+          npm init -y >/dev/null 2>&1 || true
+          npm i cheerio@^1 --no-audit --no-fund
 
-      - name: Run range (Node, parallel)
+      - name: Verify script exists
+        run: |
+          test -f "$SCRIPT_PATH" || { echo "Not found: $SCRIPT_PATH"; exit 1; }
+          node -v
+          node -e "console.log('cheerio version', require('cheerio/package.json').version)"
+
+      - name: Build PID / RACE lists
+        id: build_lists
+        shell: bash
+        run: |
+          # 場コード
+          if [ "$PIDS_INPUT" = "all" ] || [ -z "$PIDS_INPUT" ]; then
+            # 01〜24 を生成（SG/PG等の増減があれば調整）
+            PIDS=$(printf "%02d " $(seq 1 24))
+          else
+            # カンマ区切り → 2桁ゼロ埋め
+            PIDS=$(echo "$PIDS_INPUT" | tr ',' ' ' | awk '{for(i=1;i<=NF;i++){printf("%02d ", $i+0)}}')
+          fi
+
+          # レース番号
+          if [ "$RACES_INPUT" = "all" ] || [ -z "$RACES_INPUT" ]; then
+            RACES=$(seq 1 12)
+          else
+            RACES=$(echo "$RACES_INPUT" | tr ',' ' ')
+          fi
+
+          echo "pids=$PIDS"        >> $GITHUB_OUTPUT
+          echo "races=$RACES"      >> $GITHUB_OUTPUT
+          echo "date=$DATE"        >> $GITHUB_OUTPUT
+          echo "skip=$SKIP_EXISTING" >> $GITHUB_OUTPUT
+
+          echo "PIDS: $PIDS"
+          echo "RACES: $RACES"
+
+      - name: Fetch results
+        shell: bash
         env:
-          SKIP_EXISTING: ${{ github.event.inputs.skip_existing }}
-          CONCURRENCY: "8"   # ← 同時実行（まずは6〜8推奨）
-          SLEEP_MS: "600"    # ← 礼儀として少しだけ待つ
+          SKIP_EXISTING: ${{ steps.build_lists.outputs.skip }}
         run: |
-          node scripts/run-range-official.js \
-            "${{ github.event.inputs.start_date }}" \
-            "${{ github.event.inputs.end_date }}" \
-            "${{ github.event.inputs.jcds }}"
+          set -e
+          DATE="${{ steps.build_lists.outputs.date }}"
+          PIDS="${{ steps.build_lists.outputs.pids }}"
+          RACES="${{ steps.build_lists.outputs.races }}"
 
-      - name: Commit & push results
+          echo "Running for DATE=$DATE"
+          mkdir -p data/results
+
+          # 失敗しても全体続行したい場合は set +e にして個別に記録してもOK
+          for PID in $PIDS; do
+            for R in $RACES; do
+              echo "::group::Fetch jcd=${PID} rno=${R}"
+              node "$SCRIPT_PATH" "$DATE" "$PID" "$R" || echo "[warn] failed: $DATE $PID $R"
+              echo "::endgroup::"
+              # polite delay（公式に優しく）
+              sleep 1
+            done
+          done
+
+      - name: Show tree
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add data/results
-          git diff --cached --quiet || git commit -m "results ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} jcds=${{ github.event.inputs.jcds }}"
-          git pull --rebase
-          git push
+          echo "==== output tree ===="
+          if command -v tree >/dev/null 2>&1; then
+            tree -a data/results || true
+          else
+            find data/results -type f | sort || true
+          fi
+
+      - name: Upload artifact (data/results)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ inputs.date }}
+          path: |
+            data/results
+          if-no-files-found: ignore
