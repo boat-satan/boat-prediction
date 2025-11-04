@@ -26,7 +26,9 @@ jobs:
           pwd
           ls -la
           echo "---- list scripts ----"
-          ls -la scripts
+          ls -la scripts || true
+          echo "---- search scraper ----"
+          find . -maxdepth 3 -type f -name '*boatrace*py' -print || true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,13 +42,23 @@ jobs:
         env:
           START_DATE: ${{ github.event.inputs.start_date }}
           END_DATE:   ${{ github.event.inputs.end_date }}
-          MAX_WORKERS: "4"   # 並列数
-          SLEEP: "1.2"       # 適応スリープ
-          ALLOW_FALLBACK_ALL: "false"
+          MAX_WORKERS: "4"         # 並列数（まずは4。増やしすぎ注意）
+          SLEEP: "1.2"             # 適応スリープの基準
+          ALLOW_FALLBACK_ALL: "false"  # 開催場検出失敗時に全場へ行かずスキップ
         run: |
           set -e
-          echo "Running: scripts/scrape_boatrace_results_fast.py"
-          python scripts/scrape_boatrace_results_fast.py
+          if [ -f scripts/scrape_boatrace_results_fast.py ]; then
+            python scripts/scrape_boatrace_results_fast.py
+          else
+            # 念のため自動検出
+            SCRIPT="$(git ls-files | grep -E '(^|/)(scripts?/)?scrape_boatrace_results_fast\.py$' | head -n1)"
+            if [ -z "$SCRIPT" ]; then
+              echo "::error::scrape_boatrace_results_fast.py が見つかりません"
+              exit 1
+            fi
+            echo "Running: $SCRIPT"
+            python "$SCRIPT"
+          fi
 
       - name: Commit and push results
         run: |
