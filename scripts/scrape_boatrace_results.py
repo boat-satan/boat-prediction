@@ -101,8 +101,15 @@ def parse_results(soup)->List[ResultRow]:
     if not tbl: return []
     rows = []
     for tr in tbl.select("tr"):
+        # 各セルのテキスト（None になることがある）を取得
         tds = [text_or_none(td) for td in tr.find_all(["td","th"])]
-        if not tds or "着" in "".join(tds): continue
+        # join の前に None を空文字に変換して安全に結合
+        joined = "".join(x or "" for x in tds)
+        # セルに有効なデータが何もなければスキップ
+        if not any(tds): continue
+        # ヘッダ行（「着」などを含む行）はスキップ
+        if "着" in joined: continue
+
         rank=lane=rid=name=st=course=time_=sttype=note=None
         for x in tds:
             if not x: continue
@@ -112,7 +119,7 @@ def parse_results(soup)->List[ResultRow]:
             elif x.startswith("0.") and st is None: st=x
             elif ":" in x: time_=x
             elif any(k in x for k in["返還","妨害","失格","転覆","欠場","沈没"]): note=x
-        rid,name=extract_racer_id("".join(tds))
+        rid,name=extract_racer_id(joined)
         rows.append(ResultRow(rank,lane,rid,name,st,course,time_,sttype,note))
     return [r for r in rows if r.racer_name or r.lane or r.rank]
 
