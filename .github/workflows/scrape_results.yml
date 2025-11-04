@@ -1,0 +1,41 @@
+name: scrape-boatrace-results
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "開始日 (YYYYMMDD)"
+        required: true
+        default: "20250101"
+      end_date:
+        description: "終了日 (YYYYMMDD)"
+        required: true
+        default: "20250103"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Run scraper
+        env:
+          START_DATE: ${{ github.event.inputs.start_date }}
+          END_DATE: ${{ github.event.inputs.end_date }}
+        run: python scrape_boatrace_results.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/results
+          git diff --cached --quiet || git commit -m "update results ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
+          git push
