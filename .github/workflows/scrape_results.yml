@@ -51,9 +51,9 @@ jobs:
             python scripts/scrape_boatrace_results_fast.py
           else
             # 念のため自動検出
-            SCRIPT="$(git ls-files | grep -E '(^|/)(scripts?/)?scrape_boatrace_results_fast\.py$' | head -n1)"
+            SCRIPT="$(git ls-files | grep -E '(^|/)(scripts?/)?scrape_boatrace_results\.py$' | head -n1)"
             if [ -z "$SCRIPT" ]; then
-              echo "::error::scrape_boatrace_results_fast.py が見つかりません"
+              echo "::error::scrape_boatrace_results.py が見つかりません"
               exit 1
             fi
             echo "Running: $SCRIPT"
