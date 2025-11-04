@@ -30,7 +30,7 @@ jobs:
         env:
           START_DATE: ${{ github.event.inputs.start_date }}
           END_DATE: ${{ github.event.inputs.end_date }}
-        run: python scrape_boatrace_results.py
+        run: python scripts/scrape_boatrace_results.py
 
       - name: Commit and push results
         run: |
