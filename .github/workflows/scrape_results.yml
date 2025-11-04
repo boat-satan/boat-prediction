@@ -25,8 +25,8 @@ jobs:
         run: |
           pwd
           ls -la
-          echo "---- find fast script ----"
-          find . -maxdepth 3 -type f -name 'scripts/scrape_boatrace_results_fast.py' -print
+          echo "---- list scripts ----"
+          ls -la scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,22 +36,17 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 lxml
 
-      - name: Run fast scraper
+      - name: Run fast scraper (scripts/)
         env:
           START_DATE: ${{ github.event.inputs.start_date }}
           END_DATE:   ${{ github.event.inputs.end_date }}
-          MAX_WORKERS: "4"   # 2→4に増やして高速化
-          SLEEP: "1.2"       # 適応スリープの下限
-          ALLOW_FALLBACK_ALL: "false"  # 開催場検出失敗時に全24場へ落ちない
+          MAX_WORKERS: "4"   # 並列数
+          SLEEP: "1.2"       # 適応スリープ
+          ALLOW_FALLBACK_ALL: "false"
         run: |
           set -e
-          SCRIPT="$(git ls-files | grep -E '(^|/)scrape_boatrace_results_fast\.py$' | head -n1)"
-          if [ -z "$SCRIPT" ]; then
-            echo "::error::scrape_boatrace_results_fast.py が見つかりません"
-            exit 1
-          fi
-          echo "Using script: $SCRIPT"
-          python "$SCRIPT"
+          echo "Running: scripts/scrape_boatrace_results_fast.py"
+          python scripts/scrape_boatrace_results_fast.py
 
       - name: Commit and push results
         run: |
