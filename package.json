@@ -1,0 +1,9 @@
+{
+  "name": "boatrace-odds-fetcher",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "fetch:odds3t": "node scripts/fetch-odds-official-3t.js"
+  }
+}
