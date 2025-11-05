@@ -4,30 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "single = 指定のみ / all = 全場×全R"
+        description: "single=指定のみ / all=全場×全R"
         required: true
         default: "single"
-        type: choice
-        options: [single, all]
       date:
         description: "対象日 (YYYYMMDD)"
         required: true
-        type: string
       pid:
         description: "場コード 01..24（single時のみ使用）"
         required: false
-        type: string
       race:
         description: "レース番号 1..12（single時のみ使用）"
         required: false
-        type: string
 
 permissions:
   contents: write
-
-concurrency:
-  group: odds3t-${{ github.ref }}
-  cancel-in-progress: false
 
 jobs:
   fetch:
@@ -35,8 +26,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -45,35 +34,35 @@ jobs:
 
       - name: Show inputs
         run: |
-          echo "mode=${{ inputs.mode }}"
-          echo "date=${{ inputs.date }}"
-          echo "pid=${{ inputs.pid }}"
-          echo "race=${{ inputs.race }}"
+          echo "mode=${{ github.event.inputs.mode }}"
+          echo "date=${{ github.event.inputs.date }}"
+          echo "pid=${{ github.event.inputs.pid }}"
+          echo "race=${{ github.event.inputs.race }}"
 
       - name: Run (single)
-        if: ${{ inputs.mode == 'single' }}
+        if: ${{ github.event.inputs.mode == 'single' }}
         env:
-          TARGET_DATE: ${{ inputs.date }}
-          TARGET_PID: ${{ inputs.pid }}
-          TARGET_RACE: ${{ inputs.race }}
+          TARGET_DATE: ${{ github.event.inputs.date }}
+          TARGET_PID:  ${{ github.event.inputs.pid }}
+          TARGET_RACE: ${{ github.event.inputs.race }}
           SKIP_EXISTING: "1"
         run: |
-          set -eux
+          set -euo pipefail
           node scripts/fetch-odds-official-3t.js "${TARGET_DATE}" "${TARGET_PID}" "${TARGET_RACE}"
 
       - name: Run (all: 全場×全R)
-        if: ${{ inputs.mode == 'all' }}
+        if: ${{ github.event.inputs.mode == 'all' }}
         env:
-          TARGET_DATE: ${{ inputs.date }}
+          TARGET_DATE: ${{ github.event.inputs.date }}
           SKIP_EXISTING: "1"
         run: |
-          set -eux
+          set -euo pipefail
           date="${TARGET_DATE}"
           for pid in $(printf "%02d\n" $(seq 1 24)); do
             for race in $(seq 1 12); do
               echo "=== FETCH ${date} pid=${pid} race=${race} ==="
               node scripts/fetch-odds-official-3t.js "${date}" "${pid}" "${race}" || true
-              sleep 0.8
+              sleep 1
             done
           done
 
@@ -83,14 +72,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit & Push if changed
-        env:
-          MODE: ${{ inputs.mode }}
-          DATE: ${{ inputs.date }}
-          PID:  ${{ inputs.pid }}
-          RACE: ${{ inputs.race }}
         run: |
-          set -eux
+          set -euo pipefail
           if [ -n "$(git status --porcelain)" ]; then
+            MODE="${{ github.event.inputs.mode }}"
+            DATE="${{ github.event.inputs.date }}"
+            PID="${{ github.event.inputs.pid }}"
+            RACE="${{ github.event.inputs.race }}"
             if [ "$MODE" = "single" ]; then
               MSG="odds3t: date=${DATE} pid=${PID} race=${RACE}"
             else
