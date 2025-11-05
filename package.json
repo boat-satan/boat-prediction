@@ -1,8 +1,11 @@
 {
-  "name": "boatrace-odds-fetcher",
+  "name": "boat-prediction",
   "private": true,
   "type": "module",
   "engines": { "node": ">=18" },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  },
   "scripts": {
     "fetch:odds3t": "node scripts/fetch-odds-official-3t.js"
   }
