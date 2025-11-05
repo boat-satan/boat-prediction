@@ -1,0 +1,99 @@
+name: Fetch 3T Odds (official)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "single = 指定のみ / all = 全場×全R"
+        required: true
+        default: "single"
+        type: choice
+        options: [single, all]
+      date:
+        description: "対象日 (YYYYMMDD)"
+        required: true
+        type: string
+      pid:
+        description: "場コード 01..24（single時のみ使用）"
+        required: false
+        type: string
+      race:
+        description: "レース番号 1..12（single時のみ使用）"
+        required: false
+        type: string
+
+permissions:
+  contents: write   # ← 必須（pushするため）
+
+concurrency:
+  group: odds3t-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Show inputs
+        run: |
+          echo "mode=${{ inputs.mode }}"
+          echo "date=${{ inputs.date }}"
+          echo "pid=${{ inputs.pid }}"
+          echo "race=${{ inputs.race }}"
+
+      - name: Run (single)
+        if: ${{ inputs.mode == 'single' }}
+        env:
+          TARGET_DATE: ${{ inputs.date }}
+          TARGET_PID: ${{ inputs.pid }}
+          TARGET_RACE: ${{ inputs.race }}
+          SKIP_EXISTING: "1"
+        run: |
+          set -eux
+          node scripts/fetch-odds-official-3t.js "${TARGET_DATE}" "${TARGET_PID}" "${TARGET_RACE}"
+
+      - name: Run (all: 全場×全R)
+        if: ${{ inputs.mode == 'all' }}
+        env:
+          TARGET_DATE: ${{ inputs.date }}
+          SKIP_EXISTING: "1"
+        run: |
+          set -eux
+          date="${TARGET_DATE}"
+          # 01..24 × 1..12 を総当たり
+          for pid in $(printf "%02d\n" $(seq 1 24)); do
+            for race in $(seq 1 12); do
+              echo "=== FETCH ${date} pid=${pid} race=${race} ==="
+              # 失敗しても続行（ページ未公開時間帯など考慮）
+              node scripts/fetch-odds-official-3t.js "${date}" "${pid}" "${race}" || true
+              # 礼儀として少し待つ（公式負荷配慮）
+              sleep 0.8
+            done
+          done
+
+      - name: Set git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit & Push if changed
+        run: |
+          set -eux
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "odds3t: ${{
+              inputs.mode == 'single' && format('date={0} pid={1} race={2}', inputs.date, inputs.pid, inputs.race) || format('date={0} (all pids & races)', inputs.date)
+            }}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
