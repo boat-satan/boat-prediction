@@ -23,7 +23,7 @@ on:
         type: string
 
 permissions:
-  contents: write   # ← 必須（pushするため）
+  contents: write
 
 concurrency:
   group: odds3t-${{ github.ref }}
@@ -69,13 +69,10 @@ jobs:
         run: |
           set -eux
           date="${TARGET_DATE}"
-          # 01..24 × 1..12 を総当たり
           for pid in $(printf "%02d\n" $(seq 1 24)); do
             for race in $(seq 1 12); do
               echo "=== FETCH ${date} pid=${pid} race=${race} ==="
-              # 失敗しても続行（ページ未公開時間帯など考慮）
               node scripts/fetch-odds-official-3t.js "${date}" "${pid}" "${race}" || true
-              # 礼儀として少し待つ（公式負荷配慮）
               sleep 0.8
             done
           done
@@ -86,13 +83,21 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit & Push if changed
+        env:
+          MODE: ${{ inputs.mode }}
+          DATE: ${{ inputs.date }}
+          PID:  ${{ inputs.pid }}
+          RACE: ${{ inputs.race }}
         run: |
           set -eux
           if [ -n "$(git status --porcelain)" ]; then
+            if [ "$MODE" = "single" ]; then
+              MSG="odds3t: date=${DATE} pid=${PID} race=${RACE}"
+            else
+              MSG="odds3t: date=${DATE} (all pids & races)"
+            fi
             git add -A
-            git commit -m "odds3t: ${{
-              inputs.mode == 'single' && format('date={0} pid={1} race={2}', inputs.date, inputs.pid, inputs.race) || format('date={0} (all pids & races)', inputs.date)
-            }}"
+            git commit -m "$MSG"
             git push
           else
             echo "No changes to commit."
