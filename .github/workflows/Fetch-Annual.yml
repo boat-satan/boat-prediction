@@ -1,0 +1,46 @@
+name: Fetch Annual (prev year)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_path:
+        description: "program JSON or year directory (e.g. public/programs/v2/2019)"
+        required: true
+        default: "public/programs/v2/2019"
+      year:
+        description: "program year (optional; if set, prev = year-1)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci --prefer-offline || npm i
+
+      - name: Fetch annual (prev year with 3s interval)
+        run: |
+          YEAR_OPT=""
+          if [ -n "${{ github.event.inputs.year }}" ]; then
+            YEAR_OPT="--year ${{ github.event.inputs.year }}"
+          fi
+          node scripts/fetch-annual-from-program.js \
+            "${{ github.event.inputs.target_path }}" \
+            $YEAR_OPT
+
+      - name: Commit & push
+        run: |
+          git config user.name "actions-bot"
+          git config user.email "actions-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: fetch annual(prev) for ${{ github.event.inputs.target_path }}" || echo "no changes"
+          git push
