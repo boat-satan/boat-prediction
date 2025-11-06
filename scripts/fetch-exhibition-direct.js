@@ -1,7 +1,6 @@
 // scripts/fetch-exhibition-direct.js
 // 出力: public/exhibition/v1/<date>/<pid>/<race>.json
 // 依存: Node.js v18+ (global fetch)
-// 主要改良点: 気温セレクタ修正 / 安定板検出強化 / フェッチのタイムアウト&リトライ / 連続アクセスのクールダウン / オート起動の堅牢化
 
 import fs from "node:fs";
 import fsp from "node:fs/promises";
@@ -9,13 +8,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load as loadHTML } from "cheerio";
 
-// ========= 基本ユーティリティ =========
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function log(...args) { console.log("[beforeinfo]", ...args); }
-function die(msg, code=1){ console.error(msg); process.exit(code); }
-
 function usageAndExit() {
   console.error("Usage: node scripts/fetch-exhibition-direct.js <YYYYMMDD> <pid:01..24 or comma> <race: 1R|1..12|1,3,5R...|1..12,auto|auto> [--skip-existing]");
   process.exit(1);
@@ -25,7 +21,7 @@ const UA = process.env.UA || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
 const TIMEOUT_MS = Number(process.env.TIMEOUT_MS || 10000);
 const RETRIES = Number(process.env.RETRIES || 3);
 const COOLDOWN_MS = Number(process.env.COOLDOWN_MS || 200);
-const AUTO_TRIGGER_MIN = Number(process.env.AUTO_TRIGGER_MIN || 15); // 締切N分前で自動発火
+const AUTO_TRIGGER_MIN = Number(process.env.AUTO_TRIGGER_MIN || 15);
 
 const SKIP_EXISTING = process.argv.includes("--skip-existing");
 
@@ -58,7 +54,6 @@ function expandRaces(expr){
     if (!Number.isNaN(n) && n>=1 && n<=12) out.add(n);
   }
   const arr = [...out];
-  // autoを含む場合はauto優先（= 締切ベースで拾う）。他の指定は無視せず利用。
   arr.sort((a,b)=> (a==="auto")? -1 : (b==="auto")? 1 : (a-b));
   return arr;
 }
@@ -79,7 +74,6 @@ function tryParseTimeString(s){
 }
 
 async function loadRaceDeadlineHHMM(date, pid, raceNo){
-  // programs どちらかに存在すればOK
   const relPaths = [
     path.join("public","programs","v2",date,pid,`${raceNo}R.json`),
     path.join("public","programs-slim","v2",date,pid,`${raceNo}R.json`),
@@ -103,7 +97,6 @@ async function loadRaceDeadlineHHMM(date, pid, raceNo){
         }
         const hhmm = tryParseTimeString(String(c)); if (hhmm) return hhmm;
       }
-      // 生JSONからHH:MMを拾う荒技フォールバック
       const raw = JSON.stringify(j); const m = raw.match(/(\d{1,2}):(\d{2})/);
       if (m) return `${m[1].padStart(2,"0")}:${m[2]}`;
     }catch{}
@@ -123,7 +116,6 @@ async function pickRacesAuto(date, pid){
 }
 
 async function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
-
 async function fetchWithRetry(url, {headers={}, retries=RETRIES, timeoutMs=TIMEOUT_MS}={}){
   let lastErr;
   for (let i=0;i<retries;i++){
@@ -144,11 +136,25 @@ async function fetchWithRetry(url, {headers={}, retries=RETRIES, timeoutMs=TIMEO
   throw lastErr || new Error("fetch failed");
 }
 
-// ★ 風向クラス番号 → 日本語方位（1=北 … 13=西 … 16=北北西）
+// 風向クラス番号 ↔ 方位
 const WIND_DIR_MAP = {
   1:"北", 2:"北北東", 3:"北東", 4:"東北東", 5:"東",
   6:"東南東", 7:"南東", 8:"南南東", 9:"南", 10:"南南西",
   11:"南西", 12:"西南西", 13:"西", 14:"西北西", 15:"北西", 16:"北北西"
+};
+const WIND_DIR_REV = Object.fromEntries(Object.entries(WIND_DIR_MAP).map(([k,v])=>[v,k]));
+
+// 天候 → 数値コード
+const WEATHER_CODE = (t)=>{
+  if (!t) return 0;
+  const s = String(t).trim();
+  if (s.includes("晴")) return 1;
+  if (s.includes("曇")) return 2;
+  if (s.includes("雨")) return 3;
+  if (s.includes("雪")) return 4;
+  if (s.includes("霧")) return 5;
+  if (s.includes("雷")) return 6;
+  return 0; // その他
 };
 
 function parseBeforeinfo(html, {date,pid,raceNo,url}){
@@ -165,45 +171,54 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
 
   // --- 水面気象（右側） ---
   const wRoot = $(".weather1");
-  const weatherText = wRoot.find(".weather1_bodyUnit.is-weather .weather1_bodyUnitLabelTitle").text().trim() || null;
+  const weatherText = wRoot.find(".weather1_bodyUnit.is-weather .weather1_bodyUnitLabelData, .weather1_bodyUnit.is-weather .weather1_bodyUnitLabelTitle + .weather1_bodyUnitLabelData").first().text().trim() || null;
 
-  // 気温（正: is-temperature）
-  const tempTxt = wRoot.find(".weather1_bodyUnit.is-temperature .weather1_bodyUnitLabelData").first().text().trim();
-  const temperature = tempTxt ? parseFloat(tempTxt.replace(/[^\d.]/g,"")) : null;
+  // 気温（is-temperature + フォールバック）
+  let tempTxt = wRoot.find(".weather1_bodyUnit.is-temperature .weather1_bodyUnitLabelData").first().text().trim();
+  if (!tempTxt) tempTxt = wRoot.find(".weather1_bodyUnit:contains('気温') .weather1_bodyUnitLabelData").first().text().trim();
+  const temperature = tempTxt ? parseFloat(tempTxt.replace(/[^\d.-]/g,"")) : null;
 
   // 風速
   const windTxt = wRoot.find(".weather1_bodyUnit.is-wind .weather1_bodyUnitLabelData").text().trim();
-  const windSpeed = windTxt ? parseFloat(windTxt.replace(/[^\d.]/g,"")) : null;
+  const windSpeed = windTxt ? parseFloat(windTxt.replace(/[^\d.-]/g,"")) : null;
 
-  // 風向（クラス is-windNN / 画像alt / タイトル など複数フォールバック）
+  // 風向（数値優先）
+  let windDirNum = null;
   let windDirection = null;
   const dirEl = wRoot.find(".weather1_bodyUnit.is-windDirection .weather1_bodyUnitImage");
   const dirClass = (dirEl.attr("class") || "");
   const mDir = dirClass.match(/is-wind(\d{1,2})/);
   if (mDir) {
     const key = parseInt(mDir[1],10);
-    windDirection = WIND_DIR_MAP[key] || null;
-  } else {
+    if (key>=1 && key<=16) {
+      windDirNum = key;
+      windDirection = WIND_DIR_MAP[key] || null;
+    }
+  }
+  if (windDirNum == null) {
     const alt = dirEl.attr("alt") || dirEl.attr("title") || "";
-    // altに「北東」などが入っていたらそれを採用
-    if (alt) windDirection = alt.replace(/\s+/g,"").trim() || null;
+    const num = alt ? parseInt(WIND_DIR_REV[alt.trim()]||"",10) : NaN;
+    if (!Number.isNaN(num)) {
+      windDirNum = num;
+      windDirection = WIND_DIR_MAP[num] || alt.trim();
+    }
   }
 
   // 水温
   const waterTxt = wRoot.find(".weather1_bodyUnit.is-waterTemperature .weather1_bodyUnitLabelData").text().trim();
-  const waterTemperature = waterTxt ? parseFloat(waterTxt.replace(/[^\d.]/g,"")) : null;
+  const waterTemperature = waterTxt ? parseFloat(waterTxt.replace(/[^\d.-]/g,"")) : null;
 
   // 波高（cm → m）
   const waveTxt = wRoot.find(".weather1_bodyUnit.is-wave .weather1_bodyUnitLabelData").text().trim();
-  const waveHeight = waveTxt ? (parseFloat(waveTxt.replace(/[^\d.]/g,""))/100) : null;
+  const waveHeight = waveTxt ? (parseFloat(waveTxt.replace(/[^\d.-]/g,""))/100) : null;
 
-  // 安定板使用（見出しやラベル群に "安定板" を含むかを広く検出）
-  const stabilizer = $(
-    ".title16_titleLabels__add2020 .label1, .title16_titleLabels__add2020 .label2, .weather1, .title16"
-  ).filter((_, el) => $(el).text().includes("安定板")).length > 0;
+  // 安定板（0/1）
+  const stabilizer =
+    $(
+      ".title16_titleLabels__add2020 .label1, .title16_titleLabels__add2020 .label2, .weather1, .title16"
+    ).filter((_, el) => $(el).text().includes("安定板")).length > 0 ? 1 : 0;
 
   // --- 直前情報テーブル（左側） ---
-  // boatrace公式は tbodyが艇番順に並ぶ構造（is-w748）
   const entries = [];
   const tbodies = $('table.is-w748 tbody');
   tbodies.each((i, tbody) => {
@@ -217,7 +232,7 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
       const t = $(a).text().replace(/\s+/g," ").trim(); if (t) name = t;
     });
 
-    // 重量 / 展示タイム / チルトのセル群を抽出（位置ズレ耐性）
+    // 重量 / 展示タイム / チルト
     const firstRowTds = $tb.find("tr").first().find("td").toArray();
     const texts = firstRowTds.map(td => ($(td).text()||"").replace(/\s+/g,"").trim());
     let weight="", tenjiTime="", tilt="";
@@ -227,7 +242,6 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
       tenjiTime = texts[kgIdx+1] || "";
       tilt = texts[kgIdx+2] || "";
     } else {
-      // 位置検出に失敗した場合のフォールバック（全テキストから類推）
       const w = texts.find(t=>/kg$/i.test(t)); if (w) weight = w;
       const tt = texts.find(t=>/^\d+\.\d+$/i.test(t)); if (tt) tenjiTime = tt;
       const tl = texts.find(t=>/^-?\d+(\.\d+)?$/i.test(t) && t.includes(".")) || texts.find(t=>/^-?0(\.0)?$/.test(t));
@@ -235,22 +249,45 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
     }
 
     const st = stByLane[lane] || "";
-    const stFlag = st.startsWith("F") ? "F" : "";
+    const isF = /^F/i.test(st) ? 1 : 0;
+    const stSec = (() => {
+      if (!st) return null;
+      if (isF) {
+        // "F.10" → 0.10
+        const v = parseFloat(st.replace(/[^0-9.]/g,""));
+        return Number.isFinite(v) ? v/100 : null;
+      }
+      const v = parseFloat(st.replace(/[^\d.]/g,""));
+      return Number.isFinite(v) ? v : null;
+    })();
 
-    entries.push({ lane, number, name, weight, tenjiTime, tilt, st, stFlag });
+    // 数値正規化
+    const weightKg = (()=>{ const v=parseFloat((weight||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
+    const tenjiSec = (()=>{ const v=parseFloat((tenjiTime||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
+    const tiltDeg  = (()=>{ const v=parseFloat((tilt||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
+
+    entries.push({
+      lane, number, name,
+      weight, tenjiTime, tilt, st, stFlag: isF ? "F" : "",
+      normalized: { weightKg, tenjiSec, tiltDeg, stSec, isF }
+    });
   });
 
   return {
     date, pid, race: `${raceNo}R`, source: url, mode: "beforeinfo",
     generatedAt: new Date().toISOString(),
     weather: {
-      weather: weatherText ? weatherText.replace(/(り|のち.*)?$/,"") : null, // 例: "曇り"→"曇"
-      temperature,
+      // 数値主体
+      weatherCode: WEATHER_CODE(weatherText),
       windSpeed,
-      windDirection,
+      windDirNum,        // 1..16（5=追い風, 13=向かい風の基準番号）
+      temperature,
       waterTemperature,
       waveHeight,
-      stabilizer
+      stabilizer,        // 0 or 1
+      // 互換・確認用
+      weatherText,
+      windDirection
     },
     entries
   };
@@ -268,7 +305,6 @@ async function main(){
   for (const pid of PIDS){
     let targetRaces = [];
 
-    // auto を含む => autoで拾った集合 ∪ 明示指定レース
     const hasAuto = RACES.includes("auto");
     if (hasAuto){
       const autoList = await pickRacesAuto(DATE, pid);
