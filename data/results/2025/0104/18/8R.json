@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250104",
+    "jcd": "18",
+    "rno": 8,
+    "title": "BOATBoyCUP",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": "北西",
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4447",
+      "racer_name": "深川 麻奈美",
+      "st": "0.10",
+      "course": null,
+      "time": "1'50\"1",
+      "start_type": "差し",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "4530",
+      "racer_name": "小野 生奈",
+      "st": "0.17",
+      "course": null,
+      "time": "1'51\"2",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4853",
+      "racer_name": "前原 哉",
+      "st": "0.13",
+      "course": null,
+      "time": "1'53\"7",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "1",
+      "racer_id": "4443",
+      "racer_name": "津田 裕絵",
+      "st": "0.29",
+      "course": null,
+      "time": "1'55\"1",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4909",
+      "racer_name": "薮内 瑞希",
+      "st": "0.18",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "5171",
+      "racer_name": "清水 未唯",
+      "st": "0.25",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.29
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.1
+    },
+    {
+      "lane": 4,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.25
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-6-2",
+      "amount": 8720,
+      "popularity": 33
+    },
+    "trio": {
+      "combo": "2=3=6",
+      "amount": 1740,
+      "popularity": 7
+    },
+    "exacta": {
+      "combo": "3-6",
+      "amount": 2020,
+      "popularity": 8
+    },
+    "quinella": {
+      "combo": "3=6",
+      "amount": 1190,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "3=6",
+        "amount": 350,
+        "popularity": 5
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 510,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 140,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=18&hd=20250104",
+  "generated_at": "2025-11-06T13:46:58.629Z"
+}

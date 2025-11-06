@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250104",
+    "jcd": "11",
+    "rno": 8,
+    "title": "オールレディース ビーナスちゃんカップ",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": "南東",
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4286",
+      "racer_name": "平田 さやか",
+      "st": "0.10",
+      "course": null,
+      "time": "1'48\"4",
+      "start_type": "逃げ",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4502",
+      "racer_name": "遠藤 エミ",
+      "st": "0.13",
+      "course": null,
+      "time": "1'50\"0",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "3302",
+      "racer_name": "谷川 里江",
+      "st": "0.17",
+      "course": null,
+      "time": "1'51\"8",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4534",
+      "racer_name": "坂 咲友理",
+      "st": "0.22",
+      "course": null,
+      "time": "1'52\"6",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4400",
+      "racer_name": "加藤 奈月",
+      "st": "0.19",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5322",
+      "racer_name": "根岸 真優",
+      "st": "0.18",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.1
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.22
+    },
+    {
+      "lane": 6,
+      "st": 0.18
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 650,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 200,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 290,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 190,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 120,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=11&hd=20250104",
+  "generated_at": "2025-11-06T13:46:18.665Z"
+}

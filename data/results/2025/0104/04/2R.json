@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250104",
+    "jcd": "04",
+    "rno": 2,
+    "title": "第63回サンケイスポーツ杯争奪第54回東京ダービー",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": "西",
+    "wind_speed_m": 1,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4779",
+      "racer_name": "伊倉 光",
+      "st": "0.12",
+      "course": null,
+      "time": "1'58\"7",
+      "start_type": "逃げ",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "4939",
+      "racer_name": "宮之原 輝紀",
+      "st": "0.13",
+      "course": null,
+      "time": "2'01\"5",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "3467",
+      "racer_name": "森 弘行",
+      "st": "0.20",
+      "course": null,
+      "time": "2'05\"3",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4169",
+      "racer_name": "多田 有佑",
+      "st": "0.16",
+      "course": null,
+      "time": "2'08\"4",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4723",
+      "racer_name": "寺島 吉彦",
+      "st": "0.13",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": null,
+      "lane": "3",
+      "racer_id": "4438",
+      "racer_name": "森作 雄大",
+      "st": "0.16",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.12
+    },
+    {
+      "lane": 2,
+      "st": 0.2
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.13
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.13
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-6-2",
+      "amount": 2730,
+      "popularity": 9
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 860,
+      "popularity": 5
+    },
+    "exacta": {
+      "combo": "1-6",
+      "amount": 540,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=6",
+      "amount": 230,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=6",
+        "amount": 190,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 170,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 120,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=04&hd=20250104",
+  "generated_at": "2025-11-06T13:45:45.058Z"
+}
