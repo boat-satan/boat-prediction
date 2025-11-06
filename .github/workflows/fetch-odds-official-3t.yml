@@ -1,4 +1,4 @@
-name: Fetch 3T Odds (range simple)
+name: Fetch 3T Odds (range simple, robust push)
 
 on:
   workflow_dispatch:
@@ -27,11 +27,19 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: odds3t-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # rebase/pull のためにフル履歴を取得
+          persist-credentials: true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -57,7 +65,6 @@ jobs:
           set -euo pipefail
           : > dates.txt
           if [ "$SCOPE" = "day" ]; then
-            # 例: 20250101
             echo "$DATE" > dates.txt
 
           elif [ "$SCOPE" = "month" ]; then
@@ -87,7 +94,7 @@ jobs:
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
-      - name: Fetch all odds (one pass)
+      - name: Fetch all odds (one pass, no retry)
         env:
           PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
@@ -106,7 +113,7 @@ jobs:
               node scripts/fetch-odds-official-3t.js "$dt" "$pid" "$race" || true
             ' _
 
-      - name: Commit & push
+      - name: Commit & push (rebase with retry)
         env:
           SCOPE: ${{ github.event.inputs.scope }}
           DATE:  ${{ github.event.inputs.date }}
@@ -115,17 +122,39 @@ jobs:
           PAR:   ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
+
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
             case "$SCOPE" in
               day)   MSG="odds3t: day=${DATE} (parallel=${PAR})" ;;
               month) MSG="odds3t: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
               year)  MSG="odds3t: year=${YEAR} (parallel=${PAR})" ;;
+              *)     MSG="odds3t: batch (parallel=${PAR})" ;;
             esac
+
             git add -A
-            git commit -m "$MSG"
-            git push
+            git commit -m "$MSG" || true
+
+            BR="$(git rev-parse --abbrev-ref HEAD)"
+            tries=0
+            until [ $tries -ge 5 ]
+            do
+              git pull --rebase --autostash origin "$BR" || true
+              if git push origin "$BR"; then
+                echo "push success"
+                break
+              fi
+              tries=$((tries+1))
+              echo "push retry $tries/5 (backoff)"
+              sleep $((2 * tries))
+            done
+
+            if [ $tries -ge 5 ]; then
+              echo "::error::push failed after 5 retries"
+              exit 1
+            fi
           else
             echo "No changes to commit."
           fi
