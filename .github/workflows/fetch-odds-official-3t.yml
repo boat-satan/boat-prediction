@@ -1,4 +1,4 @@
-name: Fetch 3T Odds (range simple, robust push)
+name: Fetch 3T Odds (range simple, robust push w/ lease)
 
 on:
   workflow_dispatch:
@@ -27,8 +27,9 @@ on:
 permissions:
   contents: write
 
+# 同一ブランチは常に1本だけ実行
 concurrency:
-  group: odds3t-${{ github.ref }}
+  group: odds3t-${{ github.repository }}-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -37,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0            # rebase/pull のためにフル履歴を取得
+          fetch-depth: 0
           persist-credentials: true
 
       - uses: actions/setup-node@v4
@@ -66,7 +67,6 @@ jobs:
           : > dates.txt
           if [ "$SCOPE" = "day" ]; then
             echo "$DATE" > dates.txt
-
           elif [ "$SCOPE" = "month" ]; then
             y="$YEAR"
             m="$(printf '%02d' "$MONTH")"
@@ -77,7 +77,6 @@ jobs:
               date -d "$d" +%Y%m%d
               d="$(date -d "$d +1 day" +%Y-%m-%d)"
             done > dates.txt
-
           elif [ "$SCOPE" = "year" ]; then
             y="$YEAR"
             start="${y}-01-01"
@@ -87,10 +86,8 @@ jobs:
               date -d "$d" +%Y%m%d
               d="$(date -d "$d +1 day" +%Y-%m-%d)"
             done > dates.txt
-
           else
-            echo "invalid scope=$SCOPE (use: day|month|year)"
-            exit 1
+            echo "invalid scope=$SCOPE (use: day|month|year)"; exit 1
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
@@ -113,7 +110,7 @@ jobs:
               node scripts/fetch-odds-official-3t.js "$dt" "$pid" "$race" || true
             ' _
 
-      - name: Commit & push (rebase with retry)
+      - name: Commit & push (rebase with fallback force-with-lease)
         env:
           SCOPE: ${{ github.event.inputs.scope }}
           DATE:  ${{ github.event.inputs.date }}
@@ -123,38 +120,62 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name  "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-            case "$SCOPE" in
-              day)   MSG="odds3t: day=${DATE} (parallel=${PAR})" ;;
-              month) MSG="odds3t: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
-              year)  MSG="odds3t: year=${YEAR} (parallel=${PAR})" ;;
-              *)     MSG="odds3t: batch (parallel=${PAR})" ;;
-            esac
-
-            git add -A
-            git commit -m "$MSG" || true
-
-            BR="$(git rev-parse --abbrev-ref HEAD)"
-            tries=0
-            until [ $tries -ge 5 ]
-            do
-              git pull --rebase --autostash origin "$BR" || true
-              if git push origin "$BR"; then
-                echo "push success"
-                break
-              fi
-              tries=$((tries+1))
-              echo "push retry $tries/5 (backoff)"
-              sleep $((2 * tries))
-            done
-
-            if [ $tries -ge 5 ]; then
-              echo "::error::push failed after 5 retries"
-              exit 1
-            fi
-          else
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          case "$SCOPE" in
+            day)   MSG="odds3t: day=${DATE} (parallel=${PAR})" ;;
+            month) MSG="odds3t: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
+            year)  MSG="odds3t: year=${YEAR} (parallel=${PAR})" ;;
+            *)     MSG="odds3t: batch (parallel=${PAR})" ;;
+          esac
+
+          BR="$(git rev-parse --abbrev-ref HEAD)"
+          git add -A
+          git commit -m "$MSG" || true
+
+          # まずは正攻法: fetch->rebase->push を最大10回
+          tries=0
+          until [ $tries -ge 10 ]
+          do
+            git fetch origin "$BR" --prune
+            git rebase "origin/$BR" || true
+            if git push origin "$BR"; then
+              echo "push success (regular)"
+              exit 0
+            fi
+            tries=$((tries+1))
+            echo "push retry $tries/10 (backoff)"
+            sleep $((2 * tries))
+          done
+
+          echo "regular push failed after 10 tries. evaluating safe force-with-lease..."
+
+          # 変更が public/odds/v1/ 配下の生成物だけかチェック
+          CHANGED_PATHS="$(git diff --name-only "origin/$BR"...HEAD || true)"
+          echo "changed paths since remote:"
+          echo "$CHANGED_PATHS"
+
+          if [ -z "$CHANGED_PATHS" ]; then
+            echo "No diff vs remote; nothing to push?"
+            exit 0
+          fi
+
+          # 生成物以外の変更が混ざっていたら安全のため中断
+          if echo "$CHANGED_PATHS" | grep -v '^public/odds/v1/' >/dev/null 2>&1; then
+            echo "::error::Detected changes outside public/odds/v1/. Aborting force push for safety."
+            exit 1
+          fi
+
+          # 生成物のみ → lease 付き強制 push
+          if git push --force-with-lease origin "$BR"; then
+            echo "push success (force-with-lease for artifacts)"
+          else
+            echo "::error::force-with-lease push failed"
+            exit 1
           fi
