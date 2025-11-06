@@ -1,4 +1,4 @@
-name: Fetch Programs (range simple)
+name: Fetch Results (range simple)
 
 on:
   workflow_dispatch:
@@ -23,6 +23,14 @@ on:
         description: "並列数 (xargs -P)"
         required: false
         default: "72"
+      skip_existing:
+        description: "既存JSONがあればスキップ (true/false)"
+        required: false
+        default: "true"
+      fetch_delay_ms:
+        description: "1リクエスト毎の待機(ms)"
+        required: false
+        default: "1200"
 
 permissions:
   contents: write
@@ -32,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -44,7 +53,7 @@ jobs:
           else
             npm init -y
             npm pkg set type=module
-            npm i cheerio@^1.0.0-rc.12 --no-audit --no-fund
+            npm i cheerio@^1.0.0 --no-audit --no-fund
           fi
 
       - name: Build date list
@@ -82,14 +91,16 @@ jobs:
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
-      - name: Fetch programs (fully parallel)
+      - name: Fetch results (fully parallel)
         env:
-          PARALLEL: ${{ github.event.inputs.parallel }}
+          PARALLEL:       ${{ github.event.inputs.parallel }}
+          SKIP_EXISTING:  ${{ github.event.inputs.skip_existing }}
+          FETCH_DELAY_MS: ${{ github.event.inputs.fetch_delay_ms }}
         run: |
           set -euo pipefail
           echo "Parallel jobs: ${PARALLEL:-72}"
 
-          # 全 date × pid × race 組を列挙
+          # 全 date × pid × race を列挙
           { while read -r dt; do
               for p in $(printf "%02d\n" $(seq 1 24)); do
                 for r in $(seq 1 12); do
@@ -100,11 +111,13 @@ jobs:
 
           echo "Total tasks: $(wc -l < tasks.txt)"
 
-          # 並列で実行（完全に並列数に従う）
+          # 並列実行（各プロセスで環境変数を引き継ぐ）
           cat tasks.txt | xargs -P "${PARALLEL:-72}" -n 3 sh -c '
             dt="$1"; pid="$2"; race="$3";
-            echo "=== Fetch Program $dt pid=$pid race=$race ==="
-            node scripts/fetch-programs-official.js "$dt" "$pid" "$race" || true
+            echo "=== Fetch Result $dt pid=$pid race=$race ==="
+            # scripts/fetch-result-official.js を事前に設置しておくこと
+            SKIP_EXISTING="$SKIP_EXISTING" FETCH_DELAY_MS="$FETCH_DELAY_MS" \
+              node scripts/fetch-result-official.js "$dt" "$pid" "$race" || true
           ' _
 
       - name: Commit & push
@@ -120,12 +133,14 @@ jobs:
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             case "$SCOPE" in
-              day)   MSG="programs(range): day=${DATE} (parallel=${PAR})" ;;
-              month) MSG="programs(range): month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
-              year)  MSG="programs(range): year=${YEAR} (parallel=${PAR})" ;;
+              day)   MSG="results(range): day=${DATE} (parallel=${PAR})" ;;
+              month) MSG="results(range): month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
+              year)  MSG="results(range): year=${YEAR} (parallel=${PAR})" ;;
             esac
             git add -A
             git commit -m "$MSG"
+            # 競合回避のため軽くrebase
+            git pull --rebase || true
             git push
           else
             echo "No changes to commit."
