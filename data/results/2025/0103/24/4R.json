@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250103",
+    "jcd": "24",
+    "rno": 4,
+    "title": "ミッドナイトボートレースin大村7th 新春特選R",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": "南西",
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "5102",
+      "racer_name": "原田 雄次",
+      "st": "0.26",
+      "course": null,
+      "time": "1'47\"9",
+      "start_type": "差し",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "4094",
+      "racer_name": "中島 真二",
+      "st": "0.25",
+      "course": null,
+      "time": "1'49\"4",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4096",
+      "racer_name": "石橋 道友",
+      "st": "0.28",
+      "course": null,
+      "time": "1'50\"6",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4603",
+      "racer_name": "谷川 将太",
+      "st": "0.17",
+      "course": null,
+      "time": "1'51\"9",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3777",
+      "racer_name": "樋口 亮",
+      "st": "0.23",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "5227",
+      "racer_name": "川原 愛未",
+      "st": "0.34",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.25
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 3,
+      "st": 0.28
+    },
+    {
+      "lane": 4,
+      "st": 0.34
+    },
+    {
+      "lane": 5,
+      "st": 0.23
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-1-3",
+      "amount": 1740,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 300,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "2-1",
+      "amount": 1270,
+      "popularity": 7
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 490,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 200,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 550,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 260,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=4&jcd=24&hd=20250103",
+  "generated_at": "2025-11-06T13:28:09.687Z"
+}

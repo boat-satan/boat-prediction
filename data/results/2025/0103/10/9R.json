@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250103",
+    "jcd": "10",
+    "rno": 9,
+    "title": "第50回初夢賞",
+    "decision": "まくり",
+    "weather_sky": "曇り",
+    "wind_dir": "西南西",
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "3388",
+      "racer_name": "今垣 光太郎",
+      "st": "0.11",
+      "course": null,
+      "time": "1'48\"4",
+      "start_type": "まくり",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "5017",
+      "racer_name": "澤田 尚也",
+      "st": "0.21",
+      "course": null,
+      "time": "1'49\"9",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5091",
+      "racer_name": "為本 智也",
+      "st": "0.25",
+      "course": null,
+      "time": "1'52\"2",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4003",
+      "racer_name": "表 憲一",
+      "st": "0.22",
+      "course": null,
+      "time": "1'53\"6",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "4982",
+      "racer_name": "中村 将隆",
+      "st": "0.17",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "4876",
+      "racer_name": "梅木 敬太",
+      "st": "0.19",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.25
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.22
+    },
+    {
+      "lane": 6,
+      "st": 0.11
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-4-2",
+      "amount": 1400,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "2=4=6",
+      "amount": 330,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "6-4",
+      "amount": 710,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "4=6",
+      "amount": 360,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "4=6",
+        "amount": 170,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 210,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 120,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=9&jcd=10&hd=20250103",
+  "generated_at": "2025-11-06T13:27:14.848Z"
+}

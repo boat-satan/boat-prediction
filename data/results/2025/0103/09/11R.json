@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250103",
+    "jcd": "09",
+    "rno": 11,
+    "title": "伊勢新聞社新春レース",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": "西北西",
+    "wind_speed_m": 5,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4962",
+      "racer_name": "畑 竜生",
+      "st": "0.11",
+      "course": null,
+      "time": "1'50\"6",
+      "start_type": "差し",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4344",
+      "racer_name": "新田 雄史",
+      "st": "0.10",
+      "course": null,
+      "time": "1'52\"6",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4856",
+      "racer_name": "豊田 健士郎",
+      "st": "0.14",
+      "course": null,
+      "time": "1'54\"1",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4470",
+      "racer_name": "平田 健之佑",
+      "st": "0.15",
+      "course": null,
+      "time": "1'55\"1",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4058",
+      "racer_name": "野末 智一",
+      "st": "0.16",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "4209",
+      "racer_name": "藤田 竜弘",
+      "st": "0.15",
+      "course": null,
+      "time": null,
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.14
+    },
+    {
+      "lane": 2,
+      "st": 0.11
+    },
+    {
+      "lane": 3,
+      "st": 0.1
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 5,
+      "st": 0.15
+    },
+    {
+      "lane": 6,
+      "st": 0.15
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-3-1",
+      "amount": 8400,
+      "popularity": 19
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 190,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "2-3",
+      "amount": 5120,
+      "popularity": 9
+    },
+    "quinella": {
+      "combo": "2=3",
+      "amount": 1870,
+      "popularity": 4
+    },
+    "wide": [
+      {
+        "combo": "2=3",
+        "amount": 210,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 2080,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 280,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=09&hd=20250103",
+  "generated_at": "2025-11-06T13:27:13.143Z"
+}

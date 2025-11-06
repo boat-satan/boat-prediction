@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "date": "20250103",
+    "jcd": "01",
+    "rno": 5,
+    "title": "第58回スポーツニッポン杯 第53回群馬ダービー",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": "南南西",
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4888",
+      "racer_name": "金児 隆太",
+      "st": "0.15",
+      "course": null,
+      "time": "1'50\"0",
+      "start_type": "逃げ",
+      "note": null
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "3441",
+      "racer_name": "土屋 太朗",
+      "st": "0.16",
+      "course": null,
+      "time": "1'51\"1",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "4420",
+      "racer_name": "津久井 拓也",
+      "st": "0.18",
+      "course": null,
+      "time": "1'51\"8",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "5090",
+      "racer_name": "生方 靖亜",
+      "st": "0.16",
+      "course": null,
+      "time": "1'53\"3",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "3889",
+      "racer_name": "須藤 隆雄",
+      "st": "0.17",
+      "course": null,
+      "time": "1'56\"1",
+      "start_type": null,
+      "note": null
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "5306",
+      "racer_name": "河内 悠利杏",
+      "st": "0.19",
+      "course": null,
+      "time": "1'57\"0",
+      "start_type": null,
+      "note": null
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.19
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.18
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-4",
+      "amount": 700,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=3=4",
+      "amount": 400,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 350,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 300,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 140,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 120,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 120,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=01&hd=20250103",
+  "generated_at": "2025-11-06T13:26:43.347Z"
+}
