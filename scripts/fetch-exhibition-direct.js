@@ -1,5 +1,5 @@
 // scripts/fetch-exhibition-direct.js
-// 出力: public/exhibition/v1/<date>/<pid>/<race>.json
+// 出力: public/exhibition/v1/YYYY/MMDD/<pid>/<race>.json
 // 依存: Node.js v18+ (global fetch)
 
 import fs from "node:fs";
@@ -157,6 +157,17 @@ const WEATHER_CODE = (t)=>{
   return 0; // その他
 };
 
+// 数値化ヘルパ
+const toNum = (s) => {
+  if (!s) return null;
+  const z = String(s)
+    .replace(/[０-９．－]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0)) // 全角→半角
+    .replace(/[−ー－]/g, "-")  // 全角マイナス類
+    .replace(/[^\d.\-]/g, "");
+  const v = parseFloat(z);
+  return Number.isFinite(v) ? v : null;
+};
+
 function parseBeforeinfo(html, {date,pid,raceNo,url}){
   const $ = loadHTML(html);
 
@@ -171,16 +182,31 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
 
   // --- 水面気象（右側） ---
   const wRoot = $(".weather1");
-  const weatherText = wRoot.find(".weather1_bodyUnit.is-weather .weather1_bodyUnitLabelData, .weather1_bodyUnit.is-weather .weather1_bodyUnitLabelTitle + .weather1_bodyUnitLabelData").first().text().trim() || null;
 
-  // 気温（is-temperature + フォールバック）
+  // 天候（原文→数値コード）
+  const weatherText =
+    wRoot.find(".weather1_bodyUnit.is-weather .weather1_bodyUnitLabelData, .weather1_bodyUnit.is-weather .weather1_bodyUnitLabelTitle + .weather1_bodyUnitLabelData")
+      .first().text().trim() || null;
+
+  // 気温（堅牢：セレクタ揺れ・全角・単位対応）
   let tempTxt = wRoot.find(".weather1_bodyUnit.is-temperature .weather1_bodyUnitLabelData").first().text().trim();
-  if (!tempTxt) tempTxt = wRoot.find(".weather1_bodyUnit:contains('気温') .weather1_bodyUnitLabelData").first().text().trim();
-  const temperature = tempTxt ? parseFloat(tempTxt.replace(/[^\d.-]/g,"")) : null;
+  if (!tempTxt) {
+    wRoot.find(".weather1_bodyUnit").each((_, el) => {
+      const title = $(el).find(".weather1_bodyUnitLabelTitle").text().trim();
+      if (!tempTxt && title.includes("気温")) {
+        tempTxt = $(el).find(".weather1_bodyUnitLabelData").first().text().trim();
+      }
+    });
+  }
+  let temperature = toNum(tempTxt);
+  if (temperature == null) {
+    const m = (wRoot.text() || "").match(/気温[^0-9\-]*(-?\d+(?:\.\d+)?)/);
+    if (m) temperature = toNum(m[1]);
+  }
 
   // 風速
   const windTxt = wRoot.find(".weather1_bodyUnit.is-wind .weather1_bodyUnitLabelData").text().trim();
-  const windSpeed = windTxt ? parseFloat(windTxt.replace(/[^\d.-]/g,"")) : null;
+  const windSpeed = toNum(windTxt);
 
   // 風向（数値優先）
   let windDirNum = null;
@@ -204,13 +230,17 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
     }
   }
 
-  // 水温
-  const waterTxt = wRoot.find(".weather1_bodyUnit.is-waterTemperature .weather1_bodyUnitLabelData").text().trim();
-  const waterTemperature = waterTxt ? parseFloat(waterTxt.replace(/[^\d.-]/g,"")) : null;
+  // 水温（堅牢）
+  const waterTxt = wRoot.find(".weather1_bodyUnit.is-waterTemperature .weather1_bodyUnitLabelData").text().trim()
+                 || wRoot.find(".weather1_bodyUnit:contains('水温') .weather1_bodyUnitLabelData").first().text().trim();
+  const waterTemperature = toNum(waterTxt);
 
   // 波高（cm → m）
   const waveTxt = wRoot.find(".weather1_bodyUnit.is-wave .weather1_bodyUnitLabelData").text().trim();
-  const waveHeight = waveTxt ? (parseFloat(waveTxt.replace(/[^\d.-]/g,""))/100) : null;
+  const waveHeight = (() => {
+    const v = toNum(waveTxt);
+    return v == null ? null : v / 100;
+  })();
 
   // 安定板（0/1）
   const stabilizer =
@@ -248,23 +278,23 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
       if (tl) tilt = tl;
     }
 
-    const st = stByLane[lane] || "";
+    const st = (stByLane[lane] || "").trim();
     const isF = /^F/i.test(st) ? 1 : 0;
     const stSec = (() => {
       if (!st) return null;
       if (isF) {
         // "F.10" → 0.10
-        const v = parseFloat(st.replace(/[^0-9.]/g,""));
+        const v = toNum(st);
         return Number.isFinite(v) ? v/100 : null;
       }
-      const v = parseFloat(st.replace(/[^\d.]/g,""));
+      const v = toNum(st);
       return Number.isFinite(v) ? v : null;
     })();
 
     // 数値正規化
-    const weightKg = (()=>{ const v=parseFloat((weight||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
-    const tenjiSec = (()=>{ const v=parseFloat((tenjiTime||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
-    const tiltDeg  = (()=>{ const v=parseFloat((tilt||"").replace(/[^\d.-]/g,"")); return Number.isFinite(v)?v:null; })();
+    const weightKg = toNum(weight);
+    const tenjiSec = toNum(tenjiTime);
+    const tiltDeg  = toNum(tilt);
 
     entries.push({
       lane, number, name,
@@ -277,10 +307,9 @@ function parseBeforeinfo(html, {date,pid,raceNo,url}){
     date, pid, race: `${raceNo}R`, source: url, mode: "beforeinfo",
     generatedAt: new Date().toISOString(),
     weather: {
-      // 数値主体
       weatherCode: WEATHER_CODE(weatherText),
       windSpeed,
-      windDirNum,        // 1..16（5=追い風, 13=向かい風の基準番号）
+      windDirNum,        // 1..16（5=追い風, 13=向かい風）
       temperature,
       waterTemperature,
       waveHeight,
@@ -302,6 +331,10 @@ async function fetchBeforeinfo({date,pid,raceNo}){
 
 async function main(){
   log(`start: date=${DATE} pids=${PIDS.join(",")} races=${RACES_EXPR} skip=${SKIP_EXISTING}`);
+  // ここで保存用の 年/MD を作る
+  const YEAR = DATE.slice(0,4);
+  const MD   = DATE.slice(4,8); // 0101 〜 1231
+
   for (const pid of PIDS){
     let targetRaces = [];
 
@@ -318,7 +351,9 @@ async function main(){
     }
 
     for (const raceNo of targetRaces){
-      const outPath = path.join(__dirname,"..","public","exhibition","v1",DATE,pid,`${raceNo}R.json`);
+      const outPath = path.join(
+        __dirname,"..","public","exhibition","v1",YEAR,MD,pid,`${raceNo}R.json`
+      );
       if (SKIP_EXISTING && fs.existsSync(outPath)){
         log("skip existing:", path.relative(process.cwd(), outPath));
         continue;
