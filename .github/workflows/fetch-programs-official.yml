@@ -1,4 +1,4 @@
-name: Fetch Exhibition (range simple)
+name: Fetch Programs (range simple)
 
 on:
   workflow_dispatch:
@@ -82,13 +82,13 @@ jobs:
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
-      - name: Fetch exhibitions (one pass per date×pid)
+      - name: Fetch programs (one pass per date×pid)
         env:
           PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
           echo "Parallel jobs: ${PARALLEL:-72}"
-          # date と pid の直積を作り、race は "1..12" を一括指定
+          # date×pid の直積。レースはシェル内で 1..12 を一括取得
           { while read -r dt; do
               for p in $(printf "%02d\n" $(seq 1 24)); do
                 printf "%s %s\n" "$dt" "$p"
@@ -96,7 +96,10 @@ jobs:
             done < dates.txt; } \
           | xargs -P "${PARALLEL:-72}" -n 2 sh -c '
               dt="$1"; pid="$2";
-              node scripts/fetch-exhibition-direct.js "$dt" "$pid" "1..12" --skip-existing || true
+              echo "=== Programs $dt pid=$pid (1..12) ==="
+              for r in $(seq 1 12); do
+                node scripts/fetch-programs-official.js "$dt" "$pid" "$r" || true
+              done
             ' _
 
       - name: Commit & push
@@ -112,9 +115,9 @@ jobs:
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             case "$SCOPE" in
-              day)   MSG="exhibition(range): day=${DATE} (parallel=${PAR})" ;;
-              month) MSG="exhibition(range): month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
-              year)  MSG="exhibition(range): year=${YEAR} (parallel=${PAR})" ;;
+              day)   MSG="programs(range): day=${DATE} (parallel=${PAR})" ;;
+              month) MSG="programs(range): month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
+              year)  MSG="programs(range): year=${YEAR} (parallel=${PAR})" ;;
             esac
             git add -A
             git commit -m "$MSG"
