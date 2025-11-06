@@ -1,0 +1,123 @@
+{
+  "date": "20190126",
+  "pid": "10",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190126&jcd=10&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:30:53.486Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 4,
+    "temperature": 1,
+    "waterTemperature": 4,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3245",
+      "name": "池上 裕次",
+      "weight": "51.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3815",
+      "name": "森岡 満郎",
+      "weight": "51.2kg",
+      "tenjiTime": "7.01",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 7.01,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4908",
+      "name": "上田 龍星",
+      "weight": "51.0kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4391",
+      "name": "松田 祐季",
+      "weight": "51.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "55.4kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3988",
+      "name": "古川 誠之",
+      "weight": "54.3kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

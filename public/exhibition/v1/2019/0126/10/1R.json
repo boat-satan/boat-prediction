@@ -1,0 +1,123 @@
+{
+  "date": "20190126",
+  "pid": "10",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190126&jcd=10&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:30:59.312Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 8,
+    "windDirNum": 4,
+    "temperature": 1,
+    "waterTemperature": 4,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4294",
+      "name": "古賀 繁輝",
+      "weight": "52.2kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4834",
+      "name": "浜本 裕己",
+      "weight": "50.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4712",
+      "name": "冨好 祐真",
+      "weight": "52.6kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3461",
+      "name": "渡邊 哲也",
+      "weight": "54.5kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4979",
+      "name": "中野 夢斗",
+      "weight": "51.7kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.7,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3953",
+      "name": "志道 吉和",
+      "weight": "51.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

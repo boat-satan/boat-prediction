@@ -1,0 +1,123 @@
+{
+  "date": "20190125",
+  "pid": "03",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190125&jcd=03&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:28:36.405Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 12,
+    "temperature": 7,
+    "waterTemperature": 9,
+    "waveHeight": 0.1,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4364",
+      "name": "池永 太",
+      "weight": "52.0kg",
+      "tenjiTime": "",
+      "tilt": "",
+      "st": "",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": null,
+        "tiltDeg": null,
+        "stSec": null,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4460",
+      "name": "後藤 翔之",
+      "weight": "51.0kg",
+      "tenjiTime": "6.55",
+      "tilt": "1.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.55,
+        "tiltDeg": 1,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4259",
+      "name": "真庭 明志",
+      "weight": "51.1kg",
+      "tenjiTime": "6.53",
+      "tilt": "0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.53,
+        "tiltDeg": 0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "52.9kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4324",
+      "name": "海野 康志郎",
+      "weight": "59.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59,
+        "tenjiSec": 6.63,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4659",
+      "name": "木下 翔太",
+      "weight": "53.4kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

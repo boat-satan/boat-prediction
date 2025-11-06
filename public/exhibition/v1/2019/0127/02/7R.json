@@ -1,0 +1,123 @@
+{
+  "date": "20190127",
+  "pid": "02",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190127&jcd=02&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:32:07.737Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 6,
+    "temperature": 8,
+    "waterTemperature": 3,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3582",
+      "name": "吉川 昭男",
+      "weight": "51.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3355",
+      "name": "橋谷田 佳織",
+      "weight": "43.5kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 43.5,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4859",
+      "name": "染川 直哉",
+      "weight": "51.3kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4041",
+      "name": "小林 基樹",
+      "weight": "51.8kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.8,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4997",
+      "name": "濱崎 寿里矢",
+      "weight": "52.8kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3105",
+      "name": "内山 文典",
+      "weight": "52.9kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    }
+  ]
+}

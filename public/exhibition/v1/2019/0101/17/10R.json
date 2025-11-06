@@ -1,0 +1,123 @@
+{
+  "date": "20190101",
+  "pid": "17",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190101&jcd=17&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:45:24.828Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 15,
+    "temperature": 9,
+    "waterTemperature": 12,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4205",
+      "name": "山口 剛",
+      "weight": "51.0kg",
+      "tenjiTime": "6.58",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.58,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3158",
+      "name": "島川 光男",
+      "weight": "52.0kg",
+      "tenjiTime": "6.55",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.55,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3212",
+      "name": "亀本 勇樹",
+      "weight": "58.2kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 58.2,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4683",
+      "name": "向井田 直弥",
+      "weight": "49.0kg",
+      "tenjiTime": "6.60",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49,
+        "tenjiSec": 6.6,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3430",
+      "name": "角浜 修",
+      "weight": "51.0kg",
+      "tenjiTime": "6.57",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.57,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3054",
+      "name": "北川 幸典",
+      "weight": "54.6kg",
+      "tenjiTime": "6.52",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.52,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    }
+  ]
+}

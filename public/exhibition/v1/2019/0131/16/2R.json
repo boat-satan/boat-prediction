@@ -1,0 +1,123 @@
+{
+  "date": "20190131",
+  "pid": "16",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190131&jcd=16&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:40:28.657Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 5,
+    "temperature": 7,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3643",
+      "name": "米田 隆弘",
+      "weight": "53.1kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4633",
+      "name": "森 智也",
+      "weight": "51.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3741",
+      "name": "松尾 基成",
+      "weight": "53.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4249",
+      "name": "曾根 孝仁",
+      "weight": "53.9kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4820",
+      "name": "上野 励",
+      "weight": "54.4kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".56",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.56,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3668",
+      "name": "市川 猛",
+      "weight": "51.0kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20190112",
+  "pid": "03",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190112&jcd=03&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:04:42.261Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 5,
+    "waterTemperature": 9,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3666",
+      "name": "内野 省一",
+      "weight": "53.4kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".32",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.32,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4009",
+      "name": "小林 一樹",
+      "weight": "56.1kg",
+      "tenjiTime": "6.70",
+      "tilt": "1.0",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 6.7,
+        "tiltDeg": 1,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3986",
+      "name": "沖島 広和",
+      "weight": "54.7kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4329",
+      "name": "小松 卓司",
+      "weight": "49.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4506",
+      "name": "稗田 聖也",
+      "weight": "51.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4772",
+      "name": "石丸 海渡",
+      "weight": "55.9kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

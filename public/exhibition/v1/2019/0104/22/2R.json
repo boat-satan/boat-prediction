@@ -1,0 +1,123 @@
+{
+  "date": "20190104",
+  "pid": "22",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190104&jcd=22&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:51:35.127Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 2,
+    "temperature": 10,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4866",
+      "name": "橋本 英一",
+      "weight": "53.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4927",
+      "name": "関野 文",
+      "weight": "45.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4349",
+      "name": "犬童 千秋",
+      "weight": "49.4kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.4,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5018",
+      "name": "竹下 大樹",
+      "weight": "53.3kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4764",
+      "name": "小池 礼乃",
+      "weight": "46.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4947",
+      "name": "間庭 菜摘",
+      "weight": "49.7kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.7,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

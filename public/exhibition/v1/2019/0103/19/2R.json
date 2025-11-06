@@ -1,0 +1,123 @@
+{
+  "date": "20190103",
+  "pid": "19",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190103&jcd=19&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:49:31.232Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 3,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4937",
+      "name": "山本 宝姫",
+      "weight": "47.1kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4226",
+      "name": "村田 浩司",
+      "weight": "53.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4158",
+      "name": "木場 雄二郎",
+      "weight": "55.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3361",
+      "name": "岡部 浩",
+      "weight": "51.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3682",
+      "name": "切田 潤二",
+      "weight": "49.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4874",
+      "name": "池田 奈津美",
+      "weight": "49.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

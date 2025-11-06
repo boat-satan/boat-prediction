@@ -1,0 +1,123 @@
+{
+  "date": "20190102",
+  "pid": "06",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190102&jcd=06&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:46:58.128Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 3,
+    "temperature": 10,
+    "waterTemperature": 9,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4494",
+      "name": "河合 佑樹",
+      "weight": "51.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "2014",
+      "name": "高塚 清一",
+      "weight": "55.2kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.28",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0028000000000000004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4840",
+      "name": "鈴木 秀茉",
+      "weight": "51.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".32",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.32,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4073",
+      "name": "大橋 純一郎",
+      "weight": "51.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3422",
+      "name": "服部 幸男",
+      "weight": "53.1kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3909",
+      "name": "佐々木 康幸",
+      "weight": "54.6kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

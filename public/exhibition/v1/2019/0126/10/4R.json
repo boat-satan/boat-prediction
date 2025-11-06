@@ -1,0 +1,123 @@
+{
+  "date": "20190126",
+  "pid": "10",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190126&jcd=10&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:30:52.128Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 4,
+    "temperature": 2,
+    "waterTemperature": 4,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4099",
+      "name": "吉永 則雄",
+      "weight": "51.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4215",
+      "name": "吉島 祥之",
+      "weight": "54.2kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3988",
+      "name": "古川 誠之",
+      "weight": "54.3kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4930",
+      "name": "佐藤 悠",
+      "weight": "53.2kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4463",
+      "name": "三苫 晃幸",
+      "weight": "52.8kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4449",
+      "name": "中嶋 達也",
+      "weight": "53.2kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

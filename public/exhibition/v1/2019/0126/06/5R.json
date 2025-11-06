@@ -1,0 +1,123 @@
+{
+  "date": "20190126",
+  "pid": "06",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190126&jcd=06&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:30:33.652Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 3,
+    "temperature": 8,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4765",
+      "name": "野田部 宏子",
+      "weight": "50.5kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4225",
+      "name": "土屋 千明",
+      "weight": "46.5kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4286",
+      "name": "平田 さやか",
+      "weight": "50.5kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5019",
+      "name": "柴田 百恵",
+      "weight": "46.5kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".35",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.35,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3302",
+      "name": "谷川 里江",
+      "weight": "46.5kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3604",
+      "name": "武藤 綾子",
+      "weight": "47.3kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.3,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    }
+  ]
+}

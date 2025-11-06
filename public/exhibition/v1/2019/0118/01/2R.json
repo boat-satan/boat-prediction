@@ -1,0 +1,123 @@
+{
+  "date": "20190118",
+  "pid": "01",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190118&jcd=01&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:15:35.165Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 4,
+    "temperature": 6,
+    "waterTemperature": 5,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3353",
+      "name": "前田 光昭",
+      "weight": "51.4kg",
+      "tenjiTime": "7.17",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 7.17,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4863",
+      "name": "三浦 裕貴",
+      "weight": "56.3kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.3,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4672",
+      "name": "守屋 大地",
+      "weight": "51.2kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4449",
+      "name": "中嶋 達也",
+      "weight": "53.9kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.4kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5023",
+      "name": "久永 祥平",
+      "weight": "51.4kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

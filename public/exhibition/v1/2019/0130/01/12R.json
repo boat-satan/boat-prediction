@@ -1,0 +1,123 @@
+{
+  "date": "20190130",
+  "pid": "01",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190130&jcd=01&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:37:39.878Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 1,
+    "waterTemperature": 5,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3898",
+      "name": "平田 忠則",
+      "weight": "51.6kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.6,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3641",
+      "name": "一瀬 明",
+      "weight": "51.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4537",
+      "name": "渡邉 和将",
+      "weight": "50.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3876",
+      "name": "中辻 崇人",
+      "weight": "51.7kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".33",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.7,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.33,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4711",
+      "name": "前出 達吉",
+      "weight": "50.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4124",
+      "name": "池田 雄一",
+      "weight": "52.1kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

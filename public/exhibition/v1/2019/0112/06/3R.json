@@ -1,0 +1,123 @@
+{
+  "date": "20190112",
+  "pid": "06",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190112&jcd=06&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:05:06.676Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 3,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3673",
+      "name": "小林 享",
+      "weight": "55.2kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3621",
+      "name": "天野 晶夫",
+      "weight": "53.1kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4667",
+      "name": "土屋 幸宏",
+      "weight": "51.8kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.8,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3153",
+      "name": "前川 竜次",
+      "weight": "51.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4855",
+      "name": "江頭 賢太",
+      "weight": "51.9kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.9,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4035",
+      "name": "杉江 浩明",
+      "weight": "50.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

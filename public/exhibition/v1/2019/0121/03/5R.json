@@ -1,0 +1,123 @@
+{
+  "date": "20190121",
+  "pid": "03",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190121&jcd=03&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:21:23.776Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 10,
+    "temperature": 9,
+    "waterTemperature": 10,
+    "waveHeight": 0.1,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4622",
+      "name": "出村 卓也",
+      "weight": "51.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.5",
+      "st": ".36",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0.5,
+        "stSec": 0.36,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4219",
+      "name": "本岡 勝利",
+      "weight": "55.9kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4686",
+      "name": "丸野 一樹",
+      "weight": "52.9kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4812",
+      "name": "西野 雄貴",
+      "weight": "51.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4434",
+      "name": "田中 辰彦",
+      "weight": "52.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4649",
+      "name": "和田 操拓",
+      "weight": "51.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "1.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.78,
+        "tiltDeg": 1,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

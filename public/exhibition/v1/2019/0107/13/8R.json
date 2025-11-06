@@ -1,0 +1,123 @@
+{
+  "date": "20190107",
+  "pid": "13",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190107&jcd=13&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:56:42.480Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 12,
+    "temperature": 9,
+    "waterTemperature": 7.1,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4901",
+      "name": "出口 舞有子",
+      "weight": "47.0kg",
+      "tenjiTime": "6.58",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.58,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4670",
+      "name": "芦村 幸香",
+      "weight": "44.5kg",
+      "tenjiTime": "6.59",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.59,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4546",
+      "name": "浜田 亜理沙",
+      "weight": "46.5kg",
+      "tenjiTime": "6.49",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.49,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3435",
+      "name": "寺田 千恵",
+      "weight": "45.5kg",
+      "tenjiTime": "6.56",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3474",
+      "name": "松瀬 弘美",
+      "weight": "47.0kg",
+      "tenjiTime": "6.51",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.51,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3801",
+      "name": "五反田 忍",
+      "weight": "48.2kg",
+      "tenjiTime": "6.58",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.2,
+        "tenjiSec": 6.58,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

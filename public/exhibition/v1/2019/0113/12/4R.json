@@ -1,0 +1,123 @@
+{
+  "date": "20190113",
+  "pid": "12",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190113&jcd=12&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:07:43.849Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 12,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4691",
+      "name": "水原 慎",
+      "weight": "50.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4099",
+      "name": "吉永 則雄",
+      "weight": "51.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3973",
+      "name": "崎 利仁",
+      "weight": "53.6kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4623",
+      "name": "中北 将史",
+      "weight": "52.1kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4197",
+      "name": "渥美 卓郎",
+      "weight": "53.3kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.22",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0022,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4012",
+      "name": "中村 有裕",
+      "weight": "57.3kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.23",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.3,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0023,
+        "isF": 1
+      }
+    }
+  ]
+}

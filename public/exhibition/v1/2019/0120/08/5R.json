@@ -1,0 +1,123 @@
+{
+  "date": "20190120",
+  "pid": "08",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190120&jcd=08&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:19:49.516Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 15,
+    "temperature": 6,
+    "waterTemperature": 7,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4600",
+      "name": "井内 将太郎",
+      "weight": "51.9kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.9,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4525",
+      "name": "真子 奈津実",
+      "weight": "46.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4008",
+      "name": "中尾 誠",
+      "weight": "50.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4286",
+      "name": "平田 さやか",
+      "weight": "51.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4816",
+      "name": "村松 修二",
+      "weight": "51.3kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3433",
+      "name": "諏訪 忠宏",
+      "weight": "53.2kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    }
+  ]
+}

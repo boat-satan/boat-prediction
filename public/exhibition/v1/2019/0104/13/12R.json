@@ -1,0 +1,123 @@
+{
+  "date": "20190104",
+  "pid": "13",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190104&jcd=13&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:51:05.844Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 12,
+    "temperature": 10.6,
+    "waterTemperature": 7.1,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3854",
+      "name": "吉川 元浩",
+      "weight": "50.5kg",
+      "tenjiTime": "6.50",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.5,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3436",
+      "name": "柏野 幸二",
+      "weight": "50.5kg",
+      "tenjiTime": "6.51",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.51,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3780",
+      "name": "魚谷 智之",
+      "weight": "50.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4278",
+      "name": "藤岡 俊介",
+      "weight": "50.5kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4384",
+      "name": "鶴本 崇文",
+      "weight": "51.1kg",
+      "tenjiTime": "6.56",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4593",
+      "name": "小坂 宗司",
+      "weight": "51.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

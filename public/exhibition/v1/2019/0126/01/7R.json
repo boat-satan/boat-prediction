@@ -1,0 +1,123 @@
+{
+  "date": "20190126",
+  "pid": "01",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190126&jcd=01&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:30:10.794Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 2,
+    "temperature": 1,
+    "waterTemperature": 5,
+    "waveHeight": 0.01,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3409",
+      "name": "三好 一",
+      "weight": "54.6kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4537",
+      "name": "渡邉 和将",
+      "weight": "51.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4303",
+      "name": "牧原 崇",
+      "weight": "51.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".37",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.37,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4100",
+      "name": "松田 隆司",
+      "weight": "51.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".44",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.44,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4421",
+      "name": "森作 広大",
+      "weight": "54.1kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".34",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.34,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3064",
+      "name": "山崎 昭生",
+      "weight": "50.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".45",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.45,
+        "isF": 0
+      }
+    }
+  ]
+}

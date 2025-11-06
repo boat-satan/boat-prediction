@@ -1,0 +1,123 @@
+{
+  "date": "20190102",
+  "pid": "24",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190102&jcd=24&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:48:10.483Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 13,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4174",
+      "name": "赤坂 俊輔",
+      "weight": "50.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3843",
+      "name": "上之 晃弘",
+      "weight": "54.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3787",
+      "name": "天野 誠",
+      "weight": "52.7kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3906",
+      "name": "飯山 晃三",
+      "weight": "56.4kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.4,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3777",
+      "name": "樋口 亮",
+      "weight": "51.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4299",
+      "name": "中島 浩哉",
+      "weight": "55.1kg",
+      "tenjiTime": "6.77",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.77,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    }
+  ]
+}

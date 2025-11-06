@@ -1,0 +1,123 @@
+{
+  "date": "20190107",
+  "pid": "17",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190107&jcd=17&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:56:38.534Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 6,
+    "waterTemperature": 12,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "2844",
+      "name": "田中 伸二",
+      "weight": "51.2kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4656",
+      "name": "大崎 翔",
+      "weight": "54.5kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4365",
+      "name": "盛本 真輔",
+      "weight": "51.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".31",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.31,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4226",
+      "name": "村田 浩司",
+      "weight": "53.9kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4564",
+      "name": "山本 景士郎",
+      "weight": "52.2kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3186",
+      "name": "沖 悟",
+      "weight": "51.8kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.8,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

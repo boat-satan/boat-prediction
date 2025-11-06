@@ -1,0 +1,123 @@
+{
+  "date": "20190103",
+  "pid": "03",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190103&jcd=03&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:48:33.961Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 12,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.15,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3813",
+      "name": "佐藤 大介",
+      "weight": "52.2kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7,
+        "tiltDeg": 0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3647",
+      "name": "伊藤 雄二",
+      "weight": "51.0kg",
+      "tenjiTime": "7.33",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 7.33,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4792",
+      "name": "杉村 賢也",
+      "weight": "52.1kg",
+      "tenjiTime": "7.01",
+      "tilt": "0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.01,
+        "tiltDeg": 0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3488",
+      "name": "柳田 英明",
+      "weight": "51.2kg",
+      "tenjiTime": "7.04",
+      "tilt": "1.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 7.04,
+        "tiltDeg": 1,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3642",
+      "name": "大塚 浩二",
+      "weight": "51.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4570",
+      "name": "前田 聖文",
+      "weight": "54.4kg",
+      "tenjiTime": "7.05",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 7.05,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

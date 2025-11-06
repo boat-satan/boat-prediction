@@ -1,0 +1,123 @@
+{
+  "date": "20190103",
+  "pid": "08",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190103&jcd=08&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:48:35.567Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 15,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4914",
+      "name": "吉田 裕平",
+      "weight": "51.3kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4983",
+      "name": "前田 篤哉",
+      "weight": "50.5kg",
+      "tenjiTime": "6.56",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3856",
+      "name": "水野 暁広",
+      "weight": "55.9kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4516",
+      "name": "野口 勝弘",
+      "weight": "52.0kg",
+      "tenjiTime": "6.56",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4409",
+      "name": "坂元 浩仁",
+      "weight": "53.4kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4228",
+      "name": "吉田 慎二郎",
+      "weight": "56.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

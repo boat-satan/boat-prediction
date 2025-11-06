@@ -1,0 +1,123 @@
+{
+  "date": "20190105",
+  "pid": "02",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190105&jcd=02&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:52:02.457Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 8,
+    "temperature": 9,
+    "waterTemperature": 3,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4637",
+      "name": "中田 友也",
+      "weight": "55.4kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3503",
+      "name": "堂原 洋史",
+      "weight": "50.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".28",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.28,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4809",
+      "name": "外崎 悟",
+      "weight": "51.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4547",
+      "name": "中田 竜太",
+      "weight": "50.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3772",
+      "name": "一柳 和孝",
+      "weight": "52.9kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3664",
+      "name": "鈴木 賢一",
+      "weight": "53.6kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20190118",
+  "pid": "03",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190118&jcd=03&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:15:47.312Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 10,
+    "temperature": 9,
+    "waterTemperature": 10,
+    "waveHeight": 0.2,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4145",
+      "name": "小澤 学",
+      "weight": "52.3kg",
+      "tenjiTime": "7.15",
+      "tilt": "0.0",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.15,
+        "tiltDeg": 0,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3108",
+      "name": "松本 真吾",
+      "weight": "51.4kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": ".42",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.42,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3812",
+      "name": "山崎 聖司",
+      "weight": "51.0kg",
+      "tenjiTime": "7.23",
+      "tilt": "0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 7.23,
+        "tiltDeg": 0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4474",
+      "name": "渡辺 崇",
+      "weight": "57.1kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.1,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "51.3kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.5",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0.5,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4604",
+      "name": "岩瀬 裕亮",
+      "weight": "53.7kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20190130",
+  "pid": "21",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190130&jcd=21&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:39:07.955Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 13,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4043",
+      "name": "桐本 康臣",
+      "weight": "53.7kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3743",
+      "name": "林 美憲",
+      "weight": "50.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4559",
+      "name": "西川 昌希",
+      "weight": "51.2kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.2,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3333",
+      "name": "丸尾 義孝",
+      "weight": "51.7kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.7,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4708",
+      "name": "半田 尚也",
+      "weight": "53.2kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3712",
+      "name": "淺香 文武",
+      "weight": "55.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

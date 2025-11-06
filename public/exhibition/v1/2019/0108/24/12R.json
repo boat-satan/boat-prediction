@@ -1,0 +1,123 @@
+{
+  "date": "20190108",
+  "pid": "24",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190108&jcd=24&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:59:23.992Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 11,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3618",
+      "name": "海野 ゆかり",
+      "weight": "45.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4014",
+      "name": "片岡 恵里",
+      "weight": "48.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4011",
+      "name": "堀之内紀代子",
+      "weight": "46.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4313",
+      "name": "西村 美智子",
+      "weight": "48.9kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4501",
+      "name": "樋口 由加里",
+      "weight": "45.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4170",
+      "name": "西坂 香松",
+      "weight": "50.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

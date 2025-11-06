@@ -1,0 +1,123 @@
+{
+  "date": "20190101",
+  "pid": "18",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190101&jcd=18&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:46:03.920Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 9,
+    "temperature": 9,
+    "waterTemperature": 11,
+    "waveHeight": 0.06,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3942",
+      "name": "寺田 祥",
+      "weight": "52.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4264",
+      "name": "長尾 章平",
+      "weight": "53.1kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4015",
+      "name": "前野 竜一",
+      "weight": "57.9kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".66",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.9,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.66,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4596",
+      "name": "葛原 大陽",
+      "weight": "49.5kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3024",
+      "name": "西島 義則",
+      "weight": "55.2kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4089",
+      "name": "妹尾 忠幸",
+      "weight": "54.2kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20190124",
+  "pid": "10",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190124&jcd=10&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:27:08.835Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 6,
+    "temperature": 4,
+    "waterTemperature": 5,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4060",
+      "name": "島田 一生",
+      "weight": "53.7kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.23",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0023,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3815",
+      "name": "森岡 満郎",
+      "weight": "51.1kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4101",
+      "name": "三井所 尊春",
+      "weight": "51.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4105",
+      "name": "松下 直也",
+      "weight": "51.7kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.7,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4128",
+      "name": "川口 貴久",
+      "weight": "54.7kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4930",
+      "name": "佐藤 悠",
+      "weight": "53.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

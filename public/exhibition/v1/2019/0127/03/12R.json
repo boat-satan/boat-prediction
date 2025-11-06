@@ -1,0 +1,123 @@
+{
+  "date": "20190127",
+  "pid": "03",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190127&jcd=03&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:32:14.299Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 10,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.15,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4095",
+      "name": "福来 剛",
+      "weight": "50.5kg",
+      "tenjiTime": "6.56",
+      "tilt": "0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.56,
+        "tiltDeg": 0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4468",
+      "name": "大池 佑来",
+      "weight": "51.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "52.9kg",
+      "tenjiTime": "6.57",
+      "tilt": "1.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.57,
+        "tiltDeg": 1.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4296",
+      "name": "岡崎 恭裕",
+      "weight": "50.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4259",
+      "name": "真庭 明志",
+      "weight": "51.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4067",
+      "name": "永井 源",
+      "weight": "51.5kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

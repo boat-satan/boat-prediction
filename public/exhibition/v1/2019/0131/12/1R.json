@@ -1,0 +1,123 @@
+{
+  "date": "20190131",
+  "pid": "12",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190131&jcd=12&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:40:09.348Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3528",
+      "name": "笠野 友紀恵",
+      "weight": "48.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4484",
+      "name": "稲生 夏季",
+      "weight": "51.1kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4744",
+      "name": "伊藤 玲奈",
+      "weight": "45.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.21",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.0021,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4845",
+      "name": "前田 紗希",
+      "weight": "49.8kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.8,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4929",
+      "name": "梅内 夕貴奈",
+      "weight": "45.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5021",
+      "name": "計盛 光",
+      "weight": "46.5kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

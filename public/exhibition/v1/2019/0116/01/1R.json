@@ -1,0 +1,123 @@
+{
+  "date": "20190116",
+  "pid": "01",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190116&jcd=01&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:12:00.575Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 2,
+    "temperature": 4,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4863",
+      "name": "三浦 裕貴",
+      "weight": "56.3kg",
+      "tenjiTime": "7.10",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.3,
+        "tenjiSec": 7.1,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3151",
+      "name": "落合 敬一",
+      "weight": "55.5kg",
+      "tenjiTime": "7.21",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 7.21,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3283",
+      "name": "窪田 好弘",
+      "weight": "52.7kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3473",
+      "name": "石川 真二",
+      "weight": "51.5kg",
+      "tenjiTime": "7.06",
+      "tilt": "-0.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.06,
+        "tiltDeg": -0.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4449",
+      "name": "中嶋 達也",
+      "weight": "51.6kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.6,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5044",
+      "name": "渡邉 健",
+      "weight": "54.9kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

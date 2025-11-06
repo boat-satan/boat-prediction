@@ -1,0 +1,123 @@
+{
+  "date": "20190118",
+  "pid": "03",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190118&jcd=03&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:15:57.317Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 10,
+    "temperature": 6,
+    "waterTemperature": 9,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3976",
+      "name": "内田 圭",
+      "weight": "55.2kg",
+      "tenjiTime": "6.78",
+      "tilt": "1.5",
+      "st": ".38",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.78,
+        "tiltDeg": 1.5,
+        "stSec": 0.38,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4657",
+      "name": "江崎 一雄",
+      "weight": "55.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "2935",
+      "name": "幸本 誠",
+      "weight": "48.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4145",
+      "name": "小澤 学",
+      "weight": "52.3kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4162",
+      "name": "竹本 太樹",
+      "weight": "51.6kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.6,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4839",
+      "name": "四宮 与寛",
+      "weight": "51.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    }
+  ]
+}

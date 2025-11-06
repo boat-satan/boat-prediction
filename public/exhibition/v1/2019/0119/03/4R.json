@@ -1,0 +1,123 @@
+{
+  "date": "20190119",
+  "pid": "03",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190119&jcd=03&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:17:39.608Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 10,
+    "temperature": 10,
+    "waterTemperature": 9,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4957",
+      "name": "竹之内 極",
+      "weight": "53.2kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4686",
+      "name": "丸野 一樹",
+      "weight": "52.6kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4815",
+      "name": "伏島 祐介",
+      "weight": "51.8kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.8,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4649",
+      "name": "和田 操拓",
+      "weight": "51.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "1.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.69,
+        "tiltDeg": 1,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3711",
+      "name": "江本 真治",
+      "weight": "54.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3108",
+      "name": "松本 真吾",
+      "weight": "51.1kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    }
+  ]
+}

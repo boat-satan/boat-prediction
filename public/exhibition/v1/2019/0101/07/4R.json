@@ -1,0 +1,123 @@
+{
+  "date": "20190101",
+  "pid": "07",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190101&jcd=07&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:44:53.491Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 15,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3730",
+      "name": "塩崎 優司",
+      "weight": "51.8kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.8,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4910",
+      "name": "中村 泰平",
+      "weight": "51.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4435",
+      "name": "服部 達哉",
+      "weight": "54.8kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4124",
+      "name": "池田 雄一",
+      "weight": "53.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4340",
+      "name": "土性 雅也",
+      "weight": "53.6kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3621",
+      "name": "天野 晶夫",
+      "weight": "53.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".37",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.37,
+        "isF": 0
+      }
+    }
+  ]
+}

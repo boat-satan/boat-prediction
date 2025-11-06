@@ -1,0 +1,123 @@
+{
+  "date": "20190127",
+  "pid": "03",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190127&jcd=03&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:32:09.866Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 10,
+    "temperature": 7,
+    "waterTemperature": 9,
+    "waveHeight": 0.15,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3978",
+      "name": "齊藤 仁",
+      "weight": "49.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "1.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": 1,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4292",
+      "name": "麻生 慎介",
+      "weight": "51.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "1.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.68,
+        "tiltDeg": 1,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3960",
+      "name": "菊地 孝平",
+      "weight": "54.5kg",
+      "tenjiTime": "6.82",
+      "tilt": "1.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.82,
+        "tiltDeg": 1,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4259",
+      "name": "真庭 明志",
+      "weight": "51.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.5",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0.5,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3590",
+      "name": "濱野谷 憲吾",
+      "weight": "52.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "1.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": 1,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4504",
+      "name": "前田 将太",
+      "weight": "51.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

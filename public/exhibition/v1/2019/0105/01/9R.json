@@ -1,0 +1,123 @@
+{
+  "date": "20190105",
+  "pid": "01",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190105&jcd=01&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T13:52:01.210Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 2,
+    "temperature": 7,
+    "waterTemperature": 6,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4188",
+      "name": "久田 敏之",
+      "weight": "51.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3448",
+      "name": "高山 秀雄",
+      "weight": "51.1kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".44",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.44,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3538",
+      "name": "菊池 峰晴",
+      "weight": "51.1kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4491",
+      "name": "田中 堅",
+      "weight": "51.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3655",
+      "name": "本橋 克洋",
+      "weight": "54.0kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3296",
+      "name": "高柳 成聡",
+      "weight": "51.1kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.1,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

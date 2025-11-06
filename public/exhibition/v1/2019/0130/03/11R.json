@@ -1,0 +1,123 @@
+{
+  "date": "20190130",
+  "pid": "03",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20190130&jcd=03&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-06T14:37:49.040Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 4,
+    "temperature": 11,
+    "waterTemperature": 9,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4335",
+      "name": "若林 将",
+      "weight": "51.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4418",
+      "name": "茅原 悠紀",
+      "weight": "54.1kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4851",
+      "name": "関 浩哉",
+      "weight": "51.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.0",
+      "st": ".32",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0,
+        "stSec": 0.32,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4459",
+      "name": "片岡 雅裕",
+      "weight": "51.3kg",
+      "tenjiTime": "6.79",
+      "tilt": "2.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 6.79,
+        "tiltDeg": 2,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4290",
+      "name": "稲田 浩二",
+      "weight": "51.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "1.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.78,
+        "tiltDeg": 1,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4468",
+      "name": "大池 佑来",
+      "weight": "51.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}
