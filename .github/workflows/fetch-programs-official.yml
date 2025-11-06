@@ -82,25 +82,30 @@ jobs:
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
-      - name: Fetch programs (one pass per date×pid)
+      - name: Fetch programs (fully parallel)
         env:
           PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
           echo "Parallel jobs: ${PARALLEL:-72}"
-          # date×pid の直積。レースはシェル内で 1..12 を一括取得
+
+          # 全 date × pid × race 組を列挙
           { while read -r dt; do
               for p in $(printf "%02d\n" $(seq 1 24)); do
-                printf "%s %s\n" "$dt" "$p"
+                for r in $(seq 1 12); do
+                  printf "%s %s %s\n" "$dt" "$p" "$r"
+                done
               done
-            done < dates.txt; } \
-          | xargs -P "${PARALLEL:-72}" -n 2 sh -c '
-              dt="$1"; pid="$2";
-              echo "=== Programs $dt pid=$pid (1..12) ==="
-              for r in $(seq 1 12); do
-                node scripts/fetch-programs-official.js "$dt" "$pid" "$r" || true
-              done
-            ' _
+            done < dates.txt; } > tasks.txt
+
+          echo "Total tasks: $(wc -l < tasks.txt)"
+
+          # 並列で実行（完全に並列数に従う）
+          cat tasks.txt | xargs -P "${PARALLEL:-72}" -n 3 sh -c '
+            dt="$1"; pid="$2"; race="$3";
+            echo "=== Fetch Program $dt pid=$pid race=$race ==="
+            node scripts/fetch-programs-official.js "$dt" "$pid" "$race" || true
+          ' _
 
       - name: Commit & push
         env:
