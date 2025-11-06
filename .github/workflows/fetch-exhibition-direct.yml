@@ -27,11 +27,19 @@ on:
 permissions:
   contents: write
 
+# 同時実行の競合をさらに避けたい場合は有効化（任意）
+# concurrency:
+#   group: fetch-exhibition
+#   cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0         # ★ 履歴を取得（rebaseのため必須）
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -90,9 +98,6 @@ jobs:
         run: |
           set -euo pipefail
           echo "Parallel jobs: ${PARALLEL:-72}"
-          # RACES は全レース固定（1..12）。必要なら input 化可。
-          RACES="1..12"
-          # 実行時に必要な環境変数（スクリプトの既定値を上書きしたいときはここで）
           export TIMEOUT_MS=10000
           export RETRIES=3
           export COOLDOWN_MS=200
@@ -108,11 +113,22 @@ jobs:
             done < dates.txt; } \
           | xargs -P "${PARALLEL:-72}" -n 3 sh -c '
               dt="$1"; pid="$2"; race="$3";
-              # --skip-existing で上書きを避けて軽量化
               node scripts/fetch-exhibition-direct.js "$dt" "$pid" "$race" --skip-existing || true
             ' _
 
-      - name: Commit & push
+      # ★ リモートを取り込んでからコミット（fast-forward拒否を避ける）
+      - name: Sync with remote main
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 念のためmainを確実にチェックアウト
+          git checkout -B main
+          git fetch origin main
+          # 既存変更を一時退避しつつ最新にリベース
+          git pull --rebase --autostash origin main || true
+
+      - name: Commit & push with retry
         env:
           SCOPE: ${{ github.event.inputs.scope }}
           DATE:  ${{ github.event.inputs.date }}
@@ -121,17 +137,32 @@ jobs:
           PAR:   ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name  "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            case "$SCOPE" in
-              day)   MSG="exhibition: day=${DATE} (parallel=${PAR})" ;;
-              month) MSG="exhibition: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
-              year)  MSG="exhibition: year=${YEAR} (parallel=${PAR})" ;;
-            esac
-            git add -A
-            git commit -m "$MSG"
-            git push
-          else
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit."
+            exit 0
           fi
+
+          case "$SCOPE" in
+            day)   MSG="exhibition: day=${DATE} (parallel=${PAR})" ;;
+            month) MSG="exhibition: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
+            year)  MSG="exhibition: year=${YEAR} (parallel=${PAR})" ;;
+          esac
+
+          git add -A
+          git commit -m "$MSG"
+
+          # ★ リトライ付き push（他ジョブと競合しても自動で取り込み直す）
+          for i in 1 2 3 4 5; do
+            if git push origin main; then
+              echo "Pushed successfully."
+              break
+            fi
+            echo "Push rejected. Re-syncing (attempt $i)..."
+            git fetch origin main
+            git pull --rebase --autostash origin main || true
+            sleep $((i*5))
+            if [ "$i" -eq 5 ]; then
+              echo "Push failed after retries."
+              exit 1
+            fi
+          done
