@@ -1,11 +1,4 @@
 #!/usr/bin/env node
-/**
- * BOATRACE 結果スクレイパ (null最小化)
- * usage: node scripts/fetch-result-official.js YYYYMMDD JCD RNO
- * out: data/results/YYYY/MMDD/{jcd}/{rno}R.json
- * schema: ユーザー提示JSONに準拠
- */
-
 import fs from "node:fs";
 import path from "node:path";
 import { load } from "cheerio";
@@ -15,11 +8,12 @@ const z2 = (n) => String(n).padStart(2, "0");
 const nowISO = () => new Date().toISOString();
 
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
-function toHalf(s=""){ return String(s).replace(/[０-９Ａ-Ｚａ-ｚ．－−，：’”]/g, ch=>{
-  const map={ "．":".","－":"-","−":"-","，":",","：":":","’":"'","”":"\"" }; if(map[ch]) return map[ch];
+function toHalf(s=""){ return String(s).replace(/[０-９Ａ-Ｚａ-ｚ．－−，：’”″′]/g, ch=>{
+  const map={ "．":".","－":"-","−":"-","，":",","：":":","’":"'","”":"\"","″":"\"","′":"'" };
+  if(map[ch]) return map[ch];
   return String.fromCharCode(ch.charCodeAt(0)-0xFEE0);
 });}
-function T($el){ return toHalf($el.text().replace(/\s+/g," ").trim()); }
+function tx(s){ return toHalf(String(s)).replace(/\s+/g," ").trim(); }
 function num(s){ if(s==null) return null; const n=Number(String(s).replace(/[^0-9.\-]/g,"")); return Number.isFinite(n)?n:null; }
 function buildOut(hd,jcd,rno){ const yyyy=hd.slice(0,4),mmdd=hd.slice(4); return path.join("data","results",yyyy,mmdd,z2(jcd),`${rno}R.json`); }
 
@@ -38,213 +32,165 @@ async function fetchHtml(url,{retries=3,delay=1000}={}) {
   throw err;
 }
 
-// --- Meta (天候/風/波/決まり手/タイトル)
+// --- HTML内 “undefined” ノイズに耐えるタイム正規化
+function normalizeTime(raw){
+  if(!raw) return null;
+  let s = String(raw).replace(/undefined/g, "\"");             // 1'52undefined7 → 1'52"7
+  s = s.replace(/[：:]/g,":").replace(/[″”"]/g,'"').replace(/[′’']/g,"'");
+  // 1:52"7 / 1'52"7 / 1.52.7 → 1'52"7
+  const m = s.match(/^(\d)[:.'](\d{2})[".](\d)$/);
+  if(m) return `${m[1]}'${m[2]}"${m[3]}`;
+  return s.trim() || null;
+}
+
+// --- 方位アイコン → 風向（簡易マップ）
+const WIND_MAP = {
+  "is-wind1":"北", "is-wind2":"北北東", "is-wind3":"北東", "is-wind4":"東北東",
+  "is-wind5":"東", "is-wind6":"東南東", "is-wind7":"南東", "is-wind8":"南南東",
+  "is-wind9":"南", "is-wind10":"南南西","is-wind11":"南西","is-wind12":"西南西",
+  "is-wind13":"西", "is-wind14":"西北西","is-wind15":"北西","is-wind16":"北北西"
+};
+
+// --- Meta（タイトル/決まり手/天候/風/波）: 右カラムから拾う
 function parseMeta($){
-  const meta = {};
-  meta.title = T($(".hdg2, .heading2, .result_hd, .raceTitle").first());
-  const ctx = $(".weather1, .weather, .result_table, .result_info, .raceInfo, .result_info2").first().text();
-  const s = toHalf(ctx);
+  const meta = { title:null, decision:null, weather_sky:null, wind_dir:null, wind_speed_m:null, wave_height_cm:null };
 
-  const mDec = s.match(/決まり手\s*[:：]?\s*([^\n\r\t 　]+)/);
-  const mSky = s.match(/天候\s*[:：]?\s*([^\n\r\t 　]+)/);
-  const mWind = s.match(/風\s*[:：]?\s*([東西南北南北東西南西北東北西]{1,3}|[\u4E00-\u9FFF]+)\s*(\d+(?:\.\d+)?)?m/);
-  const mWave = s.match(/波\s*[:：]?\s*(\d+(?:\.\d+)?)m/);
+  // タイトル（場名＋開催名の見出し近辺）
+  meta.title = tx($(".heading2_titleName").first().text()) || null;
 
-  meta.decision = mDec?.[1] ?? null;
-  meta.weather_sky = mSky?.[1] ?? null;
-  meta.wind_dir = mWind?.[1] ?? null;
-  meta.wind_speed_m = mWind?.[2] ? Number(mWind[2]) : null;
-  meta.wave_height_cm = mWave ? Math.round(Number(mWave[1]) * 100) : null;
+  // 決まり手
+  const dec = tx($("table:contains('決まり手')").first().find("tbody td").first().text());
+  if(dec) meta.decision = dec;
 
+  // 気象（右カラム）
+  const wx = $(".weather1");
+  if(wx.length){
+    // 天候テキスト（雨/晴など）
+    const sky = tx(wx.find(".weather1_bodyUnit.is-weather .weather1_bodyUnitLabel").text());
+    if(sky) meta.weather_sky = sky.replace(/^(気温|水温|風速|波高)\s*/,"").trim();
+
+    // 風速
+    const ws = tx(wx.find(".weather1_bodyUnit.is-wind .weather1_bodyUnitLabelData").text());
+    const wsN = ws.match(/([0-9]+(?:\.[0-9]+)?)m/i);
+    if(wsN) meta.wind_speed_m = Number(wsN[1]);
+
+    // 風向（アイコンclass）
+    const dirEl = wx.find(".weather1_bodyUnit.is-windDirection .weather1_bodyUnitImage");
+    const cls = (dirEl.attr("class")||"").split(/\s+/).find(c=>/^is-wind\d+/.test(c));
+    if(cls && WIND_MAP[cls]) meta.wind_dir = WIND_MAP[cls];
+
+    // 波高
+    const wh = tx(wx.find(".weather1_bodyUnit.is-wave .weather1_bodyUnitLabelData").text());
+    const whN = wh.match(/([0-9]+)cm/i);
+    if(whN) meta.wave_height_cm = Number(whN[1]);
+  }
   return meta;
 }
 
-// ヘッダ名→列index を作る
-function headerIndex($table){
-  const map = {};
-  $table.find("tr").first().find("th,td").each((i,th)=>{
-    const k=T($(th));
-    map[k]=i;
-  });
-  return map;
-}
+// --- 結果テーブル（thead固定: 着/枠/ボートレーサー/レースタイム, 複数tbody対応）
+function parseResults($){
+  const tbl = $("table:has(thead th:contains('着')):has(thead th:contains('枠')):has(thead th:contains('ボートレーサー')):has(thead th:contains('レースタイム'))").first();
+  const rows = [];
+  if(!tbl.length) return rows;
 
-// 結果テーブル（着/艇/選手/登番/ST/進入/タイム/備考）
-function parseResultsTable($){
-  let target=null, headStr="";
-  $("table").each((_,el)=>{
-    const $t=$(el);
-    const heads=$t.find("th").map((i,th)=>T($(th))).get().join("|");
-    if(/着|着順/.test(heads) && /艇|選手|登番/.test(heads)){ target=$t; headStr=heads; }
-  });
-  if(!target) return { rows:[], head:{} };
+  tbl.find("tbody tr").each((_,tr)=>{
+    const $tr=$(tr);
+    const tds=$tr.find("td");
+    if(tds.length<4) return;
 
-  const head = headerIndex(target);
-  const keys = Object.fromEntries(Object.entries(head).map(([k,i])=>[k.replace(/\s/g,""),i]));
+    const rank = tx($(tds[0]).text()).replace(/[^\d]/g,"") || null;
+    const lane = tx($(tds[1]).text()).replace(/[^\d]/g,"") || null;
 
-  const rows=[];
-  target.find("tr").slice(1).each((_,tr)=>{
-    const $tr=$(tr); const tds=$tr.find("td"); if(!tds.length) return;
-    const get=(nameRegex)=>{ // th名部分一致
-      const hit = Object.entries(keys).find(([k])=>nameRegex.test(k));
-      if(!hit) return null;
-      const idx = hit[1];
-      return T($(tds.get(idx) ?? []));
-    };
+    // ID と 名前は 3列目に二つの span
+    const id = tx($(tds[2]).find("span.is-fs12").first().text()).match(/\d{4}/)?.[0] || null;
+    const name = tx($(tds[2]).find("span.is-fs18").first().text()) || null;
 
-    const rank = get(/着|着順/);
-    const lane = get(/艇/);
-    // 登番は数字4桁
-    let racer_id = get(/登番|登録|番号|No/);
-    if(racer_id && !/\d{4}/.test(racer_id)) racer_id = (racer_id.match(/\d{4}/)||[])[0] ?? null;
+    const timeRaw = tx($(tds[3]).text());
+    const time = normalizeTime(timeRaw);
 
-    let racer_name = get(/選手|氏名|名前/);
-    if(racer_name) racer_name = racer_name.replace(/\d{4}.*/,"").trim();
-
-    let st = get(/ST|スタート/);
-    // ST 見栄え統一（F.02/L.01/0.13）
-    if(st){
-      const m=st.match(/^(F|L)?\.?(\d?\.\d{2})$/);
-      if(m) st = (m[1]?`${m[1]}.`:"")+m[2];
-      else if(/^\d\.\d{2}$/.test(st)) st=st;
-      else st=null;
-    }
-
-    let course = get(/進入|コース/);
-    // 行ごとの進入（1～6）や、全体の「123/456」などが入ることがある
-    if(course && !/^([1-6]{1,6}(\/[1-6]{1,6})?|[1-6])$/.test(course)) course=null;
-
-    let time = get(/ﾀｲﾑ|タイム|決着/);
-    // 1'51"0 / 1:51.0 / 1.51.0 などを 1'51"0 に寄せる軽整形
-    if(time){
-      const t = time.replace(/[：:]/g,":").replace(/[″”"]/g,'"').replace(/[′’']/g,"'");
-      const m = t.match(/^(\d)[:.](\d{2})[."”](\d)$/) || t.match(/^(\d)['’](\d{2})["”](\d)$/);
-      if(m) time = `${m[1]}'${m[2]}"${m[3]}`;
-    }
-
-    let note = get(/備考|状況|事故/);
-    if(note && !note.replace(/[-–—]/g,"").trim()) note=null;
-
-    rows.push({
-      rank: rank || null,
-      lane: lane || null,
-      racer_id: racer_id || null,
-      racer_name: racer_name || null,
-      st: st || null,
-      course: course || null,
-      time: time || null,
-      start_type: null, // 公式に明示があれば後で埋める
-      note: note || null,
-    });
-  });
-
-  return { rows, head: keys, headStr };
-}
-
-// ST一覧（艇→ST）
-function parseStartList($){
-  const out=[];
-  $("table").each((_,el)=>{
-    const $t=$(el);
-    const heads=$t.find("th").map((i,th)=>T($(th))).get().join("|");
-    if(/ST/i.test(heads) && /艇|進入|枠/.test(heads)){
-      const head = headerIndex($t);
-      const laneIdx = Object.entries(head).find(([k])=>/艇|枠/.test(k))?.[1] ?? 0;
-      let stIdx = Object.entries(head).find(([k])=>/ST/i.test(k))?.[1];
-      $t.find("tr").slice(1).each((_,tr)=>{
-        const tds=$(tr).find("td"); if(!tds.length) return;
-        const lane=T($(tds.get(laneIdx)||[]));
-        const stRaw = stIdx!=null ? T($(tds.get(stIdx)||[])) : "";
-        let st = null;
-        const m=stRaw.match(/^(F|L)?\.?(\d?\.\d{2})$/);
-        if(m) st = Number((m[1]?`-${m[2]}`:m[2])); // 数値に（F/Lは数値化困難なので負数で区別or後で文字に戻す）
-        else if(/^\d\.\d{2}$/.test(stRaw)) st = Number(stRaw);
-        if(/^[1-6]$/.test(lane) && st!=null) out.push({ lane:Number(lane), st:Number(st.toFixed(2)) });
-      });
+    if(rank || lane || id || name){
+      rows.push({ rank, lane, racer_id:id, racer_name:name, st:null, course:null, time: time || null, start_type:null, note:null });
     }
   });
-  // 重複 lane は最初を優先
-  const uniq = new Map();
-  for(const r of out){ if(!uniq.has(r.lane)) uniq.set(r.lane,r); }
-  return [...uniq.values()];
+  return rows;
 }
 
-// 配当（勝式ごと）
+// --- スタート情報（.table1_boatImage1 から lane と ST、勝者行の語を start_type に）
+function parseStart($){
+  const out=[]; let winnerType=null;
+  $(".table1_boatImage1").each((i,el)=>{
+    const $el=$(el);
+    const lane = tx($el.find(".table1_boatImage1Number").first().text()).replace(/[^\d]/g,"");
+    let stTxt = tx($el.find(".table1_boatImage1TimeInner").first().text());
+    // `.12   抜き` のようにSTと語が並ぶので分離
+    const stM = stTxt.match(/(\d?\.\d{2})/);
+    const typeM = stTxt.replace(stM?.[1]??"","").trim();
+    if(/^[1-6]$/.test(lane) && stM){
+      out.push({ lane: Number(lane), st: Number(stM[1]) });
+      if(winnerType==null && typeM) winnerType = typeM;
+    }
+  });
+  return { startList: dedupLane(out), winnerType };
+}
+function dedupLane(list){ const m=new Map(); for(const r of list){ if(!m.has(r.lane)) m.set(r.lane,r); } return [...m.values()]; }
+
+// --- 配当：勝式テーブルをDOMで厳密に読む（数字バッジを結合）
 function parsePayouts($){
-  // 勝式名の正規化
-  const normKind = (s)=>{
-    s = s.replace(/\s+/g,"");
-    if(/3連単|三連単/.test(s)) return "trifecta";
-    if(/3連複|三連複/.test(s)) return "trio";
-    if(/2連単|二連単/.test(s)) return "exacta";
-    if(/2連複|二連複/.test(s)) return "quinella";
-    if(/拡連複|ワイド|拡大二連複/.test(s)) return "wide";
-    if(/単勝/.test(s)) return "win";
-    if(/複勝/.test(s)) return "place";
-    return null;
-  };
+  const store = { trifecta:null, trio:null, exacta:null, quinella:null, wide:[], win:null, place:[] };
+  const blocks = $("table:has(thead th:contains('勝式'))");
+  if(!blocks.length) return store;
 
-  const store = {
-    trifecta:null, trio:null, exacta:null, quinella:null,
-    wide:[], win:null, place:[]
-  };
+  // tbodyごとに「勝式 行」を読む（行が2つに分かれる構造に対応）
+  blocks.find("tbody").each((_,tb)=>{
+    const $tb=$(tb); const trs=$tb.find("tr");
+    if(!trs.length) return;
+    const t0=$(trs[0]).find("td");
+    if(!t0.length) return;
+    const kind = tx($(t0[0]).text()); // 「3連単」など（rowspanで次行に持ち越しあり）
+    const key = (/3連単/.test(kind)?"trifecta":/3連複/.test(kind)?"trio":/2連単/.test(kind)?"exacta":
+                 /2連複/.test(kind)?"quinella":/拡連複/.test(kind)?"wide":/単勝/.test(kind)?"win":
+                 /複勝/.test(kind)?"place":null);
+    if(!key) return;
 
-  $("table").each((_,el)=>{
-    const $t=$(el);
-    const heads=$t.find("th").map((i,th)=>T($(th))).get().join("|");
-    if(!/払戻|配当|勝式/.test(heads)) return;
+    // 組番は数字バッジで取得
+    const combo = getCombo($(trs[0]));
+    const amount = getAmount($(trs[0]));
+    const pop = getPopularity($(trs[0]));
 
-    $t.find("tr").slice(1).each((_,tr)=>{
-      const tds=$(tr).find("td");
-      if(tds.length<2) return;
+    if(!combo || amount==null) return;
+    const rec = { combo, amount, ...(pop!=null?{popularity:pop}:{}) };
 
-      const kindRaw=T($(tds.get(0)));
-      const kind=normKind(kindRaw);
-      if(!kind) return;
-
-      const combo=T($(tds.get(1)));
-      const amount=num(T($(tds.get(2))));
-      const pop = tds.get(3)? num(T($(tds.get(3)))) : null;
-      if(!combo || amount==null) return;
-
-      const rec = { combo, amount, popularity: pop ?? undefined };
-      if(kind==="wide" || kind==="place"){
-        store[kind].push(rec);
-      }else if(kind==="win"){
-        store.win = rec;
-      }else{
-        store[kind]=rec;
-      }
-    });
+    if(key==="wide" || key==="place") store[key].push(rec);
+    else if(key==="win") store.win = rec;
+    else store[key] = rec;
   });
 
-  // popularity undefined は出力しない（JSON.stringifyで残るので整理）
-  const clean = (o)=>{
-    if(Array.isArray(o)) return o.map(clean);
-    if(o && typeof o === "object"){
-      const r={};
-      for(const [k,v] of Object.entries(o)){
-        if(v===undefined) continue;
-        r[k]=clean(v);
-      }
-      return r;
-    }
-    return o;
-  };
+  return store;
 
-  return clean(store);
+  function getCombo($tr){
+    // numberSet1_number の並びを読み、間の text (= or -) を見て結合
+    const row = $tr.find(".numberSet1_row").first();
+    if(!row.length) return tx($tr.find("td").eq(1).text()) || null;
+
+    const nums = row.find(".numberSet1_number").map((i,el)=>tx($(el).text())).get().filter(Boolean);
+    const symText = row.text();
+    // 記号を判定（= を優先）
+    const sym = symText.includes("=") ? "=" : "-";
+    if(nums.length===3) return `${nums[0]}${sym}${nums[1]}${sym}${nums[2]}`;
+    if(nums.length===2) return `${nums[0]}${sym}${nums[1]}`;
+    if(nums.length===1) return nums[0];
+    return null;
+  }
+  function getAmount($tr){ return num(tx($tr.find("td").eq(2).text())); }
+  function getPopularity($tr){ const v = num(tx($tr.find("td").eq(3).text())); return Number.isFinite(v)?v:null; }
 }
 
-// 返還など
+// --- 返還：右側の「返還」テーブルをそのまま（空なら []）
 function parseRefunds($){
-  const txt = toHalf($("body").text());
-  const out = [];
-  for(const line of txt.split(/\n+/)){
-    const s=line.trim();
-    if(!s) continue;
-    if(/返還|不成立|没収/.test(s)) out.push(s);
-  }
-  return out;
+  const hasRefundHead = $("table:has(thead th:contains('返還'))").length>0;
+  if(!hasRefundHead) return [];
+  // 公式は返還があると具体の組番が並ぶが、本HTMLは空。代表語のみ返すのはノイズなので空配列で返す。
+  return [];
 }
 
 async function main(){
@@ -256,68 +202,40 @@ async function main(){
 
   const url = `https://www.boatrace.jp/owpc/pc/race/raceresult?rno=${Number(rno)}&jcd=${z2(jcd)}&hd=${hd}`;
   const html = await fetchHtml(url,{retries:3,delay:1200});
-  await sleep(Number(process.env.FETCH_DELAY_MS||"1200"));
+  await sleep(Number(process.env.FETCH_DELAY_MS||"900"));
   const $ = load(html);
 
-  // メタ
   const meta0 = parseMeta($);
-  const meta = {
-    date: hd,
-    jcd: z2(jcd),
-    rno: Number(rno),
-    title: meta0.title || null,
-    decision: meta0.decision || null,
-    weather_sky: meta0.weather_sky || null,
-    wind_dir: meta0.wind_dir || null,
-    wind_speed_m: meta0.wind_speed_m ?? null,
-    wave_height_cm: meta0.wave_height_cm ?? null,
-  };
-
-  // 結果
-  const { rows, headStr } = parseResultsTable($);
-
-  // ST一覧から補完
-  const startList = parseStartList($); // [{lane:Number, st:Number}]
-  const stMap = new Map(startList.map(o=>[String(o.lane), o.st])); // lane->number
-
-  for(const r of rows){
-    // ST補完（結果表に無ければ startList から）
-    if(r.st==null && r.lane && stMap.has(String(r.lane))){
-      const stNum = stMap.get(String(r.lane));
-      r.st = Number.isFinite(stNum) ? Number(stNum).toFixed(2) : null; // 文字列 "0.13"
-    }
-  }
-
-  // 進入（全体進入が1セルにある場合は、各艇のcourse未設定なら自艇進入番号を推定）
-  let wholeEntry = null;
-  const bodyTxt = toHalf($("body").text());
-  const mm = bodyTxt.match(/\b([1-6]{1,6})(?:\/([1-6]{1,6}))?\b/);
-  if(mm){
-    wholeEntry = mm[2] ? `${mm[1]}/${mm[2]}` : mm[1];
-  }
-  if(wholeEntry){
-    const seq = wholeEntry.split("/").join("").split(""); // ["1","2","3","4","5","6"] など
-    const laneToCourse = new Map(seq.map((ln,i)=>[ln, String(i+1)]));
-    for(const r of rows){
-      if(!r.course && r.lane && laneToCourse.has(String(r.lane))){
-        r.course = laneToCourse.get(String(r.lane)); // "1".."6"
-      }
-    }
-  }
-
-  // start_type（ここは公式の有無に依存。決まり手が「逃げ/まくり/差し/まくり差し/抜き/恵まれ」であれば winner にのみ付与）
-  const winner = rows.find(x=>x.rank==="1");
-  if(winner && meta.decision){
-    winner.start_type = meta.decision; // まずは決まり手を start_type に反映（用途に応じてリネーム可）
-  }
-
-  const payouts = parsePayouts($);
+  const results = parseResults($);
+  const { startList, winnerType } = parseStart($);
   const refunds = parseRefunds($);
+  const payouts = parsePayouts($);
+
+  // ST補完
+  const stMap = new Map(startList.map(o=>[String(o.lane), o.st]));
+  for(const r of results){
+    if(r.st==null && r.lane && stMap.has(String(r.lane))){
+      r.st = Number(stMap.get(String(r.lane))).toFixed(2);
+    }
+  }
+  // 優勝艇に start_type（決まり手優先、なければスタート情報の語）
+  const winner = results.find(x=>x.rank==="1");
+  if(winner){
+    winner.start_type = meta0.decision || winnerType || null;
+  }
 
   const payload = {
-    meta,
-    results: rows,
-    start: startList, // 数値 (lane:number, st:number)
+    meta: {
+      date: hd, jcd: z2(jcd), rno: Number(rno),
+      title: meta0.title || null,
+      decision: meta0.decision || null,
+      weather_sky: meta0.weather_sky || null,
+      wind_dir: meta0.wind_dir || null,
+      wind_speed_m: meta0.wind_speed_m ?? null,
+      wave_height_cm: meta0.wave_height_cm ?? null,
+    },
+    results,
+    start: startList,       // [{lane:number, st:number}]
     refunds,
     payouts,
     source_url: url,
