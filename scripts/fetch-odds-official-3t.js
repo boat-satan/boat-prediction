@@ -4,7 +4,11 @@
 //
 // 使い方:
 //   node scripts/fetch-odds-official-3t.js <YYYYMMDD> <pid:01..24> <race:1..12>
-//   環境変数: TARGET_DATE / TARGET_PID / TARGET_RACE / SKIP_EXISTING=1
+//   環境変数:
+//     TARGET_DATE / TARGET_PID / TARGET_RACE
+//     SKIP_EXISTING=1   … 既存ファイルがあればスキップ
+//     MAX_RETRIES=3     … fetchリトライ回数
+//     TIMEOUT_MS=15000  … fetchタイムアウト(ms)
 //
 // テーブル構造（公式PC版・3連単オッズ）
 //   4行×列バンドル。各バンドル先頭セル(rowspan=4)が2着S。
@@ -21,44 +25,37 @@ import { load as loadHTML } from "cheerio";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
+// ---------- util logs
 const log  = (...a)=>console.log("[odds3t]", ...a);
 const warn = (...a)=>console.warn("[odds3t][warn]", ...a);
 const err  = (...a)=>console.error("[odds3t][error]", ...a);
 
-// ---- 引数/環境変数
+// ---------- args/env
 const DATE = (process.env.TARGET_DATE || process.argv[2] || "").replace(/-/g,"");
 const PID  = (process.env.TARGET_PID  || process.argv[3] || "").padStart(2, "0");
 const RACE = String(process.env.TARGET_RACE || process.argv[4] || "").replace(/[^0-9]/g,"");
 const SKIP_EXISTING = /^(1|true|yes)$/i.test(String(process.env.SKIP_EXISTING||""));
+const MAX_RETRIES = Math.max(1, Number(process.env.MAX_RETRIES || 3));
+const TIMEOUT_MS  = Math.max(1000, Number(process.env.TIMEOUT_MS || 15000));
 
 if (!/^\d{8}$/.test(DATE) || !/^\d{2}$/.test(PID) || !/^(?:[1-9]|1[0-2])$/.test(RACE)) {
   err("Usage: node scripts/fetch-odds-official-3t.js <YYYYMMDD> <pid:01..24> <race:1..12>");
   process.exit(1);
 }
 
-// ---- 出力パス（年/日付 = YYYY/MMDD）
+// ---------- output path (YYYY/MMDD)
 const YYYY = DATE.slice(0, 4);
 const MMDD = DATE.slice(4, 8);
-const OUT_DIR = path.join(__dirname, "..", "public", "odds", "v1", YYYY, MMDD, PID);
+const OUT_DIR  = path.join(__dirname, "..", "public", "odds", "v1", YYYY, MMDD, PID);
 const OUT_FILE = `${RACE}R.json`;
 const OUT_PATH = path.join(OUT_DIR, OUT_FILE);
 
+// ---------- target url
 function officialOdds3tUrl({date, pid, race}) {
   return `https://www.boatrace.jp/owpc/pc/race/odds3t?rno=${race}&jcd=${pid}&hd=${date}`;
 }
 
-async function fetchText(url) {
-  const res = await fetch(url, {
-    headers: {
-      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118 Safari/537.36",
-      "accept-language": "ja,en;q=0.8",
-      "cache-control": "no-cache"
-    }
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
-  return await res.text();
-}
-
+// ---------- helpers
 const norm  = (s)=>String(s||"").replace(/\s+/g," ").trim();
 const toNum = (s)=> {
   const m = String(s||"").match(/-?\d+(?:\.\d+)?/);
@@ -66,28 +63,62 @@ const toNum = (s)=> {
 };
 const isFiniteNum = (x)=> Number.isFinite(x) && !Number.isNaN(x);
 
-// ---- 「3連単オッズ」テーブルを特定（見出し→近傍 table 優先、フォールバックあり）
+// fetch with retry & timeout
+async function fetchText(url, { retries = MAX_RETRIES, timeoutMs = TIMEOUT_MS } = {}) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const ac = new AbortController();
+    const timer = setTimeout(() => ac.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, {
+        headers: {
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118 Safari/537.36",
+          "accept-language": "ja,en;q=0.8",
+          "cache-control": "no-cache"
+        },
+        signal: ac.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) {
+        // 404/5xx 等はリトライ対象
+        throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      }
+      return await res.text();
+    } catch (e) {
+      clearTimeout(timer);
+      if (attempt === retries) throw e;
+      const backoff = 500 * attempt; // 0.5s,1.0s,1.5s...
+      warn(`fetch retry ${attempt}/${retries-1} after error: ${e.message}`);
+      await new Promise(r => setTimeout(r, backoff));
+    }
+  }
+  throw new Error("unreachable");
+}
+
+// 「3連単オッズ」テーブルを特定（見出し→近傍 table 優先、フォールバックあり）
 function findOddsTable($) {
   let table = null;
 
+  // ラベル探索→近傍テーブル優先
   $("*").each((_, el) => {
     const t = norm($(el).text());
     if (/3連単オッズ/.test(t)) {
       const near = $(el).nextAll("div.table1, section, table").first();
       if (near && near.length) {
         table = near.is("table") ? near : near.find("table").first();
-        if (table && table.length) return false;
+        if (table && table.length) return false; // break
       }
     }
     return;
   });
 
+  // フォールバック：内容パターン
   if (!table || !table.length) {
     $("table").each((_, t) => {
       const $t = $(t);
       const head = norm($t.find("thead").text());
       const body = norm($t.find("tbody").text());
-      if (/(1|2|3|4|5|6)/.test(head) && /(\d+\.\d|\b\d{2,4}\b)/.test(body)) {
+      // ヘッダに艇番らしさ・ボディに小数＆2〜4桁数字
+      if (/(?:^|\D)([1-6])(?:\D|$)/.test(head) && /(\d+\.\d|\b\d{2,4}\b)/.test(body)) {
         table = $t;
         return false;
       }
@@ -96,7 +127,7 @@ function findOddsTable($) {
   return table;
 }
 
-// ---- 4行×列バンドルを走査して (F,S,T,odds) を復元
+// 4行×列バンドルを走査して (F,S,T,odds) を復元
 function parseTrifecta($, $table) {
   const $tbody = $table.find("tbody").first();
   const rows = $tbody.find("tr").toArray();
@@ -106,7 +137,7 @@ function parseTrifecta($, $table) {
     const r0 = $(rows[i]), r1 = $(rows[i+1]), r2 = $(rows[i+2]), r3 = $(rows[i+3]);
     if (!r3 || !r2 || !r1) break;
 
-    // row0: 列バンドルの先頭セル (rowspan=4) を 2着S とみなす
+    // row0: 列バンドルの先頭セル (rowspan=4) を 2着S
     const bundles = []; // [{S, values:[T×4], odds:[×4]}]
     {
       const cells0 = r0.find("th,td").toArray();
@@ -118,9 +149,9 @@ function parseTrifecta($, $table) {
         if ($c.attr("rowspan") === "4") {
           S = toNum($c.text());
           k++;
-        } else {
+        } else { // 想定外レイアウトは安全側スキップ
           k++;
-          continue; // レイアウト変形は安全側にスキップ
+          continue;
         }
 
         const v0 = toNum($(cells0[k])?.text()); k++;
@@ -180,6 +211,7 @@ function parseTrifecta($, $table) {
   return list;
 }
 
+// ---------- main
 async function main() {
   const url = officialOdds3tUrl({ date: DATE, pid: PID, race: RACE });
 
@@ -206,6 +238,7 @@ async function main() {
   }
 
   const payload = {
+    schemaVersion: "1.0",
     date: DATE,
     pid: PID,
     race: `${RACE}R`,
