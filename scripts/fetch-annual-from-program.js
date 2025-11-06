@@ -18,7 +18,7 @@
  *   node scripts/fetch-annual-from-program.js public/programs/v2/2019 --year 2019
  *
  * 出力:
- *   data/racers-annual/2018/4760.json など
+ *   public/racers-annual/2018/4760.json など
  */
 
 import fs from 'node:fs';
@@ -43,7 +43,7 @@ const hasFlag = (key) => args.includes(`--${key}`);
 
 const INPUT = args[0];
 const EXPL_YEAR = getOpt('year', null);         // e.g. "2019"
-const OUTDIR = getOpt('outdir', 'data/racers-annual');
+const OUTDIR = getOpt('outdir', 'public/racers-annual');
 const RETRIES = parseInt(getOpt('retries', '3'), 10);
 const OVERWRITE = hasFlag('overwrite');
 
