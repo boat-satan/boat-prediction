@@ -1,28 +1,28 @@
-name: Fetch 3T Odds (official)
+name: Fetch 3T Odds (range simple)
 
 on:
   workflow_dispatch:
     inputs:
+      scope:
+        description: "取得範囲: day / month / year"
+        required: true
+        default: "month"
       date:
-        description: "対象日 (YYYYMMDD)"
-        required: true
-        default: "20250101"
-      mode:
-        description: "single or all"
-        required: true
-        default: "single"
-      pid:
-        description: "01..24（single時のみ）"
+        description: "scope=day のみ (YYYYMMDD)"
         required: false
-        default: "01"
-      race:
-        description: "1..12（single時のみ）"
+        default: "20250101"
+      year:
+        description: "scope=month/year で使用 (YYYY)"
+        required: false
+        default: "2025"
+      month:
+        description: "scope=month で使用 (1..12)"
         required: false
         default: "1"
       parallel:
-        description: "同時実行数（allモードのみ）"
+        description: "並列数 (xargs -P)"
         required: false
-        default: "8"
+        default: "72"
 
 permissions:
   contents: write
@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           set -euo pipefail
           if [ -f package.json ]; then
@@ -47,49 +47,81 @@ jobs:
             npm i cheerio@^1.0.0-rc.12 --no-audit --no-fund
           fi
 
-      - name: Fetch odds (single/all with parallel)
+      - name: Build date list
         env:
-          DATE: ${{ github.event.inputs.date }}
-          MODE: ${{ github.event.inputs.mode }}
-          PID:  ${{ github.event.inputs.pid }}
-          RACE: ${{ github.event.inputs.race }}
+          SCOPE:   ${{ github.event.inputs.scope }}
+          DATE:    ${{ github.event.inputs.date }}
+          YEAR:    ${{ github.event.inputs.year }}
+          MONTH:   ${{ github.event.inputs.month }}
+        run: |
+          set -euo pipefail
+          : > dates.txt
+          if [ "$SCOPE" = "day" ]; then
+            echo "$DATE" > dates.txt
+          elif [ "$SCOPE" = "month" ]; then
+            python3 - <<'PY' > dates.txt
+from datetime import date, timedelta
+import os, calendar
+y = int(os.environ["YEAR"])
+m = int(os.environ["MONTH"])
+first = date(y, m, 1)
+_, nd = calendar.monthrange(y, m)
+for i in range(nd):
+    d = first + timedelta(days=i)
+    print(d.strftime("%Y%m%d"))
+PY
+          elif [ "$SCOPE" = "year" ]; then
+            python3 - <<'PY' > dates.txt
+from datetime import date, timedelta
+import os
+y = int(os.environ["YEAR"])
+d = date(y,1,1)
+end = date(y+1,1,1)
+while d < end:
+    print(d.strftime("%Y%m%d"))
+    d += timedelta(days=1)
+PY
+          else
+            echo "invalid scope=${SCOPE}"; exit 1
+          fi
+          echo "dates count: $(wc -l < dates.txt)"
+
+      - name: Fetch all odds
+        env:
           PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
-          echo "MODE=$MODE DATE=$DATE PID=$PID RACE=$RACE PARALLEL=${PARALLEL:-8}"
-
-          if [ "$MODE" = "all" ]; then
-            # 01..24 × 1..12 の( pid race )ペアを列挙して並列実行
-            # xargs: -P 同時実行数, -n 2 で2引数ずつ渡す
-            { for p in $(printf "%02d\n" $(seq 1 24)); do
+          echo "Parallel jobs: ${PARALLEL:-72}"
+          { while read -r dt; do
+              for p in $(printf "%02d\n" $(seq 1 24)); do
                 for r in $(seq 1 12); do
-                  printf "%s %s\n" "$p" "$r"
+                  printf "%s %s %s\n" "$dt" "$p" "$r"
                 done
               done
-            } | xargs -P "${PARALLEL:-8}" -n 2 sh -c '
-                  pid="$1"; race="$2";
-                  echo "=== $DATE pid=$pid race=$race ===";
-                  node scripts/fetch-odds-official-3t.js "$DATE" "$pid" "$race" || true
-                ' _
-          else
-            node scripts/fetch-odds-official-3t.js "$DATE" "$PID" "$RACE"
-          fi
+            done < dates.txt; } \
+          | xargs -P "${PARALLEL:-72}" -n 3 sh -c '
+              dt="$1"; pid="$2"; race="$3";
+              echo "=== Fetch $dt $pid $race ===";
+              node scripts/fetch-odds-official-3t.js "$dt" "$pid" "$race" || true
+            ' _
 
-      - name: Commit and push results
+      - name: Commit & push
+        env:
+          SCOPE: ${{ github.event.inputs.scope }}
+          DATE:  ${{ github.event.inputs.date }}
+          YEAR:  ${{ github.event.inputs.year }}
+          MONTH: ${{ github.event.inputs.month }}
+          PAR:   ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            DATE="${{ github.event.inputs.date }}"
-            MODE="${{ github.event.inputs.mode }}"
-            PID="${{ github.event.inputs.pid }}"
-            RACE="${{ github.event.inputs.race }}"
-            if [ "$MODE" = "single" ]; then
-              MSG="odds3t: date=${DATE} pid=${PID} race=${RACE}"
-            else
-              MSG="odds3t: date=${DATE} (all pids & races, parallel=${{ github.event.inputs.parallel || '8' }})"
-            fi
+            case "$SCOPE" in
+              day)   MSG="odds3t: day=${DATE} (parallel=${PAR})" ;;
+              month) MSG="odds3t: month=${YEAR}-${MONTH} (parallel=${PAR})" ;;
+              year)  MSG="odds3t: year=${YEAR} (parallel=${PAR})" ;;
+            esac
             git add -A
             git commit -m "$MSG"
             git push
