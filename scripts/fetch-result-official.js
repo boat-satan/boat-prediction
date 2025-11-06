@@ -26,7 +26,7 @@ function num(s) {
 }
 function buildOut(hd, jcd, rno) {
   const yyyy = hd.slice(0, 4), mmdd = hd.slice(4);
-  return path.join("data", "results", yyyy, mmdd, z2(jcd), `${rno}R.json`);
+  return path.join("public", "results", yyyy, mmdd, z2(jcd), `${rno}R.json`);
 }
 
 async function fetchHtml(url, { retries = 3, delay = 1000 } = {}) {
