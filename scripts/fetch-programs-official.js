@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * BOATRACE公式 出走表スクレイパー (2025構造対応・複数tbody対応)
+ * BOATRACE公式 出走表スクレイパー (2025構造対応・lane自動採番＋recent保持＋空レーススキップ)
  * usage: node scripts/fetch-programs-official.js YYYYMMDD PID RACE
  *
  * 出力: public/programs/v1/YYYY/MMDD/{pid}/{race}R.json
@@ -15,7 +15,6 @@ import { load } from "cheerio";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ========== 基本ユーティリティ ==========
 function log(...args) { console.log("[program]", ...args); }
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 async function writeJSON(p, data) {
@@ -31,7 +30,6 @@ function isCorrupted(html) {
   return /undefinedhttps?:\/\//.test(html) || /\bundefined[a-zA-Z-]+undefined\b/.test(html);
 }
 
-// ========== 引数 ==========
 const date = process.argv[2];
 const pid = process.argv[3];
 const raceNo = process.argv[4];
@@ -43,7 +41,6 @@ if (!date || !pid || !raceNo) {
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 
-// ========== Fetch関数 ==========
 async function fetchHtml(url) {
   const res = await fetch(url, {
     headers: { "User-Agent": UA, "Accept-Language": "ja,en;q=0.8" },
@@ -56,12 +53,10 @@ async function fetchHtml(url) {
   return html;
 }
 
-// ========== HTMLパーサ ==========
 function parseProgram(html, { date, pid, raceNo, url }) {
   const $ = load(html);
   const bodyText = $("body").text();
 
-  // レース情報なし
   if (/レース情報はありません|開催情報はありません|該当するレース情報は存在しません/.test(bodyText)) {
     return {
       date, pid, race: `${raceNo}R`, source: url, mode: "program",
@@ -73,7 +68,6 @@ function parseProgram(html, { date, pid, raceNo, url }) {
   const $table = $("div.table1.is-tableFixed__3rdadd table");
 
   if ($table.length === 0) {
-    // フォールバック: シンプル構成 (旧is-w748)
     $("table.is-w748 tbody tr").each((i, el) => {
       const tds = $(el).find("td");
       if (tds.length < 10) return;
@@ -93,8 +87,7 @@ function parseProgram(html, { date, pid, raceNo, url }) {
       });
     });
   } else {
-    // 2025年構造: tbodyごとに1枠 (4行構成)
-    $table.find("> tbody").each((_, tb) => {
+    $table.find("> tbody").each((i, tb) => {
       const rows = $(tb).find("> tr");
       if (rows.length < 4) return;
 
@@ -103,12 +96,11 @@ function parseProgram(html, { date, pid, raceNo, url }) {
       const r3 = $(rows[2]).find("td");
       const r4 = $(rows[3]).find("td");
 
-      const lane = num($(r1[0]).text());
-
+      const lane = num(txt($(r1[0]))) ?? (i + 1);
       const block = $(r1[2]);
-      const regGrade = txt(block.find("div").eq(0)); // "4456 / A1"
-      const name = txt(block.find("div").eq(1)); // "鎌倉 涼"
-      const branchWeight = txt(block.find("div").eq(2)); // "大阪/大阪 36歳/45.0kg"
+      const regGrade = txt(block.find("div").eq(0));
+      const name = txt(block.find("div").eq(1));
+      const branchWeight = txt(block.find("div").eq(2));
 
       const number = (regGrade.match(/\d{4}/) || [])[0] || "";
       const grade = (regGrade.match(/A1|A2|B1|B2/) || [])[0] || "";
@@ -150,13 +142,20 @@ function parseProgram(html, { date, pid, raceNo, url }) {
   };
 }
 
-// ========== メイン ==========
 async function main() {
   const url = `https://www.boatrace.jp/owpc/pc/race/racelist?rno=${raceNo}&jcd=${pid}&hd=${date}`;
   log("GET", url);
+
   try {
     const html = await fetchHtml(url);
     const data = parseProgram(html, { date, pid, raceNo, url });
+
+    // 🧩 空レースは保存しない
+    if (!data.entries || data.entries.length === 0) {
+      log(`skip save (no entries): ${date}/${pid}/${raceNo}R`);
+      return;
+    }
+
     const year = date.slice(0, 4);
     const md = date.slice(4);
     const outPath = path.join(__dirname, "..", "public", "programs", "v1", year, md, pid, `${raceNo}R.json`);
