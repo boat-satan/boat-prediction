@@ -49,16 +49,15 @@ async function fetchHtml(url, { retries = 3, delay = 1000 } = {}) {
   throw err;
 }
 
-// 時間表記はプライム記号で統一（JSONで \ を出さないため）: 1′52″7
+// 時間表記はプライム記号: 1′52″7 （JSONで \ 不要）
 function normalizeTime(raw) {
   if (!raw) return null;
   let s = String(raw)
-    .replace(/undefined/g, "″")            // 1'52undefined7 → 1'52″7
+    .replace(/undefined/g, "″")
     .replace(/[：:]/g, ":")
     .replace(/["”]/g, "″")
     .replace(/[’']/g, "′")
     .replace(/\s+/g, "");
-  // 許容: 1:52″7 / 1′52″7 / 1.52.7 / 1'52"7
   const m = s.match(/^(\d)[:.′']?(\d{2})[″"]?(\d)$/);
   if (m) return `${m[1]}′${m[2]}″${m[3]}`;
   return s || null;
@@ -82,7 +81,7 @@ function parseMeta($) {
     const wsN = ws.match(/([0-9]+(?:\.[0-9]+)?)m/i);
     if (wsN) meta.wind_speed_m = Number(wsN[1]);
 
-    // ⬇ 風向は数値（is-wind13 → 13）
+    // 風向は数値（is-wind13 → 13）
     const dirEl = wx.find(".weather1_bodyUnit.is-windDirection .weather1_bodyUnitImage");
     const cls = (dirEl.attr("class") || "").split(/\s+/).find((c) => /^is-wind\d+/.test(c));
     if (cls) {
@@ -97,7 +96,7 @@ function parseMeta($) {
   return meta;
 }
 
-// 結果テーブル（thead 見出しで特定・tbody分割対応）
+// 結果テーブル
 function parseResults($) {
   const tbl = $("table:has(thead th:contains('着')):has(thead th:contains('枠')):has(thead th:contains('ボートレーサー')):has(thead th:contains('レースタイム'))").first();
   const rows = [];
@@ -117,20 +116,18 @@ function parseResults($) {
     const timeRaw = tx($(tds[3]).text());
     const time = normalizeTime(timeRaw);
 
-    // キーは null を出さない（あとで整形）
     const obj = {};
     if (rank) obj.rank = rank;
     if (lane) obj.lane = lane;
     if (id) obj.racer_id = id;
     if (name) obj.racer_name = name;
     if (time) obj.time = time;
-    // st/course は後で埋める
     rows.push(obj);
   });
   return rows;
 }
 
-// スタート情報：ブロックの出現順＝ コース 1..6
+// スタート情報：出現順＝コース 1..6
 function parseStart($) {
   const startBlocks = $(".table1_boatImage1");
   const out = [];
@@ -140,10 +137,9 @@ function parseStart($) {
     let stTxt = tx($el.find(".table1_boatImage1TimeInner").first().text());
     const stM = stTxt.match(/(\d?\.\d{2})/);
     if (/^[1-6]$/.test(lane) && stM) {
-      out.push({ lane: Number(lane), st: Number(stM[1]), course: i + 1 }); // ここで course = 出現順
+      out.push({ lane: Number(lane), st: Number(stM[1]), course: i + 1 });
     }
   });
-  // lane 重複除去（最初の出現を優先）
   const seen = new Set();
   return out.filter(r => (seen.has(r.lane) ? false : seen.add(r.lane)));
 }
@@ -204,9 +200,34 @@ function parsePayouts($) {
 function parseRefunds($) {
   const hasRefundHead = $("table:has(thead th:contains('返還'))").length > 0;
   if (!hasRefundHead) return [];
-  // 詳細空のことが多いので、空配列で返す
   return [];
 }
+
+// ===== ここから不完全データの書き出し抑止ガード =====
+function isPayoutPresent(payouts) {
+  return Boolean(payouts?.trifecta || payouts?.exacta || payouts?.win);
+}
+function hasEnoughResults(results, min = 3) {
+  if (!Array.isArray(results) || results.length < min) return false;
+  return results.every(r => r && r.lane && r.racer_id);
+}
+function completenessCheck({ results, startList, payouts }) {
+  const MIN_RESULTS = Number(process.env.MIN_RESULTS || 3);
+  const REQUIRE_START = String(process.env.REQUIRE_START || "false").toLowerCase() === "true";
+
+  const okResults = hasEnoughResults(results, MIN_RESULTS);
+  const okPayouts = isPayoutPresent(payouts);
+  const okStart = !REQUIRE_START || (Array.isArray(startList) && startList.length > 0);
+
+  const ok = okResults && okPayouts && okStart;
+  const reason = ok ? null : [
+    okResults ? null : `results<${MIN_RESULTS} or missing lane/racer_id`,
+    okPayouts ? null : "no payouts (trifecta/exacta/win)",
+    okStart ? null : "start missing (REQUIRE_START=true)"
+  ].filter(Boolean).join("; ");
+  return { ok, reason };
+}
+// =====================================================
 
 async function main() {
   const [,, hd, jcd, rno] = process.argv;
@@ -232,26 +253,30 @@ async function main() {
   const refunds = parseRefunds($);
   const payouts = parsePayouts($);
 
-  // ST / course を補完（スタート情報の順＝コース）
+  // ST / course 補完（スタート出現順＝コース）
   const stMap = new Map(startList.map(o => [String(o.lane), o.st]));
   const courseMap = new Map(startList.map(o => [String(o.lane), o.course]));
 
   const results = resultsRaw.map((r) => {
     const out = { ...r };
     const laneKey = r.lane ? String(r.lane) : null;
-
-    // st は文字列（小数第2位固定）
     if (laneKey && stMap.has(laneKey)) out.st = Number(stMap.get(laneKey)).toFixed(2);
     if (laneKey && courseMap.has(laneKey)) out.course = Number(courseMap.get(laneKey));
-
-    // 要望：start_type / note は出力しない（存在しても削除）
     delete out.start_type;
     delete out.note;
-
     return out;
   });
 
-  // ペイロード作成（null は極力出さない）
+  // ===== 不完全データは保存しない =====
+  const { ok, reason } = completenessCheck({ results, startList, payouts });
+  if (!ok) {
+    const fail = String(process.env.FAIL_ON_INCOMPLETE || "false").toLowerCase() === "true";
+    console.log(`[skip-empty] not saving ${hd} jcd=${jcd} rno=${rno} : ${reason}`);
+    if (fail) process.exit(2); // ワークフロー検知用（任意）
+    return; // 正常終了（保存なし）
+  }
+
+  // ペイロード（nullキーは極力出さない）
   const meta = {};
   meta.date = hd;
   meta.jcd = z2(jcd);
@@ -259,7 +284,7 @@ async function main() {
   if (meta0.title) meta.title = meta0.title;
   if (meta0.decision) meta.decision = meta0.decision;
   if (meta0.weather_sky != null) meta.weather_sky = meta0.weather_sky;
-  if (meta0.wind_dir != null) meta.wind_dir = meta0.wind_dir;             // 数値
+  if (meta0.wind_dir != null) meta.wind_dir = meta0.wind_dir;     // 数値
   if (meta0.wind_speed_m != null) meta.wind_speed_m = meta0.wind_speed_m;
   if (meta0.wave_height_cm != null) meta.wave_height_cm = meta0.wave_height_cm;
 
