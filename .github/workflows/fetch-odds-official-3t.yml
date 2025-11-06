@@ -19,6 +19,10 @@ on:
         description: "1..12（single時のみ）"
         required: false
         default: "1"
+      parallel:
+        description: "同時実行数（allモードのみ）"
+        required: false
+        default: "8"
 
 permissions:
   contents: write
@@ -26,54 +30,51 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-
     steps:
-      # リポジトリ取得
       - uses: actions/checkout@v4
-
-      # Node 環境セットアップ
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # cheerio など依存パッケージを自動インストール
       - name: Install dependencies
         run: |
           set -euo pipefail
           if [ -f package.json ]; then
-            echo "package.json found -> install normally"
             npm ci --no-audit --no-fund || npm i --no-audit --no-fund
           else
-            echo "no package.json -> create minimal one and install cheerio"
             npm init -y
             npm pkg set type=module
             npm i cheerio@^1.0.0-rc.12 --no-audit --no-fund
           fi
 
-      # 実際のスクリプト実行
-      - name: Fetch odds
+      - name: Fetch odds (single/all with parallel)
         env:
           DATE: ${{ github.event.inputs.date }}
           MODE: ${{ github.event.inputs.mode }}
           PID:  ${{ github.event.inputs.pid }}
           RACE: ${{ github.event.inputs.race }}
+          PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
           set -euo pipefail
-          echo "MODE=$MODE DATE=$DATE PID=$PID RACE=$RACE"
+          echo "MODE=$MODE DATE=$DATE PID=$PID RACE=$RACE PARALLEL=${PARALLEL:-8}"
 
           if [ "$MODE" = "all" ]; then
-            for pid in $(printf "%02d\n" $(seq 1 24)); do
-              for race in $(seq 1 12); do
-                echo "=== FETCH $DATE pid=$pid race=$race ==="
-                node scripts/fetch-odds-official-3t.js "$DATE" "$pid" "$race" || true
-                sleep 1
+            # 01..24 × 1..12 の( pid race )ペアを列挙して並列実行
+            # xargs: -P 同時実行数, -n 2 で2引数ずつ渡す
+            { for p in $(printf "%02d\n" $(seq 1 24)); do
+                for r in $(seq 1 12); do
+                  printf "%s %s\n" "$p" "$r"
+                done
               done
-            done
+            } | xargs -P "${PARALLEL:-8}" -n 2 sh -c '
+                  pid="$1"; race="$2";
+                  echo "=== $DATE pid=$pid race=$race ===";
+                  node scripts/fetch-odds-official-3t.js "$DATE" "$pid" "$race" || true
+                ' _
           else
             node scripts/fetch-odds-official-3t.js "$DATE" "$PID" "$RACE"
           fi
 
-      # 結果をコミット＆push
       - name: Commit and push results
         run: |
           set -euo pipefail
@@ -87,7 +88,7 @@ jobs:
             if [ "$MODE" = "single" ]; then
               MSG="odds3t: date=${DATE} pid=${PID} race=${RACE}"
             else
-              MSG="odds3t: date=${DATE} (all pids & races)"
+              MSG="odds3t: date=${DATE} (all pids & races, parallel=${{ github.event.inputs.parallel || '8' }})"
             fi
             git add -A
             git commit -m "$MSG"
