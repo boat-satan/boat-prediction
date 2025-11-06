@@ -47,7 +47,7 @@ jobs:
             npm i cheerio@^1.0.0-rc.12 --no-audit --no-fund
           fi
 
-      - name: Build date list
+      - name: Build date list (bash only)
         env:
           SCOPE:   ${{ github.event.inputs.scope }}
           DATE:    ${{ github.event.inputs.date }}
@@ -57,36 +57,37 @@ jobs:
           set -euo pipefail
           : > dates.txt
           if [ "$SCOPE" = "day" ]; then
+            # 例: 20250101
             echo "$DATE" > dates.txt
+
           elif [ "$SCOPE" = "month" ]; then
-            python3 - <<'PY' > dates.txt
-from datetime import date, timedelta
-import os, calendar
-y = int(os.environ["YEAR"])
-m = int(os.environ["MONTH"])
-first = date(y, m, 1)
-_, nd = calendar.monthrange(y, m)
-for i in range(nd):
-    d = first + timedelta(days=i)
-    print(d.strftime("%Y%m%d"))
-PY
+            y="$YEAR"
+            m="$(printf '%02d' "$MONTH")"
+            start="${y}-${m}-01"
+            end="$(date -d "${start} +1 month" +%Y-%m-%d)"
+            d="$start"
+            while [ "$(date -d "$d" +%Y-%m-%d)" != "$end" ]; do
+              date -d "$d" +%Y%m%d
+              d="$(date -d "$d +1 day" +%Y-%m-%d)"
+            done > dates.txt
+
           elif [ "$SCOPE" = "year" ]; then
-            python3 - <<'PY' > dates.txt
-from datetime import date, timedelta
-import os
-y = int(os.environ["YEAR"])
-d = date(y,1,1)
-end = date(y+1,1,1)
-while d < end:
-    print(d.strftime("%Y%m%d"))
-    d += timedelta(days=1)
-PY
+            y="$YEAR"
+            start="${y}-01-01"
+            end="$((y+1))-01-01"
+            d="$start"
+            while [ "$(date -d "$d" +%Y-%m-%d)" != "$end" ]; do
+              date -d "$d" +%Y%m%d
+              d="$(date -d "$d +1 day" +%Y-%m-%d)"
+            done > dates.txt
+
           else
-            echo "invalid scope=${SCOPE}"; exit 1
+            echo "invalid scope=$SCOPE (use: day|month|year)"
+            exit 1
           fi
           echo "dates count: $(wc -l < dates.txt)"
 
-      - name: Fetch all odds
+      - name: Fetch all odds (one pass)
         env:
           PARALLEL: ${{ github.event.inputs.parallel }}
         run: |
@@ -119,12 +120,12 @@ PY
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             case "$SCOPE" in
               day)   MSG="odds3t: day=${DATE} (parallel=${PAR})" ;;
-              month) MSG="odds3t: month=${YEAR}-${MONTH} (parallel=${PAR})" ;;
+              month) MSG="odds3t: month=${YEAR}-$(printf '%02d' "$MONTH") (parallel=${PAR})" ;;
               year)  MSG="odds3t: year=${YEAR} (parallel=${PAR})" ;;
             esac
             git add -A
             git commit -m "$MSG"
             git push
           else
-            echo "No new files to commit."
+            echo "No changes to commit."
           fi
