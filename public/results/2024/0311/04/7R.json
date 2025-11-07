@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240311",
+    "jcd": "04",
+    "rno": 7,
+    "title": "第26回日本財団会長杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 5,
+    "wind_speed_m": 2,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "4287",
+      "racer_name": "今井 貴士",
+      "time": "1′50″8",
+      "st": "0.18",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "3381",
+      "racer_name": "滝沢 芳行",
+      "time": "1′53″1",
+      "st": "0.16",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "4648",
+      "racer_name": "木村 亮太",
+      "time": "1′53″7",
+      "st": "0.19",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "3702",
+      "racer_name": "貞兼 淳二",
+      "time": "1′54″9",
+      "st": "0.16",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "4708",
+      "racer_name": "半田 尚也",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "4943",
+      "racer_name": "八木 治樹",
+      "st": "0.19",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.16
+    },
+    {
+      "lane": 3,
+      "st": 0.19
+    },
+    {
+      "lane": 4,
+      "st": 0.18
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.19
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-6",
+      "amount": 2010,
+      "popularity": 3
+    },
+    "trio": {
+      "combo": "4=5=6",
+      "amount": 1380,
+      "popularity": 7
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 540,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 370,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 180,
+        "popularity": 2
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=04&hd=20240311",
+  "generated_at": "2025-11-07T23:05:54.983Z"
+}

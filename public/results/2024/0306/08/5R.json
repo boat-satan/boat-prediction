@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240306",
+    "jcd": "08",
+    "rno": 5,
+    "title": "ヴィーナスシリーズ第22戦常滑シンデレラカップ",
+    "decision": "まくり差し",
+    "weather_sky": "曇り",
+    "wind_dir": 15,
+    "wind_speed_m": 4,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4208",
+      "racer_name": "三浦 永理",
+      "time": "1′50″9",
+      "st": "0.15",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "3302",
+      "racer_name": "谷川 里江",
+      "time": "1′53″0",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "3845",
+      "racer_name": "中谷 朋子",
+      "time": "1′54″1",
+      "st": "0.22",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "5277",
+      "racer_name": "井上 未都",
+      "time": "1′56″3",
+      "st": "0.26",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5003",
+      "racer_name": "来田 衣織",
+      "st": "0.43",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "4893",
+      "racer_name": "渡邉 真奈美",
+      "st": "0.22",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.22
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.22
+    },
+    {
+      "lane": 5,
+      "st": 0.26
+    },
+    {
+      "lane": 6,
+      "st": 0.43
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-2-4",
+      "amount": 2410,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "2=3=4",
+      "amount": 480,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "3-2",
+      "amount": 1450,
+      "popularity": 8
+    },
+    "quinella": {
+      "combo": "2=3",
+      "amount": 550,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "2=3",
+        "amount": 220,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 240,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=08&hd=20240306",
+  "generated_at": "2025-11-07T22:56:34.978Z"
+}

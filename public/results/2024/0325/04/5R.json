@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240325",
+    "jcd": "04",
+    "rno": 5,
+    "title": "第23回JLC杯 ルーキーシリーズ第6戦",
+    "decision": "差し",
+    "weather_sky": "雨",
+    "wind_dir": 13,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "5197",
+      "racer_name": "中野 仁照",
+      "time": "1′51″1",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "5298",
+      "racer_name": "水谷 理人",
+      "time": "1′52″0",
+      "st": "0.14",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5219",
+      "racer_name": "森口 和紀",
+      "time": "1′52″9",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5133",
+      "racer_name": "堀越 雄貴",
+      "time": "1′54″1",
+      "st": "0.10",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5228",
+      "racer_name": "若林 樹蘭",
+      "st": "0.07",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "5136",
+      "racer_name": "濱野 斗馬",
+      "st": "0.09",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.1
+    },
+    {
+      "lane": 4,
+      "st": 0.07
+    },
+    {
+      "lane": 6,
+      "st": 0.11
+    },
+    {
+      "lane": 5,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-5-2",
+      "amount": 81930,
+      "popularity": 85
+    },
+    "trio": {
+      "combo": "2=5=6",
+      "amount": 11910,
+      "popularity": 20
+    },
+    "exacta": {
+      "combo": "6-5",
+      "amount": 11130,
+      "popularity": 18
+    },
+    "quinella": {
+      "combo": "5=6",
+      "amount": 3580,
+      "popularity": 9
+    },
+    "wide": [
+      {
+        "combo": "5=6",
+        "amount": 550,
+        "popularity": 8
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 1190,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 620,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=04&hd=20240325",
+  "generated_at": "2025-11-07T23:32:52.973Z"
+}

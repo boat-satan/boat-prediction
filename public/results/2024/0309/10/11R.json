@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240309",
+    "jcd": "10",
+    "rno": 11,
+    "title": "近畿・関東・九州支部集結！モーニングバトル",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 4,
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4961",
+      "racer_name": "西橋 奈未",
+      "time": "1′12″4",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4236",
+      "racer_name": "松村 敏",
+      "time": "1′13″6",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4151",
+      "racer_name": "下河 誉史",
+      "time": "1′14″7",
+      "st": "0.18",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "5150",
+      "racer_name": "坂本 雄紀",
+      "time": "1′15″4",
+      "st": "0.08",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5014",
+      "racer_name": "梶山 涼斗",
+      "st": "0.14",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "4627",
+      "racer_name": "藤原 菜希",
+      "st": "0.11",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.18
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.08
+    },
+    {
+      "lane": 5,
+      "st": 0.11
+    },
+    {
+      "lane": 6,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-5-2",
+      "amount": 1730,
+      "popularity": 7
+    },
+    "trio": {
+      "combo": "1=2=5",
+      "amount": 510,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "1-5",
+      "amount": 640,
+      "popularity": 3
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 610,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 230,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 150,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=10&hd=20240309",
+  "generated_at": "2025-11-07T23:02:22.539Z"
+}

@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20240313",
+    "jcd": "13",
+    "rno": 3,
+    "title": "第22回報知ローズカップ争奪戦",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 16,
+    "wind_speed_m": 3,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3757",
+      "racer_name": "畑 和宏",
+      "time": "1′48″5",
+      "st": "0.10",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "5069",
+      "racer_name": "山崎 小葉音",
+      "time": "1′50″6",
+      "st": "0.07",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5187",
+      "racer_name": "小坂 風太",
+      "time": "1′51″4",
+      "st": "0.13",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "3736",
+      "racer_name": "岡本 猛",
+      "time": "1′51″7",
+      "st": "0.08",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4579",
+      "racer_name": "中嶋 健一郎",
+      "time": "1′53″3",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "4027",
+      "racer_name": "松江 秀徳",
+      "time": "1′57″2",
+      "st": "0.19",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.1
+    },
+    {
+      "lane": 2,
+      "st": 0.19
+    },
+    {
+      "lane": 3,
+      "st": 0.07
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.08
+    },
+    {
+      "lane": 6,
+      "st": 0.13
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-6",
+      "amount": 7510,
+      "popularity": 27
+    },
+    "trio": {
+      "combo": "1=3=6",
+      "amount": 6220,
+      "popularity": 14
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 800,
+      "popularity": 3
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 520,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 340,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 290,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=3&jcd=13&hd=20240313",
+  "generated_at": "2025-11-07T23:10:22.115Z"
+}

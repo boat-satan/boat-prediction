@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20240301",
+    "jcd": "17",
+    "rno": 3,
+    "title": "ヴィーナスシリーズ第21戦第9回マクール杯",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 5,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "5013",
+      "racer_name": "山下 夏鈴",
+      "time": "1′50″3",
+      "st": "0.03",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "5198",
+      "racer_name": "奥村 明日香",
+      "time": "1′52″0",
+      "st": "0.04",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5045",
+      "racer_name": "平川 香織",
+      "time": "1′53″9",
+      "st": "0.14",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4987",
+      "racer_name": "島倉 都",
+      "time": "1′54″8",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5213",
+      "racer_name": "湯淺 紀香",
+      "time": "1′55″8",
+      "st": "0.06",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3674",
+      "racer_name": "岸 恵子",
+      "time": "1′56″5",
+      "st": "0.10",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.03
+    },
+    {
+      "lane": 2,
+      "st": 0.14
+    },
+    {
+      "lane": 3,
+      "st": 0.04
+    },
+    {
+      "lane": 4,
+      "st": 0.06
+    },
+    {
+      "lane": 5,
+      "st": 0.1
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 1490,
+      "popularity": 4
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 370,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 800,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 720,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 230,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 150,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=3&jcd=17&hd=20240301",
+  "generated_at": "2025-11-07T22:47:04.051Z"
+}

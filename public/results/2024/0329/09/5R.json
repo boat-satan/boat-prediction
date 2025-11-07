@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240329",
+    "jcd": "09",
+    "rno": 5,
+    "title": "ヴィーナスシリーズ第24戦 BOATBoyCUP",
+    "decision": "まくり差し",
+    "weather_sky": "晴",
+    "wind_dir": 14,
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "4891",
+      "racer_name": "寺島 美里",
+      "time": "1′51″4",
+      "st": "0.12",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "4536",
+      "racer_name": "喜井 つかさ",
+      "time": "1′53″0",
+      "st": "0.19",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4773",
+      "racer_name": "中川 りな",
+      "time": "1′53″4",
+      "st": "0.16",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "4924",
+      "racer_name": "中北 涼",
+      "time": "1′55″9",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5184",
+      "racer_name": "飯塚 響",
+      "st": "0.24",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "4730",
+      "racer_name": "土屋 実沙希",
+      "st": "0.14",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.24
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-1-3",
+      "amount": 26470,
+      "popularity": 52
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 980,
+      "popularity": 5
+    },
+    "exacta": {
+      "combo": "5-1",
+      "amount": 6070,
+      "popularity": 15
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 1710,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 220,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 2560,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 510,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=09&hd=20240329",
+  "generated_at": "2025-11-07T23:40:57.636Z"
+}

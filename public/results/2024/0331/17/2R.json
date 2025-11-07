@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240331",
+    "jcd": "17",
+    "rno": 2,
+    "title": "第20回日本モーターボート選手会会長賞",
+    "decision": "恵まれ",
+    "weather_sky": "曇り",
+    "wind_dir": 13,
+    "wind_speed_m": 4,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "3615",
+      "racer_name": "横田 茂",
+      "time": "1′52″8",
+      "st": "0.12",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4396",
+      "racer_name": "大田 直弥",
+      "time": "1′53″3",
+      "st": "0.14",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "4389",
+      "racer_name": "伊藤 喜智",
+      "time": "1′54″8",
+      "st": "0.15",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "3411",
+      "racer_name": "池上 隆行",
+      "time": "1′55″6",
+      "st": "0.17",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3859",
+      "racer_name": "多羅尾 達之",
+      "time": "1′57″9",
+      "st": "0.36",
+      "course": 6
+    },
+    {
+      "lane": "1",
+      "racer_id": "4708",
+      "racer_name": "半田 尚也",
+      "st": "0.03",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.03
+    },
+    {
+      "lane": 2,
+      "st": 0.14
+    },
+    {
+      "lane": 3,
+      "st": 0.12
+    },
+    {
+      "lane": 4,
+      "st": 0.15
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.36
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-2-4",
+      "amount": 890,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "2=3=4",
+      "amount": 190,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "3-2",
+      "amount": 690,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "2=3",
+      "amount": 330,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "2=3",
+        "amount": 150,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 170,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=17&hd=20240331",
+  "generated_at": "2025-11-07T23:45:53.896Z"
+}

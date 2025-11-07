@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240302",
+    "jcd": "21",
+    "rno": 10,
+    "title": "BTS勝山開設30周年記念",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 7,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4861",
+      "racer_name": "田中 宏樹",
+      "time": "1′46″8",
+      "st": "0.14",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4962",
+      "racer_name": "畑 竜生",
+      "time": "1′49″6",
+      "st": "0.14",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4351",
+      "racer_name": "里岡 右貴",
+      "time": "1′50″6",
+      "st": "0.18",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "1",
+      "racer_id": "4676",
+      "racer_name": "後藤 隼之",
+      "time": "1′52″5",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4108",
+      "racer_name": "吉村 正明",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "4092",
+      "racer_name": "岡部 大輔",
+      "st": "0.12",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.18
+    },
+    {
+      "lane": 3,
+      "st": 0.14
+    },
+    {
+      "lane": 4,
+      "st": 0.12
+    },
+    {
+      "lane": 5,
+      "st": 0.14
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-5-2",
+      "amount": 35680,
+      "popularity": 80
+    },
+    "trio": {
+      "combo": "2=3=5",
+      "amount": 5320,
+      "popularity": 16
+    },
+    "exacta": {
+      "combo": "3-5",
+      "amount": 6370,
+      "popularity": 19
+    },
+    "quinella": {
+      "combo": "3=5",
+      "amount": 3590,
+      "popularity": 13
+    },
+    "wide": [
+      {
+        "combo": "3=5",
+        "amount": 1350,
+        "popularity": 13
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 580,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 470,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=21&hd=20240302",
+  "generated_at": "2025-11-07T22:49:48.177Z"
+}

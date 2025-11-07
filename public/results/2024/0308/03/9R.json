@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240308",
+    "jcd": "03",
+    "rno": 9,
+    "title": "第23回日刊ゲンダイ杯",
+    "decision": "抜き",
+    "weather_sky": "晴",
+    "wind_dir": 17,
+    "wind_speed_m": 0,
+    "wave_height_cm": 5
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4748",
+      "racer_name": "渡邉 雄朗",
+      "time": "1′53″7",
+      "st": "0.09",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "3951",
+      "racer_name": "石川 吉鎬",
+      "time": "1′55″1",
+      "st": "0.21",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4440",
+      "racer_name": "萩原 知哉",
+      "time": "1′55″4",
+      "st": "0.10",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "5196",
+      "racer_name": "鰐部 太空海",
+      "time": "1′56″4",
+      "st": "0.06",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3807",
+      "racer_name": "岡部 哲",
+      "st": "0.13",
+      "course": 5
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "5036",
+      "racer_name": "福田 翔吾",
+      "st": "0.11",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.1
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.06
+    },
+    {
+      "lane": 5,
+      "st": 0.13
+    },
+    {
+      "lane": 6,
+      "st": 0.21
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-6-2",
+      "amount": 4120,
+      "popularity": 17
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 1230,
+      "popularity": 7
+    },
+    "exacta": {
+      "combo": "1-6",
+      "amount": 1200,
+      "popularity": 5
+    },
+    "quinella": {
+      "combo": "1=6",
+      "amount": 900,
+      "popularity": 4
+    },
+    "wide": [
+      {
+        "combo": "1=6",
+        "amount": 240,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 160,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=9&jcd=03&hd=20240308",
+  "generated_at": "2025-11-07T23:00:00.333Z"
+}

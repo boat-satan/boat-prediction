@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240326",
+    "jcd": "11",
+    "rno": 11,
+    "title": "報知新聞大阪発刊60周年 第46回びわこ王座決定戦",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 3,
+    "wind_speed_m": 5,
+    "wave_height_cm": 5
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4914",
+      "racer_name": "吉田 裕平",
+      "time": "1′50″3",
+      "st": "0.11",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "5068",
+      "racer_name": "前田 滉",
+      "time": "1′52″1",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "4099",
+      "racer_name": "吉永 則雄",
+      "time": "1′54″3",
+      "st": "0.13",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4587",
+      "racer_name": "木田 峰由季",
+      "time": "1′55″2",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4649",
+      "racer_name": "和田 操拓",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "3251",
+      "racer_name": "平石 和男",
+      "st": "0.20",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.11
+    },
+    {
+      "lane": 2,
+      "st": 0.2
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.13
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-5",
+      "amount": 1340,
+      "popularity": 5
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 890,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 430,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 220,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 150,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=11&hd=20240326",
+  "generated_at": "2025-11-07T23:35:44.825Z"
+}

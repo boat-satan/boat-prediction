@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240302",
+    "jcd": "06",
+    "rno": 9,
+    "title": "薄暮だョ！第6回B級名人大集合 マクール杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 3,
+    "wind_speed_m": 7,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "3617",
+      "racer_name": "竹田 広樹",
+      "time": "1′13″8",
+      "st": "0.08",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3478",
+      "racer_name": "嶋田 貴支",
+      "time": "1′14″1",
+      "st": "0.28",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "3419",
+      "racer_name": "栗原 謙治",
+      "time": "1′15″4",
+      "st": "0.22",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "3233",
+      "racer_name": "小畑 実成",
+      "time": "1′16″6",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "3501",
+      "racer_name": "川上 昇平",
+      "st": "0.17",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3881",
+      "racer_name": "浦上 拓也",
+      "st": "0.18",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.28
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.08
+    },
+    {
+      "lane": 4,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.22
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-1-6",
+      "amount": 10070,
+      "popularity": 42
+    },
+    "trio": {
+      "combo": "1=3=6",
+      "amount": 3710,
+      "popularity": 14
+    },
+    "exacta": {
+      "combo": "3-1",
+      "amount": 2190,
+      "popularity": 10
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 920,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 570,
+        "popularity": 6
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 400,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 240,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=9&jcd=06&hd=20240302",
+  "generated_at": "2025-11-07T22:48:33.866Z"
+}
