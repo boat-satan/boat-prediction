@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240128",
+    "jcd": "18",
+    "rno": 7,
+    "title": "マスターズリーグ第10戦",
+    "decision": "抜き",
+    "weather_sky": "雨",
+    "wind_dir": 9,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "3703",
+      "racer_name": "鳥飼 眞",
+      "time": "1′50″5",
+      "st": "0.09",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3661",
+      "racer_name": "柳瀬 興志",
+      "time": "1′51″7",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "3641",
+      "racer_name": "一瀬 明",
+      "time": "1′53″0",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "3747",
+      "racer_name": "國崎 良春",
+      "time": "1′54″4",
+      "st": "0.18",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "3273",
+      "racer_name": "石田 豪",
+      "st": "0.12",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "3550",
+      "racer_name": "都築 正治",
+      "st": "0.21",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.12
+    },
+    {
+      "lane": 3,
+      "st": 0.18
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.09
+    },
+    {
+      "lane": 6,
+      "st": 0.21
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-1-4",
+      "amount": 18910,
+      "popularity": 49
+    },
+    "trio": {
+      "combo": "1=4=5",
+      "amount": 970,
+      "popularity": 5
+    },
+    "exacta": {
+      "combo": "5-1",
+      "amount": 6820,
+      "popularity": 16
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 2180,
+      "popularity": 6
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 300,
+        "popularity": 6
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 2950,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 860,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=18&hd=20240128",
+  "generated_at": "2025-11-07T12:22:14.248Z"
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240129",
+    "jcd": "06",
+    "rno": 3,
+    "title": "浜名湖賞 開設70周年記念 静岡県知事杯争奪戦",
+    "decision": "差し",
+    "weather_sky": "曇り",
+    "wind_dir": 3,
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "3779",
+      "racer_name": "原田 幸哉",
+      "time": "1′47″8",
+      "st": "0.06",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "3854",
+      "racer_name": "吉川 元浩",
+      "time": "1′48″3",
+      "st": "0.07",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "3744",
+      "racer_name": "徳増 秀樹",
+      "time": "1′50″7",
+      "st": "0.06",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "5084",
+      "racer_name": "末永 和也",
+      "time": "1′51″0",
+      "st": "0.14",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "4295",
+      "racer_name": "小坂 尚哉",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "3654",
+      "racer_name": "武田 光史",
+      "st": "0.13",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.06
+    },
+    {
+      "lane": 4,
+      "st": 0.06
+    },
+    {
+      "lane": 5,
+      "st": 0.07
+    },
+    {
+      "lane": 6,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-3",
+      "amount": 8840,
+      "popularity": 30
+    },
+    "trio": {
+      "combo": "3=4=5",
+      "amount": 1670,
+      "popularity": 7
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 2380,
+      "popularity": 9
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 1780,
+      "popularity": 7
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 520,
+        "popularity": 9
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 770,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 320,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=3&jcd=06&hd=20240129",
+  "generated_at": "2025-11-07T12:22:53.368Z"
+}

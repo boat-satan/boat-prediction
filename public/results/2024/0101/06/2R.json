@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240101",
+    "jcd": "06",
+    "rno": 2,
+    "title": "静岡新聞社・静岡放送 NewYear's Cup",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 5,
+    "wind_speed_m": 6,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4524",
+      "racer_name": "深谷 知博",
+      "time": "1′50″2",
+      "st": "0.10",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "4625",
+      "racer_name": "渡邊 裕貴",
+      "time": "1′51″7",
+      "st": "0.05",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5110",
+      "racer_name": "杉山 喜一",
+      "time": "1′53″1",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4216",
+      "racer_name": "星 栄爾",
+      "time": "1′55″0",
+      "st": "0.29",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "3474",
+      "racer_name": "松瀬 弘美",
+      "st": "0.35",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "3563",
+      "racer_name": "堤 昇",
+      "st": "0.18",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.05
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 3,
+      "st": 0.1
+    },
+    {
+      "lane": 4,
+      "st": 0.18
+    },
+    {
+      "lane": 5,
+      "st": 0.29
+    },
+    {
+      "lane": 6,
+      "st": 0.35
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-1-2",
+      "amount": 2130,
+      "popularity": 7
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 840,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "3-1",
+      "amount": 390,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 250,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 250,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 160,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=06&hd=20240101",
+  "generated_at": "2025-11-07T11:29:21.456Z"
+}

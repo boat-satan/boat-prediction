@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240121",
+    "jcd": "05",
+    "rno": 11,
+    "title": "ヴィーナスシリーズ第18戦是政プリンセスカップ",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 13,
+    "wind_speed_m": 1,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4804",
+      "racer_name": "高田 ひかる",
+      "time": "1′49″4",
+      "st": "0.08",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4893",
+      "racer_name": "渡邉 真奈美",
+      "time": "1′51″0",
+      "st": "0.26",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4464",
+      "racer_name": "山下 友貴",
+      "time": "1′52″2",
+      "st": "0.16",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4240",
+      "racer_name": "今井 裕梨",
+      "time": "1′52″3",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4938",
+      "racer_name": "小芦 るり華",
+      "st": "0.10",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "4569",
+      "racer_name": "中澤 宏奈",
+      "st": "0.09",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.08
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.09
+    },
+    {
+      "lane": 5,
+      "st": 0.11
+    },
+    {
+      "lane": 6,
+      "st": 0.1
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-3",
+      "amount": 1040,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 480,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 430,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 390,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 230,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 120,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=05&hd=20240121",
+  "generated_at": "2025-11-07T12:07:47.657Z"
+}

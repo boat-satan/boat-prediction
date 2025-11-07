@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240119",
+    "jcd": "10",
+    "rno": 2,
+    "title": "大寒三国決戦",
+    "decision": "差し",
+    "weather_sky": "曇り",
+    "wind_dir": 4,
+    "wind_speed_m": 10,
+    "wave_height_cm": 10
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4682",
+      "racer_name": "大上 卓人",
+      "time": "1′50″6",
+      "st": "0.27",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "4529",
+      "racer_name": "嶋 義信",
+      "time": "1′52″0",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "3912",
+      "racer_name": "川原 正明",
+      "time": "1′53″1",
+      "st": "0.31",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3508",
+      "racer_name": "久富 政弘",
+      "time": "1′55″4",
+      "st": "0.35",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5260",
+      "racer_name": "佐々木 海成",
+      "st": "0.27",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3922",
+      "racer_name": "菅沼 佳昭",
+      "st": "0.33",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.27
+    },
+    {
+      "lane": 3,
+      "st": 0.31
+    },
+    {
+      "lane": 4,
+      "st": 0.35
+    },
+    {
+      "lane": 5,
+      "st": 0.33
+    },
+    {
+      "lane": 6,
+      "st": 0.27
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-1-3",
+      "amount": 450,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 170,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "2-1",
+      "amount": 280,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 100,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 100,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 140,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=10&hd=20240119",
+  "generated_at": "2025-11-07T12:04:25.571Z"
+}

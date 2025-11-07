@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240125",
+    "jcd": "02",
+    "rno": 2,
+    "title": "BOAT KIDS PARKモーヴィ戸田杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 6,
+    "wind_speed_m": 6,
+    "wave_height_cm": 5
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "4387",
+      "racer_name": "平山 智加",
+      "time": "1′49″1",
+      "st": "0.19",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4377",
+      "racer_name": "濱本 優一",
+      "time": "1′51″7",
+      "st": "0.24",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "3978",
+      "racer_name": "齊藤 仁",
+      "time": "1′53″0",
+      "st": "0.25",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3647",
+      "racer_name": "伊藤 雄二",
+      "time": "1′54″6",
+      "st": "0.24",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "3659",
+      "racer_name": "藤生 雄人",
+      "st": "0.26",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "4439",
+      "racer_name": "近藤 友宝",
+      "st": "0.28",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.28
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 3,
+      "st": 0.24
+    },
+    {
+      "lane": 4,
+      "st": 0.24
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    },
+    {
+      "lane": 6,
+      "st": 0.25
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-3-6",
+      "amount": 5860,
+      "popularity": 28
+    },
+    "trio": {
+      "combo": "3=5=6",
+      "amount": 980,
+      "popularity": 6
+    },
+    "exacta": {
+      "combo": "5-3",
+      "amount": 1630,
+      "popularity": 8
+    },
+    "quinella": {
+      "combo": "3=5",
+      "amount": 630,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "3=5",
+        "amount": 240,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 430,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=02&hd=20240125",
+  "generated_at": "2025-11-07T12:15:00.341Z"
+}

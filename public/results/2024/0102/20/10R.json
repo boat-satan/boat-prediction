@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "date": "20240102",
+    "jcd": "20",
+    "rno": 10,
+    "title": "西部発刊25周年記念スポーツ報知杯年またぎ特選競走",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 16,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4544",
+      "racer_name": "松田 大志郎",
+      "time": "1′53″3",
+      "st": "0.12",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4441",
+      "racer_name": "末永 由楽",
+      "time": "1′56″2",
+      "st": "0.14",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4848",
+      "racer_name": "仲谷 颯仁",
+      "time": "1′58″1",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3662",
+      "racer_name": "大庭 元明",
+      "time": "2′00″1",
+      "st": "0.21",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5210",
+      "racer_name": "藤井 公人",
+      "st": "0.26",
+      "course": 6
+    },
+    {
+      "lane": "5",
+      "racer_id": "4287",
+      "racer_name": "今井 貴士",
+      "st": "0.12",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.12
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.14
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.26
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 900,
+      "popularity": 4
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 280,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 360,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 450,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 160,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=20&hd=20240102",
+  "generated_at": "2025-11-07T11:32:19.782Z"
+}

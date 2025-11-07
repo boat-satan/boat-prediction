@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240114",
+    "jcd": "02",
+    "rno": 5,
+    "title": "第13回スマホマクール杯",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": 12,
+    "wind_speed_m": 4,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "4240",
+      "racer_name": "今井 裕梨",
+      "time": "1′48″5",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4845",
+      "racer_name": "前田 紗希",
+      "time": "1′49″9",
+      "st": "0.16",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5194",
+      "racer_name": "大久保 佑香",
+      "time": "1′52″2",
+      "st": "0.17",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "4891",
+      "racer_name": "寺島 美里",
+      "time": "1′53″9",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "4478",
+      "racer_name": "櫻本 あゆみ",
+      "st": "0.25",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "4987",
+      "racer_name": "島倉 都",
+      "st": "0.26",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.25
+    },
+    {
+      "lane": 2,
+      "st": 0.16
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.26
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-2-6",
+      "amount": 17810,
+      "popularity": 62
+    },
+    "trio": {
+      "combo": "2=4=6",
+      "amount": 4740,
+      "popularity": 16
+    },
+    "exacta": {
+      "combo": "4-2",
+      "amount": 3380,
+      "popularity": 10
+    },
+    "quinella": {
+      "combo": "2=4",
+      "amount": 1590,
+      "popularity": 6
+    },
+    "wide": [
+      {
+        "combo": "2=4",
+        "amount": 630,
+        "popularity": 8
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 470,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 440,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=02&hd=20240114",
+  "generated_at": "2025-11-07T11:54:10.197Z"
+}

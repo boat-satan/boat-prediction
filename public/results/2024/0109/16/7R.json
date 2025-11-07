@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240109",
+    "jcd": "16",
+    "rno": 7,
+    "title": "第39回日本モーターボート選手会会長杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 3,
+    "wind_speed_m": 2,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "3339",
+      "racer_name": "泉 具巳",
+      "time": "1′49″0",
+      "st": "0.15",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4441",
+      "racer_name": "末永 由楽",
+      "time": "1′50″6",
+      "st": "0.13",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "3797",
+      "racer_name": "岩井 繁",
+      "time": "1′51″9",
+      "st": "0.19",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "1",
+      "racer_id": "5143",
+      "racer_name": "常盤 海心",
+      "time": "1′53″1",
+      "st": "0.22",
+      "course": 1
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4046",
+      "racer_name": "谷村 啓司",
+      "st": "0.17",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "4100",
+      "racer_name": "松田 隆司",
+      "st": "0.30",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.22
+    },
+    {
+      "lane": 2,
+      "st": 0.3
+    },
+    {
+      "lane": 3,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.13
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-5-4",
+      "amount": 6310,
+      "popularity": 25
+    },
+    "trio": {
+      "combo": "3=4=5",
+      "amount": 2650,
+      "popularity": 8
+    },
+    "exacta": {
+      "combo": "3-5",
+      "amount": 1460,
+      "popularity": 9
+    },
+    "quinella": {
+      "combo": "3=5",
+      "amount": 830,
+      "popularity": 6
+    },
+    "wide": [
+      {
+        "combo": "3=5",
+        "amount": 400,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 210,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 400,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=16&hd=20240109",
+  "generated_at": "2025-11-07T11:45:51.422Z"
+}

@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "date": "20240104",
+    "jcd": "23",
+    "rno": 5,
+    "title": "第64回佐賀県選手権",
+    "decision": "恵まれ",
+    "weather_sky": "晴",
+    "wind_dir": 4,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4060",
+      "racer_name": "島田 一生",
+      "time": "1′52″9",
+      "st": "0.13",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4092",
+      "racer_name": "岡部 大輔",
+      "time": "1′55″0",
+      "st": "0.18",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "5312",
+      "racer_name": "川辺 郭人",
+      "time": "1′59″2",
+      "st": "0.21",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "3974",
+      "racer_name": "深山 祐二",
+      "time": "2′02″5",
+      "st": "0.17",
+      "course": 4
+    },
+    {
+      "lane": "6",
+      "racer_id": "3307",
+      "racer_name": "上瀧 和則",
+      "st": "0.25",
+      "course": 2
+    },
+    {
+      "lane": "4",
+      "racer_id": "4445",
+      "racer_name": "宮地 元輝",
+      "st": "0.09",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.13
+    },
+    {
+      "lane": 6,
+      "st": 0.25
+    },
+    {
+      "lane": 2,
+      "st": 0.18
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.09
+    },
+    {
+      "lane": 5,
+      "st": 0.21
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-5",
+      "amount": 52740,
+      "popularity": 74
+    },
+    "trio": {
+      "combo": "1=2=5",
+      "amount": 15020,
+      "popularity": 18
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 1430,
+      "popularity": 7
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 590,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 490,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 240,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=23&hd=20240104",
+  "generated_at": "2025-11-07T11:36:36.259Z"
+}

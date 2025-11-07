@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20240115",
+    "jcd": "15",
+    "rno": 8,
+    "title": "丸亀市議会議長杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 13,
+    "wind_speed_m": 6,
+    "wave_height_cm": 6
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3257",
+      "racer_name": "田頭 実",
+      "time": "1′49″7",
+      "st": "0.01",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "3475",
+      "racer_name": "橋本 久和",
+      "time": "1′51″2",
+      "st": "0.09",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5198",
+      "racer_name": "奥村 明日香",
+      "time": "1′54″6",
+      "st": "0.13",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3805",
+      "racer_name": "高橋 英之",
+      "time": "1′55″0",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3642",
+      "racer_name": "大塚 浩二",
+      "time": "1′55″6",
+      "st": "0.17",
+      "course": 5
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "3224",
+      "racer_name": "栗山 繁洋",
+      "time": "1′59″6",
+      "st": "0.07",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.01
+    },
+    {
+      "lane": 2,
+      "st": 0.09
+    },
+    {
+      "lane": 3,
+      "st": 0.07
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.17
+    },
+    {
+      "lane": 6,
+      "st": 0.13
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-6",
+      "amount": 3710,
+      "popularity": 12
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 1560,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 250,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 170,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 180,
+        "popularity": 2
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 120,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=15&hd=20240115",
+  "generated_at": "2025-11-07T11:57:11.034Z"
+}

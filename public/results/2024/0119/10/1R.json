@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240119",
+    "jcd": "10",
+    "rno": 1,
+    "title": "大寒三国決戦",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 6,
+    "wind_speed_m": 6,
+    "wave_height_cm": 6
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4856",
+      "racer_name": "豊田 健士郎",
+      "time": "1′50″4",
+      "st": "0.07",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4660",
+      "racer_name": "宇田川 信一",
+      "time": "1′52″3",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "3620",
+      "racer_name": "信濃 由行",
+      "time": "1′53″4",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4727",
+      "racer_name": "安部 慎一",
+      "time": "1′54″4",
+      "st": "0.02",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5046",
+      "racer_name": "松山 裕基",
+      "st": "0.08",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "4728",
+      "racer_name": "山口 亮",
+      "st": "0.07",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.07
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.08
+    },
+    {
+      "lane": 5,
+      "st": 0.02
+    },
+    {
+      "lane": 6,
+      "st": 0.07
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 2300,
+      "popularity": 11
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 540,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 830,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 650,
+      "popularity": 4
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 250,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=10&hd=20240119",
+  "generated_at": "2025-11-07T12:04:26.148Z"
+}

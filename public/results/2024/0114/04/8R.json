@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20240114",
+    "jcd": "04",
+    "rno": 8,
+    "title": "JESCOカップ・平和島劇場開設14周年記念",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 5,
+    "wind_speed_m": 7,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4114",
+      "racer_name": "深澤 達徳",
+      "time": "1′50″8",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4886",
+      "racer_name": "入海 馨",
+      "time": "1′52″6",
+      "st": "0.14",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "3637",
+      "racer_name": "齋藤 和政",
+      "time": "1′54″3",
+      "st": "0.14",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "3812",
+      "racer_name": "山崎 聖司",
+      "time": "1′55″9",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3591",
+      "racer_name": "後藤 孝義",
+      "st": "0.29",
+      "course": 4
+    },
+    {
+      "lane": "3",
+      "racer_id": "4979",
+      "racer_name": "中野 夢斗"
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.29
+    },
+    {
+      "lane": 6,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-4-6",
+      "amount": 1200,
+      "popularity": 5
+    },
+    "trio": {
+      "combo": "1=4=6",
+      "amount": 410,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-4",
+      "amount": 270,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 180,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 100,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 240,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=04&hd=20240114",
+  "generated_at": "2025-11-07T11:54:18.484Z"
+}
