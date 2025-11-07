@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "date": "20250302",
+    "jcd": "20",
+    "rno": 12,
+    "title": "ヴィーナスS22戦マクール杯ナイトプリンセスカップ",
+    "decision": "恵まれ",
+    "weather_sky": "雨",
+    "wind_dir": 6,
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "4289",
+      "racer_name": "落合 直子",
+      "time": "1′51″7",
+      "st": "0.09",
+      "course": 6
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "5277",
+      "racer_name": "井上 未都",
+      "time": "1′53″3",
+      "st": "0.01",
+      "course": 5
+    },
+    {
+      "lane": "1",
+      "racer_id": "4965",
+      "racer_name": "福岡 泉水",
+      "st": "0.02",
+      "course": 1
+    },
+    {
+      "lane": "2",
+      "racer_id": "5148",
+      "racer_name": "松本 怜",
+      "st": "0.01",
+      "course": 2
+    },
+    {
+      "lane": "3",
+      "racer_id": "4947",
+      "racer_name": "間庭 菜摘",
+      "st": "0.02",
+      "course": 3
+    },
+    {
+      "lane": "4",
+      "racer_id": "5069",
+      "racer_name": "山崎 小葉音",
+      "st": "0.04",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.02
+    },
+    {
+      "lane": 2,
+      "st": 0.01
+    },
+    {
+      "lane": 3,
+      "st": 0.02
+    },
+    {
+      "lane": 4,
+      "st": 0.04
+    },
+    {
+      "lane": 5,
+      "st": 0.01
+    },
+    {
+      "lane": 6,
+      "st": 0.09
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "不成立",
+      "amount": 100,
+      "popularity": 0
+    },
+    "trio": {
+      "combo": "不成立",
+      "amount": 100,
+      "popularity": 0
+    },
+    "exacta": {
+      "combo": "6-5",
+      "amount": 350,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "不成立",
+      "amount": 100,
+      "popularity": 0
+    },
+    "wide": [
+      {
+        "combo": "不成立",
+        "amount": 100,
+        "popularity": 0
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "不成立",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=12&jcd=20&hd=20250302",
+  "generated_at": "2025-11-07T21:14:41.307Z"
+}

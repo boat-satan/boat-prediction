@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "date": "20250301",
+    "jcd": "03",
+    "rno": 4,
+    "title": "新小岩ホルモン平田杯",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": 4,
+    "wind_speed_m": 6,
+    "wave_height_cm": 10
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4167",
+      "racer_name": "片岡 秀樹",
+      "time": "2′01″7",
+      "st": "0.05",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4388",
+      "racer_name": "是澤 孝宏",
+      "time": "2′07″3",
+      "st": "0.03",
+      "course": 2
+    },
+    {
+      "lane": "4",
+      "racer_id": "5208",
+      "racer_name": "屋良 龍紀",
+      "st": "0.02",
+      "course": 4
+    },
+    {
+      "lane": "5",
+      "racer_id": "3319",
+      "racer_name": "山崎 義明",
+      "st": "0.06",
+      "course": 5
+    },
+    {
+      "lane": "6",
+      "racer_id": "5319",
+      "racer_name": "近藤 颯斗",
+      "st": "0.10",
+      "course": 6
+    },
+    {
+      "lane": "1",
+      "racer_id": "5303",
+      "racer_name": "土井 歩夢",
+      "st": "0.06",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.06
+    },
+    {
+      "lane": 2,
+      "st": 0.03
+    },
+    {
+      "lane": 3,
+      "st": 0.05
+    },
+    {
+      "lane": 4,
+      "st": 0.02
+    },
+    {
+      "lane": 5,
+      "st": 0.06
+    },
+    {
+      "lane": 6,
+      "st": 0.1
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "不成立",
+      "amount": 100,
+      "popularity": 0
+    },
+    "trio": {
+      "combo": "不成立",
+      "amount": 100,
+      "popularity": 0
+    },
+    "exacta": {
+      "combo": "3-2",
+      "amount": 5070,
+      "popularity": 15
+    },
+    "quinella": {
+      "combo": "2=3",
+      "amount": 1080,
+      "popularity": 7
+    },
+    "wide": [
+      {
+        "combo": "2=3",
+        "amount": 1350,
+        "popularity": 6
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 530,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 620,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=4&jcd=03&hd=20250301",
+  "generated_at": "2025-11-07T21:11:33.218Z"
+}

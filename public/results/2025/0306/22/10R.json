@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20250306",
+    "jcd": "22",
+    "rno": 10,
+    "title": "スポーツ報知杯",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 12,
+    "wind_speed_m": 5,
+    "wave_height_cm": 5
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4067",
+      "racer_name": "永井 源",
+      "time": "1′50″7",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4948",
+      "racer_name": "木場 悠介",
+      "time": "1′52″2",
+      "st": "0.29",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "3284",
+      "racer_name": "渡邊 伸太郎",
+      "time": "1′53″9",
+      "st": "0.23",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4562",
+      "racer_name": "阪本 勇介",
+      "time": "1′54″8",
+      "st": "0.24",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "5086",
+      "racer_name": "本村 大",
+      "st": "0.31",
+      "course": 2
+    },
+    {
+      "lane": "5",
+      "racer_id": "3915",
+      "racer_name": "繁野谷 圭介"
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.31
+    },
+    {
+      "lane": 3,
+      "st": 0.29
+    },
+    {
+      "lane": 6,
+      "st": 0.23
+    },
+    {
+      "lane": 4,
+      "st": 0.24
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-6",
+      "amount": 320,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=3=6",
+      "amount": 200,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 160,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 140,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 100,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=22&hd=20250306",
+  "generated_at": "2025-11-07T21:22:29.025Z"
+}

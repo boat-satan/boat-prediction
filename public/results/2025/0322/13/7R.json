@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250322",
+    "jcd": "13",
+    "rno": 7,
+    "title": "オールレディース競走あまがさきピンクルカップ",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 12,
+    "wind_speed_m": 5,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4443",
+      "racer_name": "津田 裕絵",
+      "time": "1′50″4",
+      "st": "0.19",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4689",
+      "racer_name": "豊田 結",
+      "time": "1′51″9",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "4450",
+      "racer_name": "平高 奈菜",
+      "time": "1′53″2",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5146",
+      "racer_name": "野田 彩加",
+      "time": "1′54″6",
+      "st": "0.16",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4349",
+      "racer_name": "犬童 千秋",
+      "time": "1′56″2",
+      "st": "0.21",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "4479",
+      "racer_name": "矢野 真梨菜",
+      "time": "1′56″3",
+      "st": "0.32",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.32
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-6",
+      "amount": 880,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 370,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 290,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 260,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 160,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 160,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=13&hd=20250322",
+  "generated_at": "2025-11-07T21:52:40.956Z"
+}

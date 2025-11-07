@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250325",
+    "jcd": "03",
+    "rno": 10,
+    "title": "男女W優勝戦 第24回関東日刊紙BR記者クラブ杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 4,
+    "wind_speed_m": 7,
+    "wave_height_cm": 20
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4536",
+      "racer_name": "喜井 つかさ",
+      "time": "1′16″5",
+      "st": "0.22",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4283",
+      "racer_name": "石井 裕美",
+      "time": "1′17″8",
+      "st": "0.24",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4519",
+      "racer_name": "清水 沙樹",
+      "time": "1′18″3",
+      "st": "0.22",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4900",
+      "racer_name": "中田 夕貴",
+      "time": "1′19″4",
+      "st": "0.22",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5203",
+      "racer_name": "神里 琴音",
+      "st": "0.21",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "5357",
+      "racer_name": "田中 瀬里奈",
+      "st": "0.47",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.22
+    },
+    {
+      "lane": 2,
+      "st": 0.22
+    },
+    {
+      "lane": 3,
+      "st": 0.24
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.47
+    },
+    {
+      "lane": 6,
+      "st": 0.22
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 2550,
+      "popularity": 9
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 440,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 840,
+      "popularity": 3
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 770,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 180,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 150,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=03&hd=20250325",
+  "generated_at": "2025-11-07T21:57:41.580Z"
+}

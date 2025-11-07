@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250317",
+    "jcd": "01",
+    "rno": 11,
+    "title": "第31回桐生タイムス杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 2,
+    "wind_speed_m": 5,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4794",
+      "racer_name": "和田 拓也",
+      "time": "1′13″2",
+      "st": "0.09",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4653",
+      "racer_name": "小野 達哉",
+      "time": "1′14″0",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "3655",
+      "racer_name": "本橋 克洋",
+      "time": "1′15″0",
+      "st": "0.20",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "5321",
+      "racer_name": "一色 颯輝",
+      "time": "1′16″1",
+      "st": "0.18",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4598",
+      "racer_name": "加藤 政彦",
+      "time": "1′16″3",
+      "st": "0.24",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "4945",
+      "racer_name": "上村 宏太",
+      "time": "1′16″4",
+      "st": "0.16",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.2
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 5,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.24
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-3",
+      "amount": 440,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 250,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 200,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 170,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 120,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=01&hd=20250317",
+  "generated_at": "2025-11-07T21:42:02.689Z"
+}

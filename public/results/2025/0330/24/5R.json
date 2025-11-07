@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20250330",
+    "jcd": "24",
+    "rno": 5,
+    "title": "イオン大村ショッピングセンター開店30周年記念競走",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 11,
+    "wind_speed_m": 5,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "3975",
+      "racer_name": "小野寺 智洋",
+      "time": "1′49″3",
+      "st": "0.17",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4748",
+      "racer_name": "渡邉 雄朗",
+      "time": "1′51″3",
+      "st": "0.24",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "4695",
+      "racer_name": "尾崎 雄二",
+      "time": "1′53″2",
+      "st": "0.29",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "4740",
+      "racer_name": "齋藤 達希",
+      "time": "1′54″2",
+      "st": "0.20",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4479",
+      "racer_name": "矢野 真梨菜",
+      "st": "0.26",
+      "course": 5
+    },
+    {
+      "lane": "1",
+      "racer_id": "4304",
+      "racer_name": "藤崎 小百合"
+    }
+  ],
+  "start": [
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.2
+    },
+    {
+      "lane": 4,
+      "st": 0.24
+    },
+    {
+      "lane": 5,
+      "st": 0.29
+    },
+    {
+      "lane": 6,
+      "st": 0.26
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-4-5",
+      "amount": 400,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "2=4=5",
+      "amount": 160,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "2-4",
+      "amount": 200,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "2=4",
+      "amount": 230,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "2=4",
+        "amount": 100,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 140,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 230,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=24&hd=20250330",
+  "generated_at": "2025-11-07T22:08:56.720Z"
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250308",
+    "jcd": "19",
+    "rno": 7,
+    "title": "MNBR下関12th 巌流本舗杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 3,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3841",
+      "racer_name": "佐々木 和伸",
+      "time": "1′48″5",
+      "st": "0.09",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "5012",
+      "racer_name": "加倉 侑征",
+      "time": "1′50″0",
+      "st": "0.12",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4786",
+      "racer_name": "佐藤 博亮",
+      "time": "1′51″1",
+      "st": "0.09",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4405",
+      "racer_name": "南野 利騰",
+      "time": "1′52″4",
+      "st": "0.19",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "4669",
+      "racer_name": "井上 茂",
+      "st": "0.19",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "3897",
+      "racer_name": "白井 英治",
+      "st": "0.15",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.09
+    },
+    {
+      "lane": 3,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 1900,
+      "popularity": 7
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 590,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 820,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 460,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 260,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 160,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 120,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=19&hd=20250308",
+  "generated_at": "2025-11-07T21:26:06.944Z"
+}

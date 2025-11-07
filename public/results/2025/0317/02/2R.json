@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250317",
+    "jcd": "02",
+    "rno": 2,
+    "title": "WINWINパーク戸田8周年記念・東京スポーツ杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 6,
+    "wind_speed_m": 7,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4059",
+      "racer_name": "入澤 友治",
+      "time": "1′51″5",
+      "st": "0.06",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "3850",
+      "racer_name": "小川 知行",
+      "time": "1′53″0",
+      "st": "0.12",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "3602",
+      "racer_name": "奥平 拓也",
+      "time": "1′54″6",
+      "st": "0.11",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "1",
+      "racer_id": "4803",
+      "racer_name": "飯田 庄吾",
+      "time": "1′55″9",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4215",
+      "racer_name": "吉島 祥之",
+      "st": "0.25",
+      "course": 5
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5065",
+      "racer_name": "伊久間 陽優",
+      "st": "0.33",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.06
+    },
+    {
+      "lane": 3,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.33
+    },
+    {
+      "lane": 4,
+      "st": 0.25
+    },
+    {
+      "lane": 5,
+      "st": 0.11
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-3-5",
+      "amount": 4910,
+      "popularity": 17
+    },
+    "trio": {
+      "combo": "2=3=5",
+      "amount": 1730,
+      "popularity": 8
+    },
+    "exacta": {
+      "combo": "2-3",
+      "amount": 1080,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "2=3",
+      "amount": 550,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "2=3",
+        "amount": 260,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 280,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=02&hd=20250317",
+  "generated_at": "2025-11-07T21:42:02.961Z"
+}

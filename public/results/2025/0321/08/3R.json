@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250321",
+    "jcd": "08",
+    "rno": 3,
+    "title": "BTS川崎開設記念競走",
+    "decision": "抜き",
+    "weather_sky": "晴",
+    "wind_dir": 13,
+    "wind_speed_m": 1,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "3719",
+      "racer_name": "辻 栄蔵",
+      "time": "1′49″5",
+      "st": "0.24",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "4116",
+      "racer_name": "川田 正人",
+      "time": "1′50″9",
+      "st": "0.23",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "4121",
+      "racer_name": "富永 修一",
+      "time": "1′52″2",
+      "st": "0.22",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "4467",
+      "racer_name": "渡邉 俊介",
+      "time": "1′52″4",
+      "st": "0.26",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "5245",
+      "racer_name": "倉富 大誠",
+      "st": "0.22",
+      "course": 5
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5349",
+      "racer_name": "宮崎 奏磨",
+      "st": "0.20",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.23
+    },
+    {
+      "lane": 3,
+      "st": 0.24
+    },
+    {
+      "lane": 4,
+      "st": 0.22
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 5,
+      "st": 0.22
+    },
+    {
+      "lane": 6,
+      "st": 0.2
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-1-4",
+      "amount": 1130,
+      "popularity": 1
+    },
+    "trio": {
+      "combo": "1=3=4",
+      "amount": 300,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "3-1",
+      "amount": 400,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 210,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 190,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 730,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=3&jcd=08&hd=20250321",
+  "generated_at": "2025-11-07T21:50:32.997Z"
+}

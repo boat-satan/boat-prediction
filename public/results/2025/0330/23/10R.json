@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "date": "20250330",
+    "jcd": "23",
+    "rno": 10,
+    "title": "ヴィーナスシリーズ第24戦 ゾンビランドサガR杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 4,
+    "wind_speed_m": 8,
+    "wave_height_cm": 8
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "5013",
+      "racer_name": "山下 夏鈴",
+      "time": "1′13″0",
+      "st": "0.12",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4243",
+      "racer_name": "西村 歩",
+      "time": "1′14″0",
+      "st": "0.22",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "3999",
+      "racer_name": "大瀧 明日香",
+      "time": "1′14″6",
+      "st": "0.21",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5118",
+      "racer_name": "野田 なづき",
+      "time": "1′15″8",
+      "st": "0.21",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4764",
+      "racer_name": "小池 礼乃",
+      "time": "1′18″7",
+      "st": "0.23",
+      "course": 5
+    },
+    {
+      "lane": "1",
+      "racer_id": "4730",
+      "racer_name": "土屋 実沙希"
+    }
+  ],
+  "start": [
+    {
+      "lane": 2,
+      "st": 0.12
+    },
+    {
+      "lane": 3,
+      "st": 0.21
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.22
+    },
+    {
+      "lane": 6,
+      "st": 0.23
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-5-4",
+      "amount": 2100,
+      "popularity": 6
+    },
+    "trio": {
+      "combo": "2=4=5",
+      "amount": 380,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "2-5",
+      "amount": 850,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "2=5",
+      "amount": 530,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "2=5",
+        "amount": 190,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 170,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=23&hd=20250330",
+  "generated_at": "2025-11-07T22:08:55.426Z"
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250327",
+    "jcd": "07",
+    "rno": 1,
+    "title": "スポーツ報知杯争奪 第16回ビクトリーカップ",
+    "decision": "まくり差し",
+    "weather_sky": "曇り",
+    "wind_dir": 9,
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "3081",
+      "racer_name": "岡本 慎治",
+      "time": "1′50″8",
+      "st": "0.08",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4111",
+      "racer_name": "奥田 誠",
+      "time": "1′51″3",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4273",
+      "racer_name": "佐藤 旭",
+      "time": "1′51″5",
+      "st": "0.11",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "5069",
+      "racer_name": "山崎 小葉音",
+      "time": "1′54″2",
+      "st": "0.10",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "3519",
+      "racer_name": "冨田 秀幸",
+      "st": "0.08",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "3945",
+      "racer_name": "橋口 真樹",
+      "st": "0.22",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.22
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.08
+    },
+    {
+      "lane": 5,
+      "st": 0.1
+    },
+    {
+      "lane": 6,
+      "st": 0.08
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-2-3",
+      "amount": 9540,
+      "popularity": 38
+    },
+    "trio": {
+      "combo": "2=3=4",
+      "amount": 840,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "4-2",
+      "amount": 4040,
+      "popularity": 15
+    },
+    "quinella": {
+      "combo": "2=4",
+      "amount": 1500,
+      "popularity": 6
+    },
+    "wide": [
+      {
+        "combo": "2=4",
+        "amount": 380,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 540,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 240,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=07&hd=20250327",
+  "generated_at": "2025-11-07T22:02:00.140Z"
+}

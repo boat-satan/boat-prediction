@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250311",
+    "jcd": "15",
+    "rno": 8,
+    "title": "スカパー！・JLC杯争奪 ルーキーシリーズ第5戦",
+    "decision": "逃げ",
+    "weather_sky": "雨",
+    "wind_dir": 13,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "5145",
+      "racer_name": "島川 海輝",
+      "time": "1′49″8",
+      "st": "0.07",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "5196",
+      "racer_name": "鰐部 太空海",
+      "time": "1′50″4",
+      "st": "0.10",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "5247",
+      "racer_name": "大森 翼",
+      "time": "1′52″5",
+      "st": "0.16",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "5150",
+      "racer_name": "坂本 雄紀",
+      "time": "1′54″1",
+      "st": "0.04",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "5307",
+      "racer_name": "富永 夏哉人",
+      "time": "1′54″4",
+      "st": "0.09",
+      "course": 3
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5343",
+      "racer_name": "小林 礼央",
+      "time": "1′56″4",
+      "st": "0.23",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.07
+    },
+    {
+      "lane": 2,
+      "st": 0.04
+    },
+    {
+      "lane": 3,
+      "st": 0.09
+    },
+    {
+      "lane": 4,
+      "st": 0.1
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.23
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-4-5",
+      "amount": 1360,
+      "popularity": 5
+    },
+    "trio": {
+      "combo": "1=4=5",
+      "amount": 870,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "1-4",
+      "amount": 310,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 220,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 130,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=15&hd=20250311",
+  "generated_at": "2025-11-07T21:31:49.708Z"
+}

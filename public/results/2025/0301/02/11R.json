@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250301",
+    "jcd": "02",
+    "rno": 11,
+    "title": "にっぽん未来プロジェクト競走in戸田",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 16,
+    "wind_speed_m": 3,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "3807",
+      "racer_name": "岡部 哲",
+      "time": "1′49″2",
+      "st": "0.16",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "4607",
+      "racer_name": "鶴田 勇雄",
+      "time": "1′50″1",
+      "st": "0.12",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "2878",
+      "racer_name": "富山 弘幸",
+      "time": "1′52″4",
+      "st": "0.22",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4640",
+      "racer_name": "山ノ内 雅人",
+      "time": "1′54″6",
+      "st": "0.19",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "4997",
+      "racer_name": "濱崎 寿里矢",
+      "st": "0.21",
+      "course": 3
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "4261",
+      "racer_name": "岡 祐臣",
+      "st": "0.20",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.2
+    },
+    {
+      "lane": 2,
+      "st": 0.22
+    },
+    {
+      "lane": 3,
+      "st": 0.21
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.12
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-6-2",
+      "amount": 42990,
+      "popularity": 63
+    },
+    "trio": {
+      "combo": "2=5=6",
+      "amount": 6510,
+      "popularity": 15
+    },
+    "exacta": {
+      "combo": "5-6",
+      "amount": 16470,
+      "popularity": 22
+    },
+    "quinella": {
+      "combo": "5=6",
+      "amount": 6780,
+      "popularity": 12
+    },
+    "wide": [
+      {
+        "combo": "5=6",
+        "amount": 1120,
+        "popularity": 12
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 2340,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 510,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=02&hd=20250301",
+  "generated_at": "2025-11-07T21:11:46.082Z"
+}

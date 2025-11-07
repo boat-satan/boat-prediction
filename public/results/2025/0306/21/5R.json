@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250306",
+    "jcd": "21",
+    "rno": 5,
+    "title": "BTS勝山開設31周年記念",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 11,
+    "wind_speed_m": 4,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4230",
+      "racer_name": "濱崎 直矢",
+      "time": "1′47″1",
+      "st": "0.10",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4373",
+      "racer_name": "若狭 奈美子",
+      "time": "1′48″3",
+      "st": "0.08",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5330",
+      "racer_name": "安河内鈴之介",
+      "time": "1′50″9",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4509",
+      "racer_name": "平見 真彦",
+      "time": "1′51″9",
+      "st": "0.05",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "3618",
+      "racer_name": "海野 ゆかり",
+      "st": "0.06",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "4104",
+      "racer_name": "木下 陽介",
+      "st": "0.04",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.1
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.08
+    },
+    {
+      "lane": 4,
+      "st": 0.05
+    },
+    {
+      "lane": 5,
+      "st": 0.04
+    },
+    {
+      "lane": 6,
+      "st": 0.06
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 1150,
+      "popularity": 6
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 460,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 340,
+      "popularity": 3
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 410,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 240,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=21&hd=20250306",
+  "generated_at": "2025-11-07T21:22:29.253Z"
+}

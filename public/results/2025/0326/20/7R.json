@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250326",
+    "jcd": "20",
+    "rno": 7,
+    "title": "第60回ボートレースクラシック",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 16,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4677",
+      "racer_name": "片橋 幸貴",
+      "time": "1′49″7",
+      "st": "0.11",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4566",
+      "racer_name": "塩田 北斗",
+      "time": "1′51″4",
+      "st": "0.12",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4851",
+      "racer_name": "関 浩哉",
+      "time": "1′51″6",
+      "st": "0.09",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "4418",
+      "racer_name": "茅原 悠紀",
+      "time": "1′52″5",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "3854",
+      "racer_name": "吉川 元浩",
+      "st": "0.09",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "4290",
+      "racer_name": "稲田 浩二",
+      "st": "0.17",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.09
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-5-1",
+      "amount": 26700,
+      "popularity": 66
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 1590,
+      "popularity": 6
+    },
+    "exacta": {
+      "combo": "3-5",
+      "amount": 8040,
+      "popularity": 17
+    },
+    "quinella": {
+      "combo": "3=5",
+      "amount": 4210,
+      "popularity": 11
+    },
+    "wide": [
+      {
+        "combo": "3=5",
+        "amount": 720,
+        "popularity": 11
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 1770,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 530,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=20&hd=20250326",
+  "generated_at": "2025-11-07T22:01:05.790Z"
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250321",
+    "jcd": "05",
+    "rno": 2,
+    "title": "多摩川巧者決定戦！第20回澤乃井カップ",
+    "decision": "まくり差し",
+    "weather_sky": "晴",
+    "wind_dir": 9,
+    "wind_speed_m": 4,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "3849",
+      "racer_name": "中岡 正彦",
+      "time": "1′49″7",
+      "st": "0.15",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4505",
+      "racer_name": "島田 賢人",
+      "time": "1′51″5",
+      "st": "0.19",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "3286",
+      "racer_name": "坂東 満",
+      "time": "1′53″2",
+      "st": "0.19",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4750",
+      "racer_name": "井上 尚悟",
+      "time": "1′54″0",
+      "st": "0.16",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "4422",
+      "racer_name": "永井 亮次",
+      "st": "0.22",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "3775",
+      "racer_name": "泉 啓文",
+      "st": "0.21",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.22
+    },
+    {
+      "lane": 3,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    },
+    {
+      "lane": 6,
+      "st": 0.21
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-5-1",
+      "amount": 2430,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 340,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "3-5",
+      "amount": 730,
+      "popularity": 3
+    },
+    "quinella": {
+      "combo": "3=5",
+      "amount": 630,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "3=5",
+        "amount": 230,
+        "popularity": 5
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=05&hd=20250321",
+  "generated_at": "2025-11-07T21:49:49.113Z"
+}

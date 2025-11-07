@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250325",
+    "jcd": "22",
+    "rno": 5,
+    "title": "誰が勝っても福岡初優勝！九州プロレス杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 8,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4129",
+      "racer_name": "宇野 博之",
+      "time": "1′51″7",
+      "st": "0.21",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "3934",
+      "racer_name": "鋤柄 貴俊",
+      "time": "1′52″2",
+      "st": "0.24",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4114",
+      "racer_name": "深澤 達徳",
+      "time": "1′54″2",
+      "st": "0.24",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4219",
+      "racer_name": "本岡 勝利",
+      "time": "1′55″0",
+      "st": "0.26",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "4483",
+      "racer_name": "北野 輝季",
+      "st": "0.19",
+      "course": 5
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5268",
+      "racer_name": "山本 幸也",
+      "st": "0.26",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.21
+    },
+    {
+      "lane": 2,
+      "st": 0.24
+    },
+    {
+      "lane": 3,
+      "st": 0.24
+    },
+    {
+      "lane": 4,
+      "st": 0.26
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    },
+    {
+      "lane": 6,
+      "st": 0.26
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 2440,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 690,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 810,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 490,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 260,
+        "popularity": 5
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 260,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=5&jcd=22&hd=20250325",
+  "generated_at": "2025-11-07T21:59:07.265Z"
+}

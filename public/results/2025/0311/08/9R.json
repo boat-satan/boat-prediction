@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "date": "20250311",
+    "jcd": "08",
+    "rno": 9,
+    "title": "開設71周年記念競走トコタンキング決定戦",
+    "decision": "逃げ",
+    "weather_sky": "雨",
+    "wind_dir": 3,
+    "wind_speed_m": 1,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4503",
+      "racer_name": "上野 真之介",
+      "time": "1′57″4",
+      "st": "0.12",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4586",
+      "racer_name": "磯部 誠",
+      "time": "2′01″0",
+      "st": "0.16",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "4497",
+      "racer_name": "桑原 悠",
+      "time": "2′02″3",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4371",
+      "racer_name": "西山 貴浩",
+      "time": "2′05″6",
+      "st": "0.19",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4019",
+      "racer_name": "笠原 亮",
+      "st": "0.31",
+      "course": 6
+    },
+    {
+      "lane": "3",
+      "racer_id": "4980",
+      "racer_name": "佐々木 完太",
+      "st": "0.21",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.12
+    },
+    {
+      "lane": 2,
+      "st": 0.16
+    },
+    {
+      "lane": 3,
+      "st": 0.21
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.11
+    },
+    {
+      "lane": 6,
+      "st": 0.31
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-2-5",
+      "amount": 860,
+      "popularity": 3
+    },
+    "trio": {
+      "combo": "1=2=5",
+      "amount": 380,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-2",
+      "amount": 230,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 170,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 120,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=9&jcd=08&hd=20250311",
+  "generated_at": "2025-11-07T21:31:07.857Z"
+}

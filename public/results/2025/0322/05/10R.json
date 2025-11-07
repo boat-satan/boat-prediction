@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20250322",
+    "jcd": "05",
+    "rno": 10,
+    "title": "多摩川巧者決定戦！第20回澤乃井カップ",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 9,
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4012",
+      "racer_name": "中村 有裕",
+      "time": "1′49″2",
+      "st": "0.17",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4928",
+      "racer_name": "栗城 匠",
+      "time": "1′52″1",
+      "st": "0.16",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5047",
+      "racer_name": "國分 将太郎",
+      "time": "1′53″3",
+      "st": "0.15",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "3730",
+      "racer_name": "塩崎 優司",
+      "time": "1′53″5",
+      "st": "0.26",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "4836",
+      "racer_name": "大谷 健太",
+      "st": "0.23",
+      "course": 3
+    },
+    {
+      "lane": "5",
+      "racer_id": "4750",
+      "racer_name": "井上 尚悟"
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.17
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 3,
+      "st": 0.23
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.15
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-4-6",
+      "amount": 920,
+      "popularity": 4
+    },
+    "trio": {
+      "combo": "1=4=6",
+      "amount": 580,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-4",
+      "amount": 300,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 170,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 110,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=05&hd=20250322",
+  "generated_at": "2025-11-07T21:51:57.989Z"
+}
