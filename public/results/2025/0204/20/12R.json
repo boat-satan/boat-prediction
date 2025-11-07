@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20250204",
+    "jcd": "20",
+    "rno": 12,
+    "title": "日本トーター杯BTS北九州MD開設18周年記念競走",
+    "decision": "まくり差し",
+    "weather_sky": "雪",
+    "wind_dir": 16,
+    "wind_speed_m": 6,
+    "wave_height_cm": 6
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "3643",
+      "racer_name": "米田 隆弘",
+      "time": "1′14″9",
+      "st": "0.21",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4366",
+      "racer_name": "前沢 丈史",
+      "time": "1′15″8",
+      "st": "0.19",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "5112",
+      "racer_name": "砂長 知輝",
+      "time": "1′15″9",
+      "st": "0.26",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "4374",
+      "racer_name": "永田 義紘",
+      "time": "1′16″5",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4753",
+      "racer_name": "森 照夫",
+      "st": "0.17",
+      "course": 5
+    },
+    {
+      "lane": "3",
+      "racer_id": "5064",
+      "racer_name": "品川 二千翔"
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.26
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-1",
+      "amount": 3850,
+      "popularity": 17
+    },
+    "trio": {
+      "combo": "1=4=5",
+      "amount": 210,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 1610,
+      "popularity": 8
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 790,
+      "popularity": 4
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 170,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 580,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 200,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=12&jcd=20&hd=20250204",
+  "generated_at": "2025-11-07T13:22:01.222Z"
+}

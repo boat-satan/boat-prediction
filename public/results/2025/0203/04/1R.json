@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250203",
+    "jcd": "04",
+    "rno": 1,
+    "title": "BTSオラレ上越開設13周年記念",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 13,
+    "wind_speed_m": 1,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4726",
+      "racer_name": "島田 なぎさ",
+      "time": "1′50″0",
+      "st": "0.09",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4400",
+      "racer_name": "加藤 奈月",
+      "time": "1′52″5",
+      "st": "0.17",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "3207",
+      "racer_name": "田村 美和",
+      "time": "1′54″4",
+      "st": "0.09",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5251",
+      "racer_name": "沼田 七華",
+      "time": "1′55″7",
+      "st": "0.11",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5320",
+      "racer_name": "岩崎 麗子",
+      "st": "0.13",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "5390",
+      "racer_name": "高橋 涼夏",
+      "st": "0.18",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.09
+    },
+    {
+      "lane": 2,
+      "st": 0.09
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.13
+    },
+    {
+      "lane": 5,
+      "st": 0.17
+    },
+    {
+      "lane": 6,
+      "st": 0.18
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-5-2",
+      "amount": 710,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=2=5",
+      "amount": 200,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-5",
+      "amount": 410,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 420,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 120,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=04&hd=20250203",
+  "generated_at": "2025-11-07T13:18:20.293Z"
+}

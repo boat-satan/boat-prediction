@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250224",
+    "jcd": "13",
+    "rno": 2,
+    "title": "BOATBoycup〜まくってちょ〜うだい！！〜",
+    "decision": "まくり",
+    "weather_sky": "曇り",
+    "wind_dir": 17,
+    "wind_speed_m": 0,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "5017",
+      "racer_name": "澤田 尚也",
+      "time": "1′48″4",
+      "st": "0.12",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3784",
+      "racer_name": "中島 友和",
+      "time": "1′50″4",
+      "st": "0.21",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4449",
+      "racer_name": "中嶋 達也",
+      "time": "1′51″1",
+      "st": "0.26",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "3653",
+      "racer_name": "品川 賢次",
+      "time": "1′51″8",
+      "st": "0.23",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4553",
+      "racer_name": "坪口 竜也",
+      "time": "1′52″7",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "4405",
+      "racer_name": "南野 利騰",
+      "time": "1′54″0",
+      "st": "0.15",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.21
+    },
+    {
+      "lane": 2,
+      "st": 0.26
+    },
+    {
+      "lane": 3,
+      "st": 0.23
+    },
+    {
+      "lane": 4,
+      "st": 0.12
+    },
+    {
+      "lane": 5,
+      "st": 0.15
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-1-2",
+      "amount": 2800,
+      "popularity": 11
+    },
+    "trio": {
+      "combo": "1=2=4",
+      "amount": 840,
+      "popularity": 6
+    },
+    "exacta": {
+      "combo": "4-1",
+      "amount": 460,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 260,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 140,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 180,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=13&hd=20250224",
+  "generated_at": "2025-11-07T14:00:07.872Z"
+}

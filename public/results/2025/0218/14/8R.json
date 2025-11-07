@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "date": "20250218",
+    "jcd": "14",
+    "rno": 8,
+    "title": "UZUHALLオープン5周年記念競走",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": 5,
+    "wind_speed_m": 6,
+    "wave_height_cm": 6
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "3176",
+      "racer_name": "長谷川 巌",
+      "time": "1′58″8",
+      "st": "0.21",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "5069",
+      "racer_name": "山崎 小葉音",
+      "time": "2′01″8",
+      "st": "0.14",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "3432",
+      "racer_name": "宮迫 暢彦",
+      "time": "2′05″0",
+      "st": "0.21",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "4274",
+      "racer_name": "長畑 友輔",
+      "time": "2′08″0",
+      "st": "0.19",
+      "course": 3
+    },
+    {
+      "lane": "1",
+      "racer_id": "4458",
+      "racer_name": "抹香 雄三",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "lane": "5",
+      "racer_id": "5317",
+      "racer_name": "長尾 萌加",
+      "st": "0.23",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.21
+    },
+    {
+      "lane": 3,
+      "st": 0.19
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.23
+    },
+    {
+      "lane": 6,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-6-4",
+      "amount": 57340,
+      "popularity": 91
+    },
+    "trio": {
+      "combo": "2=4=6",
+      "amount": 3860,
+      "popularity": 12
+    },
+    "exacta": {
+      "combo": "2-6",
+      "amount": 11010,
+      "popularity": 24
+    },
+    "quinella": {
+      "combo": "2=6",
+      "amount": 2870,
+      "popularity": 12
+    },
+    "wide": [
+      {
+        "combo": "2=6",
+        "amount": 1310,
+        "popularity": 14
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 950,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 360,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=14&hd=20250218",
+  "generated_at": "2025-11-07T13:48:38.249Z"
+}

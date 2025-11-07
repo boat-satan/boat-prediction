@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250212",
+    "jcd": "17",
+    "rno": 12,
+    "title": "第14回やまだ屋「桐葉菓」杯",
+    "decision": "逃げ",
+    "weather_sky": "雨",
+    "wind_dir": 5,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3744",
+      "racer_name": "徳増 秀樹",
+      "time": "1′49″2",
+      "st": "0.13",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4290",
+      "racer_name": "稲田 浩二",
+      "time": "1′50″9",
+      "st": "0.07",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4134",
+      "racer_name": "杉山 貴博",
+      "time": "1′51″9",
+      "st": "0.13",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4653",
+      "racer_name": "小野 達哉",
+      "time": "1′52″4",
+      "st": "0.10",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "4472",
+      "racer_name": "尾嶋 一広",
+      "time": "1′52″8",
+      "st": "0.10",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "4826",
+      "racer_name": "井上 一輝",
+      "time": "1′56″7",
+      "st": "0.10",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.13
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 3,
+      "st": 0.07
+    },
+    {
+      "lane": 4,
+      "st": 0.1
+    },
+    {
+      "lane": 5,
+      "st": 0.1
+    },
+    {
+      "lane": 6,
+      "st": 0.1
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 1470,
+      "popularity": 3
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 720,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 370,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 390,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 110,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 110,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=12&jcd=17&hd=20250212",
+  "generated_at": "2025-11-07T13:37:19.212Z"
+}

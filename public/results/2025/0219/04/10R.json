@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "date": "20250219",
+    "jcd": "04",
+    "rno": 10,
+    "title": "第24回JLC杯 ルーキーシリーズ第3戦",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 13,
+    "wind_speed_m": 7,
+    "wave_height_cm": 7
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "4907",
+      "racer_name": "小池 修平",
+      "time": "1′14″9",
+      "st": "0.18",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "5170",
+      "racer_name": "佐藤 太亮",
+      "time": "1′15″6",
+      "st": "0.19",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5150",
+      "racer_name": "坂本 雄紀",
+      "time": "1′16″7",
+      "st": "0.25",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5175",
+      "racer_name": "島崎 丈一朗",
+      "time": "1′18″5",
+      "st": "0.33",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "5285",
+      "racer_name": "若林 麗",
+      "st": "0.25",
+      "course": 5
+    },
+    {
+      "lane": "4",
+      "racer_id": "5185",
+      "racer_name": "加藤 優弥"
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.25
+    },
+    {
+      "lane": 3,
+      "st": 0.33
+    },
+    {
+      "lane": 6,
+      "st": 0.18
+    },
+    {
+      "lane": 5,
+      "st": 0.25
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-1-2",
+      "amount": 700,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 140,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "6-1",
+      "amount": 380,
+      "popularity": 1
+    },
+    "quinella": {
+      "combo": "1=6",
+      "amount": 180,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=6",
+        "amount": 120,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 160,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 250,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=04&hd=20250219",
+  "generated_at": "2025-11-07T13:49:42.575Z"
+}

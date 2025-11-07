@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250211",
+    "jcd": "20",
+    "rno": 7,
+    "title": "若松夜王S第4戦ニッカン・コム杯若松クラシック",
+    "decision": "抜き",
+    "weather_sky": "晴",
+    "wind_dir": 6,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "4357",
+      "racer_name": "田中 和也",
+      "time": "1′49″0",
+      "st": "0.12",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "3502",
+      "racer_name": "渡邉 英児",
+      "time": "1′51″4",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4184",
+      "racer_name": "渡邊 雄一郎",
+      "time": "1′52″2",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3703",
+      "racer_name": "鳥飼 眞",
+      "time": "1′53″3",
+      "st": "0.15",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3286",
+      "racer_name": "坂東 満",
+      "st": "0.14",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "3072",
+      "racer_name": "西田 靖",
+      "st": "0.15",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 3,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.15
+    },
+    {
+      "lane": 6,
+      "st": 0.12
+    },
+    {
+      "lane": 5,
+      "st": 0.14
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-2-1",
+      "amount": 11580,
+      "popularity": 33
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 340,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "6-2",
+      "amount": 4220,
+      "popularity": 10
+    },
+    "quinella": {
+      "combo": "2=6",
+      "amount": 2280,
+      "popularity": 8
+    },
+    "wide": [
+      {
+        "combo": "2=6",
+        "amount": 320,
+        "popularity": 6
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 1360,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 300,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=20&hd=20250211",
+  "generated_at": "2025-11-07T13:35:11.961Z"
+}

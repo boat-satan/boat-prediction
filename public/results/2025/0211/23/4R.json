@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "date": "20250211",
+    "jcd": "23",
+    "rno": 4,
+    "title": "ウインターモーニングバトル",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 16,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "5193",
+      "racer_name": "米丸 乃絵",
+      "time": "2′00″5",
+      "st": "0.14",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "3989",
+      "racer_name": "熊本 英一",
+      "time": "2′05″0",
+      "st": "0.20",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5297",
+      "racer_name": "南 彩寧",
+      "time": "2′08″0",
+      "st": "0.19",
+      "course": 6
+    },
+    {
+      "lane": "2",
+      "racer_id": "4114",
+      "racer_name": "深澤 達徳",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "lane": "3",
+      "racer_id": "4630",
+      "racer_name": "岩永 雅人",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "lane": "1",
+      "racer_id": "3350",
+      "racer_name": "藤本 佳史",
+      "st": "0.17",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.17
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.14
+    },
+    {
+      "lane": 5,
+      "st": 0.2
+    },
+    {
+      "lane": 6,
+      "st": 0.19
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-6",
+      "amount": 53360,
+      "popularity": 65
+    },
+    "trio": {
+      "combo": "4=5=6",
+      "amount": 14830,
+      "popularity": 16
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 3050,
+      "popularity": 12
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 2080,
+      "popularity": 7
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 810,
+        "popularity": 10
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 380,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 410,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=4&jcd=23&hd=20250211",
+  "generated_at": "2025-11-07T13:35:52.169Z"
+}

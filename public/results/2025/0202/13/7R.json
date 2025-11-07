@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250202",
+    "jcd": "13",
+    "rno": 7,
+    "title": "スポーツニッポン杯争奪伊丹市施行71周年記念競走",
+    "decision": "まくり",
+    "weather_sky": "曇り",
+    "wind_dir": 6,
+    "wind_speed_m": 1,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4017",
+      "racer_name": "向井 美鈴",
+      "time": "1′49″0",
+      "st": "0.11",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4536",
+      "racer_name": "喜井 つかさ",
+      "time": "1′50″5",
+      "st": "0.10",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4744",
+      "racer_name": "伊藤 玲奈",
+      "time": "1′52″1",
+      "st": "0.10",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "5180",
+      "racer_name": "藤本 紗弥香",
+      "time": "1′52″7",
+      "st": "0.12",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "5264",
+      "racer_name": "登 みひ果",
+      "time": "1′54″8",
+      "st": "0.18",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "5324",
+      "racer_name": "畑田 希咲",
+      "time": "1′56″2",
+      "st": "0.06",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.18
+    },
+    {
+      "lane": 2,
+      "st": 0.11
+    },
+    {
+      "lane": 3,
+      "st": 0.1
+    },
+    {
+      "lane": 4,
+      "st": 0.1
+    },
+    {
+      "lane": 5,
+      "st": 0.06
+    },
+    {
+      "lane": 6,
+      "st": 0.12
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-4-3",
+      "amount": 2900,
+      "popularity": 12
+    },
+    "trio": {
+      "combo": "2=3=4",
+      "amount": 600,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "2-4",
+      "amount": 810,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "2=4",
+      "amount": 470,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "2=4",
+        "amount": 170,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 770,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=13&hd=20250202",
+  "generated_at": "2025-11-07T13:17:36.393Z"
+}

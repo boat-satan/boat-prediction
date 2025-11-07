@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250217",
+    "jcd": "07",
+    "rno": 4,
+    "title": "愛知バス杯争奪 ABCツアーカップ",
+    "decision": "まくり差し",
+    "weather_sky": "晴",
+    "wind_dir": 1,
+    "wind_speed_m": 6,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "4818",
+      "racer_name": "伏見 俊介",
+      "time": "1′51″7",
+      "st": "0.17",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "3454",
+      "racer_name": "井川 大作",
+      "time": "1′52″5",
+      "st": "0.18",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "5371",
+      "racer_name": "早川 颯太",
+      "time": "1′54″2",
+      "st": "0.16",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "5005",
+      "racer_name": "石田 貴洋",
+      "time": "1′54″6",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "4066",
+      "racer_name": "東本 勝利",
+      "st": "0.23",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "1",
+      "racer_id": "4332",
+      "racer_name": "村上 彰一",
+      "st": "0.21",
+      "course": 1
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.21
+    },
+    {
+      "lane": 2,
+      "st": 0.23
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.16
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-6",
+      "amount": 10240,
+      "popularity": 40
+    },
+    "trio": {
+      "combo": "4=5=6",
+      "amount": 4880,
+      "popularity": 12
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 1520,
+      "popularity": 9
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 1740,
+      "popularity": 7
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 720,
+        "popularity": 8
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 780,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 270,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=4&jcd=07&hd=20250217",
+  "generated_at": "2025-11-07T13:46:03.084Z"
+}

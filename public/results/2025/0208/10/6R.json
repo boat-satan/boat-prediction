@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "date": "20250208",
+    "jcd": "10",
+    "rno": 6,
+    "title": "第68回近畿地区選手権競走",
+    "decision": "差し",
+    "weather_sky": "曇り",
+    "wind_dir": 4,
+    "wind_speed_m": 8,
+    "wave_height_cm": 8
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "4044",
+      "racer_name": "湯川 浩司",
+      "time": "1′15″3",
+      "st": "0.11",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "4446",
+      "racer_name": "和田 兼輔",
+      "time": "1′20″0",
+      "st": "0.12",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "3556",
+      "racer_name": "田中 信一郎",
+      "time": "1′21″6",
+      "st": "0.08",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4456",
+      "racer_name": "鎌倉 涼",
+      "time": "1′24″4",
+      "st": "0.16",
+      "course": 5
+    },
+    {
+      "lane": "4",
+      "racer_id": "3918",
+      "racer_name": "深井 利寿",
+      "st": "0.18",
+      "course": 4
+    },
+    {
+      "lane": "2",
+      "racer_id": "4930",
+      "racer_name": "佐藤 悠",
+      "st": "0.08",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.08
+    },
+    {
+      "lane": 2,
+      "st": 0.08
+    },
+    {
+      "lane": 3,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.18
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.12
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-6-1",
+      "amount": 4420,
+      "popularity": 16
+    },
+    "trio": {
+      "combo": "1=3=6",
+      "amount": 480,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "3-6",
+      "amount": 1480,
+      "popularity": 7
+    },
+    "quinella": {
+      "combo": "3=6",
+      "amount": 1270,
+      "popularity": 6
+    },
+    "wide": [
+      {
+        "combo": "3=6",
+        "amount": 230,
+        "popularity": 2
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 290,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 140,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=6&jcd=10&hd=20250208",
+  "generated_at": "2025-11-07T13:28:28.896Z"
+}

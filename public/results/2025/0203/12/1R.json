@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20250203",
+    "jcd": "12",
+    "rno": 1,
+    "title": "サンケイスポーツ旗争奪第67回GSS競走",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 11,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4422",
+      "racer_name": "永井 亮次",
+      "time": "1′49″9",
+      "st": "0.12",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "5013",
+      "racer_name": "山下 夏鈴",
+      "time": "1′51″4",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4863",
+      "racer_name": "三浦 裕貴",
+      "time": "1′52″7",
+      "st": "0.09",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "5027",
+      "racer_name": "重冨 勇哉",
+      "time": "1′53″3",
+      "st": "0.18",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5272",
+      "racer_name": "松田 真実",
+      "time": "1′55″6",
+      "st": "0.13",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3615",
+      "racer_name": "横田 茂",
+      "time": "1′57″2",
+      "st": "0.16",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.12
+    },
+    {
+      "lane": 2,
+      "st": 0.09
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.13
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.18
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-2",
+      "amount": 700,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 210,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 310,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 210,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 110,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=12&hd=20250203",
+  "generated_at": "2025-11-07T13:19:06.673Z"
+}

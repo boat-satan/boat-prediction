@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20250227",
+    "jcd": "20",
+    "rno": 10,
+    "title": "ヴィーナスS22戦マクール杯ナイトプリンセスカップ",
+    "decision": "まくり",
+    "weather_sky": "曇り",
+    "wind_dir": 6,
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "3",
+      "racer_id": "5193",
+      "racer_name": "米丸 乃絵",
+      "time": "1′48″9",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4590",
+      "racer_name": "渡邉 優美",
+      "time": "1′49″8",
+      "st": "0.16",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4014",
+      "racer_name": "片岡 恵里",
+      "time": "1′52″3",
+      "st": "0.14",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4224",
+      "racer_name": "大橋 栄里佳",
+      "time": "1′53″5",
+      "st": "0.21",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "4987",
+      "racer_name": "島倉 都",
+      "st": "0.15",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "5213",
+      "racer_name": "湯淺 紀香",
+      "st": "0.18",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.14
+    },
+    {
+      "lane": 2,
+      "st": 0.15
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 5,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.21
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "3-4-1",
+      "amount": 1970,
+      "popularity": 7
+    },
+    "trio": {
+      "combo": "1=3=4",
+      "amount": 220,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "3-4",
+      "amount": 1010,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "3=4",
+      "amount": 500,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "3=4",
+        "amount": 120,
+        "popularity": 2
+      }
+    ],
+    "win": {
+      "combo": "3",
+      "amount": 430,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "3",
+        "amount": 140,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=20&hd=20250227",
+  "generated_at": "2025-11-07T14:06:44.687Z"
+}

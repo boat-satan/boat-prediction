@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "date": "20250219",
+    "jcd": "11",
+    "rno": 8,
+    "title": "第8回オールサンケイスポーツ杯",
+    "decision": "まくり",
+    "weather_sky": "晴",
+    "wind_dir": 3,
+    "wind_speed_m": 4,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "4",
+      "racer_id": "3909",
+      "racer_name": "佐々木 康幸",
+      "time": "1′54″4",
+      "st": "0.07",
+      "course": 4
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4273",
+      "racer_name": "佐藤 旭",
+      "time": "1′57″3",
+      "st": "0.14",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "3918",
+      "racer_name": "深井 利寿",
+      "time": "2′00″9",
+      "st": "0.16",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4106",
+      "racer_name": "坂井 康嗣",
+      "time": "2′06″9",
+      "st": "0.19",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "4367",
+      "racer_name": "山口 修路",
+      "st": "0.35",
+      "course": 1
+    },
+    {
+      "lane": "2",
+      "racer_id": "3507",
+      "racer_name": "藤井 徹",
+      "st": "0.31",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.35
+    },
+    {
+      "lane": 2,
+      "st": 0.31
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.07
+    },
+    {
+      "lane": 5,
+      "st": 0.14
+    },
+    {
+      "lane": 6,
+      "st": 0.19
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "4-5-3",
+      "amount": 1870,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "3=4=5",
+      "amount": 1080,
+      "popularity": 2
+    },
+    "exacta": {
+      "combo": "4-5",
+      "amount": 590,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 740,
+      "popularity": 4
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 190,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "4",
+      "amount": 150,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "4",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=11&hd=20250219",
+  "generated_at": "2025-11-07T13:50:20.180Z"
+}
