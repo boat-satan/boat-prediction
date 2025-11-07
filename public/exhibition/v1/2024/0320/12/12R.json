@@ -1,0 +1,123 @@
+{
+  "date": "20240320",
+  "pid": "12",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240320&jcd=12&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:31:11.627Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 4,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4503",
+      "name": "上野 真之介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3896",
+      "name": "上田 洋平",
+      "weight": "52.0kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4757",
+      "name": "山田 祐也",
+      "weight": "52.0kg",
+      "tenjiTime": "7.05",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.05,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4391",
+      "name": "松田 祐季",
+      "weight": "52.2kg",
+      "tenjiTime": "7.05",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.05,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4402",
+      "name": "乙藤 智史",
+      "weight": "52.6kg",
+      "tenjiTime": "7.06",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 7.06,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3915",
+      "name": "繁野谷 圭介",
+      "weight": "52.0kg",
+      "tenjiTime": "7.06",
+      "tilt": "0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.06,
+        "tiltDeg": 0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240305",
+  "pid": "07",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240305&jcd=07&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:03:51.982Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 9,
+    "temperature": 7,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5089",
+      "name": "前田 翔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5033",
+      "name": "藤原 孝斗",
+      "weight": "55.3kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.22",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0022,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5067",
+      "name": "山田 真聖",
+      "weight": "56.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5125",
+      "name": "高井 雄基",
+      "weight": "51.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".33",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.33,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5257",
+      "name": "西丸 侑太朗",
+      "weight": "53.1kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5301",
+      "name": "岩下 巧斗",
+      "weight": "52.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

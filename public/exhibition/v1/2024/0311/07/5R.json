@@ -1,0 +1,123 @@
+{
+  "date": "20240311",
+  "pid": "07",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240311&jcd=07&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:14:51.654Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 13,
+    "temperature": 10,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5092",
+      "name": "篠原 晟弥",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4652",
+      "name": "酒見 峻介",
+      "weight": "52.2kg",
+      "tenjiTime": "6.58",
+      "tilt": "0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.58,
+        "tiltDeg": 0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5230",
+      "name": "石原 凪紗",
+      "weight": "45.5kg",
+      "tenjiTime": "6.57",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.57,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4423",
+      "name": "坂口 貴彦",
+      "weight": "53.3kg",
+      "tenjiTime": "6.58",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.58,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5297",
+      "name": "南 彩寧",
+      "weight": "56.1kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4516",
+      "name": "野口 勝弘",
+      "weight": "51.0kg",
+      "tenjiTime": "6.55",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.55,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

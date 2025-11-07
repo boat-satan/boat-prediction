@@ -1,0 +1,123 @@
+{
+  "date": "20240310",
+  "pid": "24",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240310&jcd=24&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:14:02.837Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 5,
+    "temperature": 11,
+    "waterTemperature": 11,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4683",
+      "name": "向井田 直弥",
+      "weight": "46.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4113",
+      "name": "木村 浩士",
+      "weight": "53.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4846",
+      "name": "佐藤 駿介",
+      "weight": "51.5kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4835",
+      "name": "橋本 明",
+      "weight": "53.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3945",
+      "name": "橋口 真樹",
+      "weight": "52.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4213",
+      "name": "重富 伸也",
+      "weight": "52.4kg",
+      "tenjiTime": "6.77",
+      "tilt": "1.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.77,
+        "tiltDeg": 1.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    }
+  ]
+}

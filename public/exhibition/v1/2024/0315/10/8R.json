@@ -1,0 +1,123 @@
+{
+  "date": "20240315",
+  "pid": "10",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240315&jcd=10&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:22:19.486Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 16,
+    "temperature": 13,
+    "waterTemperature": 9,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4912",
+      "name": "中山 将太",
+      "weight": "51.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4677",
+      "name": "片橋 幸貴",
+      "weight": "51.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4253",
+      "name": "西川 真人",
+      "weight": "",
+      "tenjiTime": "",
+      "tilt": "",
+      "st": "",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": null,
+        "tenjiSec": null,
+        "tiltDeg": null,
+        "stSec": null,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3158",
+      "name": "島川 光男",
+      "weight": "52.4kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3855",
+      "name": "大熊 辰弥",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3422",
+      "name": "服部 幸男",
+      "weight": "55.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

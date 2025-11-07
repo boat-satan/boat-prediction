@@ -1,0 +1,123 @@
+{
+  "date": "20240307",
+  "pid": "07",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240307&jcd=07&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:07:36.306Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 8,
+    "waterTemperature": 9,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5033",
+      "name": "藤原 孝斗",
+      "weight": "54.4kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5243",
+      "name": "三馬 崇史",
+      "weight": "54.1kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5159",
+      "name": "笠間 憲哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5064",
+      "name": "品川 二千翔",
+      "weight": "52.3kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".36",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.36,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5252",
+      "name": "荒木 颯斗",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5076",
+      "name": "石原 光",
+      "weight": "52.8kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

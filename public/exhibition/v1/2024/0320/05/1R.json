@@ -1,0 +1,123 @@
+{
+  "date": "20240320",
+  "pid": "05",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240320&jcd=05&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:30:37.944Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 15,
+    "temperature": 9.5,
+    "waterTemperature": 13,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5110",
+      "name": "杉山 喜一",
+      "weight": "51.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4495",
+      "name": "森 晋太郎",
+      "weight": "54.1kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3988",
+      "name": "古川 誠之",
+      "weight": "54.2kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5253",
+      "name": "藤井 太雅",
+      "weight": "56.1kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3888",
+      "name": "山本 英志",
+      "weight": "51.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4527",
+      "name": "高野 心吾",
+      "weight": "51.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

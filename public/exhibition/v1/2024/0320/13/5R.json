@@ -1,0 +1,123 @@
+{
+  "date": "20240320",
+  "pid": "13",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240320&jcd=13&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:31:15.664Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 14,
+    "temperature": 8.5,
+    "waterTemperature": 9.7,
+    "waveHeight": 0.03,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3939",
+      "name": "渡辺 真至",
+      "weight": "52.9kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4019",
+      "name": "笠原 亮",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4052",
+      "name": "興津 藍",
+      "weight": "51.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3538",
+      "name": "菊池 峰晴",
+      "weight": "53.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.23",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0023,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4332",
+      "name": "村上 彰一",
+      "weight": "55.9kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5019",
+      "name": "柴田 百恵",
+      "weight": "45.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.25",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0025,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240316",
+  "pid": "03",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240316&jcd=03&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:23:26.540Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 6,
+    "temperature": 17,
+    "waterTemperature": 11,
+    "waveHeight": 0.2,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3843",
+      "name": "上之 晃弘",
+      "weight": "53.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5141",
+      "name": "大澤 風葵",
+      "weight": "52.3kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4793",
+      "name": "金子 萌",
+      "weight": "52.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4603",
+      "name": "谷川 将太",
+      "weight": "53.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5278",
+      "name": "田中 駿兵",
+      "weight": "52.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5228",
+      "name": "若林 樹蘭",
+      "weight": "52.2kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

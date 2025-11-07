@@ -1,0 +1,123 @@
+{
+  "date": "20240329",
+  "pid": "12",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240329&jcd=12&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:47:22.951Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 16,
+    "waterTemperature": 14,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4238",
+      "name": "毒島 誠",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4061",
+      "name": "萩原 秀人",
+      "weight": "52.7kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4024",
+      "name": "井口 佳典",
+      "weight": "52.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4643",
+      "name": "近江 翔吾",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4522",
+      "name": "古澤 光紀",
+      "weight": "53.6kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4586",
+      "name": "磯部 誠",
+      "weight": "53.8kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240302",
+  "pid": "03",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240302&jcd=03&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:58:33.328Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 10,
+    "temperature": 8,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4608",
+      "name": "荒井 翔伍",
+      "weight": "52.2kg",
+      "tenjiTime": "6.59",
+      "tilt": "0.5",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.59,
+        "tiltDeg": 0.5,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4292",
+      "name": "麻生 慎介",
+      "weight": "52.5kg",
+      "tenjiTime": "6.58",
+      "tilt": "1.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.58,
+        "tiltDeg": 1,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4483",
+      "name": "北野 輝季",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4839",
+      "name": "四宮 与寛",
+      "weight": "52.1kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3499",
+      "name": "市川 哲也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.58",
+      "tilt": "1.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.58,
+        "tiltDeg": 1,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4500",
+      "name": "山田 康二",
+      "weight": "53.1kg",
+      "tenjiTime": "6.52",
+      "tilt": "1.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.52,
+        "tiltDeg": 1,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

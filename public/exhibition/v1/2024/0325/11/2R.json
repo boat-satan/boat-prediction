@@ -1,0 +1,123 @@
+{
+  "date": "20240325",
+  "pid": "11",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240325&jcd=11&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:40:10.298Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 8,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4960",
+      "name": "黒野 元基",
+      "weight": "52.3kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4587",
+      "name": "木田 峰由季",
+      "weight": "53.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4705",
+      "name": "吉川 勇作",
+      "weight": "53.6kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4648",
+      "name": "木村 亮太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4232",
+      "name": "笠 雅雄",
+      "weight": "58.1kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 58.1,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3582",
+      "name": "吉川 昭男",
+      "weight": "52.2kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

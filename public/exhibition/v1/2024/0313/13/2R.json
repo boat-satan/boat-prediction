@@ -1,0 +1,123 @@
+{
+  "date": "20240313",
+  "pid": "13",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240313&jcd=13&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:18:56.177Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 6,
+    "temperature": 10,
+    "waterTemperature": 8.1,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4314",
+      "name": "青木 幸太郎",
+      "weight": "51.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4564",
+      "name": "山本 景士郎",
+      "weight": "52.3kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4385",
+      "name": "鈴木 祐美子",
+      "weight": "48.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3635",
+      "name": "石田 政吾",
+      "weight": "52.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4992",
+      "name": "廣瀬 篤哉",
+      "weight": "56.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4619",
+      "name": "伏田 裕隆",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "3.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": 3,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

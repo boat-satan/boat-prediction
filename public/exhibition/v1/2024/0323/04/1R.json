@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "04",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=04&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:35:52.735Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 7,
+    "waterTemperature": 12,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5135",
+      "name": "仲 航太",
+      "weight": "53.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5082",
+      "name": "一色 凌雅",
+      "weight": "58.8kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.8,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5256",
+      "name": "中山 翔太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5028",
+      "name": "原田 才一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5278",
+      "name": "田中 駿兵",
+      "weight": "52.1kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5211",
+      "name": "高井 駿弥",
+      "weight": "50.0kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

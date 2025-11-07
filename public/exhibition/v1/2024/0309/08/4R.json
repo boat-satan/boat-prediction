@@ -1,0 +1,123 @@
+{
+  "date": "20240309",
+  "pid": "08",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240309&jcd=08&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:11:02.984Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 13,
+    "temperature": 5,
+    "waterTemperature": 10,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3999",
+      "name": "大瀧 明日香",
+      "weight": "46.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3518",
+      "name": "倉田 郁美",
+      "weight": "48.3kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.3,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4909",
+      "name": "薮内 瑞希",
+      "weight": "45.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4730",
+      "name": "土屋 実沙希",
+      "weight": "47.8kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.8,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5056",
+      "name": "西岡 成美",
+      "weight": "45.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5287",
+      "name": "滝沢 織寧",
+      "weight": "47.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    }
+  ]
+}

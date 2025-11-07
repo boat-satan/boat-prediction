@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "21",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=21&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:37:15.322Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 5,
+    "temperature": 16,
+    "waterTemperature": 13,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4471",
+      "name": "新田 泰章",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4942",
+      "name": "柴田 朋哉",
+      "weight": "53.1kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4209",
+      "name": "藤田 竜弘",
+      "weight": "56.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4065",
+      "name": "金田 幸子",
+      "weight": "43.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 43.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3920",
+      "name": "正木 聖賢",
+      "weight": "53.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4910",
+      "name": "中村 泰平",
+      "weight": "53.3kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240319",
+  "pid": "01",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240319&jcd=01&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:28:32.125Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 10,
+    "temperature": 9,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4105",
+      "name": "松下 直也",
+      "weight": "52.9kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5252",
+      "name": "荒木 颯斗",
+      "weight": "52.1kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3909",
+      "name": "佐々木 康幸",
+      "weight": "52.6kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3107",
+      "name": "平岡 重典",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3156",
+      "name": "金子 良昭",
+      "weight": "52.9kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3268",
+      "name": "森 竜也",
+      "weight": "52.1kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

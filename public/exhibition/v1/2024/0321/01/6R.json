@@ -1,0 +1,123 @@
+{
+  "date": "20240321",
+  "pid": "01",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240321&jcd=01&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:32:07.126Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 9,
+    "windDirNum": 2,
+    "temperature": 4,
+    "waterTemperature": 7,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4188",
+      "name": "久田 敏之",
+      "weight": "52.0kg",
+      "tenjiTime": "7.23",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.23,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3848",
+      "name": "川上 聡介",
+      "weight": "56.0kg",
+      "tenjiTime": "7.17",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56,
+        "tenjiSec": 7.17,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5252",
+      "name": "荒木 颯斗",
+      "weight": "52.9kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": "F.27",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.0027,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3419",
+      "name": "栗原 謙治",
+      "weight": "55.4kg",
+      "tenjiTime": "7.31",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 7.31,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5150",
+      "name": "坂本 雄紀",
+      "weight": "51.5kg",
+      "tenjiTime": "7.13",
+      "tilt": "0.5",
+      "st": "F.26",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.13,
+        "tiltDeg": 0.5,
+        "stSec": 0.0026,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "54.1kg",
+      "tenjiTime": "7.24",
+      "tilt": "0.0",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 7.24,
+        "tiltDeg": 0,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    }
+  ]
+}

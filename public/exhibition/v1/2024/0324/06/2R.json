@@ -1,0 +1,123 @@
+{
+  "date": "20240324",
+  "pid": "06",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240324&jcd=06&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:38:07.892Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 11,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4200",
+      "name": "早川 尚人",
+      "weight": "53.3kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4488",
+      "name": "小山 勉",
+      "weight": "51.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3919",
+      "name": "村上 純",
+      "weight": "55.4kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3907",
+      "name": "村越 篤",
+      "weight": "53.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4840",
+      "name": "鈴木 秀茉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3876",
+      "name": "中辻 崇人",
+      "weight": "53.2kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

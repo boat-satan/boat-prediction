@@ -1,0 +1,123 @@
+{
+  "date": "20240302",
+  "pid": "17",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240302&jcd=17&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:59:25.733Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 1,
+    "temperature": 4,
+    "waterTemperature": 11,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4501",
+      "name": "樋口 由加里",
+      "weight": "46.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3470",
+      "name": "新田 芳美",
+      "weight": "46.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4499",
+      "name": "滝川 真由子",
+      "weight": "46.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3801",
+      "name": "五反田 忍",
+      "weight": "49.7kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.7,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5231",
+      "name": "寺田 空詩",
+      "weight": "47.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5045",
+      "name": "平川 香織",
+      "weight": "47.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    }
+  ]
+}

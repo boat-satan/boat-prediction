@@ -1,0 +1,123 @@
+{
+  "date": "20240310",
+  "pid": "01",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240310&jcd=01&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:12:38.363Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 2,
+    "temperature": 6,
+    "waterTemperature": 7,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3790",
+      "name": "佐口 達也",
+      "weight": "53.4kg",
+      "tenjiTime": "7.44",
+      "tilt": "0.0",
+      "st": "F.25",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 7.44,
+        "tiltDeg": 0,
+        "stSec": 0.0025,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4452",
+      "name": "松尾 祭",
+      "weight": "52.1kg",
+      "tenjiTime": "7.37",
+      "tilt": "0.0",
+      "st": "F.20",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.37,
+        "tiltDeg": 0,
+        "stSec": 0.002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4046",
+      "name": "谷村 啓司",
+      "weight": "51.5kg",
+      "tenjiTime": "7.33",
+      "tilt": "0.0",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.33,
+        "tiltDeg": 0,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3922",
+      "name": "菅沼 佳昭",
+      "weight": "51.5kg",
+      "tenjiTime": "7.29",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.29,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5234",
+      "name": "塚越 海斗",
+      "weight": "52.3kg",
+      "tenjiTime": "7.36",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.36,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4779",
+      "name": "伊倉 光",
+      "weight": "52.0kg",
+      "tenjiTime": "7.56",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240302",
+  "pid": "06",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240302&jcd=06&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:58:46.108Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 1,
+    "temperature": 6,
+    "waterTemperature": 11,
+    "waveHeight": 0.03,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3775",
+      "name": "泉 啓文",
+      "weight": "57.2kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.2,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3268",
+      "name": "森 竜也",
+      "weight": "52.0kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3400",
+      "name": "樋江井 愼祐",
+      "weight": "60.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 60,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3661",
+      "name": "柳瀬 興志",
+      "weight": "57.8kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.8,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3501",
+      "name": "川上 昇平",
+      "weight": "55.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3535",
+      "name": "渡 修平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

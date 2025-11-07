@@ -1,0 +1,123 @@
+{
+  "date": "20240303",
+  "pid": "04",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240303&jcd=04&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:00:11.574Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 8,
+    "waterTemperature": 11,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3591",
+      "name": "後藤 孝義",
+      "weight": "52.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3736",
+      "name": "岡本 猛",
+      "weight": "52.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4446",
+      "name": "和田 兼輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4804",
+      "name": "高田 ひかる",
+      "weight": "47.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4091",
+      "name": "荒田 泰明",
+      "weight": "53.6kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4352",
+      "name": "下條 雄太郎",
+      "weight": "52.1kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240318",
+  "pid": "24",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240318&jcd=24&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:28:30.705Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 13,
+    "waterTemperature": 14,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4276",
+      "name": "鈴木 勝博",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4150",
+      "name": "山田 雄太",
+      "weight": "56.2kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.2,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4259",
+      "name": "真庭 明志",
+      "weight": "52.4kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4077",
+      "name": "品田 直樹",
+      "weight": "51.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4191",
+      "name": "赤羽 克也",
+      "weight": "52.7kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4700",
+      "name": "金子 和之",
+      "weight": "52.1kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.28",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0028000000000000004,
+        "isF": 1
+      }
+    }
+  ]
+}

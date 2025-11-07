@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "11",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=11&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:36:31.823Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4568",
+      "name": "廣瀬 真也",
+      "weight": "50.5kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4514",
+      "name": "上條 嘉嗣",
+      "weight": "52.3kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4232",
+      "name": "笠 雅雄",
+      "weight": "58.6kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.6,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3606",
+      "name": "川北 浩貴",
+      "weight": "52.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3251",
+      "name": "平石 和男",
+      "weight": "50.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4705",
+      "name": "吉川 勇作",
+      "weight": "54.3kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

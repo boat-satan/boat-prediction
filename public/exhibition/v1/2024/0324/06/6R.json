@@ -1,0 +1,123 @@
+{
+  "date": "20240324",
+  "pid": "06",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240324&jcd=06&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:37:57.165Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 9,
+    "temperature": 11,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3558",
+      "name": "山本 浩次",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3659",
+      "name": "藤生 雄人",
+      "weight": "52.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4969",
+      "name": "町田 洸希",
+      "weight": "52.1kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4821",
+      "name": "妻鳥 晋也",
+      "weight": "55.6kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5316",
+      "name": "村松 将平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4532",
+      "name": "秋元 哲",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    }
+  ]
+}

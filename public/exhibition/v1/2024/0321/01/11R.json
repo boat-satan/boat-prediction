@@ -1,0 +1,123 @@
+{
+  "date": "20240321",
+  "pid": "01",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240321&jcd=01&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:32:20.762Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 2,
+    "temperature": 3,
+    "waterTemperature": 7,
+    "waveHeight": 0.06,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4090",
+      "name": "中村 尊",
+      "weight": "53.2kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4308",
+      "name": "河村 了",
+      "weight": "52.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4137",
+      "name": "君島 秀三",
+      "weight": "52.5kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4360",
+      "name": "庄司 孝輔",
+      "weight": "52.6kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4578",
+      "name": "藤山 雅弘",
+      "weight": "52.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4654",
+      "name": "篠田 優也",
+      "weight": "53.7kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240312",
+  "pid": "16",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240312&jcd=16&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:17:31.228Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 9,
+    "waterTemperature": 10,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4610",
+      "name": "佐藤 大佑",
+      "weight": "53.1kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5002",
+      "name": "上田 健太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4558",
+      "name": "宮野 仁",
+      "weight": "53.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".34",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.34,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3653",
+      "name": "品川 賢次",
+      "weight": "53.1kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4978",
+      "name": "山田 和佐",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5172",
+      "name": "田村 慶",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

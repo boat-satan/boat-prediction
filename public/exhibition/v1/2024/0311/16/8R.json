@@ -1,0 +1,123 @@
+{
+  "date": "20240311",
+  "pid": "16",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240311&jcd=16&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:15:42.067Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 11,
+    "temperature": 10,
+    "waterTemperature": 10,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4133",
+      "name": "高橋 正男",
+      "weight": "52.7kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4407",
+      "name": "鹿島 敏弘",
+      "weight": "55.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4978",
+      "name": "山田 和佐",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4581",
+      "name": "吉村 誠",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5059",
+      "name": "冨田 祥",
+      "weight": "52.6kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4584",
+      "name": "村岡 賢人",
+      "weight": "52.1kg",
+      "tenjiTime": "6.70",
+      "tilt": "1.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.7,
+        "tiltDeg": 1,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    }
+  ]
+}

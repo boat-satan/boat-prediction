@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "10",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=10&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:36:28.859Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 16,
+    "temperature": 7,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3877",
+      "name": "松浦 博人",
+      "weight": "57.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5088",
+      "name": "高憧 四季",
+      "weight": "45.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4952",
+      "name": "吉武 真也",
+      "weight": "52.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5038",
+      "name": "金田 智博",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4040",
+      "name": "廣瀬 将亨",
+      "weight": "56.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

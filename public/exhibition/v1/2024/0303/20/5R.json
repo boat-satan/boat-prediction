@@ -1,0 +1,123 @@
+{
+  "date": "20240303",
+  "pid": "20",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240303&jcd=20&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:01:27.757Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 12,
+    "temperature": 8,
+    "waterTemperature": 7,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4028",
+      "name": "田村 隆信",
+      "weight": "54.4kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3484",
+      "name": "芝田 浩治",
+      "weight": "52.4kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4405",
+      "name": "南野 利騰",
+      "weight": "52.7kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4529",
+      "name": "嶋 義信",
+      "weight": "55.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4890",
+      "name": "石川 諒",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5188",
+      "name": "武井 莉里佳",
+      "weight": "45.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    }
+  ]
+}

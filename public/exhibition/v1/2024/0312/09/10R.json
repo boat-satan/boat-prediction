@@ -1,0 +1,123 @@
+{
+  "date": "20240312",
+  "pid": "09",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240312&jcd=09&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:16:52.028Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3232",
+      "name": "山川 美由紀",
+      "weight": "47.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4313",
+      "name": "西村 美智子",
+      "weight": "48.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3280",
+      "name": "垣内 清美",
+      "weight": "49.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3474",
+      "name": "松瀬 弘美",
+      "weight": "46.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4519",
+      "name": "清水 沙樹",
+      "weight": "50.1kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.1,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4642",
+      "name": "松尾 夏海",
+      "weight": "46.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

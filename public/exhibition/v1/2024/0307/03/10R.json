@@ -1,0 +1,123 @@
+{
+  "date": "20240307",
+  "pid": "03",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240307&jcd=03&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:07:24.214Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 16,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3951",
+      "name": "石川 吉鎬",
+      "weight": "56.1kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4003",
+      "name": "表 憲一",
+      "weight": "53.1kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5095",
+      "name": "小原 聡将",
+      "weight": "52.2kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4440",
+      "name": "萩原 知哉",
+      "weight": "52.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4129",
+      "name": "宇野 博之",
+      "weight": "55.5kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4693",
+      "name": "松下 誉士",
+      "weight": "52.2kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

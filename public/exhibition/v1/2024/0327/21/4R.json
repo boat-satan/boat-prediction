@@ -1,0 +1,123 @@
+{
+  "date": "20240327",
+  "pid": "21",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240327&jcd=21&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:44:36.186Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 11,
+    "temperature": 11,
+    "waterTemperature": 14,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3024",
+      "name": "西島 義則",
+      "weight": "54.8kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4764",
+      "name": "小池 礼乃",
+      "weight": "47.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4325",
+      "name": "新出 浩司",
+      "weight": "52.1kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3652",
+      "name": "森下 勇",
+      "weight": "54.8kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3662",
+      "name": "大庭 元明",
+      "weight": "54.1kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4697",
+      "name": "國弘 翔平",
+      "weight": "50.5kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": "F.21",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.0021,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240309",
+  "pid": "24",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240309&jcd=24&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:12:46.096Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 11,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3349",
+      "name": "吉田 一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4126",
+      "name": "吉本 玲緒",
+      "weight": "58.5kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.5,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4299",
+      "name": "中島 浩哉",
+      "weight": "55.7kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.7,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4747",
+      "name": "山戸 信二",
+      "weight": "51.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5238",
+      "name": "笹木 香吾",
+      "weight": "53.9kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5167",
+      "name": "小川 竜太朗",
+      "weight": "52.2kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    }
+  ]
+}

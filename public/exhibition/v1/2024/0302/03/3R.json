@@ -1,0 +1,123 @@
+{
+  "date": "20240302",
+  "pid": "03",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240302&jcd=03&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:58:22.804Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 12,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4095",
+      "name": "福来 剛",
+      "weight": "52.0kg",
+      "tenjiTime": "6.55",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.55,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4294",
+      "name": "古賀 繁輝",
+      "weight": "54.0kg",
+      "tenjiTime": "6.56",
+      "tilt": "1.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.56,
+        "tiltDeg": 1,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4361",
+      "name": "柳生 泰二",
+      "weight": "53.4kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4337",
+      "name": "平本 真之",
+      "weight": "53.7kg",
+      "tenjiTime": "6.54",
+      "tilt": "1.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.54,
+        "tiltDeg": 1,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3952",
+      "name": "中澤 和志",
+      "weight": "52.4kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4024",
+      "name": "井口 佳典",
+      "weight": "52.9kg",
+      "tenjiTime": "6.52",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.52,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

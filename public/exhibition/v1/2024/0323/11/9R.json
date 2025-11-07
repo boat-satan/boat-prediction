@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "11",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=11&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:36:31.738Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4424",
+      "name": "松尾 昂明",
+      "weight": "51.5kg",
+      "tenjiTime": "6.53",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.53,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5020",
+      "name": "宮村 勇哉",
+      "weight": "54.8kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4575",
+      "name": "戸塚 邦好",
+      "weight": "51.5kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4876",
+      "name": "梅木 敬太",
+      "weight": "53.1kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5066",
+      "name": "鈴木 孝明",
+      "weight": "54.1kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3857",
+      "name": "阿波 勝哉",
+      "weight": "55.9kg",
+      "tenjiTime": "6.70",
+      "tilt": "1.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.7,
+        "tiltDeg": 1.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

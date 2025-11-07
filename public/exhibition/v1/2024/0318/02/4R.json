@@ -1,0 +1,123 @@
+{
+  "date": "20240318",
+  "pid": "02",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240318&jcd=02&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:27:08.408Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 9,
+    "windDirNum": 6,
+    "temperature": 12,
+    "waterTemperature": 11,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3942",
+      "name": "寺田 祥",
+      "weight": "53.3kg",
+      "tenjiTime": "7.11",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 7.11,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4459",
+      "name": "片岡 雅裕",
+      "weight": "52.2kg",
+      "tenjiTime": "7.15",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.15,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3415",
+      "name": "松井 繁",
+      "weight": "52.0kg",
+      "tenjiTime": "7.11",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.11,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3946",
+      "name": "赤岩 善生",
+      "weight": "54.3kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4190",
+      "name": "長嶋 万記",
+      "weight": "49.2kg",
+      "tenjiTime": "7.11",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.2,
+        "tenjiSec": 7.11,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4362",
+      "name": "土屋 智則",
+      "weight": "52.4kg",
+      "tenjiTime": "7.12",
+      "tilt": "0.0",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.12,
+        "tiltDeg": 0,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    }
+  ]
+}

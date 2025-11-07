@@ -1,0 +1,123 @@
+{
+  "date": "20240301",
+  "pid": "22",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240301&jcd=22&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:57:57.445Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 10,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4413",
+      "name": "水摩 敦",
+      "weight": "51.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3708",
+      "name": "岡部 貴司",
+      "weight": "54.2kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4562",
+      "name": "阪本 勇介",
+      "weight": "54.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3690",
+      "name": "河合 三弘",
+      "weight": "53.0kg",
+      "tenjiTime": "7.03",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 7.03,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4513",
+      "name": "河野 真也",
+      "weight": "52.1kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3251",
+      "name": "平石 和男",
+      "weight": "50.5kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    }
+  ]
+}

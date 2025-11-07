@@ -1,0 +1,123 @@
+{
+  "date": "20240326",
+  "pid": "23",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240326&jcd=23&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:42:59.906Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 9,
+    "windDirNum": 4,
+    "temperature": 11,
+    "waterTemperature": 13,
+    "waveHeight": 0.09,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4364",
+      "name": "池永 太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4933",
+      "name": "板橋 侑我",
+      "weight": "52.4kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4188",
+      "name": "久田 敏之",
+      "weight": "52.0kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4504",
+      "name": "前田 将太",
+      "weight": "53.2kg",
+      "tenjiTime": "7.10",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 7.1,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4757",
+      "name": "山田 祐也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3623",
+      "name": "深川 真二",
+      "weight": "50.5kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    }
+  ]
+}

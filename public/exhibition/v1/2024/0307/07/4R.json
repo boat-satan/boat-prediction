@@ -1,0 +1,123 @@
+{
+  "date": "20240307",
+  "pid": "07",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240307&jcd=07&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:07:48.492Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 13,
+    "temperature": 10,
+    "waterTemperature": 9,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5125",
+      "name": "高井 雄基",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5081",
+      "name": "篠原 飛翔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5090",
+      "name": "生方 靖亜",
+      "weight": "53.4kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5067",
+      "name": "山田 真聖",
+      "weight": "56.6kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.6,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5169",
+      "name": "堀本 翔太",
+      "weight": "48.5kg",
+      "tenjiTime": "6.62",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.5,
+        "tenjiSec": 6.62,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5292",
+      "name": "佐藤 右京",
+      "weight": "57.3kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.3,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

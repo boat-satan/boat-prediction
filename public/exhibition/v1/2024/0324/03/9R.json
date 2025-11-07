@@ -1,0 +1,123 @@
+{
+  "date": "20240324",
+  "pid": "03",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240324&jcd=03&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:37:46.052Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 4,
+    "temperature": 14,
+    "waterTemperature": 12,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4652",
+      "name": "酒見 峻介",
+      "weight": "52.1kg",
+      "tenjiTime": "7.18",
+      "tilt": "0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.18,
+        "tiltDeg": 0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4769",
+      "name": "馬場 剛",
+      "weight": "51.0kg",
+      "tenjiTime": "7.22",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 7.22,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3812",
+      "name": "山崎 聖司",
+      "weight": "52.0kg",
+      "tenjiTime": "7.14",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.14,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4411",
+      "name": "沢田 昭宏",
+      "weight": "54.1kg",
+      "tenjiTime": "7.18",
+      "tilt": "0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 7.18,
+        "tiltDeg": 0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5221",
+      "name": "竹間 隆晟",
+      "weight": "52.1kg",
+      "tenjiTime": "7.01",
+      "tilt": "0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.01,
+        "tiltDeg": 0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3516",
+      "name": "吉原 聖人",
+      "weight": "52.1kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    }
+  ]
+}

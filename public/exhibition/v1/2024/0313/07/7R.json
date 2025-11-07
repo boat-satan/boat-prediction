@@ -1,0 +1,123 @@
+{
+  "date": "20240313",
+  "pid": "07",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240313&jcd=07&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:18:25.772Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 15,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4379",
+      "name": "桑島 和宏",
+      "weight": "55.1kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3692",
+      "name": "竹腰 正樹",
+      "weight": "51.5kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4099",
+      "name": "吉永 則雄",
+      "weight": "52.5kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4652",
+      "name": "酒見 峻介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.64,
+        "tiltDeg": 0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4423",
+      "name": "坂口 貴彦",
+      "weight": "53.1kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5201",
+      "name": "村上 宗太郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.62",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.62,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

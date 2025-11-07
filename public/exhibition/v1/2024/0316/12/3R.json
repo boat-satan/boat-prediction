@@ -1,0 +1,123 @@
+{
+  "date": "20240316",
+  "pid": "12",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240316&jcd=12&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:24:03.973Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 11,
+    "temperature": 16,
+    "waterTemperature": 12,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4056",
+      "name": "小西 英輝",
+      "weight": "52.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3333",
+      "name": "丸尾 義孝",
+      "weight": "52.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4092",
+      "name": "岡部 大輔",
+      "weight": "52.1kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "2878",
+      "name": "富山 弘幸",
+      "weight": "53.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5202",
+      "name": "宮崎 つぐみ",
+      "weight": "47.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4692",
+      "name": "酒井 俊弘",
+      "weight": "52.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "1.5",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.88,
+        "tiltDeg": 1.5,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240318",
+  "pid": "15",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240318&jcd=15&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:27:39.285Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 1,
+    "temperature": 9,
+    "waterTemperature": 10,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4961",
+      "name": "西橋 奈未",
+      "weight": "47.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4443",
+      "name": "津田 裕絵",
+      "weight": "49.8kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.8,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4569",
+      "name": "中澤 宏奈",
+      "weight": "47.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4208",
+      "name": "三浦 永理",
+      "weight": "47.1kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3994",
+      "name": "小野 桜",
+      "weight": "46.5kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4399",
+      "name": "松本 晶恵",
+      "weight": "45.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

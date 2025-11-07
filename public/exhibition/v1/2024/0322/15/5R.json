@@ -1,0 +1,123 @@
+{
+  "date": "20240322",
+  "pid": "15",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240322&jcd=15&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:34:58.193Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 11,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4929",
+      "name": "梅内 夕貴奈",
+      "weight": "47.0kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4240",
+      "name": "今井 裕梨",
+      "weight": "45.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4738",
+      "name": "清埜 翔子",
+      "weight": "47.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3357",
+      "name": "福島 陽子",
+      "weight": "48.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3871",
+      "name": "池田 紫乃",
+      "weight": "44.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5326",
+      "name": "三嶌 さらら",
+      "weight": "47.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    }
+  ]
+}

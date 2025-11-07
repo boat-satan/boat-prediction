@@ -1,0 +1,123 @@
+{
+  "date": "20240311",
+  "pid": "20",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240311&jcd=20&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:15:49.975Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 2,
+    "temperature": 10,
+    "waterTemperature": 12,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4272",
+      "name": "大場 広孝",
+      "weight": "57.2kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.2,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3831",
+      "name": "安藤 裕貴",
+      "weight": "52.6kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5007",
+      "name": "近藤 雄一郎",
+      "weight": "53.4kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4047",
+      "name": "吉永 浩則",
+      "weight": "53.9kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3551",
+      "name": "藤田 美代",
+      "weight": "45.5kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4273",
+      "name": "佐藤 旭",
+      "weight": "53.3kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    }
+  ]
+}

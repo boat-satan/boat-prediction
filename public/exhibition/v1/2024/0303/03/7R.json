@@ -1,0 +1,123 @@
+{
+  "date": "20240303",
+  "pid": "03",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240303&jcd=03&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:00:10.211Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 8,
+    "windDirNum": 6,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.3,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3952",
+      "name": "中澤 和志",
+      "weight": "52.4kg",
+      "tenjiTime": "7.12",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.12,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4292",
+      "name": "麻生 慎介",
+      "weight": "53.5kg",
+      "tenjiTime": "6.95",
+      "tilt": "1.0",
+      "st": ".38",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.95,
+        "tiltDeg": 1,
+        "stSec": 0.38,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3562",
+      "name": "山下 和彦",
+      "weight": "52.2kg",
+      "tenjiTime": "7.19",
+      "tilt": "0.5",
+      "st": ".35",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.19,
+        "tiltDeg": 0.5,
+        "stSec": 0.35,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4084",
+      "name": "杉山 正樹",
+      "weight": "52.2kg",
+      "tenjiTime": "7.30",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.3,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4575",
+      "name": "戸塚 邦好",
+      "weight": "52.0kg",
+      "tenjiTime": "7.27",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.27,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4704",
+      "name": "河野 大",
+      "weight": "52.0kg",
+      "tenjiTime": "",
+      "tilt": "",
+      "st": "",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": null,
+        "tiltDeg": null,
+        "stSec": null,
+        "isF": 0
+      }
+    }
+  ]
+}

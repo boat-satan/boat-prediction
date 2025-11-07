@@ -1,0 +1,123 @@
+{
+  "date": "20240305",
+  "pid": "20",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240305&jcd=20&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:05:06.559Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 6,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4211",
+      "name": "村田 敦",
+      "weight": "59.3kg",
+      "tenjiTime": "7.05",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 59.3,
+        "tenjiSec": 7.05,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4405",
+      "name": "南野 利騰",
+      "weight": "52.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4875",
+      "name": "大塚 康雅",
+      "weight": "51.0kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3427",
+      "name": "大賀 広幸",
+      "weight": "51.5kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4183",
+      "name": "宇野 弥生",
+      "weight": "47.3kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.3,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3912",
+      "name": "川原 正明",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    }
+  ]
+}

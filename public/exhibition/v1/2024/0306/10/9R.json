@@ -1,0 +1,123 @@
+{
+  "date": "20240306",
+  "pid": "10",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240306&jcd=10&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:06:05.002Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 6,
+    "temperature": 7,
+    "waterTemperature": 6,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4697",
+      "name": "國弘 翔平",
+      "weight": "50.0kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4258",
+      "name": "関根 彰人",
+      "weight": "52.0kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4502",
+      "name": "遠藤 エミ",
+      "weight": "45.5kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4491",
+      "name": "田中 堅",
+      "weight": "52.2kg",
+      "tenjiTime": "7.20",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.2,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4873",
+      "name": "蒲原 健太",
+      "weight": "52.5kg",
+      "tenjiTime": "7.20",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 7.2,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4938",
+      "name": "小芦 るり華",
+      "weight": "49.3kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.3,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

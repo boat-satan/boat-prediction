@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "03",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=03&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:35:38.110Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 16,
+    "temperature": 7,
+    "waterTemperature": 12,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3473",
+      "name": "石川 真二",
+      "weight": "52.0kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4133",
+      "name": "高橋 正男",
+      "weight": "53.3kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3303",
+      "name": "渡辺 豊",
+      "weight": "52.0kg",
+      "tenjiTime": "7.09",
+      "tilt": "0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.09,
+        "tiltDeg": 0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4835",
+      "name": "橋本 明",
+      "weight": "53.1kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5137",
+      "name": "川原 涼",
+      "weight": "53.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4581",
+      "name": "吉村 誠",
+      "weight": "52.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "1.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.9,
+        "tiltDeg": 1,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240314",
+  "pid": "20",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240314&jcd=20&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:21:23.153Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 10,
+    "waterTemperature": 12,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3741",
+      "name": "松尾 基成",
+      "weight": "55.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4293",
+      "name": "鈴木 智啓",
+      "weight": "57.6kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.6,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5000",
+      "name": "岡本 翔太郎",
+      "weight": "51.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3551",
+      "name": "藤田 美代",
+      "weight": "46.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4047",
+      "name": "吉永 浩則",
+      "weight": "54.6kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4406",
+      "name": "幸野 史明",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

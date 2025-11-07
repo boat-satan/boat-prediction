@@ -1,0 +1,123 @@
+{
+  "date": "20240302",
+  "pid": "10",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240302&jcd=10&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:58:48.007Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 2,
+    "temperature": 3,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3909",
+      "name": "佐々木 康幸",
+      "weight": "53.6kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "53.8kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4786",
+      "name": "佐藤 博亮",
+      "weight": "52.4kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4019",
+      "name": "笠原 亮",
+      "weight": "52.1kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4497",
+      "name": "桑原 悠",
+      "weight": "52.5kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3745",
+      "name": "橋本 年光",
+      "weight": "52.4kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

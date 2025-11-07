@@ -1,0 +1,123 @@
+{
+  "date": "20240318",
+  "pid": "23",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240318&jcd=23&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:28:26.470Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 6,
+    "temperature": 12,
+    "waterTemperature": 13,
+    "waveHeight": 0.06,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4384",
+      "name": "鶴本 崇文",
+      "weight": "53.4kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4236",
+      "name": "松村 敏",
+      "weight": "52.6kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4214",
+      "name": "林 祐介",
+      "weight": "55.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4121",
+      "name": "富永 修一",
+      "weight": "52.2kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4425",
+      "name": "大井 清貴",
+      "weight": "54.7kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4348",
+      "name": "宮崎 奨",
+      "weight": "52.7kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

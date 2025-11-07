@@ -1,0 +1,123 @@
+{
+  "date": "20240301",
+  "pid": "02",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240301&jcd=02&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:56:22.612Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 6,
+    "temperature": 14,
+    "waterTemperature": 8,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3505",
+      "name": "山田 竜一",
+      "weight": "52.2kg",
+      "tenjiTime": "7.01",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.01,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4298",
+      "name": "宮下 元胤",
+      "weight": "52.4kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4532",
+      "name": "秋元 哲",
+      "weight": "51.5kg",
+      "tenjiTime": "7.23",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.23,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3508",
+      "name": "久富 政弘",
+      "weight": "53.9kg",
+      "tenjiTime": "7.17",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 7.17,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3873",
+      "name": "別府 昌樹",
+      "weight": "51.5kg",
+      "tenjiTime": "7.12",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.12,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4952",
+      "name": "吉武 真也",
+      "weight": "52.5kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

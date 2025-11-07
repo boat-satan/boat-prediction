@@ -1,0 +1,123 @@
+{
+  "date": "20240324",
+  "pid": "10",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240324&jcd=10&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:37:54.133Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 6,
+    "temperature": 11,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5088",
+      "name": "高憧 四季",
+      "weight": "44.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3967",
+      "name": "鈴木 茂高",
+      "weight": "57.2kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.2,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3822",
+      "name": "平尾 崇典",
+      "weight": "50.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5091",
+      "name": "為本 智也",
+      "weight": "55.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.26",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0026,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4210",
+      "name": "松村 康太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4589",
+      "name": "塩崎 桐加",
+      "weight": "49.3kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.3,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

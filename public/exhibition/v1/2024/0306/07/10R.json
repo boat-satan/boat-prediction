@@ -1,0 +1,123 @@
+{
+  "date": "20240306",
+  "pid": "07",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240306&jcd=07&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:05:57.219Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 1,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5075",
+      "name": "中島 秀治",
+      "weight": "52.8kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5034",
+      "name": "若林 義人",
+      "weight": "54.4kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4983",
+      "name": "前田 篤哉",
+      "weight": "52.2kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5191",
+      "name": "飛田 江己",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5081",
+      "name": "篠原 飛翔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5083",
+      "name": "柳瀬 幹太",
+      "weight": "53.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "3.0",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 3,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    }
+  ]
+}

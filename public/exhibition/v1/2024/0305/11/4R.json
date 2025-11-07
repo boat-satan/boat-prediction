@@ -1,0 +1,123 @@
+{
+  "date": "20240305",
+  "pid": "11",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240305&jcd=11&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:04:25.926Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 7,
+    "temperature": 4,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3808",
+      "name": "秋田 健太郎",
+      "weight": "59.7kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.34",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.7,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0034000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4319",
+      "name": "三宅 潤",
+      "weight": "53.4kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3629",
+      "name": "浅見 昌克",
+      "weight": "52.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.9kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4630",
+      "name": "岩永 雅人",
+      "weight": "51.5kg",
+      "tenjiTime": "6.77",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.77,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3024",
+      "name": "西島 義則",
+      "weight": "53.6kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.27",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0027,
+        "isF": 1
+      }
+    }
+  ]
+}

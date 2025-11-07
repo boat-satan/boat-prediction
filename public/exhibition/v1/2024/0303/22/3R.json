@@ -1,0 +1,123 @@
+{
+  "date": "20240303",
+  "pid": "22",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240303&jcd=22&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:01:38.265Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 2,
+    "temperature": 8,
+    "waterTemperature": 12,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3660",
+      "name": "長谷川 親王",
+      "weight": "57.2kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.2,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4562",
+      "name": "阪本 勇介",
+      "weight": "54.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3876",
+      "name": "中辻 崇人",
+      "weight": "53.4kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3708",
+      "name": "岡部 貴司",
+      "weight": "53.7kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3906",
+      "name": "飯山 晃三",
+      "weight": "59.1kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 59.1,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3977",
+      "name": "山本 兼士",
+      "weight": "50.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": ".33",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.33,
+        "isF": 0
+      }
+    }
+  ]
+}

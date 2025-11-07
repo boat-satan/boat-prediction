@@ -1,0 +1,123 @@
+{
+  "date": "20240316",
+  "pid": "03",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240316&jcd=03&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:23:24.455Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 10,
+    "temperature": 19,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5141",
+      "name": "大澤 風葵",
+      "weight": "52.3kg",
+      "tenjiTime": "6.46",
+      "tilt": "0.0",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.46,
+        "tiltDeg": 0,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4167",
+      "name": "片岡 秀樹",
+      "weight": "55.4kg",
+      "tenjiTime": "6.54",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.54,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4134",
+      "name": "杉山 貴博",
+      "weight": "53.2kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5016",
+      "name": "宮田 龍馬",
+      "weight": "52.0kg",
+      "tenjiTime": "6.51",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.51,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3935",
+      "name": "岩津 徹郎",
+      "weight": "54.4kg",
+      "tenjiTime": "6.51",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.51,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5070",
+      "name": "中島 航",
+      "weight": "52.7kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

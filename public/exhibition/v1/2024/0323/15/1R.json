@@ -1,0 +1,123 @@
+{
+  "date": "20240323",
+  "pid": "15",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240323&jcd=15&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:36:25.087Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 10,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3871",
+      "name": "池田 紫乃",
+      "weight": "45.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5200",
+      "name": "筒井 美琴",
+      "weight": "48.9kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".32",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.32,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3357",
+      "name": "福島 陽子",
+      "weight": "48.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3674",
+      "name": "岸 恵子",
+      "weight": "47.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3334",
+      "name": "角 ひとみ",
+      "weight": "46.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5265",
+      "name": "大廣 咲季",
+      "weight": "47.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

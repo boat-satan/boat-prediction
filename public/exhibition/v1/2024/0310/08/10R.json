@@ -1,0 +1,123 @@
+{
+  "date": "20240310",
+  "pid": "08",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240310&jcd=08&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:13:16.910Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 13,
+    "temperature": 7,
+    "waterTemperature": 10,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3302",
+      "name": "谷川 里江",
+      "weight": "46.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".35",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.35,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4190",
+      "name": "長嶋 万記",
+      "weight": "48.7kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.7,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4443",
+      "name": "津田 裕絵",
+      "weight": "48.9kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4791",
+      "name": "黒澤 めぐみ",
+      "weight": "47.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3999",
+      "name": "大瀧 明日香",
+      "weight": "46.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4891",
+      "name": "寺島 美里",
+      "weight": "47.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

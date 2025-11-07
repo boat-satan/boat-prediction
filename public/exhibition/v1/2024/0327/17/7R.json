@@ -1,0 +1,123 @@
+{
+  "date": "20240327",
+  "pid": "17",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240327&jcd=17&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:44:40.954Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 13,
+    "temperature": 12,
+    "waterTemperature": 12,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "54.9kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3685",
+      "name": "荒井 輝年",
+      "weight": "56.6kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.6,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4009",
+      "name": "小林 一樹",
+      "weight": "55.6kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3859",
+      "name": "多羅尾 達之",
+      "weight": "51.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5257",
+      "name": "西丸 侑太朗",
+      "weight": "53.9kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3618",
+      "name": "海野 ゆかり",
+      "weight": "44.5kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

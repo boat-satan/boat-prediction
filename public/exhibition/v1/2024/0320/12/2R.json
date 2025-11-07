@@ -1,0 +1,123 @@
+{
+  "date": "20240320",
+  "pid": "12",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240320&jcd=12&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:30:48.151Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 8,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4382",
+      "name": "高山 智至",
+      "weight": "54.2kg",
+      "tenjiTime": "7.20",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 7.2,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3974",
+      "name": "深山 祐二",
+      "weight": "52.0kg",
+      "tenjiTime": "7.16",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.16,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5055",
+      "name": "眞鳥 章太",
+      "weight": "52.8kg",
+      "tenjiTime": "7.19",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 7.19,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4900",
+      "name": "中田 夕貴",
+      "weight": "47.0kg",
+      "tenjiTime": "7.17",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 7.17,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4046",
+      "name": "谷村 啓司",
+      "weight": "51.5kg",
+      "tenjiTime": "7.16",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.16,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5283",
+      "name": "植木 美帆",
+      "weight": "47.2kg",
+      "tenjiTime": "7.20",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.2,
+        "tenjiSec": 7.2,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

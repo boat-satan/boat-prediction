@@ -1,0 +1,123 @@
+{
+  "date": "20240306",
+  "pid": "10",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240306&jcd=10&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:06:17.703Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 11,
+    "windDirNum": 6,
+    "temperature": 7,
+    "waterTemperature": 7,
+    "waveHeight": 0.11,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5054",
+      "name": "佐々木 大河",
+      "weight": "51.5kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3812",
+      "name": "山崎 聖司",
+      "weight": "52.0kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3439",
+      "name": "大平 誉史明",
+      "weight": "52.0kg",
+      "tenjiTime": "7.15",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.15,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5126",
+      "name": "山下 大輝",
+      "weight": "52.4kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4738",
+      "name": "清埜 翔子",
+      "weight": "47.0kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4961",
+      "name": "西橋 奈未",
+      "weight": "47.2kg",
+      "tenjiTime": "7.06",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.2,
+        "tenjiSec": 7.06,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

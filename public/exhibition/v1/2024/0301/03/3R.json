@@ -1,0 +1,123 @@
+{
+  "date": "20240301",
+  "pid": "03",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240301&jcd=03&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T09:56:41.639Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 10,
+    "temperature": 12,
+    "waterTemperature": 11,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4409",
+      "name": "坂元 浩仁",
+      "weight": "52.9kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4933",
+      "name": "板橋 侑我",
+      "weight": "52.8kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3996",
+      "name": "秋山 直之",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4418",
+      "name": "茅原 悠紀",
+      "weight": "55.1kg",
+      "tenjiTime": "6.78",
+      "tilt": "1.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.78,
+        "tiltDeg": 1,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4575",
+      "name": "戸塚 邦好",
+      "weight": "51.5kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.5",
+      "st": ".45",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0.5,
+        "stSec": 0.45,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4486",
+      "name": "野村 誠",
+      "weight": "51.5kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

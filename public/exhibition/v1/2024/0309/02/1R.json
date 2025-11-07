@@ -1,0 +1,123 @@
+{
+  "date": "20240309",
+  "pid": "02",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240309&jcd=02&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:11:07.457Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 6,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5103",
+      "name": "芝田 京介",
+      "weight": "52.2kg",
+      "tenjiTime": "7.06",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.06,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4429",
+      "name": "豊田 泰洋",
+      "weight": "57.7kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": ".30",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.7,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.3,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3542",
+      "name": "清水 紀克",
+      "weight": "55.1kg",
+      "tenjiTime": "7.08",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 7.08,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5259",
+      "name": "野田 昇吾",
+      "weight": "56.8kg",
+      "tenjiTime": "7.06",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.8,
+        "tenjiSec": 7.06,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3286",
+      "name": "坂東 満",
+      "weight": "52.8kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4041",
+      "name": "小林 基樹",
+      "weight": "53.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

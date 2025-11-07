@@ -1,0 +1,123 @@
+{
+  "date": "20240303",
+  "pid": "02",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240303&jcd=02&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T10:00:19.209Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 14,
+    "temperature": 10,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3508",
+      "name": "久富 政弘",
+      "weight": "53.3kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3679",
+      "name": "飯島 昌弘",
+      "weight": "52.2kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3663",
+      "name": "木山 和幸",
+      "weight": "50.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4173",
+      "name": "岡谷 健吾",
+      "weight": "55.3kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4619",
+      "name": "伏田 裕隆",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5124",
+      "name": "上瀧 絢也",
+      "weight": "52.7kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}
