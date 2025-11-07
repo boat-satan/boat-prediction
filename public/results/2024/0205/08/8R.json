@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240205",
+    "jcd": "08",
+    "rno": 8,
+    "title": "日本空調システム杯",
+    "decision": "まくり",
+    "weather_sky": "雨",
+    "wind_dir": 15,
+    "wind_speed_m": 1,
+    "wave_height_cm": 0
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "5234",
+      "racer_name": "塚越 海斗",
+      "time": "1′50″8",
+      "st": "0.17",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "6",
+      "racer_id": "4569",
+      "racer_name": "中澤 宏奈",
+      "time": "1′52″1",
+      "st": "0.24",
+      "course": 6
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "3346",
+      "racer_name": "宮本 裕之",
+      "time": "1′54″4",
+      "st": "0.33",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3156",
+      "racer_name": "金子 良昭",
+      "time": "1′55″4",
+      "st": "0.41",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "5079",
+      "racer_name": "大石 真央",
+      "st": "0.53",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "3687",
+      "racer_name": "花田 和明",
+      "st": "0.36",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.53
+    },
+    {
+      "lane": 4,
+      "st": 0.41
+    },
+    {
+      "lane": 2,
+      "st": 0.36
+    },
+    {
+      "lane": 3,
+      "st": 0.33
+    },
+    {
+      "lane": 5,
+      "st": 0.17
+    },
+    {
+      "lane": 6,
+      "st": 0.24
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-6-3",
+      "amount": 35250,
+      "popularity": 96
+    },
+    "trio": {
+      "combo": "3=5=6",
+      "amount": 9600,
+      "popularity": 20
+    },
+    "exacta": {
+      "combo": "5-6",
+      "amount": 5000,
+      "popularity": 17
+    },
+    "quinella": {
+      "combo": "5=6",
+      "amount": 3290,
+      "popularity": 11
+    },
+    "wide": [
+      {
+        "combo": "5=6",
+        "amount": 580,
+        "popularity": 8
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 1110,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 340,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=08&hd=20240205",
+  "generated_at": "2025-11-07T15:30:56.065Z"
+}

@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20240223",
+    "jcd": "12",
+    "rno": 8,
+    "title": "デイリースポーツ旗争奪第65回ホワイトベア競走",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 5,
+    "wind_speed_m": 4,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4979",
+      "racer_name": "中野 夢斗",
+      "time": "1′49″5",
+      "st": "0.11",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "3462",
+      "racer_name": "竹上 真司",
+      "time": "1′50″6",
+      "st": "0.15",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4713",
+      "racer_name": "白神 優",
+      "time": "1′52″2",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4513",
+      "racer_name": "河野 真也",
+      "time": "1′54″1",
+      "st": "0.14",
+      "course": 5
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "4257",
+      "racer_name": "古川 健",
+      "time": "1′56″1",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "4952",
+      "racer_name": "吉武 真也",
+      "time": "1′59″6",
+      "st": "0.13",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.11
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.15
+    },
+    {
+      "lane": 5,
+      "st": 0.14
+    },
+    {
+      "lane": 6,
+      "st": 0.13
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-4-2",
+      "amount": 4020,
+      "popularity": 12
+    },
+    "trio": {
+      "combo": "1=2=4",
+      "amount": 690,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "1-4",
+      "amount": 1610,
+      "popularity": 6
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 2840,
+      "popularity": 8
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 460,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 170,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 170,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=12&hd=20240223",
+  "generated_at": "2025-11-07T16:05:58.413Z"
+}

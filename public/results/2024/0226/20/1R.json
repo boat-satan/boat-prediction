@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240226",
+    "jcd": "20",
+    "rno": 1,
+    "title": "夜王S第4戦ニッカン・コム杯スピードスター決定戦",
+    "decision": "抜き",
+    "weather_sky": "晴",
+    "wind_dir": 4,
+    "wind_speed_m": 5,
+    "wave_height_cm": 5
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4752",
+      "racer_name": "西尾 亮輔",
+      "time": "1′49″8",
+      "st": "0.14",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4663",
+      "racer_name": "籾山 佳岳",
+      "time": "1′51″8",
+      "st": "0.22",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4268",
+      "racer_name": "和合 俊介",
+      "time": "1′53″2",
+      "st": "0.14",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "4158",
+      "racer_name": "木場 雄二郎",
+      "time": "1′53″9",
+      "st": "0.17",
+      "course": 3
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "5046",
+      "racer_name": "松山 裕基",
+      "st": "0.22",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "5263",
+      "racer_name": "花田 凱成",
+      "st": "0.29",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.14
+    },
+    {
+      "lane": 2,
+      "st": 0.14
+    },
+    {
+      "lane": 3,
+      "st": 0.17
+    },
+    {
+      "lane": 4,
+      "st": 0.22
+    },
+    {
+      "lane": 5,
+      "st": 0.29
+    },
+    {
+      "lane": 6,
+      "st": 0.22
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-4-1",
+      "amount": 4640,
+      "popularity": 17
+    },
+    "trio": {
+      "combo": "1=2=4",
+      "amount": 430,
+      "popularity": 3
+    },
+    "exacta": {
+      "combo": "2-4",
+      "amount": 1560,
+      "popularity": 8
+    },
+    "quinella": {
+      "combo": "2=4",
+      "amount": 1220,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "2=4",
+        "amount": 390,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 430,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 170,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=20&hd=20240226",
+  "generated_at": "2025-11-07T16:12:25.615Z"
+}

@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "date": "20240226",
+    "jcd": "05",
+    "rno": 2,
+    "title": "男女W優勝戦",
+    "decision": "差し",
+    "weather_sky": "晴",
+    "wind_dir": 1,
+    "wind_speed_m": 3,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "2",
+      "racer_id": "4244",
+      "racer_name": "鈴木 成美",
+      "time": "1′56″7",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3207",
+      "racer_name": "田村 美和",
+      "time": "1′58″9",
+      "st": "0.19",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4994",
+      "racer_name": "山本 梨菜",
+      "time": "2′02″8",
+      "st": "0.20",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4117",
+      "racer_name": "廣中 智紗衣",
+      "time": "2′04″9",
+      "st": "0.13",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "5",
+      "racer_id": "3778",
+      "racer_name": "安達 美帆",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "lane": "4",
+      "racer_id": "3932",
+      "racer_name": "池田 浩美",
+      "st": "0.19",
+      "course": 4
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.19
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.2
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.11
+    },
+    {
+      "lane": 6,
+      "st": 0.13
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "2-1-3",
+      "amount": 2600,
+      "popularity": 7
+    },
+    "trio": {
+      "combo": "1=2=3",
+      "amount": 730,
+      "popularity": 4
+    },
+    "exacta": {
+      "combo": "2-1",
+      "amount": 980,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=2",
+      "amount": 720,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=2",
+        "amount": 210,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "2",
+      "amount": 320,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "2",
+        "amount": 140,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=2&jcd=05&hd=20240226",
+  "generated_at": "2025-11-07T16:11:03.400Z"
+}

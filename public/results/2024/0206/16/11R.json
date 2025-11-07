@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "date": "20240206",
+    "jcd": "16",
+    "rno": 11,
+    "title": "オールレディース 第35回瀬戸の女王決定戦",
+    "decision": "恵まれ",
+    "weather_sky": "曇り",
+    "wind_dir": 5,
+    "wind_speed_m": 4,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "4501",
+      "racer_name": "樋口 由加里",
+      "time": "1′49″3",
+      "st": "0.03",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "4065",
+      "racer_name": "金田 幸子",
+      "time": "1′50″3",
+      "st": "0.07",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "4",
+      "racer_id": "4017",
+      "racer_name": "向井 美鈴",
+      "time": "1′51″3",
+      "st": "0.05",
+      "course": 4
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "3357",
+      "racer_name": "福島 陽子",
+      "time": "1′53″0",
+      "st": "0.10",
+      "course": 6
+    },
+    {
+      "lane": "2",
+      "racer_id": "4050",
+      "racer_name": "田口 節子",
+      "st": "0.02",
+      "course": 2
+    },
+    {
+      "lane": "3",
+      "racer_id": "5174",
+      "racer_name": "川井 萌",
+      "st": "0.03",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.03
+    },
+    {
+      "lane": 2,
+      "st": 0.02
+    },
+    {
+      "lane": 3,
+      "st": 0.03
+    },
+    {
+      "lane": 4,
+      "st": 0.05
+    },
+    {
+      "lane": 5,
+      "st": 0.07
+    },
+    {
+      "lane": 6,
+      "st": 0.1
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-5-4",
+      "amount": 380,
+      "popularity": 2
+    },
+    "trio": {
+      "combo": "1=4=5",
+      "amount": 130,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-5",
+      "amount": 320,
+      "popularity": 2
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 240,
+      "popularity": 2
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 100,
+        "popularity": 2
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 100,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=11&jcd=16&hd=20240206",
+  "generated_at": "2025-11-07T15:33:42.998Z"
+}

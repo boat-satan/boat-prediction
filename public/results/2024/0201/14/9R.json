@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240201",
+    "jcd": "14",
+    "rno": 9,
+    "title": "第12回ボートレースレディースVSルーキーズバトル",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 5,
+    "wind_speed_m": 4,
+    "wave_height_cm": 4
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "5032",
+      "racer_name": "谷口 知優",
+      "time": "1′48″1",
+      "st": "0.15",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4733",
+      "racer_name": "赤井 睦",
+      "time": "1′49″8",
+      "st": "0.17",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "5115",
+      "racer_name": "香川 颯太",
+      "time": "1′51″4",
+      "st": "0.17",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "5281",
+      "racer_name": "井上 遥妃",
+      "time": "1′52″6",
+      "st": "0.20",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "5044",
+      "racer_name": "渡邉 健",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3932",
+      "racer_name": "池田 浩美",
+      "st": "0.21",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.15
+    },
+    {
+      "lane": 2,
+      "st": 0.17
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 4,
+      "st": 0.17
+    },
+    {
+      "lane": 5,
+      "st": 0.21
+    },
+    {
+      "lane": 6,
+      "st": 0.2
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-4-2",
+      "amount": 2610,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "1=2=4",
+      "amount": 370,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "1-4",
+      "amount": 1230,
+      "popularity": 4
+    },
+    "quinella": {
+      "combo": "1=4",
+      "amount": 2860,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "1=4",
+        "amount": 440,
+        "popularity": 5
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 240,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 130,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=9&jcd=14&hd=20240201",
+  "generated_at": "2025-11-07T15:23:45.743Z"
+}

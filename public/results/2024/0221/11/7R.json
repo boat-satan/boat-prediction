@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240221",
+    "jcd": "11",
+    "rno": 7,
+    "title": "第8回レディースオールスター",
+    "decision": "まくり",
+    "weather_sky": "曇り",
+    "wind_dir": 7,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "4530",
+      "racer_name": "小野 生奈",
+      "time": "1′47″4",
+      "st": "0.21",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "2",
+      "racer_id": "4590",
+      "racer_name": "渡邉 優美",
+      "time": "1′49″2",
+      "st": "0.19",
+      "course": 2
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4478",
+      "racer_name": "櫻本 あゆみ",
+      "time": "1′51″7",
+      "st": "0.21",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "6",
+      "racer_id": "4884",
+      "racer_name": "勝浦 真帆",
+      "time": "1′53″1",
+      "st": "0.11",
+      "course": 6
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "3845",
+      "racer_name": "中谷 朋子",
+      "st": "0.30",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "5019",
+      "racer_name": "柴田 百恵",
+      "st": "0.18",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.21
+    },
+    {
+      "lane": 2,
+      "st": 0.19
+    },
+    {
+      "lane": 3,
+      "st": 0.18
+    },
+    {
+      "lane": 4,
+      "st": 0.3
+    },
+    {
+      "lane": 5,
+      "st": 0.21
+    },
+    {
+      "lane": 6,
+      "st": 0.11
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-2-1",
+      "amount": 2280,
+      "popularity": 8
+    },
+    "trio": {
+      "combo": "1=2=5",
+      "amount": 230,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "5-2",
+      "amount": 1170,
+      "popularity": 5
+    },
+    "quinella": {
+      "combo": "2=5",
+      "amount": 650,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "2=5",
+        "amount": 170,
+        "popularity": 3
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 400,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 150,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=7&jcd=11&hd=20240221",
+  "generated_at": "2025-11-07T16:01:42.205Z"
+}

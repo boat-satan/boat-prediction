@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240206",
+    "jcd": "18",
+    "rno": 12,
+    "title": "くだまつ健康パーク杯争奪戦",
+    "decision": "逃げ",
+    "weather_sky": "曇り",
+    "wind_dir": 7,
+    "wind_speed_m": 2,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3842",
+      "racer_name": "星野 太郎",
+      "time": "1′49″2",
+      "st": "0.12",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "5",
+      "racer_id": "3347",
+      "racer_name": "矢後 剛",
+      "time": "1′50″6",
+      "st": "0.12",
+      "course": 5
+    },
+    {
+      "rank": "3",
+      "lane": "3",
+      "racer_id": "4348",
+      "racer_name": "宮崎 奨",
+      "time": "1′51″6",
+      "st": "0.16",
+      "course": 3
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "4855",
+      "racer_name": "江頭 賢太",
+      "time": "1′53″7",
+      "st": "0.11",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "3319",
+      "racer_name": "山崎 義明",
+      "st": "0.12",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "6",
+      "racer_id": "4958",
+      "racer_name": "溝口 海義也",
+      "st": "0.09",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.12
+    },
+    {
+      "lane": 2,
+      "st": 0.12
+    },
+    {
+      "lane": 3,
+      "st": 0.16
+    },
+    {
+      "lane": 4,
+      "st": 0.11
+    },
+    {
+      "lane": 5,
+      "st": 0.12
+    },
+    {
+      "lane": 6,
+      "st": 0.09
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-5-3",
+      "amount": 7890,
+      "popularity": 21
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 1490,
+      "popularity": 7
+    },
+    "exacta": {
+      "combo": "1-5",
+      "amount": 2430,
+      "popularity": 7
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 1600,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 430,
+        "popularity": 6
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 120,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 100,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=12&jcd=18&hd=20240206",
+  "generated_at": "2025-11-07T15:33:49.420Z"
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240203",
+    "jcd": "08",
+    "rno": 1,
+    "title": "日本空調システム杯",
+    "decision": "まくり差し",
+    "weather_sky": "晴",
+    "wind_dir": 1,
+    "wind_speed_m": 2,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "3681",
+      "racer_name": "山谷 央",
+      "time": "1′49″9",
+      "st": "0.11",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4197",
+      "racer_name": "渥美 卓郎",
+      "time": "1′50″8",
+      "st": "0.13",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "1",
+      "racer_id": "4360",
+      "racer_name": "庄司 孝輔",
+      "time": "1′52″5",
+      "st": "0.10",
+      "course": 1
+    },
+    {
+      "rank": "4",
+      "lane": "5",
+      "racer_id": "4315",
+      "racer_name": "山崎 昂介",
+      "time": "1′53″8",
+      "st": "0.09",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "2",
+      "racer_id": "2538",
+      "racer_name": "高橋 二朗",
+      "st": "0.14",
+      "course": 2
+    },
+    {
+      "rank": "6",
+      "lane": "4",
+      "racer_id": "5011",
+      "racer_name": "高木 圭大",
+      "st": "0.10",
+      "course": 6
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.1
+    },
+    {
+      "lane": 2,
+      "st": 0.14
+    },
+    {
+      "lane": 3,
+      "st": 0.13
+    },
+    {
+      "lane": 5,
+      "st": 0.09
+    },
+    {
+      "lane": 6,
+      "st": 0.11
+    },
+    {
+      "lane": 4,
+      "st": 0.1
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-3-1",
+      "amount": 20020,
+      "popularity": 51
+    },
+    "trio": {
+      "combo": "1=3=6",
+      "amount": 480,
+      "popularity": 1
+    },
+    "exacta": {
+      "combo": "6-3",
+      "amount": 8520,
+      "popularity": 21
+    },
+    "quinella": {
+      "combo": "3=6",
+      "amount": 3120,
+      "popularity": 8
+    },
+    "wide": [
+      {
+        "combo": "3=6",
+        "amount": 470,
+        "popularity": 8
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 1440,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 330,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=08&hd=20240203",
+  "generated_at": "2025-11-07T15:27:16.731Z"
+}

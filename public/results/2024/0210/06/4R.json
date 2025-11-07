@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240210",
+    "jcd": "06",
+    "rno": 4,
+    "title": "オールB級東海地区選手権 公営レーシングプレス杯",
+    "decision": "逃げ",
+    "weather_sky": "晴",
+    "wind_dir": 3,
+    "wind_speed_m": 3,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "1",
+      "racer_id": "3400",
+      "racer_name": "樋江井 愼祐",
+      "time": "1′50″3",
+      "st": "0.21",
+      "course": 1
+    },
+    {
+      "rank": "2",
+      "lane": "3",
+      "racer_id": "4466",
+      "racer_name": "南 佑典",
+      "time": "1′52″0",
+      "st": "0.15",
+      "course": 3
+    },
+    {
+      "rank": "3",
+      "lane": "5",
+      "racer_id": "4340",
+      "racer_name": "土性 雅也",
+      "time": "1′52″8",
+      "st": "0.16",
+      "course": 5
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3286",
+      "racer_name": "坂東 満",
+      "time": "1′52″9",
+      "st": "0.13",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "6",
+      "racer_id": "4327",
+      "racer_name": "加藤 翔",
+      "st": "0.17",
+      "course": 6
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "3392",
+      "racer_name": "小森 信雄",
+      "st": "0.18",
+      "course": 2
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.21
+    },
+    {
+      "lane": 2,
+      "st": 0.18
+    },
+    {
+      "lane": 3,
+      "st": 0.15
+    },
+    {
+      "lane": 4,
+      "st": 0.13
+    },
+    {
+      "lane": 5,
+      "st": 0.16
+    },
+    {
+      "lane": 6,
+      "st": 0.17
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "1-3-5",
+      "amount": 5060,
+      "popularity": 23
+    },
+    "trio": {
+      "combo": "1=3=5",
+      "amount": 1980,
+      "popularity": 8
+    },
+    "exacta": {
+      "combo": "1-3",
+      "amount": 1190,
+      "popularity": 5
+    },
+    "quinella": {
+      "combo": "1=3",
+      "amount": 530,
+      "popularity": 1
+    },
+    "wide": [
+      {
+        "combo": "1=3",
+        "amount": 190,
+        "popularity": 1
+      }
+    ],
+    "win": {
+      "combo": "1",
+      "amount": 250,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "1",
+        "amount": 160,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=4&jcd=06&hd=20240210",
+  "generated_at": "2025-11-07T15:40:16.248Z"
+}

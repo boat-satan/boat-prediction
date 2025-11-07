@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240220",
+    "jcd": "19",
+    "rno": 1,
+    "title": "西京波者結成14周年記念 山口シネマ杯",
+    "decision": "差し",
+    "weather_sky": "曇り",
+    "wind_dir": 3,
+    "wind_speed_m": 3,
+    "wave_height_cm": 3
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "6",
+      "racer_id": "3901",
+      "racer_name": "松田 憲幸",
+      "time": "1′49″8",
+      "st": "0.34",
+      "course": 6
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3976",
+      "racer_name": "内田 圭",
+      "time": "1′51″3",
+      "st": "0.14",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "2",
+      "racer_id": "4727",
+      "racer_name": "安部 慎一",
+      "time": "1′52″7",
+      "st": "0.08",
+      "course": 2
+    },
+    {
+      "rank": "4",
+      "lane": "4",
+      "racer_id": "3711",
+      "racer_name": "江本 真治",
+      "time": "1′53″6",
+      "st": "0.16",
+      "course": 4
+    },
+    {
+      "rank": "5",
+      "lane": "3",
+      "racer_id": "3459",
+      "racer_name": "中野 和裕",
+      "st": "0.26",
+      "course": 3
+    },
+    {
+      "rank": "6",
+      "lane": "5",
+      "racer_id": "3631",
+      "racer_name": "田添 康介",
+      "st": "0.18",
+      "course": 5
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.14
+    },
+    {
+      "lane": 2,
+      "st": 0.08
+    },
+    {
+      "lane": 3,
+      "st": 0.26
+    },
+    {
+      "lane": 4,
+      "st": 0.16
+    },
+    {
+      "lane": 5,
+      "st": 0.18
+    },
+    {
+      "lane": 6,
+      "st": 0.34
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "6-1-2",
+      "amount": 67660,
+      "popularity": 99
+    },
+    "trio": {
+      "combo": "1=2=6",
+      "amount": 2350,
+      "popularity": 9
+    },
+    "exacta": {
+      "combo": "6-1",
+      "amount": 18470,
+      "popularity": 26
+    },
+    "quinella": {
+      "combo": "1=6",
+      "amount": 4310,
+      "popularity": 12
+    },
+    "wide": [
+      {
+        "combo": "1=6",
+        "amount": 620,
+        "popularity": 9
+      }
+    ],
+    "win": {
+      "combo": "6",
+      "amount": 3120,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "6",
+        "amount": 710,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=1&jcd=19&hd=20240220",
+  "generated_at": "2025-11-07T16:00:38.076Z"
+}

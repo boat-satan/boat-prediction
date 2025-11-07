@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "date": "20240219",
+    "jcd": "05",
+    "rno": 8,
+    "title": "創刊55周年記念夕刊フジ杯",
+    "decision": "まくり差し",
+    "weather_sky": "曇り",
+    "wind_dir": 9,
+    "wind_speed_m": 4,
+    "wave_height_cm": 2
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "3156",
+      "racer_name": "金子 良昭",
+      "time": "1′49″4",
+      "st": "0.19",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "4",
+      "racer_id": "4189",
+      "racer_name": "川上 剛",
+      "time": "1′50″7",
+      "st": "0.21",
+      "course": 4
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "3602",
+      "racer_name": "奥平 拓也",
+      "time": "1′52″8",
+      "st": "0.33",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "2",
+      "racer_id": "3869",
+      "racer_name": "井芹 大志",
+      "time": "1′53″9",
+      "st": "0.31",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "1",
+      "racer_id": "3911",
+      "racer_name": "鈴木 猛",
+      "st": "0.28",
+      "course": 1
+    },
+    {
+      "rank": "6",
+      "lane": "3",
+      "racer_id": "4113",
+      "racer_name": "木村 浩士",
+      "st": "0.29",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.28
+    },
+    {
+      "lane": 2,
+      "st": 0.31
+    },
+    {
+      "lane": 3,
+      "st": 0.29
+    },
+    {
+      "lane": 4,
+      "st": 0.21
+    },
+    {
+      "lane": 5,
+      "st": 0.19
+    },
+    {
+      "lane": 6,
+      "st": 0.33
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-4-6",
+      "amount": 15780,
+      "popularity": 50
+    },
+    "trio": {
+      "combo": "4=5=6",
+      "amount": 2920,
+      "popularity": 11
+    },
+    "exacta": {
+      "combo": "5-4",
+      "amount": 3420,
+      "popularity": 13
+    },
+    "quinella": {
+      "combo": "4=5",
+      "amount": 1120,
+      "popularity": 5
+    },
+    "wide": [
+      {
+        "combo": "4=5",
+        "amount": 500,
+        "popularity": 7
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 550,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 310,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=8&jcd=05&hd=20240219",
+  "generated_at": "2025-11-07T15:57:25.458Z"
+}

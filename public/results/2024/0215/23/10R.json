@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "date": "20240215",
+    "jcd": "23",
+    "rno": 10,
+    "title": "ヴィーナスシリーズ第20戦 はっぴーちゃんカップ",
+    "decision": "まくり差し",
+    "weather_sky": "雨",
+    "wind_dir": 12,
+    "wind_speed_m": 1,
+    "wave_height_cm": 1
+  },
+  "results": [
+    {
+      "rank": "1",
+      "lane": "5",
+      "racer_id": "4501",
+      "racer_name": "樋口 由加里",
+      "time": "1′50″3",
+      "st": "0.23",
+      "course": 5
+    },
+    {
+      "rank": "2",
+      "lane": "1",
+      "racer_id": "3579",
+      "racer_name": "中里 優子",
+      "time": "1′52″2",
+      "st": "0.16",
+      "course": 1
+    },
+    {
+      "rank": "3",
+      "lane": "6",
+      "racer_id": "4941",
+      "racer_name": "孫崎 百世",
+      "time": "1′52″9",
+      "st": "0.22",
+      "course": 6
+    },
+    {
+      "rank": "4",
+      "lane": "3",
+      "racer_id": "4720",
+      "racer_name": "西澤 日花里",
+      "time": "1′53″0",
+      "st": "0.27",
+      "course": 2
+    },
+    {
+      "rank": "5",
+      "lane": "4",
+      "racer_id": "5069",
+      "racer_name": "山崎 小葉音",
+      "time": "1′55″8",
+      "st": "0.19",
+      "course": 4
+    },
+    {
+      "rank": "6",
+      "lane": "2",
+      "racer_id": "4400",
+      "racer_name": "加藤 奈月",
+      "time": "1′58″6",
+      "st": "0.29",
+      "course": 3
+    }
+  ],
+  "start": [
+    {
+      "lane": 1,
+      "st": 0.16
+    },
+    {
+      "lane": 3,
+      "st": 0.27
+    },
+    {
+      "lane": 2,
+      "st": 0.29
+    },
+    {
+      "lane": 4,
+      "st": 0.19
+    },
+    {
+      "lane": 5,
+      "st": 0.23
+    },
+    {
+      "lane": 6,
+      "st": 0.22
+    }
+  ],
+  "refunds": [],
+  "payouts": {
+    "trifecta": {
+      "combo": "5-1-6",
+      "amount": 7910,
+      "popularity": 27
+    },
+    "trio": {
+      "combo": "1=5=6",
+      "amount": 1520,
+      "popularity": 8
+    },
+    "exacta": {
+      "combo": "5-1",
+      "amount": 1900,
+      "popularity": 7
+    },
+    "quinella": {
+      "combo": "1=5",
+      "amount": 570,
+      "popularity": 3
+    },
+    "wide": [
+      {
+        "combo": "1=5",
+        "amount": 270,
+        "popularity": 4
+      }
+    ],
+    "win": {
+      "combo": "5",
+      "amount": 1220,
+      "popularity": 0
+    },
+    "place": [
+      {
+        "combo": "5",
+        "amount": 290,
+        "popularity": 0
+      }
+    ]
+  },
+  "source_url": "https://www.boatrace.jp/owpc/pc/race/raceresult?rno=10&jcd=23&hd=20240215",
+  "generated_at": "2025-11-07T15:51:39.078Z"
+}
