@@ -1,0 +1,123 @@
+{
+  "date": "20240122",
+  "pid": "24",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240122&jcd=24&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T04:38:21.493Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 9,
+    "temperature": 4,
+    "waterTemperature": 10,
+    "waveHeight": 0.06,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4747",
+      "name": "山戸 信二",
+      "weight": "51.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".31",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.31,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4656",
+      "name": "大崎 翔",
+      "weight": "58.9kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.9,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4815",
+      "name": "伏島 祐介",
+      "weight": "53.9kg",
+      "tenjiTime": "6.98",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.98,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4957",
+      "name": "竹之内 極",
+      "weight": "55.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3458",
+      "name": "東 健介",
+      "weight": "54.1kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4226",
+      "name": "村田 浩司",
+      "weight": "53.3kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    }
+  ]
+}

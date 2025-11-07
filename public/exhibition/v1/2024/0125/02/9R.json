@@ -1,0 +1,123 @@
+{
+  "date": "20240125",
+  "pid": "02",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240125&jcd=02&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T04:41:51.296Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 6,
+    "temperature": 8,
+    "waterTemperature": 6,
+    "waveHeight": 0.06,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4543",
+      "name": "重木 輝彦",
+      "weight": "51.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4134",
+      "name": "杉山 貴博",
+      "weight": "53.9kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4540",
+      "name": "相原 利章",
+      "weight": "52.3kg",
+      "tenjiTime": "7.11",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.11,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3065",
+      "name": "増田 弘喜",
+      "weight": "55.6kg",
+      "tenjiTime": "7.18",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 7.18,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4489",
+      "name": "岩川 仁士",
+      "weight": "53.5kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5102",
+      "name": "原田 雄次",
+      "weight": "52.0kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20240122",
+  "pid": "16",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240122&jcd=16&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T04:37:31.002Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 11,
+    "waterTemperature": 11,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4746",
+      "name": "大豆生田 蒼",
+      "weight": "47.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4941",
+      "name": "孫崎 百世",
+      "weight": "47.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4530",
+      "name": "小野 生奈",
+      "weight": "45.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3994",
+      "name": "小野 桜",
+      "weight": "46.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4243",
+      "name": "西村 歩",
+      "weight": "47.3kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.3,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5241",
+      "name": "門田 栞",
+      "weight": "50.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".36",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.36,
+        "isF": 0
+      }
+    }
+  ]
+}
