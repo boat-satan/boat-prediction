@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "01",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=01&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:03:10.524Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": null,
+    "windDirNum": null,
+    "temperature": null,
+    "waterTemperature": null,
+    "waveHeight": null,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4113",
+      "name": "木村 浩士",
+      "weight": "53.8kg",
+      "tenjiTime": "7.13",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 7.13,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4425",
+      "name": "大井 清貴",
+      "weight": "54.2kg",
+      "tenjiTime": "7.15",
+      "tilt": "0.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 7.15,
+        "tiltDeg": 0,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5022",
+      "name": "伊藤 尚汰",
+      "weight": "50.0kg",
+      "tenjiTime": "7.18",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 7.18,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4608",
+      "name": "荒井 翔伍",
+      "weight": "53.5kg",
+      "tenjiTime": "7.21",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 7.21,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4692",
+      "name": "酒井 俊弘",
+      "weight": "52.3kg",
+      "tenjiTime": "7.12",
+      "tilt": "0.0",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.12,
+        "tiltDeg": 0,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4442",
+      "name": "松竹 大輔",
+      "weight": "52.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

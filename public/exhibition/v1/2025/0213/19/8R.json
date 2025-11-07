@@ -1,0 +1,123 @@
+{
+  "date": "20250213",
+  "pid": "19",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250213&jcd=19&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:03:16.766Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 5,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4589",
+      "name": "塩崎 桐加",
+      "weight": "50.3kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.3,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4987",
+      "name": "島倉 都",
+      "weight": "48.4kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48.4,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5277",
+      "name": "井上 未都",
+      "weight": "46.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5123",
+      "name": "福山 恵里奈",
+      "weight": "47.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5254",
+      "name": "羽田 妃希",
+      "weight": "47.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5173",
+      "name": "谷口 佳蓮",
+      "weight": "47.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

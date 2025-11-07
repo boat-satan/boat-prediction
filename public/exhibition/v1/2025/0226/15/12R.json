@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "15",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=15&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:08.416Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 9,
+    "temperature": 9,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4659",
+      "name": "木下 翔太",
+      "weight": "52.7kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4259",
+      "name": "真庭 明志",
+      "weight": "52.0kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5138",
+      "name": "村本 大成",
+      "weight": "53.4kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": ".38",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.38,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4551",
+      "name": "三川 昂暁",
+      "weight": "54.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3461",
+      "name": "渡邊 哲也",
+      "weight": "56.7kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.7,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3660",
+      "name": "長谷川 親王",
+      "weight": "55.9kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

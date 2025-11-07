@@ -1,0 +1,123 @@
+{
+  "date": "20250216",
+  "pid": "21",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250216&jcd=21&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:08:49.366Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 12,
+    "waterTemperature": 7,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4446",
+      "name": "和田 兼輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3841",
+      "name": "佐々木 和伸",
+      "weight": "53.8kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3233",
+      "name": "小畑 実成",
+      "weight": "53.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4044",
+      "name": "湯川 浩司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4873",
+      "name": "蒲原 健太",
+      "weight": "52.2kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4094",
+      "name": "中島 真二",
+      "weight": "52.2kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

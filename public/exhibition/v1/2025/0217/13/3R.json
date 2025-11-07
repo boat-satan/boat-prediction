@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "13",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=13&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:02.797Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 16,
+    "temperature": 10.7,
+    "waterTemperature": 6.8,
+    "waveHeight": 0,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3745",
+      "name": "橋本 年光",
+      "weight": "52.1kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3475",
+      "name": "橋本 久和",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4410",
+      "name": "井上 大輔",
+      "weight": "51.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5207",
+      "name": "高山 敬悟",
+      "weight": "52.8kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4171",
+      "name": "榎 幸司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5386",
+      "name": "米玉利 大悟",
+      "weight": "53.6kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250202",
+  "pid": "13",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250202&jcd=13&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:42:07.437Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 4,
+    "temperature": 10.1,
+    "waterTemperature": 6,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5161",
+      "name": "登玉 隼百",
+      "weight": "52.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4425",
+      "name": "大井 清貴",
+      "weight": "54.7kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5044",
+      "name": "渡邉 健",
+      "weight": "56.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3825",
+      "name": "宮嵜 隆太郎",
+      "weight": "59.6kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.6,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4487",
+      "name": "三原 司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5391",
+      "name": "出穂 和鼓",
+      "weight": "52.1kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

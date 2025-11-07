@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "24",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=24&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:25:47.833Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 9,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4090",
+      "name": "中村 尊",
+      "weight": "53.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3284",
+      "name": "渡邊 伸太郎",
+      "weight": "52.8kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3953",
+      "name": "志道 吉和",
+      "weight": "52.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5273",
+      "name": "山下 拓巳",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3876",
+      "name": "中辻 崇人",
+      "weight": "52.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4215",
+      "name": "吉島 祥之",
+      "weight": "52.7kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

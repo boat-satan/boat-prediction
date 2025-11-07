@@ -1,0 +1,123 @@
+{
+  "date": "20250208",
+  "pid": "08",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250208&jcd=08&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:53:07.846Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 15,
+    "temperature": 1,
+    "waterTemperature": 4,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4395",
+      "name": "下河 雅史",
+      "weight": "52.5kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4906",
+      "name": "鈴木 雅希",
+      "weight": "52.4kg",
+      "tenjiTime": "6.64",
+      "tilt": "0.0",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.64,
+        "tiltDeg": 0,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5061",
+      "name": "中村 駿平",
+      "weight": "50.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4962",
+      "name": "畑 竜生",
+      "weight": "52.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5109",
+      "name": "川崎 智稔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5027",
+      "name": "重冨 勇哉",
+      "weight": "55.1kg",
+      "tenjiTime": "6.60",
+      "tilt": "0.0",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.6,
+        "tiltDeg": 0,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    }
+  ]
+}

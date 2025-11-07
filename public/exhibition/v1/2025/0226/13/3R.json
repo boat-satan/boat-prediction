@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "13",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=13&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:13.002Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 12,
+    "temperature": 11.1,
+    "waterTemperature": 6.8,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3081",
+      "name": "岡本 慎治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4790",
+      "name": "柳内 敬太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3538",
+      "name": "菊池 峰晴",
+      "weight": "52.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.7kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3713",
+      "name": "伊藤 誠二",
+      "weight": "52.2kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4028",
+      "name": "田村 隆信",
+      "weight": "55.6kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

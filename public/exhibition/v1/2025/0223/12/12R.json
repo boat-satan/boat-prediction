@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "12",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=12&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:00.886Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4748",
+      "name": "渡邉 雄朗",
+      "weight": "52.2kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4498",
+      "name": "宮本 夏樹",
+      "weight": "53.5kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4189",
+      "name": "川上 剛",
+      "weight": "53.2kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5264",
+      "name": "登 みひ果",
+      "weight": "44.5kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4047",
+      "name": "吉永 浩則",
+      "weight": "53.8kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4358",
+      "name": "松本 庸平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "20",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=20&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:46:33.807Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 16,
+    "temperature": 1,
+    "waterTemperature": 6,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5058",
+      "name": "前原 大道",
+      "weight": "52.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3957",
+      "name": "大谷 直弘",
+      "weight": "53.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4919",
+      "name": "吉田 翔悟",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4059",
+      "name": "入澤 友治",
+      "weight": "52.1kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4092",
+      "name": "岡部 大輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4009",
+      "name": "小林 一樹",
+      "weight": "55.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

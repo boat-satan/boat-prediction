@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "10",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=10&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:04:08.407Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 4,
+    "waterTemperature": 4,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4158",
+      "name": "木場 雄二郎",
+      "weight": "56.2kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.2,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5249",
+      "name": "三木 晴斗",
+      "weight": "52.5kg",
+      "tenjiTime": "6.59",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.59,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4151",
+      "name": "下河 誉史",
+      "weight": "54.4kg",
+      "tenjiTime": "6.59",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.59,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5388",
+      "name": "佐野 優都",
+      "weight": "53.2kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4437",
+      "name": "中田 元泰",
+      "weight": "53.7kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3939",
+      "name": "渡辺 真至",
+      "weight": "52.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

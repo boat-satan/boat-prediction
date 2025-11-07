@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "03",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=03&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:20:40.137Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 8,
+    "temperature": 9,
+    "waterTemperature": 12,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5132",
+      "name": "中野 希一",
+      "weight": "52.4kg",
+      "tenjiTime": "7.01",
+      "tilt": "0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.01,
+        "tiltDeg": 0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4928",
+      "name": "栗城 匠",
+      "weight": "52.4kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5236",
+      "name": "小宮 涼雅",
+      "weight": "54.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4000",
+      "name": "松本 博昭",
+      "weight": "54.2kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5074",
+      "name": "大澤 誠也",
+      "weight": "55.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3277",
+      "name": "齋藤 勇",
+      "weight": "52.0kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

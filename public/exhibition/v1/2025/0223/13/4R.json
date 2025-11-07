@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "13",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=13&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:23.535Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 10,
+    "temperature": 6.7,
+    "waterTemperature": 5.9,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3947",
+      "name": "寺本 昇平",
+      "weight": "50.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5017",
+      "name": "澤田 尚也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3841",
+      "name": "佐々木 和伸",
+      "weight": "53.5kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3784",
+      "name": "中島 友和",
+      "weight": "52.9kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3731",
+      "name": "高濱 芳久",
+      "weight": "52.9kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

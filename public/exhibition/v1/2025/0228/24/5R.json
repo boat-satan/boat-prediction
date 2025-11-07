@@ -1,0 +1,123 @@
+{
+  "date": "20250228",
+  "pid": "24",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250228&jcd=24&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:31:19.434Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 12,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3871",
+      "name": "池田 紫乃",
+      "weight": "44.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4773",
+      "name": "中川 りな",
+      "weight": "49.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5205",
+      "name": "刑部 亜里紗",
+      "weight": "47.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4853",
+      "name": "前原 哉",
+      "weight": "44.5kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4730",
+      "name": "土屋 実沙希",
+      "weight": "47.1kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5129",
+      "name": "山口 真喜子",
+      "weight": "47.3kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.3,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

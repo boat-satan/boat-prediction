@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "18",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=18&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:57:25.839Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 1,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4762",
+      "name": "藤原 啓史朗",
+      "weight": "51.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4205",
+      "name": "山口 剛",
+      "weight": "52.4kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3435",
+      "name": "寺田 千恵",
+      "weight": "46.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4798",
+      "name": "浜先 真範",
+      "weight": "52.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3874",
+      "name": "山本 寛久",
+      "weight": "52.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4771",
+      "name": "下寺 秀和",
+      "weight": "53.4kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    }
+  ]
+}

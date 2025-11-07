@@ -1,0 +1,123 @@
+{
+  "date": "20250209",
+  "pid": "21",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250209&jcd=21&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:55:51.142Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 4,
+    "waterTemperature": 3,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4330",
+      "name": "奈須 啓太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5255",
+      "name": "藤原 仙二",
+      "weight": "52.3kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4118",
+      "name": "宇佐見 淳",
+      "weight": "52.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4934",
+      "name": "佐々木 翔斗",
+      "weight": "52.7kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3606",
+      "name": "川北 浩貴",
+      "weight": "52.2kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5206",
+      "name": "梅原 祥平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    }
+  ]
+}

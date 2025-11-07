@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "07",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=07&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:17:06.945Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 4,
+    "waterTemperature": 7,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4051",
+      "name": "清水 敦揮",
+      "weight": "55.2kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4213",
+      "name": "重富 伸也",
+      "weight": "52.3kg",
+      "tenjiTime": "6.57",
+      "tilt": "3.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.57,
+        "tiltDeg": 3,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3863",
+      "name": "海老澤 泰行",
+      "weight": "55.6kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4596",
+      "name": "葛原 大陽",
+      "weight": "52.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3940",
+      "name": "飯山 泰",
+      "weight": "51.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4154",
+      "name": "森安 弘雅",
+      "weight": "52.6kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

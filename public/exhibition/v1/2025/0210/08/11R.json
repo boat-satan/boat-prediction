@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "08",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=08&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:40.218Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 15,
+    "temperature": 6,
+    "waterTemperature": 5,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5091",
+      "name": "為本 智也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.64,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4815",
+      "name": "伏島 祐介",
+      "weight": "52.4kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5027",
+      "name": "重冨 勇哉",
+      "weight": "54.2kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4706",
+      "name": "三浦 洋次朗",
+      "weight": "50.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5044",
+      "name": "渡邉 健",
+      "weight": "56.8kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.8,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4840",
+      "name": "鈴木 秀茉",
+      "weight": "52.2kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    }
+  ]
+}

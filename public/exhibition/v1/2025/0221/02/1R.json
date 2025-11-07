@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "02",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=02&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:16:42.052Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 6,
+    "temperature": 11,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4462",
+      "name": "夏山 亮平",
+      "weight": "58.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4792",
+      "name": "杉村 賢也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4404",
+      "name": "岸蔭 亮",
+      "weight": "52.9kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4842",
+      "name": "山下 昂大",
+      "weight": "52.7kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5035",
+      "name": "櫻井 優",
+      "weight": "52.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4782",
+      "name": "浜崎 準也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "10",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=10&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:45:32.614Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 4,
+    "temperature": 2,
+    "waterTemperature": 5,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3556",
+      "name": "田中 信一郎",
+      "weight": "53.7kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4761",
+      "name": "山田 晃大",
+      "weight": "52.3kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4930",
+      "name": "佐藤 悠",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4719",
+      "name": "上條 暢嵩",
+      "weight": "52.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4790",
+      "name": "柳内 敬太",
+      "weight": "52.3kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4826",
+      "name": "井上 一輝",
+      "weight": "52.1kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    }
+  ]
+}

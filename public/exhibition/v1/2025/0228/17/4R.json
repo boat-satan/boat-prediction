@@ -1,0 +1,123 @@
+{
+  "date": "20250228",
+  "pid": "17",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250228&jcd=17&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:30:58.026Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 7,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4407",
+      "name": "鹿島 敏弘",
+      "weight": "54.3kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3606",
+      "name": "川北 浩貴",
+      "weight": "52.1kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5050",
+      "name": "木下 雄介",
+      "weight": "52.2kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3579",
+      "name": "中里 優子",
+      "weight": "47.8kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.8,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4099",
+      "name": "吉永 則雄",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": "F.28",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.0028000000000000004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3612",
+      "name": "馬袋 義則",
+      "weight": "53.6kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "09",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=09&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:46.731Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 14,
+    "temperature": 7,
+    "waterTemperature": 4,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4856",
+      "name": "豊田 健士郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.57",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.57,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4914",
+      "name": "吉田 裕平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4579",
+      "name": "中嶋 健一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3984",
+      "name": "坂口 周",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5197",
+      "name": "中野 仁照",
+      "weight": "52.5kg",
+      "tenjiTime": "6.62",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.62,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4033",
+      "name": "伊藤 将吉",
+      "weight": "52.4kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    }
+  ]
+}

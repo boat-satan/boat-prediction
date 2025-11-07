@@ -1,0 +1,123 @@
+{
+  "date": "20250206",
+  "pid": "10",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250206&jcd=10&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:49:26.301Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 2,
+    "temperature": 3,
+    "waterTemperature": 3,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4456",
+      "name": "鎌倉 涼",
+      "weight": "45.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4099",
+      "name": "吉永 則雄",
+      "weight": "52.3kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "53.2kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4137",
+      "name": "君島 秀三",
+      "weight": "52.0kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3833",
+      "name": "中辻 博訓",
+      "weight": "52.6kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3854",
+      "name": "吉川 元浩",
+      "weight": "51.5kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

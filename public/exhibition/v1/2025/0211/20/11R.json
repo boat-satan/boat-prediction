@@ -1,0 +1,123 @@
+{
+  "date": "20250211",
+  "pid": "20",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250211&jcd=20&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:59:37.405Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 6,
+    "temperature": 5,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4357",
+      "name": "田中 和也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4154",
+      "name": "森安 弘雅",
+      "weight": "52.9kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3747",
+      "name": "國崎 良春",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4301",
+      "name": "関 裕也",
+      "weight": "53.4kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4184",
+      "name": "渡邊 雄一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "",
+      "tilt": "",
+      "st": "",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": null,
+        "tiltDeg": null,
+        "stSec": null,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3297",
+      "name": "藤丸 光一",
+      "weight": "49.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

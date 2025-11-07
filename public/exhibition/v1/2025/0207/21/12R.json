@@ -1,0 +1,123 @@
+{
+  "date": "20250207",
+  "pid": "21",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250207&jcd=21&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:52:16.910Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 4,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4518",
+      "name": "大須賀 友",
+      "weight": "52.4kg",
+      "tenjiTime": "7.17",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.17,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3796",
+      "name": "長野 道臣",
+      "weight": "53.6kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3606",
+      "name": "川北 浩貴",
+      "weight": "52.2kg",
+      "tenjiTime": "7.09",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.09,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3713",
+      "name": "伊藤 誠二",
+      "weight": "53.3kg",
+      "tenjiTime": "7.09",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 7.09,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4323",
+      "name": "山田 佑樹",
+      "weight": "56.1kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4027",
+      "name": "松江 秀徳",
+      "weight": "53.4kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": "F.29",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.0029,
+        "isF": 1
+      }
+    }
+  ]
+}

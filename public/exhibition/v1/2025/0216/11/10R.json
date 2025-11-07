@@ -1,0 +1,123 @@
+{
+  "date": "20250216",
+  "pid": "11",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250216&jcd=11&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:08:10.092Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 7,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4632",
+      "name": "長尾 京志郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4880",
+      "name": "澤崎 雄哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3612",
+      "name": "馬袋 義則",
+      "weight": "53.9kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5229",
+      "name": "吉川 晴人",
+      "weight": "54.9kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4007",
+      "name": "榮田 将彦",
+      "weight": "50.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4483",
+      "name": "北野 輝季",
+      "weight": "53.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

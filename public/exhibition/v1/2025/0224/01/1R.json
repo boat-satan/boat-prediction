@@ -1,0 +1,123 @@
+{
+  "date": "20250224",
+  "pid": "01",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250224&jcd=01&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:22:12.624Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 2,
+    "waterTemperature": 6,
+    "waveHeight": 0,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3880",
+      "name": "浅見 宗孝",
+      "weight": "54.8kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3714",
+      "name": "梶原 正",
+      "weight": "55.5kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3793",
+      "name": "高橋 真吾",
+      "weight": "56.1kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4233",
+      "name": "亀山 雅幸",
+      "weight": "52.0kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4561",
+      "name": "藤山 翔大",
+      "weight": "52.0kg",
+      "tenjiTime": "7.03",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.03,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4587",
+      "name": "木田 峰由季",
+      "weight": "52.8kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    }
+  ]
+}

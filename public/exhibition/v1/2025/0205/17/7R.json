@@ -1,0 +1,123 @@
+{
+  "date": "20250205",
+  "pid": "17",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250205&jcd=17&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:47:56.792Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 1,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4396",
+      "name": "大田 直弥",
+      "weight": "52.8kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "52.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3655",
+      "name": "本橋 克洋",
+      "weight": "54.1kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5039",
+      "name": "倉田 茂将",
+      "weight": "53.9kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4389",
+      "name": "伊藤 喜智",
+      "weight": "52.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3906",
+      "name": "飯山 晃三",
+      "weight": "59.5kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 59.5,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

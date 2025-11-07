@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "01",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=01&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:43:11.414Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 7,
+    "waterTemperature": 2,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4665",
+      "name": "加藤 啓太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4420",
+      "name": "津久井 拓也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4273",
+      "name": "佐藤 旭",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4544",
+      "name": "松田 大志郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4090",
+      "name": "中村 尊",
+      "weight": "53.2kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4663",
+      "name": "籾山 佳岳",
+      "weight": "52.1kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "18",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=18&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:12.670Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 9,
+    "temperature": 8,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5221",
+      "name": "竹間 隆晟",
+      "weight": "53.1kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5134",
+      "name": "大原 祥昌",
+      "weight": "53.1kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4939",
+      "name": "宮之原 輝紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5336",
+      "name": "瀬川 大地",
+      "weight": "53.7kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5136",
+      "name": "濱野 斗馬",
+      "weight": "52.2kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5177",
+      "name": "松井 貫太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    }
+  ]
+}

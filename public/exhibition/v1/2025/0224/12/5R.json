@@ -1,0 +1,123 @@
+{
+  "date": "20250224",
+  "pid": "12",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250224&jcd=12&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:23:18.858Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4373",
+      "name": "若狭 奈美子",
+      "weight": "46.5kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3286",
+      "name": "坂東 満",
+      "weight": "52.0kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4219",
+      "name": "本岡 勝利",
+      "weight": "52.7kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4306",
+      "name": "畔柳 俊吾",
+      "weight": "50.5kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5297",
+      "name": "南 彩寧",
+      "weight": "54.1kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4430",
+      "name": "永田 秀二",
+      "weight": "55.6kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    }
+  ]
+}

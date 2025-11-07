@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "20",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=20&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:41.026Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 16,
+    "temperature": 5,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4182",
+      "name": "吉田 和仁",
+      "weight": "55.3kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5268",
+      "name": "山本 幸也",
+      "weight": "56.0kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4779",
+      "name": "伊倉 光",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3401",
+      "name": "上田 隆章",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3294",
+      "name": "野中 義生",
+      "weight": "52.2kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3981",
+      "name": "今坂 晃広",
+      "weight": "53.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

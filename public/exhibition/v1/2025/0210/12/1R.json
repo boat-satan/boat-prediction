@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "12",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=12&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:53.188Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 6,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5055",
+      "name": "眞鳥 章太",
+      "weight": "52.8kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3681",
+      "name": "山谷 央",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4345",
+      "name": "西舘 健",
+      "weight": "54.4kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4405",
+      "name": "南野 利騰",
+      "weight": "52.2kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4557",
+      "name": "松尾 光広",
+      "weight": "53.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5339",
+      "name": "石井 伸長",
+      "weight": "51.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

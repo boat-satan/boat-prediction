@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "01",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=01&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:45:00.818Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 2,
+    "temperature": 0,
+    "waterTemperature": 2,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4407",
+      "name": "鹿島 敏弘",
+      "weight": "53.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5315",
+      "name": "浅井 翼",
+      "weight": "49.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3928",
+      "name": "林 恵祐",
+      "weight": "58.7kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.7,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3797",
+      "name": "岩井 繁",
+      "weight": "59.5kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.5,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4220",
+      "name": "深川 和仁",
+      "weight": "53.7kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5266",
+      "name": "石田 勇斗",
+      "weight": "54.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

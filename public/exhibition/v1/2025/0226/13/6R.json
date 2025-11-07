@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "13",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=13&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:26:58.748Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 12,
+    "temperature": 11.8,
+    "waterTemperature": 7.1,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4044",
+      "name": "湯川 浩司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4969",
+      "name": "町田 洸希",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4632",
+      "name": "長尾 京志郎",
+      "weight": "51.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4111",
+      "name": "奥田 誠",
+      "weight": "54.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4711",
+      "name": "前出 達吉",
+      "weight": "51.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "10",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=10&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:04:07.215Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 2,
+    "waterTemperature": 3,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4003",
+      "name": "表 憲一",
+      "weight": "52.9kg",
+      "tenjiTime": "6.55",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.55,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4073",
+      "name": "大橋 純一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.53",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.53,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5249",
+      "name": "三木 晴斗",
+      "weight": "52.5kg",
+      "tenjiTime": "6.57",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.57,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5208",
+      "name": "屋良 龍紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.49",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.49,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5235",
+      "name": "岩田 凌",
+      "weight": "55.5kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4766",
+      "name": "石井 孝之",
+      "weight": "55.4kg",
+      "tenjiTime": "6.63",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.63,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

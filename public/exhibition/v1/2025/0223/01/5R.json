@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "01",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=01&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:20:19.924Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 2,
+    "temperature": 5,
+    "waterTemperature": 6,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4562",
+      "name": "阪本 勇介",
+      "weight": "53.7kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3968",
+      "name": "茶谷 信次",
+      "weight": "51.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "52.2kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4472",
+      "name": "尾嶋 一広",
+      "weight": "53.1kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": ".38",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.38,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3793",
+      "name": "高橋 真吾",
+      "weight": "56.6kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.6,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4908",
+      "name": "上田 龍星",
+      "weight": "52.0kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

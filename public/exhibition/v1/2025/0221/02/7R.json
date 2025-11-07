@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "02",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=02&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:16:57.249Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 6,
+    "temperature": 9,
+    "waterTemperature": 6,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4762",
+      "name": "藤原 啓史朗",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5077",
+      "name": "滝沢 崚",
+      "weight": "51.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3867",
+      "name": "松浦 勝",
+      "weight": "55.3kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4861",
+      "name": "田中 宏樹",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4792",
+      "name": "杉村 賢也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5009",
+      "name": "大賀 龍之介",
+      "weight": "53.3kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "01",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=01&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:20:09.140Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 2,
+    "temperature": 3,
+    "waterTemperature": 6,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4472",
+      "name": "尾嶋 一広",
+      "weight": "53.1kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4446",
+      "name": "和田 兼輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4486",
+      "name": "野村 誠",
+      "weight": "51.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3849",
+      "name": "中岡 正彦",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4030",
+      "name": "森高 一真",
+      "weight": "50.5kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4575",
+      "name": "戸塚 邦好",
+      "weight": "51.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

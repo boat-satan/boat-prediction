@@ -1,0 +1,123 @@
+{
+  "date": "20250219",
+  "pid": "11",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250219&jcd=11&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:13:45.832Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 2,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4024",
+      "name": "井口 佳典",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4382",
+      "name": "高山 智至",
+      "weight": "55.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4331",
+      "name": "三好 勇人",
+      "weight": "54.2kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5229",
+      "name": "吉川 晴人",
+      "weight": "54.7kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4348",
+      "name": "宮崎 奨",
+      "weight": "53.9kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4880",
+      "name": "澤崎 雄哉",
+      "weight": "52.6kg",
+      "tenjiTime": "6.64",
+      "tilt": "1.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.64,
+        "tiltDeg": 1,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

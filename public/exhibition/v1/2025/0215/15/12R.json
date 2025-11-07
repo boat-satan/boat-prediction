@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "15",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=15&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:06:16.287Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 13,
+    "temperature": 8,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5017",
+      "name": "澤田 尚也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4492",
+      "name": "本多 宏和",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3303",
+      "name": "渡辺 豊",
+      "weight": "52.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4436",
+      "name": "渋谷 明憲",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4581",
+      "name": "吉村 誠",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3357",
+      "name": "福島 陽子",
+      "weight": "48.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".31",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.31,
+        "isF": 0
+      }
+    }
+  ]
+}

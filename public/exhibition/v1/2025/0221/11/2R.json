@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "11",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=11&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:17:19.060Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 4,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4382",
+      "name": "高山 智至",
+      "weight": "54.8kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4106",
+      "name": "坂井 康嗣",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4273",
+      "name": "佐藤 旭",
+      "weight": "52.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4880",
+      "name": "澤崎 雄哉",
+      "weight": "52.3kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5385",
+      "name": "鈴木 柊介",
+      "weight": "55.4kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4895",
+      "name": "門間 雄大",
+      "weight": "53.5kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

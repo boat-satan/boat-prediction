@@ -1,0 +1,123 @@
+{
+  "date": "20250216",
+  "pid": "17",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250216&jcd=17&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:08:32.705Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 7,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3175",
+      "name": "渡辺 千草",
+      "weight": "49.2kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.2,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3769",
+      "name": "佐竹 恒彦",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3527",
+      "name": "中嶋 誠一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4997",
+      "name": "濱崎 寿里矢",
+      "weight": "49.2kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.2,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3934",
+      "name": "鋤柄 貴俊",
+      "weight": "52.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4683",
+      "name": "向井田 直弥",
+      "weight": "46.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".52",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.52,
+        "isF": 0
+      }
+    }
+  ]
+}

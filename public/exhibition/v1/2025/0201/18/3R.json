@@ -1,0 +1,123 @@
+{
+  "date": "20250201",
+  "pid": "18",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250201&jcd=18&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:40:49.070Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 6,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5145",
+      "name": "島川 海輝",
+      "weight": "53.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5235",
+      "name": "岩田 凌",
+      "weight": "54.9kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5160",
+      "name": "藤森 陸斗",
+      "weight": "52.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4183",
+      "name": "宇野 弥生",
+      "weight": "47.1kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4845",
+      "name": "前田 紗希",
+      "weight": "47.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5148",
+      "name": "松本 怜",
+      "weight": "46.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 7.07,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

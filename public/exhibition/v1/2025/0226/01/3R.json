@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "01",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=01&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:25:40.746Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 4,
+    "temperature": 10,
+    "waterTemperature": 6,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4258",
+      "name": "関根 彰人",
+      "weight": "52.3kg",
+      "tenjiTime": "7.16",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.16,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5061",
+      "name": "中村 駿平",
+      "weight": "51.5kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3849",
+      "name": "中岡 正彦",
+      "weight": "52.0kg",
+      "tenjiTime": "7.06",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.06,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3415",
+      "name": "松井 繁",
+      "weight": "52.0kg",
+      "tenjiTime": "7.06",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.06,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4643",
+      "name": "近江 翔吾",
+      "weight": "52.0kg",
+      "tenjiTime": "7.13",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.13,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5252",
+      "name": "荒木 颯斗",
+      "weight": "52.0kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

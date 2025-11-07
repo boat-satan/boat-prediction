@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "16",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=16&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:57:22.283Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 5,
+    "waterTemperature": 7,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4054",
+      "name": "福嶋 智之",
+      "weight": "52.3kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".31",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.31,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3444",
+      "name": "香月 大介",
+      "weight": "52.3kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4846",
+      "name": "佐藤 駿介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5074",
+      "name": "大澤 誠也",
+      "weight": "55.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4945",
+      "name": "上村 宏太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5327",
+      "name": "西田 和加",
+      "weight": "49.5kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250222",
+  "pid": "14",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250222&jcd=14&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:19:28.931Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 5,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3977",
+      "name": "山本 兼士",
+      "weight": "50.0kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3771",
+      "name": "折下 寛法",
+      "weight": "52.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4683",
+      "name": "向井田 直弥",
+      "weight": "46.0kg",
+      "tenjiTime": "7.12",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 7.12,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4571",
+      "name": "菅 章哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "3.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": 3,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4435",
+      "name": "服部 達哉",
+      "weight": "54.4kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3458",
+      "name": "東 健介",
+      "weight": "54.5kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    }
+  ]
+}

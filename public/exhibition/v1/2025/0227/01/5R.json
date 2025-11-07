@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "01",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=01&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:53.314Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 4,
+    "temperature": 12,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4427",
+      "name": "秦 英悟",
+      "weight": "51.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4030",
+      "name": "森高 一真",
+      "weight": "50.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4840",
+      "name": "鈴木 秀茉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "52.9kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4637",
+      "name": "中田 友也",
+      "weight": "56.7kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.7,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3966",
+      "name": "作間 章",
+      "weight": "53.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

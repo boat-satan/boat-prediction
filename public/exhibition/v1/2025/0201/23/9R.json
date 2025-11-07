@@ -1,0 +1,123 @@
+{
+  "date": "20250201",
+  "pid": "23",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250201&jcd=23&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:41:07.761Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 4,
+    "temperature": 7,
+    "waterTemperature": 7,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4458",
+      "name": "抹香 雄三",
+      "weight": "52.7kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3505",
+      "name": "山田 竜一",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4873",
+      "name": "蒲原 健太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5358",
+      "name": "増本 杏珠",
+      "weight": "47.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".40",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.4,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3346",
+      "name": "宮本 裕之",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4639",
+      "name": "雑賀 勇貴",
+      "weight": "53.5kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".37",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.37,
+        "isF": 0
+      }
+    }
+  ]
+}

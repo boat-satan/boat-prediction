@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "12",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=12&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:06:12.729Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3977",
+      "name": "山本 兼士",
+      "weight": "50.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4740",
+      "name": "齋藤 達希",
+      "weight": "52.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4487",
+      "name": "三原 司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5179",
+      "name": "藤本 元輝",
+      "weight": "54.2kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5332",
+      "name": "村松 遥輝",
+      "weight": "54.3kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4948",
+      "name": "木場 悠介",
+      "weight": "51.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

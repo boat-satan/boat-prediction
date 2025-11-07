@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "03",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=03&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:03:55.485Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 4,
+    "temperature": 12,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4118",
+      "name": "宇佐見 淳",
+      "weight": "52.0kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4197",
+      "name": "渥美 卓郎",
+      "weight": "53.2kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4568",
+      "name": "廣瀬 真也",
+      "weight": "51.0kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5034",
+      "name": "若林 義人",
+      "weight": "53.8kg",
+      "tenjiTime": "7.03",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 7.03,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4610",
+      "name": "佐藤 大佑",
+      "weight": "53.8kg",
+      "tenjiTime": "6.84",
+      "tilt": "2.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.84,
+        "tiltDeg": 2,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4623",
+      "name": "中北 将史",
+      "weight": "52.5kg",
+      "tenjiTime": "7.02",
+      "tilt": "0.0",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 7.02,
+        "tiltDeg": 0,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    }
+  ]
+}

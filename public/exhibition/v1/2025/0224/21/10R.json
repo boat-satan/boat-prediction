@@ -1,0 +1,123 @@
+{
+  "date": "20250224",
+  "pid": "21",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250224&jcd=21&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:23:51.314Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 3,
+    "waterTemperature": 6,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4847",
+      "name": "佐藤 隆太郎",
+      "weight": "52.6kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5049",
+      "name": "松井 友汰",
+      "weight": "52.9kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4105",
+      "name": "松下 直也",
+      "weight": "51.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3986",
+      "name": "沖島 広和",
+      "weight": "55.1kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4290",
+      "name": "稲田 浩二",
+      "weight": "51.5kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3898",
+      "name": "平田 忠則",
+      "weight": "52.1kg",
+      "tenjiTime": "6.67",
+      "tilt": "3.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.67,
+        "tiltDeg": 3,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

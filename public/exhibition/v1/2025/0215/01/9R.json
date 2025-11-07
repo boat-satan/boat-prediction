@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "01",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=01&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:05:37.427Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 8,
+    "temperature": 10,
+    "waterTemperature": 5,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5022",
+      "name": "伊藤 尚汰",
+      "weight": "50.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4570",
+      "name": "前田 聖文",
+      "weight": "51.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4375",
+      "name": "照屋 厚仁",
+      "weight": "52.6kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4750",
+      "name": "井上 尚悟",
+      "weight": "52.3kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4056",
+      "name": "小西 英輝",
+      "weight": "53.2kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4344",
+      "name": "新田 雄史",
+      "weight": "52.6kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

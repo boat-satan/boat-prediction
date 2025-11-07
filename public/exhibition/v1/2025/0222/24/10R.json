@@ -1,0 +1,123 @@
+{
+  "date": "20250222",
+  "pid": "24",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250222&jcd=24&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:20:16.864Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 11,
+    "temperature": 4,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4468",
+      "name": "大池 佑来",
+      "weight": "51.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3641",
+      "name": "一瀬 明",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4080",
+      "name": "山崎 哲司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3872",
+      "name": "岡田 憲行",
+      "weight": "52.9kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3825",
+      "name": "宮嵜 隆太郎",
+      "weight": "59.4kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.4,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3319",
+      "name": "山崎 義明",
+      "weight": "52.1kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

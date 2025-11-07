@@ -1,0 +1,123 @@
+{
+  "date": "20250218",
+  "pid": "03",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250218&jcd=03&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:11:15.068Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 10,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.2,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3850",
+      "name": "小川 知行",
+      "weight": "52.2kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4610",
+      "name": "佐藤 大佑",
+      "weight": "53.2kg",
+      "tenjiTime": "6.56",
+      "tilt": "2.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.56,
+        "tiltDeg": 2,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4457",
+      "name": "神田 達也",
+      "weight": "52.6kg",
+      "tenjiTime": "6.87",
+      "tilt": "1.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.87,
+        "tiltDeg": 1,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4982",
+      "name": "中村 将隆",
+      "weight": "52.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4363",
+      "name": "大野 芳顕",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5039",
+      "name": "倉田 茂将",
+      "weight": "54.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "1.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": 1,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    }
+  ]
+}

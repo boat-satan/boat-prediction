@@ -1,0 +1,123 @@
+{
+  "date": "20250201",
+  "pid": "12",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250201&jcd=12&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:40:32.933Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 6,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3615",
+      "name": "横田 茂",
+      "weight": "51.5kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4243",
+      "name": "西村 歩",
+      "weight": "47.9kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.9,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5272",
+      "name": "松田 真実",
+      "weight": "47.2kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.2,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3793",
+      "name": "高橋 真吾",
+      "weight": "54.4kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3484",
+      "name": "芝田 浩治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.97",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.97,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5311",
+      "name": "小林 京平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250222",
+  "pid": "07",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250222&jcd=07&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:18:56.844Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 1,
+    "temperature": 2,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3546",
+      "name": "中里 昌志",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4332",
+      "name": "村上 彰一",
+      "weight": "55.9kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4956",
+      "name": "齊藤 大将",
+      "weight": "54.8kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3282",
+      "name": "池本 輝明",
+      "weight": "51.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5371",
+      "name": "早川 颯太",
+      "weight": "59.2kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.2,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "2878",
+      "name": "富山 弘幸",
+      "weight": "52.7kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

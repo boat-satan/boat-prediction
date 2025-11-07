@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "20",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=20&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:44:44.483Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 16,
+    "temperature": 7,
+    "waterTemperature": 9,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5035",
+      "name": "櫻井 優",
+      "weight": "52.9kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": ".24",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.24,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3617",
+      "name": "竹田 広樹",
+      "weight": "52.8kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4764",
+      "name": "小池 礼乃",
+      "weight": "46.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3643",
+      "name": "米田 隆弘",
+      "weight": "52.2kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4465",
+      "name": "大西 賢",
+      "weight": "52.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3574",
+      "name": "大神 康司",
+      "weight": "52.6kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250205",
+  "pid": "01",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250205&jcd=01&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:47:00.078Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 4,
+    "temperature": 5,
+    "waterTemperature": 2,
+    "waveHeight": 0.06,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4630",
+      "name": "岩永 雅人",
+      "weight": "52.1kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4191",
+      "name": "赤羽 克也",
+      "weight": "53.5kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4407",
+      "name": "鹿島 敏弘",
+      "weight": "53.2kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4273",
+      "name": "佐藤 旭",
+      "weight": "51.5kg",
+      "tenjiTime": "7.09",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.09,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4539",
+      "name": "金子 賢志",
+      "weight": "52.2kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7,
+        "tiltDeg": 0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5315",
+      "name": "浅井 翼",
+      "weight": "50.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

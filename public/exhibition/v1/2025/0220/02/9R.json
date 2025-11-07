@@ -1,0 +1,123 @@
+{
+  "date": "20250220",
+  "pid": "02",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250220&jcd=02&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:14:37.413Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 6,
+    "temperature": 10,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4175",
+      "name": "川尻 泰輔",
+      "weight": "55.7kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.7,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3878",
+      "name": "胡本 悟志",
+      "weight": "51.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4598",
+      "name": "加藤 政彦",
+      "weight": "52.3kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4614",
+      "name": "石倉 洋行",
+      "weight": "51.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.5",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0.5,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5009",
+      "name": "大賀 龍之介",
+      "weight": "53.6kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3874",
+      "name": "山本 寛久",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    }
+  ]
+}

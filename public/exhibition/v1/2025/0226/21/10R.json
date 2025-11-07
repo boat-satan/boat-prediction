@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "21",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=21&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:34.273Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 5,
+    "temperature": 9,
+    "waterTemperature": 7,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4847",
+      "name": "佐藤 隆太郎",
+      "weight": "52.6kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4288",
+      "name": "永田 啓二",
+      "weight": "52.1kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5081",
+      "name": "篠原 飛翔",
+      "weight": "52.1kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".28",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.28,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4584",
+      "name": "村岡 賢人",
+      "weight": "52.2kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4719",
+      "name": "上條 暢嵩",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4105",
+      "name": "松下 直也",
+      "weight": "51.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

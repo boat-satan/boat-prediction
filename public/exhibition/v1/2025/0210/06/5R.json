@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "06",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=06&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:17.832Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 1,
+    "temperature": 6,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4793",
+      "name": "金子 萌",
+      "weight": "51.5kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3852",
+      "name": "澤 大介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4005",
+      "name": "瀬川 公則",
+      "weight": "56.2kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.2,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3081",
+      "name": "岡本 慎治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3455",
+      "name": "谷本 幸司",
+      "weight": "51.5kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4131",
+      "name": "原 豊土",
+      "weight": "54.6kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

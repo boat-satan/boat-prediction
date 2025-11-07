@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "10",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=10&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:45:32.617Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 4,
+    "temperature": 2,
+    "waterTemperature": 5,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4055",
+      "name": "吉田 俊彦",
+      "weight": "53.1kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4959",
+      "name": "井上 忠政",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4788",
+      "name": "小池 哲也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4446",
+      "name": "和田 兼輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4927",
+      "name": "関野 文",
+      "weight": "45.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "52.9kg",
+      "tenjiTime": "6.73",
+      "tilt": "2.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.73,
+        "tiltDeg": 2,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

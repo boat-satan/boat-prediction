@@ -1,0 +1,123 @@
+{
+  "date": "20250220",
+  "pid": "20",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250220&jcd=20&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:16:17.903Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 16,
+    "temperature": 4,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3401",
+      "name": "上田 隆章",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5228",
+      "name": "若林 樹蘭",
+      "weight": "52.3kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4709",
+      "name": "岡村 将也",
+      "weight": "52.8kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4725",
+      "name": "佐竹 太一",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4260",
+      "name": "中越 博紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4303",
+      "name": "牧原 崇",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

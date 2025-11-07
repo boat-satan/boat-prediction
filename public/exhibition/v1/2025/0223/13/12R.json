@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "13",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=13&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:30.242Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 10,
+    "temperature": 7.2,
+    "waterTemperature": 6.2,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4295",
+      "name": "小坂 尚哉",
+      "weight": "52.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4028",
+      "name": "田村 隆信",
+      "weight": "55.4kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4044",
+      "name": "湯川 浩司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4428",
+      "name": "有賀 達也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5017",
+      "name": "澤田 尚也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4790",
+      "name": "柳内 敬太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

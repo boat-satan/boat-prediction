@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "20",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=20&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:29:21.454Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 6,
+    "temperature": 10,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4525",
+      "name": "真子 奈津実",
+      "weight": "47.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5184",
+      "name": "飯塚 響",
+      "weight": "45.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5164",
+      "name": "森田 梨湖",
+      "weight": "48.8kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.8,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5334",
+      "name": "樫葉 新心",
+      "weight": "45.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5287",
+      "name": "滝沢 織寧",
+      "weight": "46.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5193",
+      "name": "米丸 乃絵",
+      "weight": "46.5kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    }
+  ]
+}

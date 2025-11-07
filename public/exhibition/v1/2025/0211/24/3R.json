@@ -1,0 +1,123 @@
+{
+  "date": "20250211",
+  "pid": "24",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250211&jcd=24&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:59:36.907Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 8,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4364",
+      "name": "池永 太",
+      "weight": "52.1kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4451",
+      "name": "松崎 祐太郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4350",
+      "name": "篠崎 元志",
+      "weight": "52.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4522",
+      "name": "古澤 光紀",
+      "weight": "53.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4715",
+      "name": "村上 遼",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4499",
+      "name": "滝川 真由子",
+      "weight": "46.5kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

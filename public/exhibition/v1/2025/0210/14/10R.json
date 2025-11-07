@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "14",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=14&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:57:07.158Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 5,
+    "temperature": 6,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4978",
+      "name": "山田 和佐",
+      "weight": "53.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4228",
+      "name": "吉田 慎二郎",
+      "weight": "58.2kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.2,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4365",
+      "name": "盛本 真輔",
+      "weight": "52.1kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3982",
+      "name": "福田 理",
+      "weight": "53.4kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4818",
+      "name": "伏見 俊介",
+      "weight": "54.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3947",
+      "name": "寺本 昇平",
+      "weight": "50.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

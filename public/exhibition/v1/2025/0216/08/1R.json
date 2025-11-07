@@ -1,0 +1,123 @@
+{
+  "date": "20250216",
+  "pid": "08",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250216&jcd=08&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:07:44.819Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 13,
+    "temperature": 11,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4289",
+      "name": "落合 直子",
+      "weight": "47.1kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.1,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3921",
+      "name": "川村 正輝",
+      "weight": "51.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3372",
+      "name": "加藤 雅之",
+      "weight": "52.2kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4834",
+      "name": "浜本 裕己",
+      "weight": "51.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4143",
+      "name": "浦田 晃嗣",
+      "weight": "55.1kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4429",
+      "name": "豊田 泰洋",
+      "weight": "56.4kg",
+      "tenjiTime": "6.77",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.4,
+        "tenjiSec": 6.77,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

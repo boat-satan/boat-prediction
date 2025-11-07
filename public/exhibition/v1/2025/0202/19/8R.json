@@ -1,0 +1,123 @@
+{
+  "date": "20250202",
+  "pid": "19",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250202&jcd=19&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:42:52.881Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 8,
+    "waterTemperature": 9,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4710",
+      "name": "福田 宗平",
+      "weight": "52.7kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3339",
+      "name": "泉 具巳",
+      "weight": "54.4kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5122",
+      "name": "相馬 翔",
+      "weight": "55.1kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4022",
+      "name": "待鳥 雄紀",
+      "weight": "55.6kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4457",
+      "name": "神田 達也",
+      "weight": "53.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5363",
+      "name": "山本 凱立",
+      "weight": "52.6kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

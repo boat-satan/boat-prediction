@@ -1,0 +1,123 @@
+{
+  "date": "20250218",
+  "pid": "05",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250218&jcd=05&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:11:25.286Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 1,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4856",
+      "name": "豊田 健士郎",
+      "weight": "52.4kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3202",
+      "name": "三品 隆浩",
+      "weight": "53.3kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4163",
+      "name": "山崎 裕司",
+      "weight": "52.1kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4380",
+      "name": "鈴木 峻佑",
+      "weight": "52.2kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4004",
+      "name": "山本 浩輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4272",
+      "name": "大場 広孝",
+      "weight": "55.7kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.7,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

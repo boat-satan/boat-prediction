@@ -1,0 +1,123 @@
+{
+  "date": "20250208",
+  "pid": "17",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250208&jcd=17&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:53:34.808Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 15,
+    "temperature": 0,
+    "waterTemperature": 9,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4957",
+      "name": "竹之内 極",
+      "weight": "52.5kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5222",
+      "name": "津田 陸翔",
+      "weight": "52.1kg",
+      "tenjiTime": "6.56",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.56,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4889",
+      "name": "後藤 盛也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5158",
+      "name": "宮脇 遼太",
+      "weight": "52.3kg",
+      "tenjiTime": "6.59",
+      "tilt": "0.0",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.59,
+        "tiltDeg": 0,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5039",
+      "name": "倉田 茂将",
+      "weight": "55.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5270",
+      "name": "小玉 啓太",
+      "weight": "52.9kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

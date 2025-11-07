@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "06",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=06&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:16.773Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 1,
+    "temperature": 6,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3459",
+      "name": "中野 和裕",
+      "weight": "53.6kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4263",
+      "name": "武重 雄介",
+      "weight": "53.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3950",
+      "name": "石川 哲秀",
+      "weight": "55.3kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3990",
+      "name": "芹澤 克彦",
+      "weight": "51.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3805",
+      "name": "高橋 英之",
+      "weight": "52.8kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4514",
+      "name": "上條 嘉嗣",
+      "weight": "52.3kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

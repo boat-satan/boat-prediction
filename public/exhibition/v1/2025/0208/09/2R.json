@@ -1,0 +1,123 @@
+{
+  "date": "20250208",
+  "pid": "09",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250208&jcd=09&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:53:00.492Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 12,
+    "temperature": 1,
+    "waterTemperature": 3,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4824",
+      "name": "松井 洪弥",
+      "weight": "52.0kg",
+      "tenjiTime": "6.56",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.56,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4084",
+      "name": "杉山 正樹",
+      "weight": "52.9kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4983",
+      "name": "前田 篤哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.58",
+      "tilt": "0.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.58,
+        "tiltDeg": 0,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5174",
+      "name": "川井 萌",
+      "weight": "45.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4494",
+      "name": "河合 佑樹",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4926",
+      "name": "吉川 貴仁",
+      "weight": "52.2kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "17",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=17&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:04:42.034Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 3,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4789",
+      "name": "古賀 智之",
+      "weight": "52.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3605",
+      "name": "中村 守成",
+      "weight": "52.9kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4516",
+      "name": "野口 勝弘",
+      "weight": "49.5kg",
+      "tenjiTime": "6.59",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.59,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4653",
+      "name": "小野 達哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.60",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.6,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3302",
+      "name": "谷川 里江",
+      "weight": "46.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3518",
+      "name": "倉田 郁美",
+      "weight": "48.7kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48.7,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

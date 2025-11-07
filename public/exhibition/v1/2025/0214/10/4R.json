@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "10",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=10&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:04:08.225Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 3,
+    "waterTemperature": 4,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3554",
+      "name": "仲口 博崇",
+      "weight": "52.0kg",
+      "tenjiTime": "6.57",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.57,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4151",
+      "name": "下河 誉史",
+      "weight": "54.4kg",
+      "tenjiTime": "6.57",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.57,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5257",
+      "name": "西丸 侑太朗",
+      "weight": "53.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5154",
+      "name": "村松 栄太",
+      "weight": "53.3kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5381",
+      "name": "有山 望",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "-0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": -0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3569",
+      "name": "増田 進",
+      "weight": "52.5kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    }
+  ]
+}

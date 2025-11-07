@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "12",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=12&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:20.210Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 13,
+    "temperature": 6,
+    "waterTemperature": 8,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3860",
+      "name": "松本 浩貴",
+      "weight": "52.7kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3870",
+      "name": "寺嶋 雄",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4047",
+      "name": "吉永 浩則",
+      "weight": "53.2kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4488",
+      "name": "小山 勉",
+      "weight": "52.3kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5334",
+      "name": "樫葉 新心",
+      "weight": "45.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4219",
+      "name": "本岡 勝利",
+      "weight": "52.8kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    }
+  ]
+}

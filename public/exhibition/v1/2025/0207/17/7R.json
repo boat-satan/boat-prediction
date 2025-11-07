@@ -1,0 +1,123 @@
+{
+  "date": "20250207",
+  "pid": "17",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250207&jcd=17&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:51:45.650Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 13,
+    "temperature": 1,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3906",
+      "name": "飯山 晃三",
+      "weight": "59.2kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 59.2,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5034",
+      "name": "若林 義人",
+      "weight": "53.3kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4889",
+      "name": "後藤 盛也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4567",
+      "name": "上村 慎太郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5158",
+      "name": "宮脇 遼太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.60",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.6,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3920",
+      "name": "正木 聖賢",
+      "weight": "55.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "11",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=11&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:09:56.920Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 1,
+    "temperature": 7,
+    "waterTemperature": 5,
+    "waveHeight": 0.04,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3612",
+      "name": "馬袋 義則",
+      "weight": "53.4kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3918",
+      "name": "深井 利寿",
+      "weight": "51.5kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4331",
+      "name": "三好 勇人",
+      "weight": "55.1kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3831",
+      "name": "安藤 裕貴",
+      "weight": "52.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4631",
+      "name": "新井 英孝",
+      "weight": "52.3kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4560",
+      "name": "庄司 樹良々",
+      "weight": "52.4kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    }
+  ]
+}

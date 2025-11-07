@@ -1,0 +1,123 @@
+{
+  "date": "20250219",
+  "pid": "05",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250219&jcd=05&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:13:13.054Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 15,
+    "temperature": 7,
+    "waterTemperature": 10,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3581",
+      "name": "加木 郁",
+      "weight": "52.6kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3663",
+      "name": "木山 和幸",
+      "weight": "50.5kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5063",
+      "name": "大塚 雅治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5345",
+      "name": "牧村 俊輝",
+      "weight": "52.8kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3832",
+      "name": "下田 哲也",
+      "weight": "54.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3833",
+      "name": "中辻 博訓",
+      "weight": "52.8kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

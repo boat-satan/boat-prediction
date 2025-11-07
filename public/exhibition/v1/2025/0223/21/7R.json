@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "21",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=21&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:43.188Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 3,
+    "temperature": 4,
+    "waterTemperature": 7,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3986",
+      "name": "沖島 広和",
+      "weight": "54.5kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3596",
+      "name": "河上 年昭",
+      "weight": "52.3kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4489",
+      "name": "岩川 仁士",
+      "weight": "54.5kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3773",
+      "name": "津留 浩一郎",
+      "weight": "55.2kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4100",
+      "name": "松田 隆司",
+      "weight": "53.2kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5367",
+      "name": "赤松 咲香",
+      "weight": "49.5kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 49.5,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

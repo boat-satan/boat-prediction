@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "13",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=13&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:04.125Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 10.3,
+    "waterTemperature": 6.9,
+    "waveHeight": 0,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3956",
+      "name": "横澤 剛治",
+      "weight": "54.3kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5147",
+      "name": "田中 勇輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5183",
+      "name": "中野 孝二",
+      "weight": "53.7kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4857",
+      "name": "加藤 翔馬",
+      "weight": "55.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4406",
+      "name": "幸野 史明",
+      "weight": "51.5kg",
+      "tenjiTime": "6.86",
+      "tilt": "1.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.86,
+        "tiltDeg": 1,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5220",
+      "name": "青木 蓮",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "2.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": 2,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    }
+  ]
+}

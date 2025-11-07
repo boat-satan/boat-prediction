@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "02",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=02&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:44:56.164Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 6,
+    "temperature": 9,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4857",
+      "name": "加藤 翔馬",
+      "weight": "54.7kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4186",
+      "name": "小川 時光",
+      "weight": "54.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5198",
+      "name": "奥村 明日香",
+      "weight": "44.5kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5076",
+      "name": "石原 光",
+      "weight": "53.7kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3406",
+      "name": "中里 英夫",
+      "weight": "52.9kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4179",
+      "name": "広次 修",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

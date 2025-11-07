@@ -1,0 +1,123 @@
+{
+  "date": "20250209",
+  "pid": "14",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250209&jcd=14&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:55:11.401Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 5,
+    "temperature": 4,
+    "waterTemperature": 8,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4062",
+      "name": "後藤 陽介",
+      "weight": "54.9kg",
+      "tenjiTime": "7.16",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 7.16,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3982",
+      "name": "福田 理",
+      "weight": "53.4kg",
+      "tenjiTime": "7.14",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 7.14,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4384",
+      "name": "鶴本 崇文",
+      "weight": "52.0kg",
+      "tenjiTime": "7.14",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.14,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5171",
+      "name": "清水 未唯",
+      "weight": "53.7kg",
+      "tenjiTime": "7.11",
+      "tilt": "0.0",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 7.11,
+        "tiltDeg": 0,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3532",
+      "name": "柴田 光",
+      "weight": "52.3kg",
+      "tenjiTime": "7.09",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7.09,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4422",
+      "name": "永井 亮次",
+      "weight": "51.5kg",
+      "tenjiTime": "7.08",
+      "tilt": "1.5",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.08,
+        "tiltDeg": 1.5,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    }
+  ]
+}

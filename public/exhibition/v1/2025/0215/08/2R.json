@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "08",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=08&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:06:10.117Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 13,
+    "temperature": 7,
+    "waterTemperature": 6,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.7kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4550",
+      "name": "石岡 将太",
+      "weight": "55.7kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.7,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3999",
+      "name": "大瀧 明日香",
+      "weight": "45.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4146",
+      "name": "柳橋 宏紀",
+      "weight": "52.6kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4469",
+      "name": "土山 卓也",
+      "weight": "55.6kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4834",
+      "name": "浜本 裕己",
+      "weight": "51.5kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

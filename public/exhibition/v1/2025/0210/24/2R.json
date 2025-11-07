@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "24",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=24&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:57:49.638Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 9,
+    "temperature": 5,
+    "waterTemperature": 7,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4288",
+      "name": "永田 啓二",
+      "weight": "52.3kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4445",
+      "name": "宮地 元輝",
+      "weight": "55.2kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.2,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4544",
+      "name": "松田 大志郎",
+      "weight": "52.4kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4102",
+      "name": "益田 啓司",
+      "weight": "51.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4530",
+      "name": "小野 生奈",
+      "weight": "46.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5142",
+      "name": "常住 蓮",
+      "weight": "51.5kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

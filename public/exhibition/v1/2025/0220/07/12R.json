@@ -1,0 +1,123 @@
+{
+  "date": "20250220",
+  "pid": "07",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250220&jcd=07&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:15:19.927Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 3,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4682",
+      "name": "大上 卓人",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4089",
+      "name": "妹尾 忠幸",
+      "weight": "54.8kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4154",
+      "name": "森安 弘雅",
+      "weight": "53.3kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4596",
+      "name": "葛原 大陽",
+      "weight": "52.2kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3853",
+      "name": "岩崎 正哉",
+      "weight": "54.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4630",
+      "name": "岩永 雅人",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    }
+  ]
+}

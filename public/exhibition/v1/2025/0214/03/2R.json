@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "03",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=03&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:03:52.254Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 10,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5157",
+      "name": "市川 健太",
+      "weight": "53.4kg",
+      "tenjiTime": "6.49",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.49,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3869",
+      "name": "井芹 大志",
+      "weight": "53.8kg",
+      "tenjiTime": "6.59",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.59,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3839",
+      "name": "川合 理司",
+      "weight": "57.8kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.8,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3696",
+      "name": "白井 友晴",
+      "weight": "52.1kg",
+      "tenjiTime": "6.60",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.6,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3105",
+      "name": "内山 文典",
+      "weight": "52.9kg",
+      "tenjiTime": "6.58",
+      "tilt": "1.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.58,
+        "tiltDeg": 1,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4982",
+      "name": "中村 将隆",
+      "weight": "52.3kg",
+      "tenjiTime": "6.50",
+      "tilt": "0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.5,
+        "tiltDeg": 0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    }
+  ]
+}

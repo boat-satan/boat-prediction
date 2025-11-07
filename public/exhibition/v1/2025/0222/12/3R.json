@@ -1,0 +1,123 @@
+{
+  "date": "20250222",
+  "pid": "12",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250222&jcd=12&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:19:35.090Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 6,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4195",
+      "name": "前川 守嗣",
+      "weight": "56.9kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.9,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4748",
+      "name": "渡邉 雄朗",
+      "weight": "52.1kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4664",
+      "name": "東口 晃",
+      "weight": "53.4kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3882",
+      "name": "新田 智彰",
+      "weight": "52.7kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3286",
+      "name": "坂東 満",
+      "weight": "52.2kg",
+      "tenjiTime": "7.03",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 7.03,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4372",
+      "name": "原田 佑実",
+      "weight": "46.0kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.13",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0013,
+        "isF": 1
+      }
+    }
+  ]
+}

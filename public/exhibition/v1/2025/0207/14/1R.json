@@ -1,0 +1,123 @@
+{
+  "date": "20250207",
+  "pid": "14",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250207&jcd=14&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:51:30.688Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 7,
+    "waterTemperature": 8,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3662",
+      "name": "大庭 元明",
+      "weight": "55.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4422",
+      "name": "永井 亮次",
+      "weight": "52.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4031",
+      "name": "飯島 誠",
+      "weight": "53.2kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5324",
+      "name": "畑田 希咲",
+      "weight": "48.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3982",
+      "name": "福田 理",
+      "weight": "53.9kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5143",
+      "name": "常盤 海心",
+      "weight": "53.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

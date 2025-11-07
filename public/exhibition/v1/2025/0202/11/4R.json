@@ -1,0 +1,123 @@
+{
+  "date": "20250202",
+  "pid": "11",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250202&jcd=11&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:41:58.412Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 6,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4078",
+      "name": "渡辺 史之",
+      "weight": "52.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5127",
+      "name": "沼田 大都",
+      "weight": "52.1kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5084",
+      "name": "末永 和也",
+      "weight": "52.2kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5234",
+      "name": "塚越 海斗",
+      "weight": "52.8kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4327",
+      "name": "加藤 翔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4932",
+      "name": "新開 航",
+      "weight": "51.5kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "02",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=02&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:43:20.088Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 4,
+    "temperature": 8,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4000",
+      "name": "松本 博昭",
+      "weight": "54.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3896",
+      "name": "上田 洋平",
+      "weight": "51.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5076",
+      "name": "石原 光",
+      "weight": "53.9kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4736",
+      "name": "高倉 和士",
+      "weight": "53.4kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5287",
+      "name": "滝沢 織寧",
+      "weight": "46.5kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4271",
+      "name": "川崎 公靖",
+      "weight": "52.6kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    }
+  ]
+}

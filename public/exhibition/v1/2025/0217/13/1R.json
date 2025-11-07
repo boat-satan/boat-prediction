@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "13",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=13&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:03.059Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 14,
+    "temperature": 8.4,
+    "waterTemperature": 7.1,
+    "waveHeight": 0,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5006",
+      "name": "久保原 秀人",
+      "weight": "53.9kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5201",
+      "name": "村上 宗太郎",
+      "weight": "52.3kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4561",
+      "name": "藤山 翔大",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "3.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": 3,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5127",
+      "name": "沼田 大都",
+      "weight": "52.1kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5353",
+      "name": "草川 壮良",
+      "weight": "51.5kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5374",
+      "name": "木山 大聖",
+      "weight": "51.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    }
+  ]
+}

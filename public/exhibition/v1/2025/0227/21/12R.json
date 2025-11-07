@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "21",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=21&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:29:27.413Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 9,
+    "temperature": 11,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3898",
+      "name": "平田 忠則",
+      "weight": "52.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4847",
+      "name": "佐藤 隆太郎",
+      "weight": "52.4kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4418",
+      "name": "茅原 悠紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4757",
+      "name": "山田 祐也",
+      "weight": "52.4kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4739",
+      "name": "中村 晃朋",
+      "weight": "51.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5081",
+      "name": "篠原 飛翔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

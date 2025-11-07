@@ -1,0 +1,123 @@
+{
+  "date": "20250213",
+  "pid": "15",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250213&jcd=15&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:02:23.402Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 13,
+    "temperature": 6,
+    "waterTemperature": 10,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3357",
+      "name": "福島 陽子",
+      "weight": "47.9kg",
+      "tenjiTime": "6.55",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.9,
+        "tenjiSec": 6.55,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5045",
+      "name": "平川 香織",
+      "weight": "47.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4765",
+      "name": "野田部 宏子",
+      "weight": "51.4kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.4,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4414",
+      "name": "大澤 真菜",
+      "weight": "46.0kg",
+      "tenjiTime": "6.62",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.62,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5291",
+      "name": "三嶌 こころ",
+      "weight": "50.2kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.2,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4965",
+      "name": "福岡 泉水",
+      "weight": "50.1kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.1,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

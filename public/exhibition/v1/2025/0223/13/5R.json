@@ -1,0 +1,123 @@
+{
+  "date": "20250223",
+  "pid": "13",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250223&jcd=13&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:21:23.220Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 12,
+    "temperature": 6.3,
+    "waterTemperature": 5.9,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "52.6kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3868",
+      "name": "尾形 栄治",
+      "weight": "53.7kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4281",
+      "name": "大澤 大夢",
+      "weight": "53.7kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4449",
+      "name": "中嶋 達也",
+      "weight": "53.7kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4697",
+      "name": "國弘 翔平",
+      "weight": "50.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4044",
+      "name": "湯川 浩司",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

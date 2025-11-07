@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "01",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=01&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:24:16.267Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 10,
+    "temperature": 9,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4030",
+      "name": "森高 一真",
+      "weight": "50.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4209",
+      "name": "藤田 竜弘",
+      "weight": "54.6kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3968",
+      "name": "茶谷 信次",
+      "weight": "51.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4821",
+      "name": "妻鳥 晋也",
+      "weight": "54.9kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.0",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4568",
+      "name": "廣瀬 真也",
+      "weight": "51.5kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4203",
+      "name": "小倉 康典",
+      "weight": "51.5kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

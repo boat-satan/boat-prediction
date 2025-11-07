@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "18",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=18&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:17:54.378Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 7,
+    "temperature": 4,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3616",
+      "name": "中村 真",
+      "weight": "53.2kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3054",
+      "name": "北川 幸典",
+      "weight": "55.4kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5092",
+      "name": "篠原 晟弥",
+      "weight": "52.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4357",
+      "name": "田中 和也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5323",
+      "name": "香川 陽太",
+      "weight": "56.7kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.7,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4503",
+      "name": "上野 真之介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

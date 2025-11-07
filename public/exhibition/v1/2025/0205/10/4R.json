@@ -1,0 +1,123 @@
+{
+  "date": "20250205",
+  "pid": "10",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250205&jcd=10&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:47:42.625Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 2,
+    "temperature": 1,
+    "waterTemperature": 3,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4761",
+      "name": "山田 晃大",
+      "weight": "52.3kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3388",
+      "name": "今垣 光太郎",
+      "weight": "52.1kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4927",
+      "name": "関野 文",
+      "weight": "45.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5017",
+      "name": "澤田 尚也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4446",
+      "name": "和田 兼輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4512",
+      "name": "高野 哲史",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

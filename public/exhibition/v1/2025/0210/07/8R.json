@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "07",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=07&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:32.924Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 1,
+    "temperature": 5,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5220",
+      "name": "青木 蓮",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4406",
+      "name": "幸野 史明",
+      "weight": "52.0kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3953",
+      "name": "志道 吉和",
+      "weight": "52.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5000",
+      "name": "岡本 翔太郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4258",
+      "name": "関根 彰人",
+      "weight": "52.6kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5364",
+      "name": "金子 怜央",
+      "weight": "54.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

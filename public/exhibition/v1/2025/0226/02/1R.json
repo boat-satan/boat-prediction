@@ -1,0 +1,123 @@
+{
+  "date": "20250226",
+  "pid": "02",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250226&jcd=02&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:26:04.968Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 6,
+    "temperature": 11,
+    "waterTemperature": 8,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4997",
+      "name": "濱崎 寿里矢",
+      "weight": "49.2kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 49.2,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5153",
+      "name": "佐藤 ほのか",
+      "weight": "46.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5088",
+      "name": "高憧 四季",
+      "weight": "44.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5248",
+      "name": "本田 愛",
+      "weight": "47.6kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.6,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4781",
+      "name": "西舘 果里",
+      "weight": "51.3kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.3,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5322",
+      "name": "根岸 真優",
+      "weight": "46.0kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    }
+  ]
+}

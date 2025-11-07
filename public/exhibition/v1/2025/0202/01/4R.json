@@ -1,0 +1,123 @@
+{
+  "date": "20250202",
+  "pid": "01",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250202&jcd=01&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:40:58.959Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 3,
+    "waterTemperature": 1,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3797",
+      "name": "岩井 繁",
+      "weight": "59.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5063",
+      "name": "大塚 雅治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4191",
+      "name": "赤羽 克也",
+      "weight": "53.1kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4362",
+      "name": "土屋 智則",
+      "weight": "52.9kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5266",
+      "name": "石田 勇斗",
+      "weight": "54.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4220",
+      "name": "深川 和仁",
+      "weight": "53.7kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.7,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    }
+  ]
+}

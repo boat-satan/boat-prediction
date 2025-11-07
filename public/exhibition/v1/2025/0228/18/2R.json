@@ -1,0 +1,123 @@
+{
+  "date": "20250228",
+  "pid": "18",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250228&jcd=18&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:31:01.456Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 7,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5145",
+      "name": "島川 海輝",
+      "weight": "52.9kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5269",
+      "name": "山口 晃朋",
+      "weight": "52.0kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5104",
+      "name": "山田 丈",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5136",
+      "name": "濱野 斗馬",
+      "weight": "52.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5286",
+      "name": "坂井 滉哉",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5238",
+      "name": "笹木 香吾",
+      "weight": "53.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    }
+  ]
+}

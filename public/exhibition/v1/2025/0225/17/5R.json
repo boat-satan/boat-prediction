@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "17",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=17&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:25:20.657Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 5,
+    "temperature": 3,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4419",
+      "name": "原 加央理",
+      "weight": "46.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4545",
+      "name": "岡村 慶太",
+      "weight": "54.8kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4479",
+      "name": "矢野 真梨菜",
+      "weight": "45.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3647",
+      "name": "伊藤 雄二",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3385",
+      "name": "渡邉 睦広",
+      "weight": "51.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3606",
+      "name": "川北 浩貴",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "01",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=01&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:05:26.242Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 4,
+    "temperature": 8,
+    "waterTemperature": 5,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4278",
+      "name": "藤岡 俊介",
+      "weight": "51.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4377",
+      "name": "濱本 優一",
+      "weight": "50.5kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4607",
+      "name": "鶴田 勇雄",
+      "weight": "52.8kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4033",
+      "name": "伊藤 将吉",
+      "weight": "52.7kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4442",
+      "name": "松竹 大輔",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4608",
+      "name": "荒井 翔伍",
+      "weight": "53.6kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".34",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.34,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "10",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=10&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:06:08.391Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 7,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5154",
+      "name": "村松 栄太",
+      "weight": "52.9kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4766",
+      "name": "石井 孝之",
+      "weight": "55.6kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.6,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4393",
+      "name": "田中 孝明",
+      "weight": "58.3kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.3,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3827",
+      "name": "今泉 徹",
+      "weight": "52.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4592",
+      "name": "小林 孝弘",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5381",
+      "name": "有山 望",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "12",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=12&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:54.528Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 11,
+    "temperature": 6,
+    "waterTemperature": 6,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5050",
+      "name": "木下 雄介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3478",
+      "name": "嶋田 貴支",
+      "weight": "52.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4182",
+      "name": "吉田 和仁",
+      "weight": "55.8kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.8,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4728",
+      "name": "山口 亮",
+      "weight": "52.7kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4068",
+      "name": "幸田 智裕",
+      "weight": "52.6kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4042",
+      "name": "丸岡 正典",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

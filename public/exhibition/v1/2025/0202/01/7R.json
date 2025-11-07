@@ -1,0 +1,123 @@
+{
+  "date": "20250202",
+  "pid": "01",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250202&jcd=01&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:41:13.763Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 3,
+    "waterTemperature": 1,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4319",
+      "name": "三宅 潤",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3710",
+      "name": "吉永 泰弘",
+      "weight": "52.1kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4444",
+      "name": "桐生 順平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4407",
+      "name": "鹿島 敏弘",
+      "weight": "53.1kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3977",
+      "name": "山本 兼士",
+      "weight": "50.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3546",
+      "name": "中里 昌志",
+      "weight": "52.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    }
+  ]
+}

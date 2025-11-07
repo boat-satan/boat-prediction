@@ -1,0 +1,123 @@
+{
+  "date": "20250219",
+  "pid": "05",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250219&jcd=05&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:13:10.053Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 1,
+    "temperature": 6,
+    "waterTemperature": 10,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5063",
+      "name": "大塚 雅治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4572",
+      "name": "渡部 悟",
+      "weight": "56.1kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.1,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4181",
+      "name": "花本 夏樹",
+      "weight": "53.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4474",
+      "name": "渡辺 崇",
+      "weight": "55.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4179",
+      "name": "広次 修",
+      "weight": "52.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5054",
+      "name": "佐々木 大河",
+      "weight": "52.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": "F.24",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.0024,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250218",
+  "pid": "02",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250218&jcd=02&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:59.203Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 6,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3604",
+      "name": "武藤 綾子",
+      "weight": "47.8kg",
+      "tenjiTime": "7.18",
+      "tilt": "0.0",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.8,
+        "tenjiSec": 7.18,
+        "tiltDeg": 0,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5035",
+      "name": "櫻井 優",
+      "weight": "52.4kg",
+      "tenjiTime": "7.10",
+      "tilt": "0.0",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 7.1,
+        "tiltDeg": 0,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4792",
+      "name": "杉村 賢也",
+      "weight": "51.5kg",
+      "tenjiTime": "7.07",
+      "tilt": "-0.5",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 7.07,
+        "tiltDeg": -0.5,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4462",
+      "name": "夏山 亮平",
+      "weight": "58.6kg",
+      "tenjiTime": "7.04",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 58.6,
+        "tenjiSec": 7.04,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5357",
+      "name": "田中 瀬里奈",
+      "weight": "55.9kg",
+      "tenjiTime": "6.99",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.99,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5365",
+      "name": "石村 日奈那",
+      "weight": "47.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    }
+  ]
+}

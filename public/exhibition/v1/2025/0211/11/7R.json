@@ -1,0 +1,123 @@
+{
+  "date": "20250211",
+  "pid": "11",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250211&jcd=11&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:58:51.866Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 1,
+    "temperature": 4,
+    "waterTemperature": 3,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4681",
+      "name": "太田 潮",
+      "weight": "55.1kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4598",
+      "name": "加藤 政彦",
+      "weight": "52.7kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4489",
+      "name": "岩川 仁士",
+      "weight": "54.6kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3226",
+      "name": "浦田 信義",
+      "weight": "51.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".36",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.36,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4649",
+      "name": "和田 操拓",
+      "weight": "51.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5320",
+      "name": "岩崎 麗子",
+      "weight": "50.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

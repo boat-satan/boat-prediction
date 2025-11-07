@@ -1,0 +1,123 @@
+{
+  "date": "20250224",
+  "pid": "15",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250224&jcd=15&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:23:19.628Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 8,
+    "windDirNum": 13,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3769",
+      "name": "佐竹 恒彦",
+      "weight": "52.0kg",
+      "tenjiTime": "6.93",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.93,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4766",
+      "name": "石井 孝之",
+      "weight": "54.8kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.8,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3257",
+      "name": "田頭 実",
+      "weight": "51.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4415",
+      "name": "下出 卓矢",
+      "weight": "53.9kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.5",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0.5,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3660",
+      "name": "長谷川 親王",
+      "weight": "56.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4173",
+      "name": "岡谷 健吾",
+      "weight": "55.1kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    }
+  ]
+}

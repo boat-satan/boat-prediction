@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "02",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=02&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:10.959Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 12,
+    "waterTemperature": 6,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4297",
+      "name": "山田 哲也",
+      "weight": "52.2kg",
+      "tenjiTime": "6.59",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.59,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3256",
+      "name": "三角 哲男",
+      "weight": "52.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4505",
+      "name": "島田 賢人",
+      "weight": "52.9kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4532",
+      "name": "秋元 哲",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4075",
+      "name": "中野 次郎",
+      "weight": "54.3kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.3,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4851",
+      "name": "関 浩哉",
+      "weight": "50.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    }
+  ]
+}

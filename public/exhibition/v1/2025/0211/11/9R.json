@@ -1,0 +1,123 @@
+{
+  "date": "20250211",
+  "pid": "11",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250211&jcd=11&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:58:42.515Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 15,
+    "temperature": 5,
+    "waterTemperature": 3,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3584",
+      "name": "佐々木 英樹",
+      "weight": "53.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4466",
+      "name": "南 佑典",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4119",
+      "name": "泥谷 一毅",
+      "weight": "52.7kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3871",
+      "name": "池田 紫乃",
+      "weight": "44.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 44.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3828",
+      "name": "明石 正之",
+      "weight": "52.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5323",
+      "name": "香川 陽太",
+      "weight": "55.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    }
+  ]
+}

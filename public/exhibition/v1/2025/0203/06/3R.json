@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "06",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=06&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:43:14.429Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 1,
+    "temperature": 11,
+    "waterTemperature": 9,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3802",
+      "name": "森岡 まき",
+      "weight": "47.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4166",
+      "name": "吉田 拡郎",
+      "weight": "52.7kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4039",
+      "name": "村上 功祐",
+      "weight": "56.3kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.3,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4234",
+      "name": "野相 弘司",
+      "weight": "56.5kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.5,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4949",
+      "name": "横田 貴満",
+      "weight": "50.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5183",
+      "name": "中野 孝二",
+      "weight": "54.6kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    }
+  ]
+}

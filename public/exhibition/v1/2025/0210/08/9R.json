@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "08",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=08&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:56:39.816Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 15,
+    "temperature": 6,
+    "waterTemperature": 5,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5239",
+      "name": "上野 俊樹",
+      "weight": "50.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.0",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4631",
+      "name": "新井 英孝",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5111",
+      "name": "三村 岳人",
+      "weight": "51.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4892",
+      "name": "柴田 直哉",
+      "weight": "52.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4836",
+      "name": "大谷 健太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5356",
+      "name": "長谷川 暖",
+      "weight": "50.5kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    }
+  ]
+}

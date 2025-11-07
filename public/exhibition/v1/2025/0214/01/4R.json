@@ -1,0 +1,123 @@
+{
+  "date": "20250214",
+  "pid": "01",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250214&jcd=01&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:03:34.322Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 9,
+    "windDirNum": 4,
+    "temperature": 10,
+    "waterTemperature": 5,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4467",
+      "name": "渡邉 俊介",
+      "weight": "50.0kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5093",
+      "name": "浦野 海",
+      "weight": "53.0kg",
+      "tenjiTime": "7.09",
+      "tilt": "0.0",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 7.09,
+        "tiltDeg": 0,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5112",
+      "name": "砂長 知輝",
+      "weight": "52.0kg",
+      "tenjiTime": "6.99",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.99,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4366",
+      "name": "前沢 丈史",
+      "weight": "54.9kg",
+      "tenjiTime": "7.08",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 7.08,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4890",
+      "name": "石川 諒",
+      "weight": "52.1kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4750",
+      "name": "井上 尚悟",
+      "weight": "52.0kg",
+      "tenjiTime": "7.25",
+      "tilt": "0.0",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.25,
+        "tiltDeg": 0,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    }
+  ]
+}

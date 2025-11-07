@@ -1,0 +1,123 @@
+{
+  "date": "20250216",
+  "pid": "04",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250216&jcd=04&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:07:33.426Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 3,
+    "temperature": 13,
+    "waterTemperature": 10,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5122",
+      "name": "相馬 翔",
+      "weight": "55.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5073",
+      "name": "上原 健次郎",
+      "weight": "53.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5186",
+      "name": "遠藤 圭吾",
+      "weight": "53.6kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5124",
+      "name": "上瀧 絢也",
+      "weight": "53.4kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5150",
+      "name": "坂本 雄紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5293",
+      "name": "眞崎 武蔵",
+      "weight": "53.3kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

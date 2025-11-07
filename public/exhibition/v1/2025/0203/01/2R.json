@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "01",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=01&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:43:11.239Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 0,
+    "windDirNum": null,
+    "temperature": 7,
+    "waterTemperature": 2,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": null
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5315",
+      "name": "浅井 翼",
+      "weight": "50.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4362",
+      "name": "土屋 智則",
+      "weight": "52.8kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5186",
+      "name": "遠藤 圭吾",
+      "weight": "53.6kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4550",
+      "name": "石岡 将太",
+      "weight": "55.8kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.8,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5349",
+      "name": "宮崎 奏磨",
+      "weight": "53.3kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".35",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.35,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3838",
+      "name": "伊藤 啓三",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

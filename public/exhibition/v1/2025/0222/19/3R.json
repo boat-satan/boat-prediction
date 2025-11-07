@@ -1,0 +1,123 @@
+{
+  "date": "20250222",
+  "pid": "19",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250222&jcd=19&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:19:54.832Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 3,
+    "temperature": 3,
+    "waterTemperature": 7,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3998",
+      "name": "冨成 謙児",
+      "weight": "52.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5058",
+      "name": "前原 大道",
+      "weight": "52.4kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4104",
+      "name": "木下 陽介",
+      "weight": "55.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3661",
+      "name": "柳瀬 興志",
+      "weight": "57.1kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.1,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4297",
+      "name": "山田 哲也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5348",
+      "name": "小林 甘寧",
+      "weight": "53.3kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": "F.17",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.0017000000000000001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250204",
+  "pid": "11",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250204&jcd=11&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:45:49.888Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 8,
+    "windDirNum": 15,
+    "temperature": 4,
+    "waterTemperature": 6,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3412",
+      "name": "鈴木 博",
+      "weight": "52.2kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5295",
+      "name": "田上 凜",
+      "weight": "46.5kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3441",
+      "name": "土屋 太朗",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4520",
+      "name": "高倉 孝太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "1.0",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": 1,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5150",
+      "name": "坂本 雄紀",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4932",
+      "name": "新開 航",
+      "weight": "51.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250218",
+  "pid": "03",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250218&jcd=03&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:11:11.385Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 10,
+    "temperature": 6,
+    "waterTemperature": 11,
+    "waveHeight": 0.2,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3690",
+      "name": "河合 三弘",
+      "weight": "52.5kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4568",
+      "name": "廣瀬 真也",
+      "weight": "51.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "1.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.63,
+        "tiltDeg": 1,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5039",
+      "name": "倉田 茂将",
+      "weight": "54.7kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4761",
+      "name": "山田 晃大",
+      "weight": "52.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5301",
+      "name": "岩下 巧斗",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5047",
+      "name": "國分 将太郎",
+      "weight": "52.2kg",
+      "tenjiTime": "6.77",
+      "tilt": "1.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.77,
+        "tiltDeg": 1,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

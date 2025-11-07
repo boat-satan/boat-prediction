@@ -1,0 +1,123 @@
+{
+  "date": "20250207",
+  "pid": "12",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250207&jcd=12&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:51:27.130Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 11,
+    "temperature": 6,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4413",
+      "name": "水摩 敦",
+      "weight": "51.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4896",
+      "name": "花本 剛",
+      "weight": "56.3kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.3,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3788",
+      "name": "一宮 稔弘",
+      "weight": "52.0kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4268",
+      "name": "和合 俊介",
+      "weight": "59.1kg",
+      "tenjiTime": "6.92",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.1,
+        "tenjiSec": 6.92,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4966",
+      "name": "田川 大貴",
+      "weight": "53.2kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4409",
+      "name": "坂元 浩仁",
+      "weight": "53.1kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

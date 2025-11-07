@@ -1,0 +1,123 @@
+{
+  "date": "20250205",
+  "pid": "11",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250205&jcd=11&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:47:46.202Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 15,
+    "temperature": 2,
+    "waterTemperature": 5,
+    "waveHeight": 0.07,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3951",
+      "name": "石川 吉鎬",
+      "weight": "55.8kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.8,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4822",
+      "name": "百武 翔",
+      "weight": "52.1kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.0",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5156",
+      "name": "坂野 さくら",
+      "weight": "46.5kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5150",
+      "name": "坂本 雄紀",
+      "weight": "52.4kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".27",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.27,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3978",
+      "name": "齊藤 仁",
+      "weight": "51.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.76,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3352",
+      "name": "小川 晃司",
+      "weight": "51.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.7,
+        "tiltDeg": 0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    }
+  ]
+}

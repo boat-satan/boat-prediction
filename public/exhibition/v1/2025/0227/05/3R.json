@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "05",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=05&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:52.731Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 5,
+    "temperature": 13,
+    "waterTemperature": 11,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3580",
+      "name": "水口 由紀",
+      "weight": "48.7kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.7,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4884",
+      "name": "勝浦 真帆",
+      "weight": "47.8kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.8,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4478",
+      "name": "櫻本 あゆみ",
+      "weight": "47.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3302",
+      "name": "谷川 里江",
+      "weight": "46.0kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4501",
+      "name": "樋口 由加里",
+      "weight": "45.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5390",
+      "name": "高橋 涼夏",
+      "weight": "45.0kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    }
+  ]
+}

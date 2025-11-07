@@ -1,0 +1,123 @@
+{
+  "date": "20250224",
+  "pid": "21",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250224&jcd=21&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:23:47.306Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 5,
+    "temperature": 3,
+    "waterTemperature": 6,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4739",
+      "name": "中村 晃朋",
+      "weight": "51.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4489",
+      "name": "岩川 仁士",
+      "weight": "54.2kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5189",
+      "name": "藤原 早菜",
+      "weight": "46.5kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4874",
+      "name": "池田 奈津美",
+      "weight": "50.9kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.9,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5235",
+      "name": "岩田 凌",
+      "weight": "54.5kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3773",
+      "name": "津留 浩一郎",
+      "weight": "55.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "2.0",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.69,
+        "tiltDeg": 2,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    }
+  ]
+}

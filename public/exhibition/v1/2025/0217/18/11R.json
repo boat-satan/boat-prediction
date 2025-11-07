@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "18",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=18&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:52.268Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 3,
+    "temperature": 9,
+    "waterTemperature": 8,
+    "waveHeight": 0.05,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4866",
+      "name": "橋本 英一",
+      "weight": "54.5kg",
+      "tenjiTime": "7.23",
+      "tilt": "0.0",
+      "st": ".23",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.5,
+        "tenjiSec": 7.23,
+        "tiltDeg": 0,
+        "stSec": 0.23,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4416",
+      "name": "三宅 健太",
+      "weight": "54.7kg",
+      "tenjiTime": "7.15",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 7.15,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4228",
+      "name": "吉田 慎二郎",
+      "weight": "58.2kg",
+      "tenjiTime": "7.14",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 58.2,
+        "tenjiSec": 7.14,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4043",
+      "name": "桐本 康臣",
+      "weight": "52.9kg",
+      "tenjiTime": "7.10",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 7.1,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4006",
+      "name": "小野 勇作",
+      "weight": "50.5kg",
+      "tenjiTime": "7.07",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 7.07,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5355",
+      "name": "萩原 丈太朗",
+      "weight": "54.7kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

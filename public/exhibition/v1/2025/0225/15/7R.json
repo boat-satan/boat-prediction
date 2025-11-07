@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "15",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=15&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:25:14.798Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 9,
+    "temperature": 8,
+    "waterTemperature": 9,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4513",
+      "name": "河野 真也",
+      "weight": "52.7kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4686",
+      "name": "丸野 一樹",
+      "weight": "52.7kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.10",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3959",
+      "name": "坪井 康晴",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4093",
+      "name": "吉田 宗弘",
+      "weight": "50.5kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3776",
+      "name": "横井 健太",
+      "weight": "56.9kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.9,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5352",
+      "name": "西岡 蒼志",
+      "weight": "54.2kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    }
+  ]
+}

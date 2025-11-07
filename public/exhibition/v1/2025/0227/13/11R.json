@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "13",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=13&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:28:46.357Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 12,
+    "temperature": 11.9,
+    "waterTemperature": 8.1,
+    "waveHeight": 0,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3315",
+      "name": "広瀬 聖仁",
+      "weight": "52.8kg",
+      "tenjiTime": "6.83",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.83,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4428",
+      "name": "有賀 達也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".14",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.14,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4790",
+      "name": "柳内 敬太",
+      "weight": "52.3kg",
+      "tenjiTime": "6.77",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.77,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4302",
+      "name": "西野 翔太",
+      "weight": "52.6kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3081",
+      "name": "岡本 慎治",
+      "weight": "52.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.11",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0011,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3653",
+      "name": "品川 賢次",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}

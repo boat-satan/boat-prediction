@@ -1,0 +1,123 @@
+{
+  "date": "20250206",
+  "pid": "16",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250206&jcd=16&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:49:56.955Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 3,
+    "temperature": 2,
+    "waterTemperature": 7,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5167",
+      "name": "小川 竜太朗",
+      "weight": "52.0kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4608",
+      "name": "荒井 翔伍",
+      "weight": "53.3kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.3,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3873",
+      "name": "別府 昌樹",
+      "weight": "52.6kg",
+      "tenjiTime": "6.95",
+      "tilt": "-0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.95,
+        "tiltDeg": -0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5010",
+      "name": "宇留田 翔平",
+      "weight": "52.0kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3629",
+      "name": "浅見 昌克",
+      "weight": "51.5kg",
+      "tenjiTime": "6.89",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.89,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5208",
+      "name": "屋良 龍紀",
+      "weight": "51.0kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    }
+  ]
+}

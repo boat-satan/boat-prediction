@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "21",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=21&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:57.265Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 7,
+    "temperature": 7,
+    "waterTemperature": 8,
+    "waveHeight": 0.06,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4873",
+      "name": "蒲原 健太",
+      "weight": "52.2kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4969",
+      "name": "町田 洸希",
+      "weight": "52.9kg",
+      "tenjiTime": "6.97",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.9,
+        "tenjiSec": 6.97,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3908",
+      "name": "重成 一人",
+      "weight": "54.6kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5328",
+      "name": "井上 慧人",
+      "weight": "54.1kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.1,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5018",
+      "name": "竹下 大樹",
+      "weight": "54.2kg",
+      "tenjiTime": "6.88",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.2,
+        "tenjiSec": 6.88,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5321",
+      "name": "一色 颯輝",
+      "weight": "54.6kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250227",
+  "pid": "02",
+  "race": "2R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250227&jcd=02&rno=2",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:27:54.559Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 6,
+    "temperature": 12,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4078",
+      "name": "渡辺 史之",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3992",
+      "name": "関口 智久",
+      "weight": "53.5kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.5,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4640",
+      "name": "山ノ内 雅人",
+      "weight": "52.4kg",
+      "tenjiTime": "6.82",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.82,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3659",
+      "name": "藤生 雄人",
+      "weight": "53.6kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4228",
+      "name": "吉田 慎二郎",
+      "weight": "58.0kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4355",
+      "name": "小川 広大",
+      "weight": "60.0kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 60,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

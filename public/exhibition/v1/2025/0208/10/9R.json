@@ -1,0 +1,123 @@
+{
+  "date": "20250208",
+  "pid": "10",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250208&jcd=10&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:53:05.667Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 8,
+    "windDirNum": 2,
+    "temperature": 1,
+    "waterTemperature": 2,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4472",
+      "name": "尾嶋 一広",
+      "weight": "53.0kg",
+      "tenjiTime": "6.81",
+      "tilt": "0.0",
+      "st": "F.16",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.81,
+        "tiltDeg": 0,
+        "stSec": 0.0016,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4654",
+      "name": "篠田 優也",
+      "weight": "53.4kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4278",
+      "name": "藤岡 俊介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4788",
+      "name": "小池 哲也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3997",
+      "name": "北村 征嗣",
+      "weight": "52.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.8,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4262",
+      "name": "馬場 貴也",
+      "weight": "52.5kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    }
+  ]
+}

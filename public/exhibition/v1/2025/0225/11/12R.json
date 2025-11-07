@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "11",
+  "race": "12R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=11&rno=12",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:24:52.956Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 6,
+    "waterTemperature": 5,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4437",
+      "name": "中田 元泰",
+      "weight": "53.2kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4012",
+      "name": "中村 有裕",
+      "weight": "58.7kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 58.7,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3811",
+      "name": "石田 章央",
+      "weight": "53.4kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4144",
+      "name": "石塚 久也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.73,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4401",
+      "name": "小林 泰",
+      "weight": "53.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5197",
+      "name": "中野 仁照",
+      "weight": "52.8kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.8,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250225",
+  "pid": "03",
+  "race": "6R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250225&jcd=03&rno=6",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:24:09.029Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 4,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4892",
+      "name": "柴田 直哉",
+      "weight": "52.1kg",
+      "tenjiTime": "6.95",
+      "tilt": "0.0",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.95,
+        "tiltDeg": 0,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3482",
+      "name": "金子 猛志",
+      "weight": "55.3kg",
+      "tenjiTime": "7.06",
+      "tilt": "0.0",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 7.06,
+        "tiltDeg": 0,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3951",
+      "name": "石川 吉鎬",
+      "weight": "55.9kg",
+      "tenjiTime": "7.04",
+      "tilt": "1.0",
+      "st": ".31",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 7.04,
+        "tiltDeg": 1,
+        "stSec": 0.31,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4351",
+      "name": "里岡 右貴",
+      "weight": "52.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "0.0",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.07,
+        "tiltDeg": 0,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4000",
+      "name": "松本 博昭",
+      "weight": "54.4kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4201",
+      "name": "佐竹 友樹",
+      "weight": "52.5kg",
+      "tenjiTime": "7.13",
+      "tilt": "0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.5,
+        "tenjiSec": 7.13,
+        "tiltDeg": 0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    }
+  ]
+}

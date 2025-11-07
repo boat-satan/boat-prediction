@@ -1,0 +1,123 @@
+{
+  "date": "20250218",
+  "pid": "02",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250218&jcd=02&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:10:59.317Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 10,
+    "windDirNum": 6,
+    "temperature": 6,
+    "waterTemperature": 7,
+    "waveHeight": 0.08,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4016",
+      "name": "西川 新太郎",
+      "weight": "54.4kg",
+      "tenjiTime": "7.04",
+      "tilt": "0.0",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.4,
+        "tenjiSec": 7.04,
+        "tiltDeg": 0,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4257",
+      "name": "古川 健",
+      "weight": "52.0kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4679",
+      "name": "植田 太一",
+      "weight": "57.6kg",
+      "tenjiTime": "6.90",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.6,
+        "tenjiSec": 6.9,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4825",
+      "name": "倉持 莉々",
+      "weight": "47.2kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.2,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3737",
+      "name": "上平 真二",
+      "weight": "52.0kg",
+      "tenjiTime": "6.98",
+      "tilt": "0.0",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.98,
+        "tiltDeg": 0,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4614",
+      "name": "石倉 洋行",
+      "weight": "52.2kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    }
+  ]
+}

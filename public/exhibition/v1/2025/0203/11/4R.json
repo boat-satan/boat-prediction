@@ -1,0 +1,123 @@
+{
+  "date": "20250203",
+  "pid": "11",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250203&jcd=11&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:44:17.100Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 15,
+    "temperature": 8,
+    "waterTemperature": 6,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5295",
+      "name": "田上 凜",
+      "weight": "46.0kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4327",
+      "name": "加藤 翔",
+      "weight": "52.3kg",
+      "tenjiTime": "6.60",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.6,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4363",
+      "name": "大野 芳顕",
+      "weight": "52.1kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4851",
+      "name": "関 浩哉",
+      "weight": "50.5kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4120",
+      "name": "柘植 政浩",
+      "weight": "51.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".16",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.16,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4520",
+      "name": "高倉 孝太",
+      "weight": "52.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "2.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.7,
+        "tiltDeg": 2,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    }
+  ]
+}

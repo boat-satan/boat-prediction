@@ -1,0 +1,123 @@
+{
+  "date": "20250215",
+  "pid": "17",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250215&jcd=17&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:06:50.432Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 13,
+    "temperature": 9,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4843",
+      "name": "深尾 巴恵",
+      "weight": "47.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3802",
+      "name": "森岡 まき",
+      "weight": "47.2kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.2,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4525",
+      "name": "真子 奈津実",
+      "weight": "47.7kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.7,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3518",
+      "name": "倉田 郁美",
+      "weight": "48.7kg",
+      "tenjiTime": "6.68",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48.7,
+        "tenjiSec": 6.68,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3302",
+      "name": "谷川 里江",
+      "weight": "46.5kg",
+      "tenjiTime": "6.74",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46.5,
+        "tenjiSec": 6.74,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4997",
+      "name": "濱崎 寿里矢",
+      "weight": "50.1kg",
+      "tenjiTime": "6.69",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.1,
+        "tenjiSec": 6.69,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

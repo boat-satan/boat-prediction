@@ -1,0 +1,123 @@
+{
+  "date": "20250217",
+  "pid": "07",
+  "race": "9R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250217&jcd=07&rno=9",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:09:32.862Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 1,
+    "temperature": 5,
+    "waterTemperature": 7,
+    "waveHeight": 0.02,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "北"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5002",
+      "name": "上田 健太",
+      "weight": "52.6kg",
+      "tenjiTime": "6.87",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.87,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4271",
+      "name": "川崎 公靖",
+      "weight": "52.3kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3853",
+      "name": "岩崎 正哉",
+      "weight": "55.9kg",
+      "tenjiTime": "6.85",
+      "tilt": "0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.85,
+        "tiltDeg": 0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3546",
+      "name": "中里 昌志",
+      "weight": "52.0kg",
+      "tenjiTime": "6.96",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.96,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "2878",
+      "name": "富山 弘幸",
+      "weight": "54.6kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4818",
+      "name": "伏見 俊介",
+      "weight": "55.3kg",
+      "tenjiTime": "6.83",
+      "tilt": "0.0",
+      "st": "F.12",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.3,
+        "tenjiSec": 6.83,
+        "tiltDeg": 0,
+        "stSec": 0.0012,
+        "isF": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "date": "20250210",
+  "pid": "14",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250210&jcd=14&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:57:09.264Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 5,
+    "temperature": 6,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3662",
+      "name": "大庭 元明",
+      "weight": "54.9kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.9,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3900",
+      "name": "香川 素子",
+      "weight": "47.0kg",
+      "tenjiTime": "6.94",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.94,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4674",
+      "name": "池田 剛規",
+      "weight": "52.3kg",
+      "tenjiTime": "7.00",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 7,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4293",
+      "name": "鈴木 智啓",
+      "weight": "57.5kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 57.5,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4925",
+      "name": "森 悠稀",
+      "weight": "52.4kg",
+      "tenjiTime": "6.98",
+      "tilt": "-0.5",
+      "st": "F.04",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.98,
+        "tiltDeg": -0.5,
+        "stSec": 0.0004,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4052",
+      "name": "興津 藍",
+      "weight": "50.5kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    }
+  ]
+}

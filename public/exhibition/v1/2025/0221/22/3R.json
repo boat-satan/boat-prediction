@@ -1,0 +1,123 @@
+{
+  "date": "20250221",
+  "pid": "22",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250221&jcd=22&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T08:18:16.126Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 8,
+    "temperature": 5,
+    "waterTemperature": 8,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4552",
+      "name": "杉山 勝匡",
+      "weight": "52.0kg",
+      "tenjiTime": "6.82",
+      "tilt": "0.0",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.82,
+        "tiltDeg": 0,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5259",
+      "name": "野田 昇吾",
+      "weight": "55.9kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3978",
+      "name": "齊藤 仁",
+      "weight": "51.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4672",
+      "name": "守屋 大地",
+      "weight": "52.0kg",
+      "tenjiTime": "6.87",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.87,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4641",
+      "name": "磯村 匠",
+      "weight": "51.5kg",
+      "tenjiTime": "6.81",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.81,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4979",
+      "name": "中野 夢斗",
+      "weight": "53.6kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    }
+  ]
+}

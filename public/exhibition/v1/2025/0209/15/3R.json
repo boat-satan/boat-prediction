@@ -1,0 +1,123 @@
+{
+  "date": "20250209",
+  "pid": "15",
+  "race": "3R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20250209&jcd=15&rno=3",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-07T07:55:31.096Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 9,
+    "temperature": 7,
+    "waterTemperature": 11,
+    "waveHeight": 0.04,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3470",
+      "name": "新田 芳美",
+      "weight": "47.5kg",
+      "tenjiTime": "6.84",
+      "tilt": "-0.5",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47.5,
+        "tenjiSec": 6.84,
+        "tiltDeg": -0.5,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3837",
+      "name": "秋山 広一",
+      "weight": "52.7kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4348",
+      "name": "宮崎 奨",
+      "weight": "53.9kg",
+      "tenjiTime": "6.90",
+      "tilt": "-0.5",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.9,
+        "tiltDeg": -0.5,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4642",
+      "name": "松尾 夏海",
+      "weight": "47.0kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5257",
+      "name": "西丸 侑太朗",
+      "weight": "52.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5298",
+      "name": "水谷 理人",
+      "weight": "52.0kg",
+      "tenjiTime": "6.84",
+      "tilt": "0.0",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.84,
+        "tiltDeg": 0,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}
