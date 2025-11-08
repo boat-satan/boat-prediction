@@ -6,11 +6,11 @@ on:
       start_date:
         description: "開始日 (YYYYMMDD)"
         required: true
-        default: "20240101"
+        default: "20240225"
       end_date:
         description: "終了日 (YYYYMMDD)"
         required: true
-        default: "20240107"
+        default: "20240229"
       out_format:
         description: "出力形式 (csv / parquet / both)"
         required: true
@@ -40,63 +40,92 @@ jobs:
 
       - name: Install deps
         run: |
+          set -euo pipefail
           python -m pip install --upgrade pip
           pip install polars pyarrow
 
-      - name: Integrate (daily shards; no overwrite)
+      # 範囲内で実在するプログラム日を検出
+      - name: Discover available dates within range
+        id: discover
         env:
           START: ${{ github.event.inputs.start_date }}
           END: ${{ github.event.inputs.end_date }}
+        run: |
+          set -euo pipefail
+          START="${START}"
+          END="${END}"
+
+          # 期待構造: public/programs/v1/YYYY/MMDD/
+          mapfile -t ALL_DIRS < <(find public/programs/v1 -mindepth 2 -maxdepth 2 -type d 2>/dev/null | sort || true)
+          DATES=()
+          for d in "${ALL_DIRS[@]}"; do
+            y=$(basename "$(dirname "$d")")
+            md=$(basename "$d")
+            if [[ "$y" =~ ^[0-9]{4}$ && "$md" =~ ^[0-9]{4}$ ]]; then
+              hd="${y}${md}"
+              if [[ "$hd" -ge "$START" && "$hd" -le "$END" ]]; then
+                DATES+=("$hd")
+              fi
+            fi
+          done
+
+          if [ "${#DATES[@]}" -eq 0 ]; then
+            echo "No program dirs found within range ${START}-${END}."
+            echo "found_dates=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          uniq_sorted=$(printf "%s\n" "${DATES[@]}" | sort -u | tr '\n' ' ')
+          echo "Found dates: ${uniq_sorted}"
+          echo "found_dates=${uniq_sorted}" >> "$GITHUB_OUTPUT"
+
+      # 日別シャードで出力（上書き防止）
+      - name: Integrate (daily shards; no overwrite)
+        if: steps.discover.outputs.found_dates != ''
+        env:
+          DATES: ${{ steps.discover.outputs.found_dates }}
           OUT_FMT: ${{ github.event.inputs.out_format }}
           CSV_COMPRESS: ${{ github.event.inputs.csv_compress }}
         run: |
           set -euo pipefail
-          ROOT="public/programs/v1"
-
           CSV_COMP_FLAG=""
           if [ "${CSV_COMPRESS,,}" = "true" ]; then
             CSV_COMP_FLAG="--csv_compress"
           fi
 
-          for d in $(seq $(date -d "${START}" +%s) 86400 $(date -d "${END}" +%s)); do
-            DATE=$(date -d "@$d" +%Y%m%d)
-            YEAR=$(date -d "@$d" +%Y)
-            MONTH=$(date -d "@$d" +%m)
-            DAY=$(date -d "@$d" +%d)
+          for hd in ${DATES}; do
+            YEAR="${hd:0:4}"
+            MD="${hd:4:4}"
+            PDIR="public/programs/v1/${YEAR}/${MD}"
+            OUTDIR="data/shards/${YEAR}/${MD}"
 
-            PDIR="$ROOT/$YEAR/$MONTH$DAY"
-            # 日別シャードの出力先（ここがミソ）
-            OUTDIR="data/shards/$YEAR/$MONTH$DAY"
-
-            if [ -d "$PDIR" ]; then
-              echo "===> Processing $YEAR/$MONTH$DAY"
-              python scripts/integrate_pro.py \
-                --program_dir "$PDIR" \
-                --exhibition_dir public/exhibition/v1 \
-                --results_dir public/results \
-                --racer_dir public/racers-annual \
-                --out_dir "$OUTDIR" \
-                --out_format "${OUT_FMT}" \
-                ${CSV_COMP_FLAG}
-            else
-              echo "Skip: $PDIR not found"
-            fi
+            echo "===> Processing ${YEAR}/${MD}"
+            python scripts/integrate_pro.py \
+              --program_dir "${PDIR}" \
+              --exhibition_dir public/exhibition/v1 \
+              --results_dir public/results \
+              --racer_dir public/racers-annual \
+              --out_dir "${OUTDIR}" \
+              --out_format "${OUT_FMT}" \
+              ${CSV_COMP_FLAG}
           done
 
+      # シャードを結合して単一テーブルを生成
       - name: Merge shards -> single tables
+        if: steps.discover.outputs.found_dates != ''
         env:
           OUT_FMT: ${{ github.event.inputs.out_format }}
           CSV_COMPRESS: ${{ github.event.inputs.csv_compress }}
         run: |
+          set -euo pipefail
           python - <<'PY'
           import polars as pl
           from pathlib import Path
 
           def write_csv(df: pl.DataFrame, path: Path, compress: bool):
             path.parent.mkdir(parents=True, exist_ok=True)
-            if compress:
-              if not str(path).endswith(".gz"):
-                path = Path(str(path) + ".gz")
+            if compress and not str(path).endswith(".gz"):
+              path = Path(str(path) + ".gz")
             df.write_csv(path)
             print(f"[WRITE] {path} (rows={df.height})")
 
@@ -104,73 +133,67 @@ jobs:
           out_root = Path("data")
           out_root.mkdir(parents=True, exist_ok=True)
 
-          # ---- CSV 結合 ----
-          def merge_csv(glob_pattern: str, unique_keys: list[str], out_path: Path, compress: bool):
-            parts = sorted(shards_root.glob(glob_pattern))
-            if not parts:
-              print(f"[MERGE] no CSV shards: {glob_pattern}")
-              return
-            dfs = []
-            for p in parts:
-              try:
-                dfs.append(pl.read_csv(p))
-              except Exception as e:
-                print(f"[WARN] read_csv failed: {p} ({e})")
-            if not dfs:
-              print(f"[MERGE] no readable CSV shards: {glob_pattern}")
-              return
-            df = pl.concat(dfs, how="vertical", rechunk=True)
-            if unique_keys:
-              df = df.unique(subset=unique_keys, keep="last")
-            write_csv(df, out_path, compress)
-
-          # ---- Parquet 結合 ----
-          def merge_parquet(glob_pattern: str, unique_keys: list[str], out_path: Path):
-            parts = sorted(shards_root.glob(glob_pattern))
-            if not parts:
-              print(f"[MERGE] no Parquet shards: {glob_pattern}")
-              return
-            dfs = []
-            for p in parts:
-              try:
-                dfs.append(pl.read_parquet(p))
-              except Exception as e:
-                print(f"[WARN] read_parquet failed: {p} ({e})")
-            if not dfs:
-              print(f"[MERGE] no readable Parquet shards: {glob_pattern}")
-              return
-            df = pl.concat(dfs, how="vertical", rechunk=True)
-            if unique_keys:
-              df = df.unique(subset=unique_keys, keep="last")
-            out_path.parent.mkdir(parents=True, exist_ok=True)
-            df.write_parquet(out_path)
-            print(f"[WRITE] {out_path} (rows={df.height})")
-
           out_fmt = "${{ github.event.inputs.out_format }}".lower()
           csv_compress = "${{ github.event.inputs.csv_compress }}".lower() == "true"
 
           # integrated_pro
-          if out_fmt in ("csv", "both"):
-            merge_csv("*/" + "*" + "/*/integrated_pro.csv*", ["hd","jcd","rno","lane"], Path("data/integrated_pro.csv"), csv_compress)
-          if out_fmt in ("parquet", "both"):
-            merge_parquet("*/" + "*" + "/*/integrated_pro.parquet", ["hd","jcd","rno","lane"], Path("data/integrated_pro.parquet"))
+          if out_fmt in ("csv","both"):
+            parts = sorted(shards_root.glob("*/" + "*" + "/integrated_pro.csv*"))
+            if parts:
+              df = pl.concat([pl.read_csv(p) for p in parts], how="vertical", rechunk=True)
+              df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
+              write_csv(df, out_root/"integrated_pro.csv", csv_compress)
+            else:
+              print("[MERGE] integrated_pro: no CSV shards found")
+
+          if out_fmt in ("parquet","both"):
+            parts = sorted(shards_root.glob("*/" + "*" + "/integrated_pro.parquet"))
+            if parts:
+              df = pl.concat([pl.read_parquet(p) for p in parts], how="vertical", rechunk=True)
+              df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
+              (out_root/"integrated_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
+              df.write_parquet(out_root/"integrated_pro.parquet")
+              print(f"[WRITE] {out_root/'integrated_pro.parquet'} (rows={df.height})")
+            else:
+              print("[MERGE] integrated_pro: no Parquet shards found")
 
           # train_120_pro
-          if out_fmt in ("csv", "both"):
-            merge_csv("*/" + "*" + "/*/train_120_pro.csv*", ["hd","jcd","rno","combo"], Path("data/train_120_pro.csv"), csv_compress)
-          if out_fmt in ("parquet", "both"):
-            merge_parquet("*/" + "*" + "/*/train_120_pro.parquet", ["hd","jcd","rno","combo"], Path("data/train_120_pro.parquet"))
+          if out_fmt in ("csv","both"):
+            parts = sorted(shards_root.glob("*/" + "*" + "/train_120_pro.csv*"))
+            if parts:
+              df = pl.concat([pl.read_csv(p) for p in parts], how="vertical", rechunk=True)
+              df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
+              write_csv(df, out_root/"train_120_pro.csv", csv_compress)
+            else:
+              print("[MERGE] train_120_pro: no CSV shards found")
+
+          if out_fmt in ("parquet","both"):
+            parts = sorted(shards_root.glob("*/" + "*" + "/train_120_pro.parquet"))
+            if parts:
+              df = pl.concat([pl.read_parquet(p) for p in parts], how="vertical", rechunk=True)
+              df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
+              (out_root/"train_120_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
+              df.write_parquet(out_root/"train_120_pro.parquet")
+              print(f"[WRITE] {out_root/'train_120_pro.parquet'} (rows={df.height})")
+            else:
+              print("[MERGE] train_120_pro: no Parquet shards found")
           PY
 
       - name: Commit & push results (if changed)
+        if: steps.discover.outputs.found_dates != ''
         run: |
-          set -e
+          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A data || true
           if ! git diff --cached --quiet; then
-            git commit -m "integrate_pro shards merged: range=${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} format=${{ github.event.inputs.out_format }} compress=${{ github.event.inputs.csv_compress }}"
+            git commit -m "integrate_pro: merged shards for ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} (${{ steps.discover.outputs.found_dates }})"
             git push
-          else:
+          else
             echo "No changes to commit."
           fi
+
+      - name: Nothing to do (no dates)
+        if: steps.discover.outputs.found_dates == ''
+        run: |
+          echo "No program dates found in the specified range. Adjust start/end or fetch programs first."
