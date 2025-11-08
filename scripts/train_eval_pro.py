@@ -9,12 +9,10 @@ import lightgbm as lgb
 
 def ensure_dir(p: Path): p.mkdir(parents=True, exist_ok=True)
 
-# 文字列日付の範囲フィルタ（Literalを渡す）
 def split_period_lazy(scan: pl.LazyFrame, start: str, end: str) -> pl.LazyFrame:
     return (
-        scan
-        .with_columns(pl.col("hd").cast(pl.Utf8))
-        .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
+        scan.with_columns(pl.col("hd").cast(pl.Utf8))
+            .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
     )
 
 def load_results_amount(results_root: Path, hd: str, jcd: str, rno: int) -> int | None:
@@ -58,7 +56,6 @@ def main():
     eval_dir = data_dir / "eval"
     ensure_dir(eval_dir)
 
-    # ---- シャード検出（Parquet優先、無ければCSV/CSV.GZをLazyで）----
     shards_root = Path("data/shards")
     pq_paths = sorted(shards_root.rglob("train_120_pro.parquet"))
     csv_paths = sorted(shards_root.rglob("train_120_pro.csv"))
@@ -74,11 +71,9 @@ def main():
     else:
         raise FileNotFoundError("No shards under data/shards/**/train_120_pro.(parquet|csv|csv.gz)")
 
-    # ---- 期間分割（Lazyのまま）----
     tr_lf = split_period_lazy(lf, args.train_start, args.train_end)
     te_lf = split_period_lazy(lf, args.test_start, args.test_end)
 
-    # ---- collect（推奨のengine指定でストリーミング実行）----
     tr_df = tr_lf.collect(engine="streaming")
     te_df = te_lf.collect(engine="streaming")
 
@@ -87,12 +82,12 @@ def main():
     if te_df.is_empty():
         raise RuntimeError("テスト期間に該当するデータが空です。")
 
-    # ---- 学習 ----
     Xtr, ytr, keytr, feat_cols = build_feature_df(tr_df)
     train_set = lgb.Dataset(
         Xtr, label=ytr,
         categorical_feature=[c for c in feat_cols if str(Xtr[c].dtype) == "category"]
     )
+
     params = dict(
         objective="binary", metric="auc",
         learning_rate=0.05, num_leaves=63, max_depth=-1,
@@ -100,19 +95,23 @@ def main():
         bagging_fraction=0.9, bagging_freq=1, lambda_l2=1.0,
         verbose=-1, num_threads=0, seed=20240301, force_col_wise=True,
     )
+
+    # ← ここを修正：verbose_eval を callbacks に置き換え
     booster = lgb.train(
-        params, train_set, num_boost_round=1000,
-        valid_sets=[train_set], valid_names=["train"], verbose_eval=200
+        params,
+        train_set,
+        num_boost_round=1000,
+        valid_sets=[train_set],
+        valid_names=["train"],
+        callbacks=[lgb.log_evaluation(period=200)]
     )
     Path(args.model_out).parent.mkdir(parents=True, exist_ok=True)
     booster.save_model(args.model_out)
 
-    # ---- 予測（テスト）----
     Xte, yte, keyte, _ = build_feature_df(te_df)
     proba = booster.predict(Xte, num_iteration=booster.best_iteration)
     pred_df = keyte.copy(); pred_df["proba"] = proba; pred_df["is_hit"] = yte.values
 
-    # TopK選定
     picks = []
     for (hd, jcd, rno), g in pred_df.groupby(["hd","jcd","rno"], as_index=False):
         gg = g.sort_values("proba", ascending=False).head(args.topk).copy()
@@ -120,11 +119,9 @@ def main():
         picks.append(gg)
     picks_df = pd.concat(picks, ignore_index=True)
 
-    # Hit率（レース単位）
     race_hit = picks_df.groupby(["hd","jcd","rno"])["is_hit"].max().reset_index(name="race_hit")
     hit_rate = race_hit["race_hit"].mean()
 
-    # ROI（的中レースの3連単払い戻し合計 / 総投資）
     results_root = Path(args.results_dir)
     unique_races = race_hit[["hd","jcd","rno"]].to_records(index=False)
     returns = 0
@@ -136,7 +133,6 @@ def main():
                 returns += amt
     roi = returns / total_bet if total_bet > 0 else 0.0
 
-    # 出力
     picks_path = eval_dir / f"picks_{args.test_start}_{args.test_end}_k{args.topk}.csv"
     picks_df.to_csv(picks_path, index=False, encoding="utf-8")
     summary = {
