@@ -3,15 +3,16 @@
 """
 train_eval_pro.py  —  ML予測 + 参戦ルール + TopN選定 + 実配当ROI評価
 
-更新点:
-- EV/オッズ列の初期値を np.nan に統一し、map→to_numeric(coerce) で欠損安全に。
-- --load_odds_always を追加（YAML でも指定可）。
-- 合成オッズ/バスケット系フィルタに対応:
-    * --synth_odds_min        : TopN 合成オッズの下限 (大きいほど「荒れ」)
-    * --min_odds_min          : TopN 内の最小オッズの下限
-    * --ev_basket_min         : TopN の平均EVの下限 (EV=proba*odds)
-    * --odds_coverage_min     : TopN でオッズが取得できている件数の下限
-  ※ これらはオッズが無いと判定できないため、必要なときは --load_odds_always を true に。
+更新点（この版）:
+- load_odds_map() が trifecta=[{combo, odds, ...}] 配列形式を正式対応（あなたのJSONを確実に読める）
+- EV/オッズ列の初期値を np.nan に統一し、欠損安全に map→to_numeric(coerce)
+- --load_odds_always 追加（YAMLでも可）
+- 合成オッズ/バスケット系フィルタ:
+    * --synth_odds_min        : TopN 合成オッズ下限 (大きいほど「荒れ」)
+    * --min_odds_min          : TopN 内の最小オッズ下限
+    * --ev_basket_min         : TopN の平均EV下限 (EV=proba*odds)
+    * --odds_coverage_min     : TopN でオッズ取得できている件数の下限
+- pandas FutureWarning 対応（GroupBy.apply に include_groups=False）
 
 使い方例:
   python ./scripts/train_eval_pro.py --config data/train_eval_pro.config.yaml
@@ -57,6 +58,13 @@ def load_results_amount(results_root: Path, hd, jcd, rno) -> int | None:
         return None
 
 def load_odds_map(odds_root: Path, hd, jcd, rno) -> dict[str, float] | None:
+    """
+    対応フォーマット:
+      1) {"trifecta": {"1-2-3": 15.1, ...}}
+      1b) {"trifecta": [ {"combo":"1-2-3","odds":15.1}, ... ]}  ←あなたのJSON
+      2) {"odds":[{"combo"/"combination"/"key", "odds"/"odd"/"value"}, ...]}
+      3) {"1-2-3": 15.1, ...}
+    """
     y  = str(hd)[:4]; md = str(hd)[4:8]
     try:    jcd_str = f"{int(jcd):02d}"
     except: jcd_str = str(jcd)
@@ -66,45 +74,57 @@ def load_odds_map(odds_root: Path, hd, jcd, rno) -> dict[str, float] | None:
     if not p.exists(): return None
     js = json.loads(p.read_text(encoding="utf-8"))
 
-    # 1) {"trifecta": {"1-2-3": 15.1, ...}}
+    # --- 1) dict 形式
     if isinstance(js.get("trifecta"), dict):
         out = {}
         for k, v in js["trifecta"].items():
-            if v in (None, ""): continue
+            if v in (None, "", "N/A", "-", "--"): continue
             try:
-                out[str(k)] = float(v)
+                out[str(k)] = float(str(v).replace(",", ""))
             except Exception:
-                try:
-                    out[str(k)] = float(str(v).replace(",", ""))
-                except Exception:
-                    continue
-        return out if out else None
+                continue
+        if out: return out
 
-    # 2) {"odds":[{"combo":"1-2-3","odd":15.1}, ...]} 等
+    # --- 1b) list 形式（今回の主目的）
+    if isinstance(js.get("trifecta"), list):
+        m = {}
+        for row in js["trifecta"]:
+            if not isinstance(row, dict): continue
+            combo = row.get("combo") or row.get("combination") or row.get("key")
+            odd   = row.get("odds")  or row.get("odd")         or row.get("value")
+            if combo is None or odd in (None, "", "N/A", "-", "--"): continue
+            try:
+                m[str(combo)] = float(str(odd).replace(",", ""))
+            except Exception:
+                continue
+        if m: return m
+
+    # --- 2) list under odds/trifecta_list/3t/list
     cand = js.get("odds") or js.get("trifecta_list") or js.get("3t") or js.get("list")
     if isinstance(cand, list):
         m = {}
         for row in cand:
             if not isinstance(row, dict): continue
             combo = row.get("combo") or row.get("combination") or row.get("key")
-            odd   = row.get("odd")   or row.get("odds")        or row.get("value")
-            if combo is None or odd in (None, ""): continue
+            odd   = row.get("odds")  or row.get("odd")         or row.get("value")
+            if combo is None or odd in (None, "", "N/A", "-", "--"): continue
             try:
                 m[str(combo)] = float(str(odd).replace(",", ""))
             except Exception:
                 continue
-        return m if m else None
+        if m: return m
 
-    # 3) {"1-2-3": 15.1, ...}
-    flat = {k: js[k] for k in js.keys() if "-" in k}
+    # --- 3) 平坦
+    flat = {k: js[k] for k in js.keys() if isinstance(k, str) and "-" in k}
     if flat:
         out = {}
         for k, v in flat.items():
+            if v in (None, "", "N/A", "-", "--"): continue
             try:
                 out[k] = float(str(v).replace(",", ""))
             except Exception:
                 continue
-        return out if out else None
+        if out: return out
 
     return None
 
@@ -234,7 +254,7 @@ def merge_with_yaml(args: argparse.Namespace) -> argparse.Namespace:
     set_default("drop_one_after_rank", bool(filt.get("drop_one_after_rank", getattr(args, "drop_one_after_rank", False))))
     set_default("daily_cap", int(filt.get("daily_cap", args.daily_cap)))
 
-    # バスケット系（ルート直下に置く想定）
+    # バスケット系（ルート直下）
     set_default("synth_odds_min", float(cfg.get("synth_odds_min", args.synth_odds_min)))
     set_default("min_odds_min", float(cfg.get("min_odds_min", args.min_odds_min)))
     set_default("ev_basket_min", float(cfg.get("ev_basket_min", args.ev_basket_min)))
@@ -336,7 +356,8 @@ def main():
             "non1_candidates_top18": non1_candidates
         })
 
-    metrics = pred_df.groupby(["hd","jcd","rno"]).apply(top18_metrics).reset_index()
+    # include_groups=False で将来の仕様変更にも備える
+    metrics = pred_df.groupby(["hd","jcd","rno"]).apply(top18_metrics, include_groups=False).reset_index()
     pred_df = pred_df.merge(metrics, on=["hd","jcd","rno"], how="left")
 
     # ---- 絶対ルールで参戦候補抽出（レース単体で完結）----
@@ -360,15 +381,13 @@ def main():
         eligible = pd.concat(keep, ignore_index=True)
 
     # ---- バスケット系フィルタ（TopNで判定）----
-    # 並べ替えキー（proba/ev）に基づき TopN を仮選定し、その TopN で合成オッズ等を計算してレース採否を決定
-    if need_odds:  # オッズ必須系は、オッズが無い場合はスキップ扱い
+    if need_odds:
         basket_rows = []
-        # まず対象レースのみに絞る
         base_df = pred_df.merge(eligible[["hd","jcd","rno"]], on=["hd","jcd","rno"], how="inner")
         for (hd, jcd, rno), g in base_df.groupby(["hd","jcd","rno"], as_index=False):
             gg = g.copy()
 
-            # exclude_one_head はバスケット評価には適用しない（TopNのスコア判定用）
+            # 並べ替え（除外はこの段階では行わず、純粋にTopNの“強さ”を評価）
             if use_ev:
                 if args.ev_drop_if_missing_odds:
                     gg = gg[gg["ev"].notna()].copy()
@@ -397,10 +416,7 @@ def main():
                 min_odds = np.nan
 
             # EVバスケット平均
-            if "ev" in topN.columns:
-                ev_basket = float(topN["ev"].mean(skipna=True))
-            else:
-                ev_basket = np.nan
+            ev_basket = float(topN["ev"].mean(skipna=True)) if "ev" in topN.columns else np.nan
 
             basket_rows.append({
                 "hd": hd, "jcd": jcd, "rno": rno,
@@ -412,7 +428,6 @@ def main():
 
         if basket_rows:
             basket_df = pd.DataFrame(basket_rows)
-            # 閾値を適用（指定が 0/NaN の場合は無効）
             cond_b = pd.Series([True] * len(basket_df))
             if args.odds_coverage_min > 0:
                 cond_b &= (basket_df["cov"] >= int(args.odds_coverage_min))
@@ -426,7 +441,6 @@ def main():
             keep_basket = basket_df.loc[cond_b, ["hd","jcd","rno"]]
             if keep_basket.empty:
                 raise RuntimeError("バスケット系フィルタ適用後に参戦候補が0件。合成オッズ/EV/coverageの閾値を緩めてください。")
-            # eligible を置き換え
             eligible = eligible.merge(keep_basket, on=["hd","jcd","rno"], how="inner")
 
     # ---- 参戦レースに限定 ----
