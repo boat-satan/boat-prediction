@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-boat-ml Pro統合パイプライン（出走表/展示/結果/選手年次を統合 → 6行 → 120行展開）
-- 選手個人データは「対象レースの前年」を参照（例: 2024レース → 2023フォルダ）
-- 出力:
-    data/integrated_pro.parquet   # レース×艇（6行/レース、特徴入り）
-    data/train_120_pro.parquet    # 三連単120行（is_hitラベル付き）
-"""
 from __future__ import annotations
 import argparse, itertools, json, re
 from pathlib import Path
@@ -29,52 +22,96 @@ def fnum(x, default=None):
         return default
 
 def parse_triplet(s: str|None):
-    # "6.46 50.94 65.09" → (6.46, 50.94, 65.09)
     if not s: return (None, None, None)
     parts = [p for p in str(s).split() if p]
     vals = [fnum(p) for p in parts[:3]]
     while len(vals) < 3: vals.append(None)
     return tuple(vals)
 
+# ---- ランク（古いPolars互換）
 def rank_dense_compat(col: pl.Expr, asc=True):
-    """
-    Polarsのrank互換：nullを末尾扱いにするため、フィラーを入れてからrank("dense")。
-    - 昇順: nullは非常に大きい値で埋めて末尾へ
-    - 降順: nullは非常に小さい値で埋めて末尾へ
-    """
     filler = 1e18 if asc else -1e18
     return col.fill_null(filler).rank(method="dense", descending=not asc)
 
+# ---- ここが重要：スキーマ強制（Int/Floatの揺れを抑止）
+FLOAT_COLS_6 = {
+    "national_win","national_2r","national_3r",
+    "local_win","local_2r","local_3r",
+    "motor_id","motor_rate2","motor_rate3",
+    "boat_id","boat_rate2","boat_rate3",
+    "weightKg","tiltDeg","tenji_sec","tenji_st",
+    "course_first_rate","course_3rd_rate","course_avg_st",
+    "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
+    "wind_speed_m","wave_height_cm","outer_over_inner",
+    "power_lane","power_inner","power_outer",
+    "st_diff_4_vs_3","st_diff_5_vs_4","st_diff_6_vs_5",
+}
+INT_COLS_6 = {"rno","lane","age","isF_tenji","is_strong_wind","is_crosswind","tenji_rank","st_rank"}
+STR_COLS_6 = {"hd","jcd","racer_id","racer_name","grade","weather_sky","title","decision","wind_dir","label_3t"}
+
+def enforce_schema_6(df: pl.DataFrame) -> pl.DataFrame:
+    # 未存在列は追加（Nullで）→ その後で一括キャスト
+    for c in FLOAT_COLS_6 | INT_COLS_6 | STR_COLS_6:
+        if c not in df.columns:
+            df = df.with_columns(pl.lit(None).alias(c))
+    cast_map = {}
+    for c in FLOAT_COLS_6:
+        cast_map[c] = pl.Float64
+    for c in INT_COLS_6:
+        cast_map[c] = pl.Int64
+    for c in STR_COLS_6:
+        cast_map[c] = pl.Utf8
+    # 余計な型（例えばBoolean/Int8）もここで吸収
+    return df.with_columns([pl.col(k).cast(v, strict=False) for k,v in cast_map.items()])
+
+FLOAT_COLS_120 = {
+    "p1_national_win","p1_motor_rate2","p1_tenji_st","p1_tenji_rank","p1_st_rank","p1_course_first_rate",
+    "p2_national_win","p2_motor_rate2","p2_tenji_st","p2_tenji_rank","p2_st_rank",
+    "p3_motor_rate2","p3_tenji_st","p3_tenji_rank","p3_st_rank",
+    "diff_p1p2_st","sum_p1p2_motor",
+    "wind_speed_m","wave_height_cm",
+}
+INT_COLS_120 = {"rno","p1_lane","p2_lane","p3_lane","outer_push","in_cover","is_strong_wind","is_crosswind","is_hit"}
+STR_COLS_120 = {"hd","jcd","combo","p1_grade","p2_grade","p3_grade"}
+
+def enforce_schema_120(df: pl.DataFrame) -> pl.DataFrame:
+    for c in FLOAT_COLS_120 | INT_COLS_120 | STR_COLS_120:
+        if c not in df.columns:
+            df = df.with_columns(pl.lit(None).alias(c))
+    cast_map = {}
+    for c in FLOAT_COLS_120:
+        cast_map[c] = pl.Float64
+    for c in INT_COLS_120:
+        cast_map[c] = pl.Int64
+    for c in STR_COLS_120:
+        cast_map[c] = pl.Utf8
+    return df.with_columns([pl.col(k).cast(v, strict=False) for k,v in cast_map.items()])
+
 def integrate_one(program_js: dict, exhibition_js: dict|None,
                   result_js: dict|None, racer_root: Path) -> pl.DataFrame:
-    # keys
     hd = program_js.get("date")
     jcd = program_js.get("pid")
     rno = int(str(program_js.get("race","1R")).replace("R",""))
-    # meta（result優先）
+
     meta = (result_js or {}).get("meta", {})
     weather_sky   = meta.get("weather_sky")
-    wind_dir      = meta.get("wind_dir")
+    wind_dir      = meta.get("wind_dir")        # 数値/文字いずれも来る想定→文字列に寄せる
     wind_speed_m  = meta.get("wind_speed_m")
     wave_height_cm= meta.get("wave_height_cm")
     title         = meta.get("title")
-    decision      = meta.get("decision")  # 学習には使わない
+    decision      = meta.get("decision")        # 学習には使わない
 
-    # 出走（6艇）
     rows = []
     for e in program_js.get("entries", []):
         lane      = int(e.get("lane"))
         racer_id  = str(e.get("number")) if e.get("number") is not None else None
-        name      = e.get("name")
-        grade     = e.get("grade")
-        age       = e.get("age")
+        name      = e.get("name"); grade = e.get("grade"); age = e.get("age")
 
         nat_win, nat_2r, nat_3r = parse_triplet((e.get("stats") or {}).get("national"))
         loc_win, loc_2r, loc_3r = parse_triplet((e.get("stats") or {}).get("local"))
         m_id, m2, m3            = parse_triplet((e.get("stats") or {}).get("motor"))
         b_id, b2, b3            = parse_triplet((e.get("stats") or {}).get("boat"))
 
-        # 展示（lane一致）
         ex = None
         if exhibition_js:
             for exi in exhibition_js.get("entries", []):
@@ -89,7 +126,6 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
             tenji_st  = nz.get("stSec")
             isF       = nz.get("isF")
 
-        # 「前年」の選手年次を読む（2024レース→2023）
         m = RE_DATE.match(hd or "")
         cur_year = int(m.group(1)) if m else 2024
         prev_year = cur_year - 1
@@ -112,9 +148,9 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
         rows.append(dict(
             hd=hd, jcd=jcd, rno=rno, lane=lane,
             racer_id=racer_id, racer_name=name, grade=grade, age=age,
-            weather_sky=weather_sky, wind_dir=wind_dir,
-            wind_speed_m=wind_speed_m, wave_height_cm=wave_height_cm,
-            title=title, decision=decision,  # 保持のみ（学習投入禁止）
+            weather_sky=weather_sky, wind_dir=str(wind_dir) if wind_dir is not None else None,
+            wind_speed_m=fnum(wind_speed_m), wave_height_cm=fnum(wave_height_cm),
+            title=title, decision=decision,
             national_win=nat_win, national_2r=nat_2r, national_3r=nat_3r,
             local_win=loc_win, local_2r=loc_2r, local_3r=loc_3r,
             motor_id=m_id, motor_rate2=m2, motor_rate3=m3,
@@ -147,12 +183,9 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
              pl.lit(float(inner) if inner is not None else 0)).alias("outer_over_inner"),
         ])
 
-        # ST相対差（4→3, 5→4, 6→5）
         def st_of(l):
-            try:
-                return float(df.filter(pl.col("lane")==l)["tenji_st"][0])
-            except Exception:
-                return None
+            try: return float(df.filter(pl.col("lane")==l)["tenji_st"][0])
+            except Exception: return None
         st3, st4, st5, st6 = st_of(3), st_of(4), st_of(5), st_of(6)
         df = df.with_columns([
             pl.lit((st4-st3) if (st4 is not None and st3 is not None) else None).alias("st_diff_4_vs_3"),
@@ -161,14 +194,13 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
         ])
         df = df.with_columns([
             ((pl.col("lane")==4) & (pl.col("st_diff_4_vs_3")<=-0.02) &
-             (pl.col("tenji_st")<=0.10)).cast(pl.Int8).alias("dash_attack_flag")
+             (pl.col("tenji_st")<=0.10)).cast(pl.Int64).alias("dash_attack_flag")
         ])
         df = df.with_columns([
-            (pl.col("wind_speed_m")>=6).cast(pl.Int8).alias("is_strong_wind"),
-            (pl.col("wind_dir").is_in([2,3,6,7])).cast(pl.Int8).alias("is_crosswind"),
+            (pl.col("wind_speed_m")>=6).cast(pl.Int64).alias("is_strong_wind"),
+            (pl.col("wind_dir").is_in(["2","3","6","7"])).cast(pl.Int64).alias("is_crosswind"),
         ])
 
-    # ラベル（的中三連単）
     label_3t = None
     if result_js and result_js.get("payouts", {}).get("trifecta"):
         label_3t = result_js["payouts"]["trifecta"].get("combo")
@@ -176,6 +208,9 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
         pl.lit(hd).alias("hd"), pl.lit(jcd).alias("jcd"),
         pl.lit(rno).alias("rno"), pl.lit(label_3t).alias("label_3t"),
     ])
+
+    # ★ここでスキーマを固定
+    df = enforce_schema_6(df)
     return df
 
 def expand_120(df6: pl.DataFrame) -> pl.DataFrame:
@@ -191,39 +226,25 @@ def expand_120(df6: pl.DataFrame) -> pl.DataFrame:
         is_hit = 1 if (label==combo) else 0
         rows.append(dict(
             hd=hd, jcd=jcd, rno=rno, combo=combo, is_hit=is_hit,
-            # 1着
             p1_lane=a, p1_grade=r1.get("grade"),
-            p1_national_win=r1.get("national_win"),
-            p1_motor_rate2=r1.get("motor_rate2"),
-            p1_tenji_st=r1.get("tenji_st"),
-            p1_tenji_rank=r1.get("tenji_rank"),
-            p1_st_rank=r1.get("st_rank"),
+            p1_national_win=r1.get("national_win"), p1_motor_rate2=r1.get("motor_rate2"),
+            p1_tenji_st=r1.get("tenji_st"), p1_tenji_rank=r1.get("tenji_rank"), p1_st_rank=r1.get("st_rank"),
             p1_course_first_rate=r1.get("course_first_rate"),
-            # 2着
             p2_lane=b, p2_grade=r2.get("grade"),
-            p2_national_win=r2.get("national_win"),
-            p2_motor_rate2=r2.get("motor_rate2"),
-            p2_tenji_st=r2.get("tenji_st"),
-            p2_tenji_rank=r2.get("tenji_rank"),
-            p2_st_rank=r2.get("st_rank"),
-            # 3着
+            p2_national_win=r2.get("national_win"), p2_motor_rate2=r2.get("motor_rate2"),
+            p2_tenji_st=r2.get("tenji_st"), p2_tenji_rank=r2.get("tenji_rank"), p2_st_rank=r2.get("st_rank"),
             p3_lane=c, p3_grade=r3.get("grade"),
             p3_motor_rate2=r3.get("motor_rate2"),
-            p3_tenji_st=r3.get("tenji_st"),
-            p3_tenji_rank=r3.get("tenji_rank"),
-            p3_st_rank=r3.get("st_rank"),
-            # 相互作用
+            p3_tenji_st=r3.get("tenji_st"), p3_tenji_rank=r3.get("tenji_rank"), p3_st_rank=r3.get("st_rank"),
             diff_p1p2_st=_safediff(r1.get("tenji_st"), r2.get("tenji_st")),
             sum_p1p2_motor=_safesum(r1.get("motor_rate2"), r2.get("motor_rate2")),
             outer_push=1 if (a in (4,5,6) and r1.get("dash_attack_flag")==1) else 0,
             in_cover=1 if (b==1 and (recs.get(2,{}).get("tenji_st") is not None)) else 0,
-            # 環境（共通）
-            wind_speed_m=r1.get("wind_speed_m"),
-            wave_height_cm=r1.get("wave_height_cm"),
-            is_strong_wind=r1.get("is_strong_wind"),
-            is_crosswind=r1.get("is_crosswind"),
+            wind_speed_m=r1.get("wind_speed_m"), wave_height_cm=r1.get("wave_height_cm"),
+            is_strong_wind=r1.get("is_strong_wind"), is_crosswind=r1.get("is_crosswind"),
         ))
-    return pl.DataFrame(rows)
+    out = pl.DataFrame(rows)
+    return enforce_schema_120(out)
 
 def _safediff(a,b):
     try:
@@ -261,10 +282,8 @@ def main():
             pjs = jload(p)
             hd = pjs.get("date"); jcd = pjs.get("pid")
             rno = int(str(pjs.get("race","1R")).replace("R",""))
-            # exhibition: public/exhibition/v1/YYYY/MMDD/PP/1R.json
             exh_path = exh_root / hd[:4] / hd[4:8] / jcd / f"{rno}R.json"
             ejs = jload(exh_path) if exh_path.exists() else None
-            # results: public/results/YYYY/MMDD/PP/1R.json
             res_path = res_root / hd[:4] / hd[4:8] / jcd / f"{rno}R.json"
             rjs = jload(res_path) if res_path.exists() else None
 
@@ -278,13 +297,15 @@ def main():
             print(f"[ERROR] {p}: {e}")
 
     if integrated_parts:
-        pl.concat(integrated_parts).write_parquet(out_dir/"integrated_pro.parquet")
+        pl.concat(integrated_parts, how="vertical", rechunk=True)\
+          .write_parquet(out_dir/"integrated_pro.parquet")
         print(f"[OK] integrated -> {out_dir/'integrated_pro.parquet'}")
     else:
         print("[WARN] no integrated rows.")
 
     if expanded_parts:
-        pl.concat(expanded_parts).write_parquet(out_dir/"train_120_pro.parquet")
+        pl.concat(expanded_parts, how="vertical", rechunk=True)\
+          .write_parquet(out_dir/"train_120_pro.parquet")
         print(f"[OK] 120-expanded -> {out_dir/'train_120_pro.parquet'}")
     else:
         print("[WARN] no 120-expanded rows.")
