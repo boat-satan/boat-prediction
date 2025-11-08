@@ -3,22 +3,14 @@ name: Integrate Pro (build training tables)
 on:
   workflow_dispatch:
     inputs:
-      scope:
-        description: "対象範囲: day / month / all"
+      start_date:
+        description: "開始日 (YYYYMMDD)"
         required: true
-        default: "day"
-      date:
-        description: "scope=day 用 (YYYYMMDD)"
-        required: false
         default: "20240101"
-      year:
-        description: "scope=month 用 (YYYY)"
-        required: false
-        default: "2024"
-      month:
-        description: "scope=month 用 (1..12)"
-        required: false
-        default: "1"
+      end_date:
+        description: "終了日 (YYYYMMDD)"
+        required: true
+        default: "20240107"
 
 permissions:
   contents: write
@@ -43,65 +35,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pyarrow
 
-      - name: Select program_dir subset (by scope)
-        id: sel
+      - name: Run integrate for date range
+        env:
+          START: ${{ github.event.inputs.start_date }}
+          END: ${{ github.event.inputs.end_date }}
         run: |
           set -euo pipefail
-          scope="${{ github.event.inputs.scope }}"
-          date="${{ github.event.inputs.date }}"
-          year="${{ github.event.inputs.year }}"
-          month="${{ github.event.inputs.month }}"
-          root="public/programs/v1"
+          ROOT="public/programs/v1"
+          for d in $(seq $(date -d "${START}" +%s) 86400 $(date -d "${END}" +%s)); do
+            DATE=$(date -d "@$d" +%Y%m%d)
+            YEAR=$(date -d "@$d" +%Y)
+            MONTH=$(date -d "@$d" +%m)
+            DAY=$(date -d "@$d" +%d)
 
-          case "$scope" in
-            day)
-              YY=${date:0:4}
-              MMDD=${date:4:4}
-              echo "dir_filter=$root/$YY/$MMDD" >> $GITHUB_OUTPUT
-              ;;
-            month)
-              MM=$(printf "%02d" $month)
-              # 月全体（各日ディレクトリ）を対象
-              echo "dir_filter=$root/$year" >> $GITHUB_OUTPUT
-              echo "month_glob=$root/$year/*" >> $GITHUB_OUTPUT
-              ;;
-            all)
-              echo "dir_filter=$root" >> $GITHUB_OUTPUT
-              ;;
-            *)
-              echo "Unknown scope: $scope"; exit 1;;
-          esac
-
-      - name: Run integrate (day)
-        if: ${{ github.event.inputs.scope == 'day' }}
-        run: |
-          python scripts/integrate_pro.py \
-            --program_dir "${{ steps.sel.outputs.dir_filter }}" \
-            --exhibition_dir public/exhibition/v1 \
-            --results_dir public/results \
-            --racer_dir public/racers-annual \
-            --out_dir data
-
-      - name: Run integrate (month)
-        if: ${{ github.event.inputs.scope == 'month' }}
-        run: |
-          # 月の全日を一括処理（スクリプト内部で再帰glob）
-          python scripts/integrate_pro.py \
-            --program_dir "public/programs/v1/${{ github.event.inputs.year }}" \
-            --exhibition_dir public/exhibition/v1 \
-            --results_dir public/results \
-            --racer_dir public/racers-annual \
-            --out_dir data
-
-      - name: Run integrate (all)
-        if: ${{ github.event.inputs.scope == 'all' }}
-        run: |
-          python scripts/integrate_pro.py \
-            --program_dir public/programs/v1 \
-            --exhibition_dir public/exhibition/v1 \
-            --results_dir public/results \
-            --racer_dir public/racers-annual \
-            --out_dir data
+            if [ -d "$ROOT/$YEAR/$MONTH$DAY" ]; then
+              echo "===> Processing $YEAR/$MONTH$DAY"
+              python scripts/integrate_pro.py \
+                --program_dir "$ROOT/$YEAR/$MONTH$DAY" \
+                --exhibition_dir public/exhibition/v1 \
+                --results_dir public/results \
+                --racer_dir public/racers-annual \
+                --out_dir data
+            else
+              echo "Skip: $ROOT/$YEAR/$MONTH$DAY not found"
+            fi
+          done
 
       - name: Commit & push results (if changed)
         run: |
@@ -110,7 +68,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A data || true
           if ! git diff --cached --quiet; then
-            git commit -m "integrate_pro: build tables (${GITHUB_RUN_ID})"
+            git commit -m "integrate_pro: build tables range=${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
             git push
           else
             echo "No changes to commit."
