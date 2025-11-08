@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from __future__ import annotations
-import argparse, itertools, json, re
+import argparse, itertools, json, re, gzip
 from pathlib import Path
 import polars as pl
 
@@ -33,7 +33,7 @@ def rank_dense_compat(col: pl.Expr, asc=True):
     filler = 1e18 if asc else -1e18
     return col.fill_null(filler).rank(method="dense", descending=not asc)
 
-# ---- ここが重要：スキーマ強制（Int/Floatの揺れを抑止）
+# ---- スキーマ固定
 FLOAT_COLS_6 = {
     "national_win","national_2r","national_3r",
     "local_win","local_2r","local_3r",
@@ -50,18 +50,13 @@ INT_COLS_6 = {"rno","lane","age","isF_tenji","is_strong_wind","is_crosswind","te
 STR_COLS_6 = {"hd","jcd","racer_id","racer_name","grade","weather_sky","title","decision","wind_dir","label_3t"}
 
 def enforce_schema_6(df: pl.DataFrame) -> pl.DataFrame:
-    # 未存在列は追加（Nullで）→ その後で一括キャスト
     for c in FLOAT_COLS_6 | INT_COLS_6 | STR_COLS_6:
         if c not in df.columns:
             df = df.with_columns(pl.lit(None).alias(c))
     cast_map = {}
-    for c in FLOAT_COLS_6:
-        cast_map[c] = pl.Float64
-    for c in INT_COLS_6:
-        cast_map[c] = pl.Int64
-    for c in STR_COLS_6:
-        cast_map[c] = pl.Utf8
-    # 余計な型（例えばBoolean/Int8）もここで吸収
+    for c in FLOAT_COLS_6: cast_map[c] = pl.Float64
+    for c in INT_COLS_6:   cast_map[c] = pl.Int64
+    for c in STR_COLS_6:   cast_map[c] = pl.Utf8
     return df.with_columns([pl.col(k).cast(v, strict=False) for k,v in cast_map.items()])
 
 FLOAT_COLS_120 = {
@@ -79,12 +74,9 @@ def enforce_schema_120(df: pl.DataFrame) -> pl.DataFrame:
         if c not in df.columns:
             df = df.with_columns(pl.lit(None).alias(c))
     cast_map = {}
-    for c in FLOAT_COLS_120:
-        cast_map[c] = pl.Float64
-    for c in INT_COLS_120:
-        cast_map[c] = pl.Int64
-    for c in STR_COLS_120:
-        cast_map[c] = pl.Utf8
+    for c in FLOAT_COLS_120: cast_map[c] = pl.Float64
+    for c in INT_COLS_120:   cast_map[c] = pl.Int64
+    for c in STR_COLS_120:   cast_map[c] = pl.Utf8
     return df.with_columns([pl.col(k).cast(v, strict=False) for k,v in cast_map.items()])
 
 def integrate_one(program_js: dict, exhibition_js: dict|None,
@@ -95,11 +87,11 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
 
     meta = (result_js or {}).get("meta", {})
     weather_sky   = meta.get("weather_sky")
-    wind_dir      = meta.get("wind_dir")        # 数値/文字いずれも来る想定→文字列に寄せる
+    wind_dir      = meta.get("wind_dir")  # 数値/文字→文字列寄せ
     wind_speed_m  = meta.get("wind_speed_m")
     wave_height_cm= meta.get("wave_height_cm")
     title         = meta.get("title")
-    decision      = meta.get("decision")        # 学習には使わない
+    decision      = meta.get("decision")
 
     rows = []
     for e in program_js.get("entries", []):
@@ -112,12 +104,13 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
         m_id, m2, m3            = parse_triplet((e.get("stats") or {}).get("motor"))
         b_id, b2, b3            = parse_triplet((e.get("stats") or {}).get("boat"))
 
+        # 展示
         ex = None
         if exhibition_js:
             for exi in exhibition_js.get("entries", []):
                 if int(exi.get("lane")) == lane:
                     ex = exi; break
-        wkg = tdeg = tenji_sec = tenji_st = isF = None
+        wkg=tdeg=tenji_sec=tenji_st=isF=None
         if ex:
             nz = ex.get("normalized", {})
             wkg       = nz.get("weightKg")
@@ -126,6 +119,7 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
             tenji_st  = nz.get("stSec")
             isF       = nz.get("isF")
 
+        # 個人前年
         m = RE_DATE.match(hd or "")
         cur_year = int(m.group(1)) if m else 2024
         prev_year = cur_year - 1
@@ -154,7 +148,7 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
             national_win=nat_win, national_2r=nat_2r, national_3r=nat_3r,
             local_win=loc_win, local_2r=loc_2r, local_3r=loc_3r,
             motor_id=m_id, motor_rate2=m2, motor_rate3=m3,
-            boat_id=b_id,  boat_rate2=b2,  boat_rate3=b3,
+            boat_id=b_id, boat_rate2=b2, boat_rate3=b3,
             weightKg=wkg, tiltDeg=tdeg, tenji_sec=tenji_sec,
             tenji_st=tenji_st, isF_tenji=isF,
             course_first_rate=c1st, course_3rd_rate=c3rd, course_avg_st=cavg,
@@ -202,14 +196,13 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
         ])
 
     label_3t = None
-    if result_js and result_js.get("payouts", {}).get("trifecta"):
-        label_3t = result_js["payouts"]["trifecta"].get("combo")
+    # NOTE: ラベルは3連単の組番（例 "1-2-3"）。ない場合は None。
+    # ここで使うのは「有無」のみ（expand_120で is_hit を作る）
     df = df.with_columns([
         pl.lit(hd).alias("hd"), pl.lit(jcd).alias("jcd"),
         pl.lit(rno).alias("rno"), pl.lit(label_3t).alias("label_3t"),
     ])
 
-    # ★ここでスキーマを固定
     df = enforce_schema_6(df)
     return df
 
@@ -259,6 +252,15 @@ def _safesum(a,b):
     except Exception:
         return None
 
+# ---- CSV/GZ 書き出しヘルパ
+def write_csv_auto(df: pl.DataFrame, path: Path):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if str(path).endswith(".gz"):
+        with gzip.open(path, "wt", encoding="utf-8", newline="") as fo:
+            df.write_csv(fo)
+    else:
+        df.write_csv(path)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--program_dir",   default="public/programs/v1")
@@ -266,6 +268,10 @@ def main():
     ap.add_argument("--results_dir",   default="public/results")
     ap.add_argument("--racer_dir",     default="public/racers-annual")
     ap.add_argument("--out_dir",       default="data")
+    ap.add_argument("--out_format",    default="csv", choices=["csv","parquet","both"],
+                    help="出力形式（csv: *.csv / *.csv.gz、parquet、both）")
+    ap.add_argument("--csv_compress",  action="store_true",
+                    help="CSVをgzip圧縮（拡張子は .csv.gz 推奨）")
     args = ap.parse_args()
 
     prog_root = Path(args.program_dir)
@@ -296,17 +302,28 @@ def main():
         except Exception as e:
             print(f"[ERROR] {p}: {e}")
 
+    # --- 出力 ---
     if integrated_parts:
-        pl.concat(integrated_parts, how="vertical", rechunk=True)\
-          .write_parquet(out_dir/"integrated_pro.parquet")
-        print(f"[OK] integrated -> {out_dir/'integrated_pro.parquet'}")
+        df6_all = pl.concat(integrated_parts, how="vertical", rechunk=True)
+        if args.out_format in ("csv","both"):
+            name = "integrated_pro.csv.gz" if args.csv_compress else "integrated_pro.csv"
+            write_csv_auto(df6_all, out_dir / name)
+            print(f"[OK] integrated(csv) -> {out_dir/name}")
+        if args.out_format in ("parquet","both"):
+            df6_all.write_parquet(out_dir/"integrated_pro.parquet")
+            print(f"[OK] integrated(parquet) -> {out_dir/'integrated_pro.parquet'}")
     else:
         print("[WARN] no integrated rows.")
 
     if expanded_parts:
-        pl.concat(expanded_parts, how="vertical", rechunk=True)\
-          .write_parquet(out_dir/"train_120_pro.parquet")
-        print(f"[OK] 120-expanded -> {out_dir/'train_120_pro.parquet'}")
+        df120_all = pl.concat(expanded_parts, how="vertical", rechunk=True)
+        if args.out_format in ("csv","both"):
+            name = "train_120_pro.csv.gz" if args.csv_compress else "train_120_pro.csv"
+            write_csv_auto(df120_all, out_dir / name)
+            print(f"[OK] 120-expanded(csv) -> {out_dir/name}")
+        if args.out_format in ("parquet","both"):
+            df120_all.write_parquet(out_dir/"train_120_pro.parquet")
+            print(f"[OK] 120-expanded(parquet) -> {out_dir/'train_120_pro.parquet'}")
     else:
         print("[WARN] no 120-expanded rows.")
 
