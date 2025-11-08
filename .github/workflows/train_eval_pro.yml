@@ -1,4 +1,4 @@
-name: Train & Eval (pro) - Top18 All Races
+name: Train & Eval (pro) - Top18 All Races + SynthOdds
 
 on:
   workflow_dispatch:
@@ -20,14 +20,29 @@ on:
         required: true
         default: "20240331"
       topk:
-        description: "TopN 買い目数（18で固定推奨）"
+        description: "TopN 買い目数（18推奨）"
         required: true
         default: "18"
-        load_odds_always: { description: "常時オッズ読込", required: true, default: "true" }
-        synth_odds_min:   { description: "TopN合成オッズ下限", required: true, default: "0.0" }
-        min_odds_min:     { description: "TopN内の最小オッズ下限", required: true, default: "0.0" }
-        ev_basket_min:    { description: "TopN平均EV下限", required: true, default: "0.0" }
-        odds_coverage_min:{ description: "オッズ取得必要本数", required: true, default: "0" }
+      load_odds_always:
+        description: "常時オッズ読込（合成オッズ/EVバスケット用）"
+        required: true
+        default: "true"
+      synth_odds_min:
+        description: "TopN合成オッズの下限（例: 28）"
+        required: true
+        default: "0.0"
+      min_odds_min:
+        description: "TopN内の最小オッズの下限（例: 8）"
+        required: true
+        default: "0.0"
+      ev_basket_min:
+        description: "TopN平均EVの下限（例: 1.0）"
+        required: true
+        default: "0.0"
+      odds_coverage_min:
+        description: "オッズ取得必要本数（例: 10）"
+        required: true
+        default: "0"
 
 concurrency:
   group: eval-${{ github.ref }}
@@ -38,20 +53,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-            python-version: "3.11"
+          python-version: "3.11"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install polars pandas lightgbm pyyaml pyarrow
 
-      - name: Build config (Top18 all races / filters OFF)
+      - name: Build config from inputs
         run: |
           mkdir -p data
           cat > data/train_eval_pro.config.yaml <<'YAML'
@@ -65,10 +81,18 @@ jobs:
             data_dir: "data"
             results_dir: "public/results"
             odds_root: "public/odds/v1"
+
+          # ---- run options ----
           topk: ${{ inputs.topk }}
           unit_stake: 100
+
+          # 並べ順は proba 固定（EVで買うなら rank_key を ev に変更）
           rank_key: "proba"
-          load_odds_always: false
+
+          # 合成オッズ/バスケットを使うので常時オッズ読込可
+          load_odds_always: ${{ inputs.load_odds_always }}
+
+          # 全レースTopN（フィルタOFF）
           filters:
             p1win_max: 1.0
             s18_min: 0.0
@@ -77,14 +101,18 @@ jobs:
             exclude_one_head: false
             drop_one_after_rank: false
             daily_cap: 0
-          synth_odds_min: 0.0
-          min_odds_min: 0.0
-          ev_basket_min: 0.0
-          odds_coverage_min: 0
+
+          # 合成オッズ/EVバスケット閾値（スクリプト側で使用）
+          synth_odds_min: ${{ inputs.synth_odds_min }}
+          min_odds_min: ${{ inputs.min_odds_min }}
+          ev_basket_min: ${{ inputs.ev_basket_min }}
+          odds_coverage_min: ${{ inputs.odds_coverage_min }}
+
           model_out: "data/model_lgbm.txt"
           YAML
+
           echo "----- data/train_eval_pro.config.yaml -----"
-          cat data/train_eval_pro.config.yaml
+          sed -n '1,200p' data/train_eval_pro.config.yaml
 
       - name: Locate script
         id: locate
@@ -92,11 +120,11 @@ jobs:
         run: |
           set -euo pipefail
           if [ -f "./scripts/train_eval_pro.py" ]; then
-            echo "script=./scripts/train_eval_pro.py" >> $GITHUB_OUTPUT
+            echo "script=./scripts/train_eval_pro.py" >> "$GITHUB_OUTPUT"
           elif [ -f "./train_eval_pro.py" ]; then
-            echo "script=./train_eval_pro.py" >> $GITHUB_OUTPUT
+            echo "script=./train_eval_pro.py" >> "$GITHUB_OUTPUT"
           else
-            echo "::error::train_eval_pro.py not found"
+            echo "::error::train_eval_pro.py not found at ./scripts/ or repo root"
             exit 1
           fi
 
@@ -117,6 +145,7 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           if [ -d data/eval ]; then
             git add -f data/eval
           fi
@@ -124,7 +153,9 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "eval(top18-all): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
+
+          git commit -m "eval(top${{ inputs.topk }}): synthOdds=${{ inputs.synth_odds_min }} minOdds=${{ inputs.min_odds_min }} evB=${{ inputs.ev_basket_min }} cov=${{ inputs.odds_coverage_min }} [skip ci]"
+
           n=0
           until [ $n -ge 5 ]
           do
@@ -132,7 +163,8 @@ jobs:
               break
             fi
             n=$((n+1))
-            echo "Pull failed. Retry $n/5..."
+            echo "Pull failed. Retry $n/5 after backoff..."
             sleep $((2**n))
           done
+
           git push
