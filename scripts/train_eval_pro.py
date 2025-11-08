@@ -65,12 +65,11 @@ def load_120_table(parquet_path: Path, csv_path: Path | None = None) -> pl.DataF
     if csv_path is not None:
         if csv_path.exists():
             return pl.read_csv(csv_path)
-        # .gz も併せてチェック
         gz = Path(str(csv_path) + ".gz") if not str(csv_path).endswith(".gz") else csv_path
         if gz.exists():
             return pl.read_csv(gz)
 
-    # 自動検出（同ディレクトリ）
+    # 自動検出
     base_dir = parquet_path.parent
     for name in ("train_120_pro.csv", "train_120_pro.csv.gz"):
         p = base_dir / name
@@ -89,7 +88,9 @@ def load_120_table(parquet_path: Path, csv_path: Path | None = None) -> pl.DataF
     )
 
 def split_period(df: pl.DataFrame, start: str, end: str) -> pl.DataFrame:
-    return df.filter(pl.col("hd").cast(pl.Utf8).is_between(start, end, closed="both"))
+    """hd(YYYYMMDD, 文字列)の範囲フィルタ。start/end はリテラルとして扱う。"""
+    col = pl.col("hd").cast(pl.Utf8)
+    return df.filter(col.is_between(pl.lit(start), pl.lit(end), closed="both"))
 
 def build_feature_df(df120: pl.DataFrame, feat_ref: List[str] | None = None
                      ) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame, List[str]]:
@@ -209,12 +210,15 @@ def main():
 
     # レースごとにTopK選定
     topk = args.topk
-    picks = []
-    for (hd, jcd, rno), g in pred_df.groupby(["hd", "jcd", "rno"], as_index=False):
-        sel = g.sort_values("proba", ascending=False).head(topk).copy()
-        sel["rank"] = range(1, len(sel) + 1)
-        picks.append(sel)
-    picks_df = pd.concat(picks, ignore_index=True) if len(picks) else pd.DataFrame(columns=["hd","jcd","rno","combo","proba","is_hit","rank"])
+    if not pred_df.empty:
+        picks = []
+        for (hd, jcd, rno), g in pred_df.groupby(["hd", "jcd", "rno"], as_index=False):
+            sel = g.sort_values("proba", ascending=False).head(topk).copy()
+            sel["rank"] = range(1, len(sel) + 1)
+            picks.append(sel)
+        picks_df = pd.concat(picks, ignore_index=True) if picks else pd.DataFrame(columns=["hd","jcd","rno","combo","proba","is_hit","rank"])
+    else:
+        picks_df = pd.DataFrame(columns=["hd","jcd","rno","combo","proba","is_hit","rank"])
 
     # ---- 評価（Hit率 & ROI）----
     # Hit率（レース単位：TopK内に is_hit==1 があれば1）
