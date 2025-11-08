@@ -1,0 +1,123 @@
+{
+  "date": "20240221",
+  "pid": "10",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240221&jcd=10&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:47:53.276Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 2,
+    "windDirNum": 6,
+    "temperature": 6,
+    "waterTemperature": 10,
+    "waveHeight": 0.02,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4462",
+      "name": "夏山 亮平",
+      "weight": "58.0kg",
+      "tenjiTime": "6.77",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 58,
+        "tenjiSec": 6.77,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4875",
+      "name": "大塚 康雅",
+      "weight": "50.5kg",
+      "tenjiTime": "6.71",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.71,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4290",
+      "name": "稲田 浩二",
+      "weight": "51.5kg",
+      "tenjiTime": "6.65",
+      "tilt": "-0.5",
+      "st": ".08",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.65,
+        "tiltDeg": -0.5,
+        "stSec": 0.08,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4413",
+      "name": "水摩 敦",
+      "weight": "51.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4439",
+      "name": "近藤 友宝",
+      "weight": "54.0kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": ".20",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.2,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5318",
+      "name": "河内 一馬",
+      "weight": "57.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "-0.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 57.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": -0.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    }
+  ]
+}

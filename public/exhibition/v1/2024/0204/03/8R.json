@@ -1,0 +1,123 @@
+{
+  "date": "20240204",
+  "pid": "03",
+  "race": "8R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240204&jcd=03&rno=8",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:16:34.476Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 14,
+    "temperature": 5,
+    "waterTemperature": 10,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "西北西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4652",
+      "name": "酒見 峻介",
+      "weight": "52.0kg",
+      "tenjiTime": "6.61",
+      "tilt": "0.5",
+      "st": "F.14",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.61,
+        "tiltDeg": 0.5,
+        "stSec": 0.0014000000000000002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4440",
+      "name": "萩原 知哉",
+      "weight": "53.9kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3541",
+      "name": "三嶌 誠司",
+      "weight": "52.3kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4390",
+      "name": "松本 弓雄",
+      "weight": "52.7kg",
+      "tenjiTime": "6.67",
+      "tilt": "0.0",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.67,
+        "tiltDeg": 0,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4332",
+      "name": "村上 彰一",
+      "weight": "56.4kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.5",
+      "st": ".15",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.4,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0.5,
+        "stSec": 0.15,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5063",
+      "name": "大塚 雅治",
+      "weight": "52.7kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.5",
+      "st": ".17",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0.5,
+        "stSec": 0.17,
+        "isF": 0
+      }
+    }
+  ]
+}

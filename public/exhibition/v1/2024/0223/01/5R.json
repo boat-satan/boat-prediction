@@ -1,0 +1,123 @@
+{
+  "date": "20240223",
+  "pid": "01",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240223&jcd=01&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:51:06.067Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 10,
+    "temperature": 1,
+    "waterTemperature": 7,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4467",
+      "name": "渡邉 俊介",
+      "weight": "50.5kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.0",
+      "st": ".07",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0,
+        "stSec": 0.07,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3881",
+      "name": "浦上 拓也",
+      "weight": "52.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4594",
+      "name": "谷川 祐一",
+      "weight": "52.0kg",
+      "tenjiTime": "6.74",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.74,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4788",
+      "name": "小池 哲也",
+      "weight": "52.4kg",
+      "tenjiTime": "6.63",
+      "tilt": "-0.5",
+      "st": ".29",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.63,
+        "tiltDeg": -0.5,
+        "stSec": 0.29,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "2538",
+      "name": "高橋 二朗",
+      "weight": "53.4kg",
+      "tenjiTime": "6.69",
+      "tilt": "-0.5",
+      "st": ".18",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.69,
+        "tiltDeg": -0.5,
+        "stSec": 0.18,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5029",
+      "name": "中 亮太",
+      "weight": "53.4kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.0",
+      "st": ".25",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0,
+        "stSec": 0.25,
+        "isF": 0
+      }
+    }
+  ]
+}

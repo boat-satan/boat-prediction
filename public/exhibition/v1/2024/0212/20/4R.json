@@ -1,0 +1,123 @@
+{
+  "date": "20240212",
+  "pid": "20",
+  "race": "4R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240212&jcd=20&rno=4",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:32:27.547Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 2,
+    "temperature": 10,
+    "waterTemperature": 11,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "北北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "5101",
+      "name": "表 健太",
+      "weight": "53.4kg",
+      "tenjiTime": "6.79",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.4,
+        "tenjiSec": 6.79,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4151",
+      "name": "下河 誉史",
+      "weight": "51.5kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.19",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0019,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4020",
+      "name": "川上 清人",
+      "weight": "63.4kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": "F.15",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 63.4,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.0015,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4171",
+      "name": "榎 幸司",
+      "weight": "52.6kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": "F.21",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.0021,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3362",
+      "name": "間嶋 仁志",
+      "weight": "52.6kg",
+      "tenjiTime": "6.91",
+      "tilt": "-0.5",
+      "st": ".09",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.6,
+        "tenjiSec": 6.91,
+        "tiltDeg": -0.5,
+        "stSec": 0.09,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3563",
+      "name": "堤 昇",
+      "weight": "52.1kg",
+      "tenjiTime": "6.91",
+      "tilt": "0.0",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.91,
+        "tiltDeg": 0,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    }
+  ]
+}

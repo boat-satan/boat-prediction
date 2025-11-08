@@ -1,0 +1,123 @@
+{
+  "date": "20240222",
+  "pid": "11",
+  "race": "11R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240222&jcd=11&rno=11",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:50:18.678Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 3,
+    "windDirNum": 7,
+    "temperature": 7,
+    "waterTemperature": 10,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4190",
+      "name": "長嶋 万記",
+      "weight": "48.7kg",
+      "tenjiTime": "6.72",
+      "tilt": "-0.5",
+      "st": ".00",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 48.7,
+        "tenjiSec": 6.72,
+        "tiltDeg": -0.5,
+        "stSec": 0,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4963",
+      "name": "實森 美祐",
+      "weight": "46.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 46,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "3435",
+      "name": "寺田 千恵",
+      "weight": "45.5kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "5057",
+      "name": "上田 紗奈",
+      "weight": "45.0kg",
+      "tenjiTime": "6.53",
+      "tilt": "0.0",
+      "st": "F.06",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45,
+        "tenjiSec": 6.53,
+        "tiltDeg": 0,
+        "stSec": 0.0006,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4519",
+      "name": "清水 沙樹",
+      "weight": "48.9kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": "F.22",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 48.9,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.0022,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4546",
+      "name": "浜田 亜理沙",
+      "weight": "47.0kg",
+      "tenjiTime": "6.66",
+      "tilt": "-0.5",
+      "st": "F.09",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.66,
+        "tiltDeg": -0.5,
+        "stSec": 0.0009,
+        "isF": 1
+      }
+    }
+  ]
+}

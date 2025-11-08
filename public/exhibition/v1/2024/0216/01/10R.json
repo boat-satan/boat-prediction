@@ -1,0 +1,123 @@
+{
+  "date": "20240216",
+  "pid": "01",
+  "race": "10R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240216&jcd=01&rno=10",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:38:08.241Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 4,
+    "windDirNum": 10,
+    "temperature": 7,
+    "waterTemperature": 6,
+    "waveHeight": 0.03,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4261",
+      "name": "岡 祐臣",
+      "weight": "55.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3655",
+      "name": "本橋 克洋",
+      "weight": "53.2kg",
+      "tenjiTime": "6.67",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.2,
+        "tenjiSec": 6.67,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4889",
+      "name": "後藤 盛也",
+      "weight": "52.1kg",
+      "tenjiTime": "6.75",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.75,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3653",
+      "name": "品川 賢次",
+      "weight": "53.1kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": "L",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.1,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": null,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4568",
+      "name": "廣瀬 真也",
+      "weight": "50.5kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50.5,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4049",
+      "name": "荒川 健太",
+      "weight": "55.9kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.9,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

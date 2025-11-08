@@ -1,0 +1,123 @@
+{
+  "date": "20240218",
+  "pid": "03",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240218&jcd=03&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:41:59.711Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 4,
+    "temperature": 17,
+    "waterTemperature": 13,
+    "waveHeight": 0.15,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東北東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "3647",
+      "name": "伊藤 雄二",
+      "weight": "51.0kg",
+      "tenjiTime": "6.71",
+      "tilt": "0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 51,
+        "tenjiSec": 6.71,
+        "tiltDeg": 0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "5197",
+      "name": "中野 仁照",
+      "weight": "52.0kg",
+      "tenjiTime": "6.68",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.68,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4345",
+      "name": "西舘 健",
+      "weight": "52.3kg",
+      "tenjiTime": "6.62",
+      "tilt": "0.0",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.62,
+        "tiltDeg": 0,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3065",
+      "name": "増田 弘喜",
+      "weight": "55.8kg",
+      "tenjiTime": "6.66",
+      "tilt": "0.0",
+      "st": ".04",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 55.8,
+        "tenjiSec": 6.66,
+        "tiltDeg": 0,
+        "stSec": 0.04,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5243",
+      "name": "三馬 崇史",
+      "weight": "54.0kg",
+      "tenjiTime": "6.65",
+      "tilt": "0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 6.65,
+        "tiltDeg": 0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5253",
+      "name": "藤井 太雅",
+      "weight": "56.8kg",
+      "tenjiTime": "6.75",
+      "tilt": "0.5",
+      "st": "F.18",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 56.8,
+        "tenjiSec": 6.75,
+        "tiltDeg": 0.5,
+        "stSec": 0.0018,
+        "isF": 1
+      }
+    }
+  ]
+}

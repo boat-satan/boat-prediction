@@ -1,0 +1,123 @@
+{
+  "date": "20240220",
+  "pid": "11",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240220&jcd=11&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:46:07.695Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 7,
+    "temperature": 11,
+    "waterTemperature": 10,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4347",
+      "name": "魚谷 香織",
+      "weight": "47.0kg",
+      "tenjiTime": "6.64",
+      "tilt": "-0.5",
+      "st": ".06",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.64,
+        "tiltDeg": -0.5,
+        "stSec": 0.06,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4399",
+      "name": "松本 晶恵",
+      "weight": "45.5kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 45.5,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4927",
+      "name": "関野 文",
+      "weight": "43.0kg",
+      "tenjiTime": "6.76",
+      "tilt": "-0.5",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 43,
+        "tenjiSec": 6.76,
+        "tiltDeg": -0.5,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4845",
+      "name": "前田 紗希",
+      "weight": "47.0kg",
+      "tenjiTime": "6.70",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.7,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4556",
+      "name": "竹井 奈美",
+      "weight": "47.0kg",
+      "tenjiTime": "6.73",
+      "tilt": "0.0",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47,
+        "tenjiSec": 6.73,
+        "tiltDeg": 0,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "3611",
+      "name": "岩崎 芳美",
+      "weight": "47.4kg",
+      "tenjiTime": "6.78",
+      "tilt": "-0.5",
+      "st": ".12",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 47.4,
+        "tenjiSec": 6.78,
+        "tiltDeg": -0.5,
+        "stSec": 0.12,
+        "isF": 0
+      }
+    }
+  ]
+}

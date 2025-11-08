@@ -1,0 +1,123 @@
+{
+  "date": "20240228",
+  "pid": "10",
+  "race": "5R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240228&jcd=10&rno=5",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T01:00:55.935Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 6,
+    "windDirNum": 6,
+    "temperature": 7,
+    "waterTemperature": 7,
+    "waveHeight": 0.06,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4497",
+      "name": "桑原 悠",
+      "weight": "52.3kg",
+      "tenjiTime": "6.94",
+      "tilt": "0.0",
+      "st": "F.08",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.94,
+        "tiltDeg": 0,
+        "stSec": 0.0008,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3909",
+      "name": "佐々木 康幸",
+      "weight": "54.6kg",
+      "tenjiTime": "6.88",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54.6,
+        "tenjiSec": 6.88,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5018",
+      "name": "竹下 大樹",
+      "weight": "53.8kg",
+      "tenjiTime": "6.85",
+      "tilt": "-0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.85,
+        "tiltDeg": -0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "4056",
+      "name": "小西 英輝",
+      "weight": "52.7kg",
+      "tenjiTime": "6.96",
+      "tilt": "-0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.7,
+        "tenjiSec": 6.96,
+        "tiltDeg": -0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "5179",
+      "name": "藤本 元輝",
+      "weight": "54.7kg",
+      "tenjiTime": "7.02",
+      "tilt": "-0.5",
+      "st": ".19",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 54.7,
+        "tenjiSec": 7.02,
+        "tiltDeg": -0.5,
+        "stSec": 0.19,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "4953",
+      "name": "尾上 雅也",
+      "weight": "52.1kg",
+      "tenjiTime": "6.86",
+      "tilt": "0.0",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.86,
+        "tiltDeg": 0,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    }
+  ]
+}

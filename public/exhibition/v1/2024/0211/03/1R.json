@@ -1,0 +1,123 @@
+{
+  "date": "20240211",
+  "pid": "03",
+  "race": "1R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240211&jcd=03&rno=1",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:29:17.409Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 5,
+    "windDirNum": 6,
+    "temperature": 10,
+    "waterTemperature": 12,
+    "waveHeight": 0.05,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "東南東"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4697",
+      "name": "國弘 翔平",
+      "weight": "50.0kg",
+      "tenjiTime": "6.56",
+      "tilt": "0.5",
+      "st": ".05",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 50,
+        "tenjiSec": 6.56,
+        "tiltDeg": 0.5,
+        "stSec": 0.05,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4574",
+      "name": "東 潤樹",
+      "weight": "52.1kg",
+      "tenjiTime": "6.56",
+      "tilt": "0.5",
+      "st": ".22",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.1,
+        "tenjiSec": 6.56,
+        "tiltDeg": 0.5,
+        "stSec": 0.22,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 3,
+      "number": "5279",
+      "name": "石渡 翔一郎",
+      "weight": "52.0kg",
+      "tenjiTime": "6.50",
+      "tilt": "0.5",
+      "st": ".11",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.5,
+        "tiltDeg": 0.5,
+        "stSec": 0.11,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3065",
+      "name": "増田 弘喜",
+      "weight": "56.5kg",
+      "tenjiTime": "6.55",
+      "tilt": "0.5",
+      "st": ".03",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 56.5,
+        "tenjiSec": 6.55,
+        "tiltDeg": 0.5,
+        "stSec": 0.03,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4930",
+      "name": "佐藤 悠",
+      "weight": "53.9kg",
+      "tenjiTime": "6.42",
+      "tilt": "2.0",
+      "st": "F.02",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.9,
+        "tenjiSec": 6.42,
+        "tiltDeg": 2,
+        "stSec": 0.0002,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5243",
+      "name": "三馬 崇史",
+      "weight": "53.6kg",
+      "tenjiTime": "6.53",
+      "tilt": "0.5",
+      "st": ".10",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.6,
+        "tenjiSec": 6.53,
+        "tiltDeg": 0.5,
+        "stSec": 0.1,
+        "isF": 0
+      }
+    }
+  ]
+}

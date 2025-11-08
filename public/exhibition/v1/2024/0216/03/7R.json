@@ -1,0 +1,123 @@
+{
+  "date": "20240216",
+  "pid": "03",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240216&jcd=03&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:38:21.630Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 7,
+    "windDirNum": 12,
+    "temperature": 13,
+    "waterTemperature": 12,
+    "waveHeight": 0.1,
+    "stabilizer": 1,
+    "weatherText": null,
+    "windDirection": "西南西"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4422",
+      "name": "永井 亮次",
+      "weight": "52.0kg",
+      "tenjiTime": "6.63",
+      "tilt": "0.5",
+      "st": "F.05",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.63,
+        "tiltDeg": 0.5,
+        "stSec": 0.0005,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 2,
+      "number": "3075",
+      "name": "中村 裕将",
+      "weight": "53.8kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4574",
+      "name": "東 潤樹",
+      "weight": "52.2kg",
+      "tenjiTime": "6.79",
+      "tilt": "0.0",
+      "st": "F.07",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 52.2,
+        "tenjiSec": 6.79,
+        "tiltDeg": 0,
+        "stSec": 0.0007000000000000001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3370",
+      "name": "坪内 実",
+      "weight": "53.0kg",
+      "tenjiTime": "6.78",
+      "tilt": "0.5",
+      "st": ".21",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53,
+        "tenjiSec": 6.78,
+        "tiltDeg": 0.5,
+        "stSec": 0.21,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "4084",
+      "name": "杉山 正樹",
+      "weight": "52.3kg",
+      "tenjiTime": "6.80",
+      "tilt": "0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.3,
+        "tenjiSec": 6.8,
+        "tiltDeg": 0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5120",
+      "name": "山本 稔太朗",
+      "weight": "53.8kg",
+      "tenjiTime": "6.72",
+      "tilt": "0.5",
+      "st": ".01",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 53.8,
+        "tenjiSec": 6.72,
+        "tiltDeg": 0.5,
+        "stSec": 0.01,
+        "isF": 0
+      }
+    }
+  ]
+}

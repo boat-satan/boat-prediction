@@ -1,0 +1,123 @@
+{
+  "date": "20240219",
+  "pid": "24",
+  "race": "7R",
+  "source": "https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=20240219&jcd=24&rno=7",
+  "mode": "beforeinfo",
+  "generatedAt": "2025-11-08T00:45:32.398Z",
+  "weather": {
+    "weatherCode": 0,
+    "windSpeed": 1,
+    "windDirNum": 9,
+    "temperature": 18,
+    "waterTemperature": 12,
+    "waveHeight": 0.01,
+    "stabilizer": 0,
+    "weatherText": null,
+    "windDirection": "南"
+  },
+  "entries": [
+    {
+      "lane": 1,
+      "number": "4497",
+      "name": "桑原 悠",
+      "weight": "52.0kg",
+      "tenjiTime": "6.89",
+      "tilt": "0.5",
+      "st": ".02",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 6.89,
+        "tiltDeg": 0.5,
+        "stSec": 0.02,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 2,
+      "number": "4211",
+      "name": "村田 敦",
+      "weight": "59.7kg",
+      "tenjiTime": "7.01",
+      "tilt": "-0.5",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 59.7,
+        "tenjiSec": 7.01,
+        "tiltDeg": -0.5,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 3,
+      "number": "4112",
+      "name": "大久保信一郎",
+      "weight": "51.5kg",
+      "tenjiTime": "6.93",
+      "tilt": "0.0",
+      "st": "F.03",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 51.5,
+        "tenjiSec": 6.93,
+        "tiltDeg": 0,
+        "stSec": 0.0003,
+        "isF": 1
+      }
+    },
+    {
+      "lane": 4,
+      "number": "3777",
+      "name": "樋口 亮",
+      "weight": "52.4kg",
+      "tenjiTime": "6.92",
+      "tilt": "0.0",
+      "st": ".26",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52.4,
+        "tenjiSec": 6.92,
+        "tiltDeg": 0,
+        "stSec": 0.26,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 5,
+      "number": "3742",
+      "name": "宮地 秀祈",
+      "weight": "52.0kg",
+      "tenjiTime": "7.07",
+      "tilt": "-0.5",
+      "st": ".13",
+      "stFlag": "",
+      "normalized": {
+        "weightKg": 52,
+        "tenjiSec": 7.07,
+        "tiltDeg": -0.5,
+        "stSec": 0.13,
+        "isF": 0
+      }
+    },
+    {
+      "lane": 6,
+      "number": "5337",
+      "name": "出畑 孝成",
+      "weight": "54.0kg",
+      "tenjiTime": "7.00",
+      "tilt": "0.0",
+      "st": "F.01",
+      "stFlag": "F",
+      "normalized": {
+        "weightKg": 54,
+        "tenjiSec": 7,
+        "tiltDeg": 0,
+        "stSec": 0.0001,
+        "isF": 1
+      }
+    }
+  ]
+}
