@@ -28,12 +28,11 @@ def parse_triplet(s: str|None):
     while len(vals) < 3: vals.append(None)
     return tuple(vals)
 
-# ---- ランク（古いPolars互換）
 def rank_dense_compat(col: pl.Expr, asc=True):
     filler = 1e18 if asc else -1e18
     return col.fill_null(filler).rank(method="dense", descending=not asc)
 
-# ---- スキーマ固定
+# ---------- schema pins
 FLOAT_COLS_6 = {
     "national_win","national_2r","national_3r",
     "local_win","local_2r","local_3r",
@@ -87,7 +86,7 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
 
     meta = (result_js or {}).get("meta", {})
     weather_sky   = meta.get("weather_sky")
-    wind_dir      = meta.get("wind_dir")  # 数値/文字→文字列寄せ
+    wind_dir      = meta.get("wind_dir")
     wind_speed_m  = meta.get("wind_speed_m")
     wave_height_cm= meta.get("wave_height_cm")
     title         = meta.get("title")
@@ -195,16 +194,15 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
             (pl.col("wind_dir").is_in(["2","3","6","7"])).cast(pl.Int64).alias("is_crosswind"),
         ])
 
-    label_3t = None
-    # NOTE: ラベルは3連単の組番（例 "1-2-3"）。ない場合は None。
-    # ここで使うのは「有無」のみ（expand_120で is_hit を作る）
+    # ラベル（3連単）は expand 側で is_hit 判定に使用
     df = df.with_columns([
-        pl.lit(hd).alias("hd"), pl.lit(jcd).alias("jcd"),
-        pl.lit(rno).alias("rno"), pl.lit(label_3t).alias("label_3t"),
+        pl.lit(program_js.get("date")).alias("hd"),
+        pl.lit(program_js.get("pid")).alias("jcd"),
+        pl.lit(int(str(program_js.get("race","1R")).replace("R",""))).alias("rno"),
+        pl.lit((result_js or {}).get("payouts",{}).get("trifecta",{}).get("combo")).alias("label_3t"),
     ])
 
-    df = enforce_schema_6(df)
-    return df
+    return enforce_schema_6(df)
 
 def expand_120(df6: pl.DataFrame) -> pl.DataFrame:
     if df6.is_empty(): return pl.DataFrame()
@@ -236,8 +234,7 @@ def expand_120(df6: pl.DataFrame) -> pl.DataFrame:
             wind_speed_m=r1.get("wind_speed_m"), wave_height_cm=r1.get("wave_height_cm"),
             is_strong_wind=r1.get("is_strong_wind"), is_crosswind=r1.get("is_crosswind"),
         ))
-    out = pl.DataFrame(rows)
-    return enforce_schema_120(out)
+    return enforce_schema_120(pl.DataFrame(rows))
 
 def _safediff(a,b):
     try:
@@ -252,14 +249,16 @@ def _safesum(a,b):
     except Exception:
         return None
 
-# ---- CSV/GZ 書き出しヘルパ
-def write_csv_auto(df: pl.DataFrame, path: Path):
+def write_csv_auto(df: pl.DataFrame, path: Path, compress: bool):
     path.parent.mkdir(parents=True, exist_ok=True)
-    if str(path).endswith(".gz"):
+    if compress:
+        if not str(path).endswith(".gz"):
+            path = Path(str(path) + ".gz")
         with gzip.open(path, "wt", encoding="utf-8", newline="") as fo:
             df.write_csv(fo)
     else:
         df.write_csv(path)
+    print(f"[WRITE] {path} (rows={df.height})")
 
 def main():
     ap = argparse.ArgumentParser()
@@ -267,30 +266,34 @@ def main():
     ap.add_argument("--exhibition_dir",default="public/exhibition/v1")
     ap.add_argument("--results_dir",   default="public/results")
     ap.add_argument("--racer_dir",     default="public/racers-annual")
-    ap.add_argument("--out_dir",       default="data")
-    ap.add_argument("--out_format",    default="csv", choices=["csv","parquet","both"],
-                    help="出力形式（csv: *.csv / *.csv.gz、parquet、both）")
-    ap.add_argument("--csv_compress",  action="store_true",
-                    help="CSVをgzip圧縮（拡張子は .csv.gz 推奨）")
+    ap.add_argument("--out_dir",       default="data/shards")     # ← 日まとめの親
+    ap.add_argument("--out_format",    default="parquet", choices=["csv","parquet","both"])
+    ap.add_argument("--csv_compress",  action="store_true")
     args = ap.parse_args()
 
     prog_root = Path(args.program_dir)
     exh_root  = Path(args.exhibition_dir)
     res_root  = Path(args.results_dir)
     racer_root= Path(args.racer_dir)
-    out_dir   = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
+    shards_root = Path(args.out_dir)
 
+    # 対象 program_dir 配下の全レースjson（=同一日）を処理
     prog_files = sorted(prog_root.glob("**/*.json"))
     integrated_parts, expanded_parts = [], []
+    hd_detect, year_detect, md_detect = None, None, None
 
     for p in prog_files:
         try:
             pjs = jload(p)
             hd = pjs.get("date"); jcd = pjs.get("pid")
             rno = int(str(pjs.get("race","1R")).replace("R",""))
-            exh_path = exh_root / hd[:4] / hd[4:8] / jcd / f"{rno}R.json"
+            year, md = hd[:4], hd[4:8]
+            if hd_detect is None:
+                hd_detect, year_detect, md_detect = hd, year, md
+
+            exh_path = exh_root / year / md / jcd / f"{rno}R.json"
+            res_path = res_root  / year / md / jcd / f"{rno}R.json"
             ejs = jload(exh_path) if exh_path.exists() else None
-            res_path = res_root / hd[:4] / hd[4:8] / jcd / f"{rno}R.json"
             rjs = jload(res_path) if res_path.exists() else None
 
             df6 = integrate_one(pjs, ejs, rjs, racer_root)
@@ -302,30 +305,34 @@ def main():
         except Exception as e:
             print(f"[ERROR] {p}: {e}")
 
-    # --- 出力 ---
+    if hd_detect is None:
+        print("[WARN] no program json under", prog_root)
+        return
+
+    # 日まとめの出力ディレクトリ
+    day_out = shards_root / year_detect / md_detect
+    day_out.mkdir(parents=True, exist_ok=True)
+
     if integrated_parts:
         df6_all = pl.concat(integrated_parts, how="vertical", rechunk=True)
         if args.out_format in ("csv","both"):
-            name = "integrated_pro.csv.gz" if args.csv_compress else "integrated_pro.csv"
-            write_csv_auto(df6_all, out_dir / name)
-            print(f"[OK] integrated(csv) -> {out_dir/name}")
+            write_csv_auto(df6_all, day_out / "integrated_pro.csv", args.csv_compress)
         if args.out_format in ("parquet","both"):
-            df6_all.write_parquet(out_dir/"integrated_pro.parquet")
-            print(f"[OK] integrated(parquet) -> {out_dir/'integrated_pro.parquet'}")
+            (day_out/"integrated_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
+            df6_all.write_parquet(day_out/"integrated_pro.parquet")
+            print(f"[WRITE] {day_out/'integrated_pro.parquet'} (rows={df6_all.height})")
     else:
-        print("[WARN] no integrated rows.")
+        print("[WARN] no integrated rows for the day.")
 
     if expanded_parts:
         df120_all = pl.concat(expanded_parts, how="vertical", rechunk=True)
         if args.out_format in ("csv","both"):
-            name = "train_120_pro.csv.gz" if args.csv_compress else "train_120_pro.csv"
-            write_csv_auto(df120_all, out_dir / name)
-            print(f"[OK] 120-expanded(csv) -> {out_dir/name}")
+            write_csv_auto(df120_all, day_out / "train_120_pro.csv", args.csv_compress)
         if args.out_format in ("parquet","both"):
-            df120_all.write_parquet(out_dir/"train_120_pro.parquet")
-            print(f"[OK] 120-expanded(parquet) -> {out_dir/'train_120_pro.parquet'}")
+            df120_all.write_parquet(day_out/"train_120_pro.parquet")
+            print(f"[WRITE] {day_out/'train_120_pro.parquet'} (rows={df120_all.height})")
     else:
-        print("[WARN] no 120-expanded rows.")
+        print("[WARN] no 120-expanded rows for the day.")
 
 if __name__ == "__main__":
     main()
