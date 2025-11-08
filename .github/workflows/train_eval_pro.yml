@@ -23,6 +23,11 @@ on:
         description: "TopN 買い目数（18で固定推奨）"
         required: true
         default: "18"
+      load_odds_always: { description: "常時オッズ読込", required: true, default: "true" }
+      synth_odds_min:   { description: "TopN合成オッズ下限", required: true, default: "0.0" }
+      min_odds_min:     { description: "TopN内の最小オッズ下限", required: true, default: "0.0" }
+      ev_basket_min:    { description: "TopN平均EV下限", required: true, default: "0.0" }
+      odds_coverage_min:{ description: "オッズ取得必要本数", required: true, default: "0" }
 
 concurrency:
   group: eval-${{ github.ref }}
