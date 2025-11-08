@@ -1,58 +1,31 @@
-name: Train & Eval Pro (LightGBM w/ shards)
+name: Train & Eval (pro)
 
 on:
   workflow_dispatch:
     inputs:
-      train_start:
-        description: "学習開始 (YYYYMMDD)"
-        required: true
-        default: "20240101"
-      train_end:
-        description: "学習終了 (YYYYMMDD)"
-        required: true
-        default: "20240229"
-      test_start:
-        description: "テスト開始 (YYYYMMDD)"
-        required: true
-        default: "20240301"
-      test_end:
-        description: "テスト終了 (YYYYMMDD)"
-        required: true
-        default: "20240331"
-      topk:
-        description: "レースごとの購入点数 (12/16/18/24/36)"
-        required: true
-        default: "18"
-      unit_stake:
-        description: "1点あたり購入額 [円]"
-        required: true
-        default: "100"
-      model_out:
-        description: "モデル保存先パス"
-        required: true
-        default: "data/model_lgbm.txt"
-      data_dir:
-        description: "データルート（既定: data）"
-        required: true
-        default: "data"
-      results_dir:
-        description: "結果JSONルート（既定: public/results）"
-        required: true
-        default: "public/results"
-
-permissions:
-  contents: write
-
-concurrency:
-  group: train-eval-pro-${{ github.repository }}-${{ github.ref_name }}
-  cancel-in-progress: false
+      train_start:  { description: "学習開始 (YYYYMMDD)", required: true,  default: "20240101" }
+      train_end:    { description: "学習終了 (YYYYMMDD)", required: true,  default: "20240131" }
+      test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240201" }
+      test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240210" }
+      topk:         { description: "TopN 買い目数",       required: true,  default: "18" }
+      unit_stake:   { description: "1点あたり金額",       required: true,  default: "100" }
+      rank_key:     { description: "並べ順 (proba/ev)",    required: true,  default: "proba" }
+      ev_min:       { description: "EVフィルタ最小値",     required: true,  default: "0.0" }
+      drop_missing: { description: "オッズ欠損は除外",     required: true,  default: "false" }
+      p1win_max:    { description: "1号艇単勝率の上限",    required: true,  default: "0.50" }
+      exclude_one:  { description: "1頭を除外",            required: true,  default: "true" }
+      data_dir:     { description: "データ保存ルート",     required: true,  default: "data" }
+      results_dir:  { description: "実配当JSONルート",     required: true,  default: "public/results" }
+      odds_root:    { description: "オッズJSONルート",     required: true,  default: "public/odds/v1" }
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -61,80 +34,41 @@ jobs:
 
       - name: Install deps
         run: |
-          set -euo pipefail
           python -m pip install --upgrade pip
-          # LightGBM / Polars / Pandas / PyArrow
-          pip install lightgbm polars pandas pyarrow
+          pip install polars pandas lightgbm pyyaml
 
-      # 事前チェック: shardsの存在を軽く確認（無ければ明示的に失敗）
-      - name: Preflight - check shards
+      - name: Make eval config from inputs
         run: |
-          set -euo pipefail
-          COUNT=$(ls -1 data/shards/*/*/train_120_pro.parquet 2>/dev/null | wc -l || true)
-          COUNT_CSV=$(ls -1 data/shards/*/*/train_120_pro.csv 2>/dev/null | wc -l || true)
-          COUNT_GZ=$(ls -1 data/shards/*/*/train_120_pro.csv.gz 2>/dev/null | wc -l || true)
-          echo "parquet: ${COUNT}, csv: ${COUNT_CSV}, csv.gz: ${COUNT_GZ}"
-          TOTAL=$((COUNT + COUNT_CSV + COUNT_GZ))
-          if [ "${TOTAL}" -eq 0 ]; then
-            echo "::error::No shards found under data/shards/*/*/train_120_pro.(parquet|csv|csv.gz)"
-            exit 1
-          fi
+          mkdir -p ${{ github.workspace }}/data
+          cat > ${GITHUB_WORKSPACE}/data/train_eval_pro.config.yaml <<'YAML'
+          train:
+            start: "${{ inputs.train_start }}"
+            end:   "${{ inputs.train_end }}"
+          test:
+            start: "${{ inputs.test_start }}"
+            end:   "${{ inputs.test_end }}"
+          paths:
+            data_dir:    "${{ inputs.data_dir }}"
+            results_dir: "${{ inputs.results_dir }}"
+            odds_root:   "${{ inputs.odds_root }}"
+          topk: ${{ inputs.topk }}
+          unit_stake: ${{ inputs.unit_stake }}
+          rank_key: "${{ inputs.rank_key }}"
+          ev:
+            min: ${{ inputs.ev_min }}
+            drop_if_missing_odds: ${{ inputs.drop_missing }}
+          filters:
+            p1win_max: ${{ inputs.p1win_max }}
+            exclude_one_head: ${{ inputs.exclude_one }}
+          model_out: "${{ inputs.data_dir }}/model_lgbm.txt"
+          YAML
+          cat ${GITHUB_WORKSPACE}/data/train_eval_pro.config.yaml
 
       - name: Train & Eval
-        env:
-          TRAIN_START: ${{ github.event.inputs.train_start }}
-          TRAIN_END:   ${{ github.event.inputs.train_end }}
-          TEST_START:  ${{ github.event.inputs.test_start }}
-          TEST_END:    ${{ github.event.inputs.test_end }}
-          TOPK:        ${{ github.event.inputs.topk }}
-          UNIT:        ${{ github.event.inputs.unit_stake }}
-          MODEL_OUT:   ${{ github.event.inputs.model_out }}
-          DATA_DIR:    ${{ github.event.inputs.data_dir }}
-          RESULTS_DIR: ${{ github.event.inputs.results_dir }}
         run: |
-          set -euo pipefail
-          python scripts/train_eval_pro.py \
-            --train_start "${TRAIN_START}" \
-            --train_end   "${TRAIN_END}" \
-            --test_start  "${TEST_START}" \
-            --test_end    "${TEST_END}" \
-            --topk        "${TOPK}" \
-            --unit_stake  "${UNIT}" \
-            --model_out   "${MODEL_OUT}" \
-            --data_dir    "${DATA_DIR}" \
-            --results_dir "${RESULTS_DIR}"
+          python train_eval_pro.py --config data/train_eval_pro.config.yaml
 
-      - name: Show summary files
+      - name: Show outputs
         run: |
-          set -euo pipefail
-          ls -lh data/eval || true
-          echo "----"
-          if [ -f "${{ github.event.inputs.model_out }}" ]; then
-            echo "Model saved: ${{ github.event.inputs.model_out }}"
-          fi
-
-      - name: Commit & push eval artifacts
-        run: |
-          set -euo pipefail
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 大きめpushの安定化
-          git config --global http.lowSpeedLimit 1000
-          git config --global http.lowSpeedTime 60
-          git config --global http.version HTTP/1.1
-
-          git add -A data/eval || true
-          git add -A "${{ github.event.inputs.model_out }}" || true
-
-          if ! git diff --cached --quiet; then
-            git commit -m "train_eval: ${{
-              github.event.inputs.train_start }}-${{
-              github.event.inputs.train_end }} -> ${{
-              github.event.inputs.test_start }}-${{
-              github.event.inputs.test_end }}, k=${{
-              github.event.inputs.topk }}, unit=${{
-              github.event.inputs.unit_stake }}"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+          ls -R ${{ inputs.data_dir }}/eval || true
+          echo "Done."
