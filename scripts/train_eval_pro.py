@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-train_eval_pro.py — ML予測 + 参戦ルール + TopN選定 + 合成オッズ/EVバスケット + 実配当ROI評価
+train_eval_pro.py  —  ML予測 + 参戦ルール + TopN選定 + 実配当ROI評価
 
-追加点:
-  - --load_odds_always: EVを使わなくても常時オッズ読み込み
-  - 合成オッズ/バスケット系フィルタ:
-      --synth_odds_min        TopN最終セットの合成オッズ下限
-      --min_odds_min          TopN内の最小オッズ下限
-      --ev_basket_min         TopNの平均EV下限
-      --odds_coverage_min     TopN内で必要なオッズ取得本数
-  - YAMLでも同項目を指定可能
+更新点:
+- EV/オッズ列の初期値を np.nan に統一し、map→to_numeric(coerce) で欠損安全に。
+- --load_odds_always を追加（YAML でも指定可）。
+- 合成オッズ/バスケット系フィルタに対応:
+    * --synth_odds_min        : TopN 合成オッズの下限 (大きいほど「荒れ」)
+    * --min_odds_min          : TopN 内の最小オッズの下限
+    * --ev_basket_min         : TopN の平均EVの下限 (EV=proba*odds)
+    * --odds_coverage_min     : TopN でオッズが取得できている件数の下限
+  ※ これらはオッズが無いと判定できないため、必要なときは --load_odds_always を true に。
 
 使い方例:
   python ./scripts/train_eval_pro.py --config data/train_eval_pro.config.yaml
@@ -28,6 +29,7 @@ try:
     import yaml  # pip install pyyaml
 except Exception:
     yaml = None
+
 
 # ---------------- utils ----------------
 def ensure_dir(p: Path): p.mkdir(parents=True, exist_ok=True)
@@ -66,7 +68,17 @@ def load_odds_map(odds_root: Path, hd, jcd, rno) -> dict[str, float] | None:
 
     # 1) {"trifecta": {"1-2-3": 15.1, ...}}
     if isinstance(js.get("trifecta"), dict):
-        return {str(k): float(v) for k, v in js["trifecta"].items() if v not in (None, "")}
+        out = {}
+        for k, v in js["trifecta"].items():
+            if v in (None, ""): continue
+            try:
+                out[str(k)] = float(v)
+            except Exception:
+                try:
+                    out[str(k)] = float(str(v).replace(",", ""))
+                except Exception:
+                    continue
+        return out if out else None
 
     # 2) {"odds":[{"combo":"1-2-3","odd":15.1}, ...]} 等
     cand = js.get("odds") or js.get("trifecta_list") or js.get("3t") or js.get("list")
@@ -86,10 +98,13 @@ def load_odds_map(odds_root: Path, hd, jcd, rno) -> dict[str, float] | None:
     # 3) {"1-2-3": 15.1, ...}
     flat = {k: js[k] for k in js.keys() if "-" in k}
     if flat:
-        try:
-            return {k: float(str(v).replace(",", "")) for k, v in flat.items()}
-        except Exception:
-            return None
+        out = {}
+        for k, v in flat.items():
+            try:
+                out[k] = float(str(v).replace(",", ""))
+            except Exception:
+                continue
+        return out if out else None
 
     return None
 
@@ -106,6 +121,8 @@ def build_feature_df(df120: pl.DataFrame):
     X = pdf[feat_cols]
     return X, y, pdf[keys], feat_cols
 
+
+# ---------------- CLI & YAML ----------------
 def add_cli_and_yaml_args():
     ap = argparse.ArgumentParser()
     # 期間
@@ -115,7 +132,7 @@ def add_cli_and_yaml_args():
     ap.add_argument("--test_end")
 
     # TopN & 購入
-    ap.add_argument("--topk", type=int, default=18, choices=[4,6,8,12,16,18,24,36])
+    ap.add_argument("--topk", type=int, default=18, choices=[4,6,8,12,16,18,24,30,36,60,120])
     ap.add_argument("--unit_stake", type=int, default=100)
 
     # データルート
@@ -128,15 +145,15 @@ def add_cli_and_yaml_args():
     ap.add_argument("--ev_min", type=float, default=0.0)
     ap.add_argument("--ev_drop_if_missing_odds", action="store_true")
 
-    # ★New: オッズ常時読込フラグ
+    # オッズ常時読込
     ap.add_argument("--load_odds_always", action="store_true",
-                    help="EVを使わなくても全レースでオッズを読み込む（合成オッズ/バスケットEV等の事前計算用）")
+                    help="EVを使わなくても全レースでオッズを読み込む（合成オッズ/バスケットEV等の計算用）")
 
-    # ★絶対ルール（レース単体で完結）
-    ap.add_argument("--p1win_max", type=float, default=0.40, help="1号艇単勝率の上限（p1win<=この値）")
-    ap.add_argument("--s18_min", type=float, default=0.26, help="Top18確率合計の下限")
-    ap.add_argument("--one_head_ratio_top18_max", type=float, default=0.55, help="Top18に占める1頭確率比の上限")
-    ap.add_argument("--min_non1_candidates_top18", type=int, default=12, help="Top18内の非1頭候補の最低本数")
+    # レース単体の絶対ルール
+    ap.add_argument("--p1win_max", type=float, default=0.40)
+    ap.add_argument("--s18_min", type=float, default=0.26)
+    ap.add_argument("--one_head_ratio_top18_max", type=float, default=0.55)
+    ap.add_argument("--min_non1_candidates_top18", type=int, default=12)
 
     # 買い方
     ap.add_argument("--exclude_one_head", action="store_true",
@@ -144,18 +161,18 @@ def add_cli_and_yaml_args():
     ap.add_argument("--drop_one_after_rank", action="store_true",
                     help="TopN確定後に '1-' を削除し、補充しない（点数圧縮）")
 
-    # 日内上限（ローカル情報のみのスコアで間引き）
-    ap.add_argument("--daily_cap", type=int, default=0, help="1日あたりの参戦上限（0=無制限）")
+    # 日内上限
+    ap.add_argument("--daily_cap", type=int, default=0)
 
-    # 合成オッズ/バスケット系フィルタ
+    # バスケット系フィルタ（TopNで評価）
     ap.add_argument("--synth_odds_min", type=float, default=0.0,
-                    help="TopN最終セットの合成オッズ下限（0で無効）")
+                    help="TopN合成オッズ下限（オッズ要; 0で無効）")
     ap.add_argument("--min_odds_min", type=float, default=0.0,
-                    help="TopN最終セット内の最小オッズ下限（0で無効）")
+                    help="TopN内の最小オッズ下限（オッズ要; 0で無効）")
     ap.add_argument("--ev_basket_min", type=float, default=0.0,
-                    help="TopN最終セットの平均EV下限（0で無効）")
+                    help="TopN平均EV下限（オッズ要; 0で無効）")
     ap.add_argument("--odds_coverage_min", type=int, default=0,
-                    help="TopN内でオッズが取得できている必要本数（0で無効）")
+                    help="TopN内のオッズ取得件数下限（0で無効）")
 
     # モデル出力
     ap.add_argument("--model_out", default="data/model_lgbm.txt")
@@ -204,7 +221,7 @@ def merge_with_yaml(args: argparse.Namespace) -> argparse.Namespace:
     set_default("ev_min", float(ev.get("min", args.ev_min)))
     set_default("ev_drop_if_missing_odds", bool(ev.get("drop_if_missing_odds", args.ev_drop_if_missing_odds)))
 
-    # ★New: オッズ常時読込（YAML）
+    # オッズ常時読込
     set_default("load_odds_always", bool(cfg.get("load_odds_always", args.load_odds_always)))
 
     # 絶対ルール
@@ -217,15 +234,16 @@ def merge_with_yaml(args: argparse.Namespace) -> argparse.Namespace:
     set_default("drop_one_after_rank", bool(filt.get("drop_one_after_rank", getattr(args, "drop_one_after_rank", False))))
     set_default("daily_cap", int(filt.get("daily_cap", args.daily_cap)))
 
-    # 合成オッズ/バスケット系
+    # バスケット系（ルート直下に置く想定）
     set_default("synth_odds_min", float(cfg.get("synth_odds_min", args.synth_odds_min)))
-    set_default("min_odds_min",   float(cfg.get("min_odds_min",   args.min_odds_min)))
-    set_default("ev_basket_min",  float(cfg.get("ev_basket_min",  args.ev_basket_min)))
+    set_default("min_odds_min", float(cfg.get("min_odds_min", args.min_odds_min)))
+    set_default("ev_basket_min", float(cfg.get("ev_basket_min", args.ev_basket_min)))
     set_default("odds_coverage_min", int(cfg.get("odds_coverage_min", args.odds_coverage_min)))
 
     # モデル
     set_default("model_out", cfg.get("model_out", args.model_out))
     return args
+
 
 # ---------------- main ----------------
 def main():
@@ -278,7 +296,7 @@ def main():
 
     # ---- p1win（1号艇単勝率）----
     p1_df = (
-        pred_df[pred_df["combo"].str.startswith("1-")]
+        pred_df[pred_df["combo"].astype(str).str.startswith("1-")]
         .groupby(["hd","jcd","rno"], as_index=False)["proba"].sum()
         .rename(columns={"proba":"p1win"})
     )
@@ -287,14 +305,20 @@ def main():
 
     # ---- EV/オッズ付与（条件 or 常時）----
     use_ev = (args.rank_key == "ev")
-    if use_ev or args.ev_min > 0 or args.ev_drop_if_missing_odds or args.load_odds_always:
-        pred_df["odds"] = pd.NA
+    need_odds = (use_ev or args.ev_min > 0 or args.ev_drop_if_missing_odds or args.load_odds_always
+                 or args.synth_odds_min > 0 or args.min_odds_min > 0 or args.ev_basket_min > 0 or args.odds_coverage_min > 0)
+
+    if need_odds:
+        pred_df["odds"] = np.nan
+        pred_df["combo"] = pred_df["combo"].astype(str)
         odds_root = Path(args.odds_root)
         for (hd, jcd, rno), idxs in pred_df.groupby(["hd","jcd","rno"]).groups.items():
             omap = load_odds_map(odds_root, hd, jcd, rno)
-            if not omap: continue
+            if not omap:
+                continue
             sub = pred_df.loc[idxs]
-            pred_df.loc[idxs, "odds"] = sub["combo"].map(omap).astype("float64")
+            mapped = pd.to_numeric(sub["combo"].map(omap), errors="coerce")
+            pred_df.loc[idxs, "odds"] = mapped.to_numpy(dtype=float)
         pred_df["ev"] = pred_df["proba"] * pred_df["odds"]
 
     # ---- レース単体メトリクス（Top18ベース：S18 / 一頭比 / 非1頭本数）----
@@ -303,7 +327,7 @@ def main():
         s18 = g_sorted["proba"].sum()
         if s18 <= 0:
             return pd.Series({"S18": 0.0, "one_head_ratio_top18": 0.0, "non1_candidates_top18": 0})
-        is_one = g_sorted["combo"].str.startswith("1-")
+        is_one = g_sorted["combo"].astype(str).str.startswith("1-")
         one_prob = g_sorted.loc[is_one, "proba"].sum()
         non1_candidates = int((~is_one).sum())
         return pd.Series({
@@ -331,9 +355,79 @@ def main():
         e = eligible.copy()
         e["score"] = (0.45 - e["p1win"]) + 0.5*(1.0 - e["one_head_ratio_top18"]) + 0.3*(e["S18"] - 0.26)
         keep = []
-        for hd_val, day_df in e.groupby("hd", as_index=False):
+        for _, day_df in e.groupby("hd", as_index=False):
             keep.append(day_df.sort_values("score", ascending=False).head(args.daily_cap))
         eligible = pd.concat(keep, ignore_index=True)
+
+    # ---- バスケット系フィルタ（TopNで判定）----
+    # 並べ替えキー（proba/ev）に基づき TopN を仮選定し、その TopN で合成オッズ等を計算してレース採否を決定
+    if need_odds:  # オッズ必須系は、オッズが無い場合はスキップ扱い
+        basket_rows = []
+        # まず対象レースのみに絞る
+        base_df = pred_df.merge(eligible[["hd","jcd","rno"]], on=["hd","jcd","rno"], how="inner")
+        for (hd, jcd, rno), g in base_df.groupby(["hd","jcd","rno"], as_index=False):
+            gg = g.copy()
+
+            # exclude_one_head はバスケット評価には適用しない（TopNのスコア判定用）
+            if use_ev:
+                if args.ev_drop_if_missing_odds:
+                    gg = gg[gg["ev"].notna()].copy()
+                gg = gg.sort_values("ev", ascending=False)
+                if args.ev_min > 0:
+                    gg = gg[gg["ev"].fillna(-np.inf) >= args.ev_min]
+            else:
+                gg = gg.sort_values("proba", ascending=False)
+
+            if len(gg) == 0:
+                continue
+
+            topN = gg.head(args.topk).copy()
+
+            # 取得済みオッズの件数
+            cov = int(topN["odds"].notna().sum()) if "odds" in topN.columns else 0
+
+            # 合成オッズ（調和平均の逆数: 1 / sum(1/odds)）
+            valid_odds = topN["odds"].dropna()
+            if cov > 0:
+                inv_sum = (1.0 / valid_odds).sum()
+                synth_odds = float(1.0 / inv_sum) if inv_sum > 0 else np.nan
+                min_odds = float(valid_odds.min())
+            else:
+                synth_odds = np.nan
+                min_odds = np.nan
+
+            # EVバスケット平均
+            if "ev" in topN.columns:
+                ev_basket = float(topN["ev"].mean(skipna=True))
+            else:
+                ev_basket = np.nan
+
+            basket_rows.append({
+                "hd": hd, "jcd": jcd, "rno": rno,
+                "cov": cov,
+                "synth_odds": synth_odds,
+                "min_odds": min_odds,
+                "ev_basket": ev_basket,
+            })
+
+        if basket_rows:
+            basket_df = pd.DataFrame(basket_rows)
+            # 閾値を適用（指定が 0/NaN の場合は無効）
+            cond_b = pd.Series([True] * len(basket_df))
+            if args.odds_coverage_min > 0:
+                cond_b &= (basket_df["cov"] >= int(args.odds_coverage_min))
+            if args.synth_odds_min > 0:
+                cond_b &= (basket_df["synth_odds"] >= float(args.synth_odds_min))
+            if args.min_odds_min > 0:
+                cond_b &= (basket_df["min_odds"] >= float(args.min_odds_min))
+            if args.ev_basket_min > 0:
+                cond_b &= (basket_df["ev_basket"] >= float(args.ev_basket_min))
+
+            keep_basket = basket_df.loc[cond_b, ["hd","jcd","rno"]]
+            if keep_basket.empty:
+                raise RuntimeError("バスケット系フィルタ適用後に参戦候補が0件。合成オッズ/EV/coverageの閾値を緩めてください。")
+            # eligible を置き換え
+            eligible = eligible.merge(keep_basket, on=["hd","jcd","rno"], how="inner")
 
     # ---- 参戦レースに限定 ----
     pred_df = pred_df.merge(eligible[["hd","jcd","rno"]], on=["hd","jcd","rno"], how="inner")
@@ -343,9 +437,9 @@ def main():
     for (hd, jcd, rno), g in pred_df.groupby(["hd","jcd","rno"], as_index=False):
         gg = g.copy()
 
-        # 事前除外（補充ありモード）
+        # 事前除外（補充あり）
         if args.exclude_one_head and not args.drop_one_after_rank:
-            gg = gg[~gg["combo"].str.startswith("1-")].copy()
+            gg = gg[~gg["combo"].astype(str).str.startswith("1-")].copy()
 
         # 並べ替え
         if use_ev:
@@ -357,48 +451,16 @@ def main():
         else:
             gg = gg.sort_values("proba", ascending=False)
 
-        # まずTopK確保
+        # TopK 確保
         if len(gg) > args.topk:
             gg = gg.head(args.topk)
 
-        # TopK後に1頭削除（補充しない＝点数圧縮）
+        # TopK後に1頭削除（補充なし）
         if args.drop_one_after_rank:
-            gg = gg[~gg["combo"].str.startswith("1-")].copy()
+            gg = gg[~gg["combo"].astype(str).str.startswith("1-")].copy()
 
         if len(gg) == 0:
             continue
-
-        # --- 合成オッズ/バスケットEVの計算（最終セットで） ---
-        synth_ok = True
-        synth_odds = None
-        min_odds_val = None
-        ev_basket = None
-        cov = 0
-
-        if "odds" in gg.columns:
-            valid_odds = gg["odds"].astype("float64")
-            cov = int(valid_odds.notna().sum())
-            v = valid_odds.dropna()
-            if len(v) > 0:
-                denom = (1.0 / v).sum()
-                synth_odds = (1.0 / denom) if denom > 0 else None
-                min_odds_val = float(v.min())
-
-        if "ev" in gg.columns and gg["ev"].notna().any():
-            ev_basket = float(gg["ev"].fillna(0.0).mean())
-
-        # --- 閾値で参戦可否を判定 ---
-        if args.odds_coverage_min and cov < args.odds_coverage_min:
-            synth_ok = False
-        if args.synth_odds_min > 0 and (synth_odds is None or synth_odds < args.synth_odds_min):
-            synth_ok = False
-        if args.min_odds_min > 0 and (min_odds_val is None or min_odds_val < args.min_odds_min):
-            synth_ok = False
-        if args.ev_basket_min > 0 and (ev_basket is None or ev_basket < args.ev_basket_min):
-            synth_ok = False
-
-        if not synth_ok:
-            continue  # このレースは見送り
 
         gg = gg.copy()
         gg["rank"] = range(1, len(gg)+1)
@@ -427,42 +489,19 @@ def main():
                 returns += amt
     roi = (returns / total_bet) if total_bet > 0 else 0.0
 
-    # ---- 参考: 最終セットの平均合成オッズ/最小オッズ ----
-    avg_synth_odds = None
-    avg_min_odds = None
-    if "odds" in picks_df.columns and not picks_df.empty:
-        def _race_synth(df):
-            v = df["odds"].dropna().astype("float64")
-            if len(v) == 0:
-                return pd.Series({"_synth": np.nan, "_min": np.nan})
-            denom = (1.0 / v).sum()
-            return pd.Series({
-                "_synth": (1.0/denom) if denom > 0 else np.nan,
-                "_min": float(v.min())
-            })
-        _tmp = picks_df.groupby(["hd","jcd","rno"]).apply(_race_synth).reset_index()
-        if not _tmp.empty:
-            avg_synth_odds = float(_tmp["_synth"].mean(skipna=True))
-            avg_min_odds   = float(_tmp["_min"].mean(skipna=True))
-
     # ---- 追加メトリクス ----
     num_test_races = int(len(unique_races))
     avg_picks_per_race = float(len(picks_df) / num_test_races) if num_test_races > 0 else 0.0
-    avg_p1win = float(
-        pred_df.merge(race_hit[["hd","jcd","rno"]], on=["hd","jcd","rno"]).drop_duplicates(subset=["hd","jcd","rno"])["p1win"].mean()
-    ) if num_test_races > 0 else 0.0
+    avg_p1win = float(eligible["p1win"].mean()) if not eligible.empty else 0.0
 
     # ---- 出力 ----
-    def _fmt(x): return str(x).replace(".","_")
-    mode_tag = f"{args.rank_key}_evmin{_fmt(args.ev_min)}_p1max{_fmt(args.p1win_max)}_s18{_fmt(args.s18_min)}_oh{_fmt(args.one_head_ratio_top18_max)}"
+    mode_tag = f"{args.rank_key}_evmin{args.ev_min}_p1max{args.p1win_max}_s18{args.s18_min}_oh{args.one_head_ratio_top18_max}".replace(".","_")
     if args.exclude_one_head: mode_tag += "_pre_no1"
     if args.drop_one_after_rank: mode_tag += "_post_no1"
     if args.daily_cap and args.daily_cap > 0: mode_tag += f"_cap{args.daily_cap}"
-    if args.load_odds_always: mode_tag += "_oddsAlways"
-    if args.synth_odds_min > 0: mode_tag += f"_syn{_fmt(args.synth_odds_min)}"
-    if args.min_odds_min > 0:   mode_tag += f"_minod{_fmt(args.min_odds_min)}"
-    if args.ev_basket_min > 0:  mode_tag += f"_evb{_fmt(args.ev_basket_min)}"
-    if args.odds_coverage_min > 0: mode_tag += f"_cov{args.odds_coverage_min}"
+    if need_odds: mode_tag += "_odds"
+    if args.synth_odds_min > 0 or args.min_odds_min > 0 or args.ev_basket_min > 0 or args.odds_coverage_min > 0:
+        mode_tag += f"_sb{safen(args.synth_odds_min)}_mo{safen(args.min_odds_min)}_eb{safen(args.ev_basket_min)}_cov{int(args.odds_coverage_min)}"
 
     picks_path = (eval_dir / f"picks_{args.test_start}_{args.test_end}_k{args.topk}_{mode_tag}.csv")
     picks_df.to_csv(picks_path, index=False, encoding="utf-8")
@@ -486,21 +525,16 @@ def main():
         "exclude_one_head": bool(args.exclude_one_head),
         "drop_one_after_rank": bool(args.drop_one_after_rank),
         "daily_cap": int(args.daily_cap),
-
         "synth_odds_min": float(args.synth_odds_min),
         "min_odds_min": float(args.min_odds_min),
         "ev_basket_min": float(args.ev_basket_min),
         "odds_coverage_min": int(args.odds_coverage_min),
-
         "hit_rate": float(hit_rate),
         "returns": int(returns),
         "total_bet": int(total_bet),
         "roi": float(roi),
         "avg_picks_per_race": float(avg_picks_per_race),
         "avg_p1win": float(avg_p1win),
-        "avg_synth_odds": float(avg_synth_odds) if avg_synth_odds is not None else None,
-        "avg_min_odds": float(avg_min_odds) if avg_min_odds is not None else None,
-
         "model_path": args.model_out,
         "picks_path": str(picks_path),
     }
@@ -509,6 +543,15 @@ def main():
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"[WRITE] {picks_path}")
     print(f"[WRITE] {summary_path}")
+
+
+def safen(x):
+    try:
+        f = float(x)
+        return str(f).replace(".", "_")
+    except Exception:
+        return "na"
+
 
 if __name__ == "__main__":
     main()
