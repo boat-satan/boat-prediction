@@ -11,6 +11,14 @@ on:
         description: "終了日 (YYYYMMDD)"
         required: true
         default: "20240107"
+      out_format:
+        description: "出力形式 (csv / parquet / both)"
+        required: true
+        default: "csv"
+      csv_compress:
+        description: "CSVをgzip圧縮（.csv.gz）する"
+        required: true
+        default: "true"
 
 permissions:
   contents: write
@@ -39,9 +47,18 @@ jobs:
         env:
           START: ${{ github.event.inputs.start_date }}
           END: ${{ github.event.inputs.end_date }}
+          OUT_FMT: ${{ github.event.inputs.out_format }}
+          CSV_COMPRESS: ${{ github.event.inputs.csv_compress }}
         run: |
           set -euo pipefail
           ROOT="public/programs/v1"
+
+          # boolean解釈（"true"/"false" 文字列）
+          CSV_COMP_FLAG=""
+          if [ "${CSV_COMPRESS,,}" = "true" ]; then
+            CSV_COMP_FLAG="--csv_compress"
+          fi
+
           for d in $(seq $(date -d "${START}" +%s) 86400 $(date -d "${END}" +%s)); do
             DATE=$(date -d "@$d" +%Y%m%d)
             YEAR=$(date -d "@$d" +%Y)
@@ -55,7 +72,9 @@ jobs:
                 --exhibition_dir public/exhibition/v1 \
                 --results_dir public/results \
                 --racer_dir public/racers-annual \
-                --out_dir data
+                --out_dir data \
+                --out_format "${OUT_FMT}" \
+                ${CSV_COMP_FLAG}
             else
               echo "Skip: $ROOT/$YEAR/$MONTH$DAY not found"
             fi
@@ -68,7 +87,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A data || true
           if ! git diff --cached --quiet; then
-            git commit -m "integrate_pro: build tables range=${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
+            git commit -m "integrate_pro: build tables range=${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} format=${{ github.event.inputs.out_format }} compress=${{ github.event.inputs.csv_compress }}"
             git push
           else
             echo "No changes to commit."
