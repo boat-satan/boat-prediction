@@ -6,13 +6,6 @@ boat-ml Pro統合パイプライン（出走表/展示/結果/選手年次を統
 - 出力:
     data/integrated_pro.parquet   # レース×艇（6行/レース、特徴入り）
     data/train_120_pro.parquet    # 三連単120行（is_hitラベル付き）
-使い方:
-  python scripts/integrate_pro.py \
-    --program_dir public/programs/v1 \
-    --exhibition_dir public/exhibition/v1 \
-    --results_dir public/results \
-    --racer_dir public/racers-annual \
-    --out_dir data
 """
 from __future__ import annotations
 import argparse, itertools, json, re
@@ -43,8 +36,14 @@ def parse_triplet(s: str|None):
     while len(vals) < 3: vals.append(None)
     return tuple(vals)
 
-def rank_dense(col: pl.Expr, asc=True):
-    return col.rank("dense", descending=not asc, nulls_last=True)
+def rank_dense_compat(col: pl.Expr, asc=True):
+    """
+    Polarsのrank互換：nullを末尾扱いにするため、フィラーを入れてからrank("dense")。
+    - 昇順: nullは非常に大きい値で埋めて末尾へ
+    - 降順: nullは非常に小さい値で埋めて末尾へ
+    """
+    filler = 1e18 if asc else -1e18
+    return col.fill_null(filler).rank(method="dense", descending=not asc)
 
 def integrate_one(program_js: dict, exhibition_js: dict|None,
                   result_js: dict|None, racer_root: Path) -> pl.DataFrame:
@@ -115,7 +114,7 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
             racer_id=racer_id, racer_name=name, grade=grade, age=age,
             weather_sky=weather_sky, wind_dir=wind_dir,
             wind_speed_m=wind_speed_m, wave_height_cm=wave_height_cm,
-            title=title, decision=decision,  # 保持のみ
+            title=title, decision=decision,  # 保持のみ（学習投入禁止）
             national_win=nat_win, national_2r=nat_2r, national_3r=nat_3r,
             local_win=loc_win, local_2r=loc_2r, local_3r=loc_3r,
             motor_id=m_id, motor_rate2=m2, motor_rate3=m3,
@@ -131,8 +130,8 @@ def integrate_one(program_js: dict, exhibition_js: dict|None,
 
     if not df.is_empty():
         df = df.with_columns([
-            rank_dense(pl.col("tenji_sec"), asc=True).alias("tenji_rank"),
-            rank_dense(pl.col("tenji_st"),  asc=True).alias("st_rank"),
+            rank_dense_compat(pl.col("tenji_sec"), asc=True).alias("tenji_rank"),
+            rank_dense_compat(pl.col("tenji_st"),  asc=True).alias("st_rank"),
         ])
         df = df.with_columns([
             (pl.col("national_win").fill_null(0)*0.6 +
