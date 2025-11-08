@@ -9,19 +9,36 @@ import lightgbm as lgb
 
 def ensure_dir(p: Path): p.mkdir(parents=True, exist_ok=True)
 
+# 期間フィルタ（文字列リテラル）
 def split_period_lazy(scan: pl.LazyFrame, start: str, end: str) -> pl.LazyFrame:
     return (
         scan.with_columns(pl.col("hd").cast(pl.Utf8))
             .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
     )
 
-def load_results_amount(results_root: Path, hd: str, jcd: str, rno: int) -> int | None:
-    y, md = hd[:4], hd[4:8]
-    p = results_root / y / md / jcd / f"{rno}R.json"
-    if not p.exists(): return None
+# 払い戻し額の取得（型ゆれ吸収）
+def load_results_amount(results_root: Path, hd, jcd, rno) -> int | None:
+    y  = str(hd)[:4]
+    md = str(hd)[4:8]
+    # jcd は2桁ゼロ埋めへ
+    try:
+        jcd_str = f"{int(jcd):02d}"
+    except Exception:
+        jcd_str = str(jcd)
+    # rno は整数化（"1R"など許容）
+    try:
+        rno_int = int(rno)
+    except Exception:
+        rno_int = int(str(rno).replace("R", ""))
+
+    p = results_root / y / md / jcd_str / f"{rno_int}R.json"
+    if not p.exists():
+        return None
+
     js = json.loads(p.read_text(encoding="utf-8"))
     tri = (js.get("payouts") or {}).get("trifecta")
-    if not tri: return None
+    if not tri:
+        return None
     try:
         return int(str(tri.get("amount")).replace(",", ""))
     except Exception:
@@ -56,6 +73,7 @@ def main():
     eval_dir = data_dir / "eval"
     ensure_dir(eval_dir)
 
+    # ---- シャード検出（Parquet優先、無ければCSV/CSV.GZ）----
     shards_root = Path("data/shards")
     pq_paths = sorted(shards_root.rglob("train_120_pro.parquet"))
     csv_paths = sorted(shards_root.rglob("train_120_pro.csv"))
@@ -71,9 +89,9 @@ def main():
     else:
         raise FileNotFoundError("No shards under data/shards/**/train_120_pro.(parquet|csv|csv.gz)")
 
+    # ---- 期間分割（Lazy）→ collect（ストリーミング）----
     tr_lf = split_period_lazy(lf, args.train_start, args.train_end)
     te_lf = split_period_lazy(lf, args.test_start, args.test_end)
-
     tr_df = tr_lf.collect(engine="streaming")
     te_df = te_lf.collect(engine="streaming")
 
@@ -82,12 +100,12 @@ def main():
     if te_df.is_empty():
         raise RuntimeError("テスト期間に該当するデータが空です。")
 
+    # ---- 学習 ----
     Xtr, ytr, keytr, feat_cols = build_feature_df(tr_df)
     train_set = lgb.Dataset(
         Xtr, label=ytr,
         categorical_feature=[c for c in feat_cols if str(Xtr[c].dtype) == "category"]
     )
-
     params = dict(
         objective="binary", metric="auc",
         learning_rate=0.05, num_leaves=63, max_depth=-1,
@@ -95,8 +113,6 @@ def main():
         bagging_fraction=0.9, bagging_freq=1, lambda_l2=1.0,
         verbose=-1, num_threads=0, seed=20240301, force_col_wise=True,
     )
-
-    # ← ここを修正：verbose_eval を callbacks に置き換え
     booster = lgb.train(
         params,
         train_set,
@@ -108,10 +124,12 @@ def main():
     Path(args.model_out).parent.mkdir(parents=True, exist_ok=True)
     booster.save_model(args.model_out)
 
+    # ---- 予測（テスト）----
     Xte, yte, keyte, _ = build_feature_df(te_df)
     proba = booster.predict(Xte, num_iteration=booster.best_iteration)
     pred_df = keyte.copy(); pred_df["proba"] = proba; pred_df["is_hit"] = yte.values
 
+    # TopK選定
     picks = []
     for (hd, jcd, rno), g in pred_df.groupby(["hd","jcd","rno"], as_index=False):
         gg = g.sort_values("proba", ascending=False).head(args.topk).copy()
@@ -119,20 +137,23 @@ def main():
         picks.append(gg)
     picks_df = pd.concat(picks, ignore_index=True)
 
+    # レース的中率
     race_hit = picks_df.groupby(["hd","jcd","rno"])["is_hit"].max().reset_index(name="race_hit")
     hit_rate = race_hit["race_hit"].mean()
 
+    # ROI計算
     results_root = Path(args.results_dir)
     unique_races = race_hit[["hd","jcd","rno"]].to_records(index=False)
     returns = 0
     total_bet = len(unique_races) * args.topk * args.unit_stake
     for hd, jcd, rno in unique_races:
         if race_hit[(race_hit["hd"]==hd)&(race_hit["jcd"]==jcd)&(race_hit["rno"]==rno)]["race_hit"].iloc[0] == 1:
-            amt = load_results_amount(results_root, hd, jcd, int(rno))
+            amt = load_results_amount(results_root, str(hd), jcd, rno)
             if amt is not None:
                 returns += amt
     roi = returns / total_bet if total_bet > 0 else 0.0
 
+    # 出力
     picks_path = eval_dir / f"picks_{args.test_start}_{args.test_end}_k{args.topk}.csv"
     picks_df.to_csv(picks_path, index=False, encoding="utf-8")
     summary = {
