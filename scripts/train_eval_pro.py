@@ -76,7 +76,8 @@ def load_odds_map(odds_root: Path, hd, jcd, rno) -> dict[str, float] | None:
     return None
 
 def build_feature_df(df120: pl.DataFrame):
-    pdf = df120.to_pandas()
+    # pyarrow不要モードでpandasへ
+    pdf = df120.to_pandas(use_pyarrow_extension_array=False)
     keys = ["hd","jcd","rno","combo"]
     y = pdf["is_hit"].astype(int)
     drop_cols = set(keys + ["is_hit"])
@@ -104,18 +105,27 @@ def add_cli_and_yaml_args():
     ap.add_argument("--results_dir", default="public/results")
     ap.add_argument("--odds_root", default="public/odds/v1")
 
-    # 並べ替え & EV
+    # 並べ替え & EV（※EVは後回しでも使えます／デフォルトはproba）
     ap.add_argument("--rank_key", default="proba", choices=["proba","ev"])
     ap.add_argument("--ev_min", type=float, default=0.0)
     ap.add_argument("--ev_drop_if_missing_odds", action="store_true")
 
-    # ★参戦条件：1号艇単勝率（モデル確率）しきい値 & 1頭除外
-    ap.add_argument("--p1win_max", type=float, default=0.50,
-                    help="参戦するレースの1号艇単勝率の上限（p1win<=この値）")
-    ap.add_argument("--exclude_one_head", action="store_true",
-                    help="TopN選定時に 1頭('1-')の買い目を除外する")
+    # ★絶対ルール（レース単体で完結）
+    ap.add_argument("--p1win_max", type=float, default=0.40, help="1号艇単勝率の上限（p1win<=この値）")
+    ap.add_argument("--s18_min", type=float, default=0.26, help="Top18確率合計の下限")
+    ap.add_argument("--one_head_ratio_top18_max", type=float, default=0.55, help="Top18に占める1頭確率比の上限")
+    ap.add_argument("--min_non1_candidates_top18", type=int, default=12, help="Top18内の非1頭候補の最低本数")
 
-    # 学習モデル
+    # 買い方
+    ap.add_argument("--exclude_one_head", action="store_true",
+                    help="TopN選定前に '1-' を除外（その後TopNを補充）")
+    ap.add_argument("--drop_one_after_rank", action="store_true",
+                    help="TopN確定後に '1-' を削除し、補充しない（点数圧縮）")
+
+    # 日内上限（ローカル情報のみのスコアで間引き）
+    ap.add_argument("--daily_cap", type=int, default=0, help="1日あたりの参戦上限（0=無制限）")
+
+    # モデル出力
     ap.add_argument("--model_out", default="data/model_lgbm.txt")
 
     # YAML設定
@@ -162,10 +172,19 @@ def merge_with_yaml(args: argparse.Namespace) -> argparse.Namespace:
     set_default("ev_min", float(ev.get("min", args.ev_min)))
     set_default("ev_drop_if_missing_odds", bool(ev.get("drop_if_missing_odds", args.ev_drop_if_missing_odds)))
 
-    # 参戦条件
+    # 絶対ルール
     filt = cfg.get("filters", {})
     set_default("p1win_max", float(filt.get("p1win_max", args.p1win_max)))
-    set_default("exclude_one_head", bool(filt.get("exclude_one_head", args.exclude_one_head)))
+    set_default("s18_min", float(filt.get("s18_min", args.s18_min)))
+    set_default("one_head_ratio_top18_max", float(filt.get("one_head_ratio_top18_max", args.one_head_ratio_top18_max)))
+    set_default("min_non1_candidates_top18", int(filt.get("min_non1_candidates_top18", args.min_non1_candidates_top18)))
+
+    # 買い方
+    set_default("exclude_one_head", bool(filt.get("exclude_one_head", getattr(args, "exclude_one_head", False))))
+    set_default("drop_one_after_rank", bool(filt.get("drop_one_after_rank", getattr(args, "drop_one_after_rank", False))))
+
+    # 日内上限
+    set_default("daily_cap", int(filt.get("daily_cap", args.daily_cap)))
 
     # モデル
     set_default("model_out", cfg.get("model_out", args.model_out))
@@ -220,7 +239,7 @@ def main():
     pred_df["proba"] = proba
     pred_df["is_hit"] = yte.values
 
-    # ---- 1号艇単勝率 p1win（モデル確率から）----
+    # ---- p1win（1号艇単勝率）----
     p1_df = (
         pred_df[pred_df["combo"].str.startswith("1-")]
         .groupby(["hd","jcd","rno"], as_index=False)["proba"].sum()
@@ -229,7 +248,7 @@ def main():
     pred_df = pred_df.merge(p1_df, on=["hd","jcd","rno"], how="left")
     pred_df["p1win"] = pred_df["p1win"].fillna(0.0)
 
-    # ---- オッズ→EV 付与（必要時のみ）----
+    # ---- EV付与（必要時のみ）----
     use_ev = (args.rank_key == "ev")
     if use_ev or args.ev_min > 0 or args.ev_drop_if_missing_odds:
         pred_df["odds"] = pd.NA
@@ -241,31 +260,77 @@ def main():
             pred_df.loc[idxs, "odds"] = sub["combo"].map(omap).astype("float64")
         pred_df["ev"] = pred_df["proba"] * pred_df["odds"]
 
-    # ---- 参戦対象（p1win <= 閾値）でレース抽出 ----
-    eligible = pred_df[pred_df["p1win"] <= args.p1win_max]
-    if eligible.empty:
-        raise RuntimeError(f"p1win<= {args.p1win_max} のレースが0。閾値を緩めてください。")
-    eligible_keys = eligible.groupby(["hd","jcd","rno"]).size().reset_index()[["hd","jcd","rno"]]
-    pred_df = pred_df.merge(eligible_keys, on=["hd","jcd","rno"], how="inner")
+    # ---- レース単体メトリクス（Top18ベース：S18 / 一頭比 / 非1頭本数）----
+    # Top18は proba 降順で18件
+    def top18_metrics(g: pd.DataFrame):
+        g_sorted = g.sort_values("proba", ascending=False).head(18)
+        s18 = g_sorted["proba"].sum()
+        if s18 <= 0:
+            return pd.Series({"S18": 0.0, "one_head_ratio_top18": 0.0, "non1_candidates_top18": 0})
+        is_one = g_sorted["combo"].str.startswith("1-")
+        one_prob = g_sorted.loc[is_one, "proba"].sum()
+        non1_candidates = int((~is_one).sum())
+        return pd.Series({
+            "S18": float(s18),
+            "one_head_ratio_top18": float(one_prob / s18) if s18 > 0 else 0.0,
+            "non1_candidates_top18": non1_candidates
+        })
 
-    # ---- TopN選定（1頭除外+EV/確率順）----
+    metrics = pred_df.groupby(["hd","jcd","rno"]).apply(top18_metrics).reset_index()
+    pred_df = pred_df.merge(metrics, on=["hd","jcd","rno"], how="left")
+
+    # ---- 絶対ルールで参戦候補抽出（レース単体で完結）----
+    cond = (
+        (pred_df["p1win"] <= args.p1win_max) &
+        (pred_df["S18"] >= args.s18_min) &
+        (pred_df["one_head_ratio_top18"] <= args.one_head_ratio_top18_max) &
+        (pred_df["non1_candidates_top18"] >= args.min_non1_candidates_top18)
+    )
+    eligible = pred_df.loc[cond, ["hd","jcd","rno","p1win","S18","one_head_ratio_top18"]].drop_duplicates()
+    if eligible.empty:
+        raise RuntimeError("参戦候補が0件。閾値（p1win_max / s18_min / one_head_ratio / 非1頭本数）を緩めてください。")
+
+    # ---- 日内上限（local scoreで間引き：ローカル完結）----
+    if args.daily_cap and args.daily_cap > 0:
+        # ローカルスコア（大きいほど参戦優先）
+        # score = (0.45 - p1win) + 0.5*(1 - one_head_ratio) + 0.3*(S18 - 0.26)
+        e = eligible.copy()
+        e["score"] = (0.45 - e["p1win"]) + 0.5*(1.0 - e["one_head_ratio_top18"]) + 0.3*(e["S18"] - 0.26)
+        keep = []
+        for hd_val, day_df in e.groupby("hd", as_index=False):
+            keep.append(day_df.sort_values("score", ascending=False).head(args.daily_cap))
+        eligible = pd.concat(keep, ignore_index=True)
+
+    # ---- 参戦レースに限定 ----
+    pred_df = pred_df.merge(eligible[["hd","jcd","rno"]], on=["hd","jcd","rno"], how="inner")
+
+    # ---- TopN選定（買い方ロジック）----
     picks = []
     for (hd, jcd, rno), g in pred_df.groupby(["hd","jcd","rno"], as_index=False):
         gg = g.copy()
-        if args.exclude_one_head:
+
+        # 事前除外（補充ありモード）
+        if args.exclude_one_head and not args.drop_one_after_rank:
             gg = gg[~gg["combo"].str.startswith("1-")].copy()
 
+        # 並べ替え
         if use_ev:
+            if args.ev_drop_if_missing_odds:
+                gg = gg[gg["ev"].notna()].copy()
+            gg = gg.sort_values("ev", ascending=False)
             if args.ev_min > 0:
                 gg = gg[gg["ev"].fillna(-np.inf) >= args.ev_min]
-            if args.ev_drop_if_missing_odds:
-                gg = gg[gg["ev"].notna()]
-            gg = gg.sort_values("ev", ascending=False)
         else:
             gg = gg.sort_values("proba", ascending=False)
 
+        # まずTopK確保
         if len(gg) > args.topk:
             gg = gg.head(args.topk)
+
+        # TopK後に1頭削除（補充しない＝点数圧縮）
+        if args.drop_one_after_rank:
+            gg = gg[~gg["combo"].str.startswith("1-")].copy()
+
         if len(gg) == 0:
             continue
 
@@ -274,12 +339,13 @@ def main():
         picks.append(gg)
 
     if len(picks) == 0:
-        raise RuntimeError("選定結果がゼロ件。p1win/1頭除外/EV条件が厳しすぎる可能性。")
+        raise RuntimeError("選定結果がゼロ件。閾値/買い方条件が厳しすぎます。")
+
     picks_df = pd.concat(picks, ignore_index=True)
 
     # ---- ヒット率（レース単位）----
     race_hit = picks_df.groupby(["hd","jcd","rno"])["is_hit"].max().reset_index(name="race_hit")
-    hit_rate = race_hit["race_hit"].mean()
+    hit_rate = float(race_hit["race_hit"].mean())
 
     # ---- ROI（実配当）----
     results_root = Path(args.results_dir)
@@ -295,9 +361,17 @@ def main():
                 returns += amt
     roi = (returns / total_bet) if total_bet > 0 else 0.0
 
+    # ---- 追加メトリクス出力 ----
+    num_test_races = int(len(unique_races))
+    avg_picks_per_race = float(len(picks_df) / num_test_races) if num_test_races > 0 else 0.0
+    avg_p1win = float(eligible["p1win"].mean()) if not eligible.empty else 0.0
+
     # ---- 出力 ----
-    mode_tag = f"{args.rank_key}_evmin{args.ev_min}_p1max{args.p1win_max}".replace(".","_")
-    if args.exclude_one_head: mode_tag += "_no1head"
+    mode_tag = f"{args.rank_key}_evmin{args.ev_min}_p1max{args.p1win_max}_s18{args.s18_min}_oh{args.one_head_ratio_top18_max}".replace(".","_")
+    if args.exclude_one_head: mode_tag += "_pre_no1"
+    if args.drop_one_after_rank: mode_tag += "_post_no1"
+    if args.daily_cap and args.daily_cap > 0: mode_tag += f"_cap{args.daily_cap}"
+
     picks_path = (eval_dir / f"picks_{args.test_start}_{args.test_end}_k{args.topk}_{mode_tag}.csv")
     picks_df.to_csv(picks_path, index=False, encoding="utf-8")
 
@@ -306,18 +380,25 @@ def main():
         "test_range":[args.test_start,args.test_end],
         "num_train_rows": int(tr_df.height),
         "num_test_rows": int(te_df.height),
-        "num_test_races": int(len(unique_races)),
+        "num_test_races": num_test_races,
         "topk": args.topk,
         "unit_stake": int(args.unit_stake),
         "rank_key": args.rank_key,
         "ev_min": float(args.ev_min),
         "ev_drop_if_missing_odds": bool(args.ev_drop_if_missing_odds),
         "p1win_max": float(args.p1win_max),
+        "s18_min": float(args.s18_min),
+        "one_head_ratio_top18_max": float(args.one_head_ratio_top18_max),
+        "min_non1_candidates_top18": int(args.min_non1_candidates_top18),
         "exclude_one_head": bool(args.exclude_one_head),
+        "drop_one_after_rank": bool(args.drop_one_after_rank),
+        "daily_cap": int(args.daily_cap),
         "hit_rate": float(hit_rate),
         "returns": int(returns),
         "total_bet": int(total_bet),
         "roi": float(roi),
+        "avg_picks_per_race": float(avg_picks_per_race),
+        "avg_p1win": float(avg_p1win),
         "model_path": args.model_out,
         "picks_path": str(picks_path),
     }
