@@ -110,7 +110,7 @@ jobs:
               ${CSV_COMP_FLAG}
           done
 
-      # シャードを結合して単一テーブルを生成
+      # シャードを結合して単一テーブルを生成（.csv.gz対応）
       - name: Merge shards -> single tables
         if: steps.discover.outputs.found_dates != ''
         env:
@@ -121,6 +121,12 @@ jobs:
           python - <<'PY'
           import polars as pl
           from pathlib import Path
+
+          def read_csv_auto(p: Path) -> pl.DataFrame:
+            sp = str(p)
+            if sp.endswith(".gz"):
+              return pl.read_csv(p, compression="gzip", infer_schema_length=10000)
+            return pl.read_csv(p, infer_schema_length=10000)
 
           def write_csv(df: pl.DataFrame, path: Path, compress: bool):
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -140,20 +146,38 @@ jobs:
           if out_fmt in ("csv","both"):
             parts = sorted(shards_root.glob("*/" + "*" + "/integrated_pro.csv*"))
             if parts:
-              df = pl.concat([pl.read_csv(p) for p in parts], how="vertical", rechunk=True)
-              df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
-              write_csv(df, out_root/"integrated_pro.csv", csv_compress)
+              dfs = []
+              for p in parts:
+                try:
+                  dfs.append(read_csv_auto(p))
+                except Exception as e:
+                  print(f"[WARN] read_csv failed: {p} ({e})")
+              if dfs:
+                df = pl.concat(dfs, how="vertical", rechunk=True)
+                df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
+                write_csv(df, out_root/"integrated_pro.csv", csv_compress)
+              else:
+                print("[MERGE] integrated_pro: no readable CSV shards")
             else:
               print("[MERGE] integrated_pro: no CSV shards found")
 
           if out_fmt in ("parquet","both"):
             parts = sorted(shards_root.glob("*/" + "*" + "/integrated_pro.parquet"))
             if parts:
-              df = pl.concat([pl.read_parquet(p) for p in parts], how="vertical", rechunk=True)
-              df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
-              (out_root/"integrated_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
-              df.write_parquet(out_root/"integrated_pro.parquet")
-              print(f"[WRITE] {out_root/'integrated_pro.parquet'} (rows={df.height})")
+              dfs = []
+              for p in parts:
+                try:
+                  dfs.append(pl.read_parquet(p))
+                except Exception as e:
+                  print(f"[WARN] read_parquet failed: {p} ({e})")
+              if dfs:
+                df = pl.concat(dfs, how="vertical", rechunk=True)
+                df = df.unique(subset=["hd","jcd","rno","lane"], keep="last")
+                (out_root/"integrated_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
+                df.write_parquet(out_root/"integrated_pro.parquet")
+                print(f"[WRITE] {out_root/'integrated_pro.parquet'} (rows={df.height})")
+              else:
+                print("[MERGE] integrated_pro: no readable Parquet shards")
             else:
               print("[MERGE] integrated_pro: no Parquet shards found")
 
@@ -161,20 +185,38 @@ jobs:
           if out_fmt in ("csv","both"):
             parts = sorted(shards_root.glob("*/" + "*" + "/train_120_pro.csv*"))
             if parts:
-              df = pl.concat([pl.read_csv(p) for p in parts], how="vertical", rechunk=True)
-              df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
-              write_csv(df, out_root/"train_120_pro.csv", csv_compress)
+              dfs = []
+              for p in parts:
+                try:
+                  dfs.append(read_csv_auto(p))
+                except Exception as e:
+                  print(f("[WARN] read_csv failed: {p} ({e})"))
+              if dfs:
+                df = pl.concat(dfs, how="vertical", rechunk=True)
+                df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
+                write_csv(df, out_root/"train_120_pro.csv", csv_compress)
+              else:
+                print("[MERGE] train_120_pro: no readable CSV shards")
             else:
               print("[MERGE] train_120_pro: no CSV shards found")
 
           if out_fmt in ("parquet","both"):
             parts = sorted(shards_root.glob("*/" + "*" + "/train_120_pro.parquet"))
             if parts:
-              df = pl.concat([pl.read_parquet(p) for p in parts], how="vertical", rechunk=True)
-              df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
-              (out_root/"train_120_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
-              df.write_parquet(out_root/"train_120_pro.parquet")
-              print(f"[WRITE] {out_root/'train_120_pro.parquet'} (rows={df.height})")
+              dfs = []
+              for p in parts:
+                try:
+                  dfs.append(pl.read_parquet(p))
+                except Exception as e:
+                  print(f"[WARN] read_parquet failed: {p} ({e})")
+              if dfs:
+                df = pl.concat(dfs, how="vertical", rechunk=True)
+                df = df.unique(subset=["hd","jcd","rno","combo"], keep="last")
+                (out_root/"train_120_pro.parquet").parent.mkdir(parents=True, exist_ok=True)
+                df.write_parquet(out_root/"train_120_pro.parquet")
+                print(f"[WRITE] {out_root/'train_120_pro.parquet'} (rows={df.height})")
+              else:
+                print("[MERGE] train_120_pro: no readable Parquet shards")
             else:
               print("[MERGE] train_120_pro: no Parquet shards found")
           PY
