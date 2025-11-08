@@ -1,0 +1,51 @@
+{
+  "train_range": [
+    "20240101",
+    "20240131"
+  ],
+  "test_range": [
+    "20240201",
+    "20240210"
+  ],
+  "num_train_rows": 603360,
+  "num_test_rows": 168480,
+  "num_test_races": 1404,
+  "topk": 18,
+  "unit_stake": 100,
+  "hit_rate": 0.613960113960114,
+  "returns": 1933550,
+  "total_bet": 2527200,
+  "roi": 0.7650957581513137,
+  "model_path": "data/model_lgbm.txt",
+  "features_used": [
+    "p1_lane",
+    "p1_grade",
+    "p1_national_win",
+    "p1_motor_rate2",
+    "p1_tenji_st",
+    "p1_tenji_rank",
+    "p1_st_rank",
+    "p1_course_first_rate",
+    "p2_lane",
+    "p2_grade",
+    "p2_national_win",
+    "p2_motor_rate2",
+    "p2_tenji_st",
+    "p2_tenji_rank",
+    "p2_st_rank",
+    "p3_lane",
+    "p3_grade",
+    "p3_motor_rate2",
+    "p3_tenji_st",
+    "p3_tenji_rank",
+    "p3_st_rank",
+    "diff_p1p2_st",
+    "sum_p1p2_motor",
+    "outer_push",
+    "in_cover",
+    "wind_speed_m",
+    "wave_height_cm",
+    "is_strong_wind",
+    "is_crosswind"
+  ]
+}
