@@ -1,18 +1,13 @@
-name: Train & Eval (pro)
+name: Train & Eval (pro) - Top18 All Races
 
 on:
   workflow_dispatch:
     inputs:
       train_start:  { description: "学習開始 (YYYYMMDD)", required: true,  default: "20240101" }
-      train_end:    { description: "学習終了 (YYYYMMDD)", required: true,  default: "20240131" }
-      test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240201" }
-      test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240210" }
-      topk:         { description: "TopN 買い目数",       required: true,  default: "18" }
-      p1win_max:    { description: "1号艇単勝率の上限",    required: true,  default: "0.40" }
-      s18_min:      { description: "S18 下限",             required: true,  default: "0.26" }
-      one_head_max: { description: "Top18の1頭比 上限",    required: true,  default: "0.55" }
-      exclude_one:  { description: "事前に1頭除外",        required: true,  default: "false" }
-      drop_after:   { description: "TopN確定後に1頭削除",   required: true,  default: "true" }
+      train_end:    { description: "学習終了 (YYYYMMDD)", required: true,  default: "20240229" }
+      test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240301" }
+      test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240331" }
+      topk:         { description: "TopN 買い目数（18で固定推奨）", required: true, default: "18" }
 
 concurrency:
   group: eval-${{ github.ref }}
@@ -37,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas lightgbm pyyaml pyarrow
 
-      - name: Build config
+      - name: Build config (Top18 all races / filters OFF)
         run: |
           mkdir -p data
           cat > data/train_eval_pro.config.yaml <<'YAML'
@@ -53,14 +48,15 @@ jobs:
             odds_root: "public/odds/v1"
           topk: ${{ inputs.topk }}
           unit_stake: 100
-          rank_key: "proba"   # EVは後で
+          rank_key: "proba"   # EVは使わない
+          # ▼ 全レースTop18（フィルタ無効化）
           filters:
-            p1win_max: ${{ inputs.p1win_max }}
-            s18_min: ${{ inputs.s18_min }}
-            one_head_ratio_top18_max: ${{ inputs.one_head_max }}
-            min_non1_candidates_top18: 12
-            exclude_one_head: ${{ inputs.exclude_one }}
-            drop_one_after_rank: ${{ inputs.drop_after }}
+            p1win_max: 1.0
+            s18_min: 0.0
+            one_head_ratio_top18_max: 1.0
+            min_non1_candidates_top18: 0
+            exclude_one_head: false
+            drop_one_after_rank: false
             daily_cap: 0
           model_out: "data/model_lgbm.txt"
           YAML
@@ -90,7 +86,7 @@ jobs:
           echo "---- data/eval tree ----"
           ls -lahR data/eval || true
 
-      # ==== ここから B: Commit & Push ====
+      # ==== Commit & Push outputs ====
       - name: Commit & push eval outputs
         if: always()
         env:
@@ -100,20 +96,19 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # data/eval だけを強制追加（.gitignore で data/ が無視されていてもOK）
+          # data/eval だけを強制追加（.gitignoreでdata/が無視されていても入る）
           if [ -d data/eval ]; then
             git add -f data/eval
           fi
 
-          # 変更がなければ終了
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git commit -m "eval: ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
+          git commit -m "eval(top18-all): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
 
-          # リモート更新と競合を避けるため rebase pull をリトライ
+          # 同時更新対策でrebase pullをリトライ
           n=0
           until [ $n -ge 5 ]
           do
