@@ -1,0 +1,38 @@
+{
+  "train_range": [
+    "20240101",
+    "20240130"
+  ],
+  "test_range": [
+    "20240201",
+    "20240229"
+  ],
+  "num_train_rows": 587520,
+  "num_test_rows": 535680,
+  "num_test_races": 782,
+  "topk": 12,
+  "unit_stake": 100,
+  "rank_key": "proba",
+  "ev_min": 0.0,
+  "ev_drop_if_missing_odds": false,
+  "load_odds_always": true,
+  "p1win_max": 1.0,
+  "s18_min": 0.0,
+  "one_head_ratio_top18_max": 1.0,
+  "min_non1_candidates_top18": 0,
+  "exclude_one_head": false,
+  "drop_one_after_rank": false,
+  "daily_cap": 0,
+  "synth_odds_min": 2.0,
+  "min_odds_min": 6.0,
+  "ev_basket_min": 1.05,
+  "odds_coverage_min": 0,
+  "hit_rate": 0.2774936061381074,
+  "returns": 658270,
+  "total_bet": 938400,
+  "roi": 0.7014812446717817,
+  "avg_picks_per_race": 12.0,
+  "avg_p1win": 0.4113833968086406,
+  "model_path": "data/model_lgbm.txt",
+  "picks_path": "data/eval/picks_20240201_20240229_k12_proba_evmin0_0_p1max1_0_s180_0_oh1_0_odds_sb2_0_mo6_0_eb1_05_cov0.csv"
+}
