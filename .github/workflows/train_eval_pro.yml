@@ -33,22 +33,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas lightgbm pyyaml
 
-      # 任意：リポジトリ内に事前配置した YAML を読み、足りないものは inputs で上書き
-      - name: Build eval config (merge repo YAML if exists)
-        shell: bash
+      - name: Build eval config
         run: |
-          set -euo pipefail
           mkdir -p data
-          # 既存の repo 設定があれば読み込む（無ければ空）
-          if [ -f data/train_eval_pro.config.yaml ]; then
-            echo "[INFO] Use repo config as base: data/train_eval_pro.config.yaml"
-            base_yaml="$(cat data/train_eval_pro.config.yaml)"
-          else
-            base_yaml=""
-          fi
-
-          # inputs で上書き（paths はデフォルト固定だが、repo YAML に書けば上書き可能）
-          cat > data/train_eval_pro.config.runtime.yaml <<'YAML'
+          cat > data/train_eval_pro.config.yaml <<'YAML'
           train:
             start: "${{ inputs.train_start }}"
             end:   "${{ inputs.train_end }}"
@@ -71,22 +59,26 @@ jobs:
           model_out: "data/model_lgbm.txt"
           YAML
 
-          # repo config があれば簡易マージ（最後に runtime を上に重ねる方針）
-          if [ -n "$base_yaml" ]; then
-            printf "%s\n%s\n" "$base_yaml" "$(cat data/train_eval_pro.config.runtime.yaml)" > data/train_eval_pro.config.merged.yaml
-            mv data/train_eval_pro.config.merged.yaml data/train_eval_pro.config.yaml
+      - name: Locate script
+        id: locate
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Repo tree (top 3 levels):"
+          find . -maxdepth 3 -type f -name "train_eval_pro.py" -print || true
+          if [ -f "./train_eval_pro.py" ]; then
+            echo "script=./train_eval_pro.py" >> $GITHUB_OUTPUT
+          elif [ -f "./scripts/train_eval_pro.py" ]; then
+            echo "script=./scripts/train_eval_pro.py" >> $GITHUB_OUTPUT
           else
-            mv data/train_eval_pro.config.runtime.yaml data/train_eval_pro.config.yaml
+            echo "::error::train_eval_pro.py not found in repo root or scripts/ . Commit the file or adjust the path."
+            exit 1
           fi
-
-          echo "----- Effective config -----"
-          cat data/train_eval_pro.config.yaml
 
       - name: Train & Eval
         run: |
-          python train_eval_pro.py --config data/train_eval_pro.config.yaml
+          python "${{ steps.locate.outputs.script }}" --config data/train_eval_pro.config.yaml
 
       - name: Show outputs
         run: |
           ls -R data/eval || true
-          echo "Done."
