@@ -1,0 +1,88 @@
+name: Train & Evaluate (Pro, date ranges)
+
+on:
+  workflow_dispatch:
+    inputs:
+      train_start:
+        description: "学習開始 (YYYYMMDD)"
+        required: true
+        default: "20240101"
+      train_end:
+        description: "学習終了 (YYYYMMDD)"
+        required: true
+        default: "20240229"
+      test_start:
+        description: "検証開始 (YYYYMMDD)"
+        required: true
+        default: "20240301"
+      test_end:
+        description: "検証終了 (YYYYMMDD)"
+        required: true
+        default: "20240331"
+      topk:
+        description: "1レースの買い点数（TopK）"
+        required: true
+        default: "18"
+      unit_stake:
+        description: "1点あたりの金額（円）"
+        required: true
+        default: "100"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: train-eval-pro-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars pyarrow pandas lightgbm
+
+      # すでに integrate_pro で生成済みの data/train_120_pro.parquet を前提。
+      # 念のため存在確認のみ行う。必要ならここで統合を呼んでもOK。
+      - name: Sanity check integrated files
+        run: |
+          test -f data/train_120_pro.parquet || (echo "train_120_pro.parquet not found"; exit 1)
+          test -f data/integrated_pro.parquet || echo "WARN: integrated_pro.parquet not found (必須ではありません)"
+
+      - name: Train & Evaluate
+        run: |
+          python scripts/train_eval_pro.py \
+            --train_start "${{ github.event.inputs.train_start }}" \
+            --train_end   "${{ github.event.inputs.train_end }}" \
+            --test_start  "${{ github.event.inputs.test_start }}" \
+            --test_end    "${{ github.event.inputs.test_end }}" \
+            --topk        ${{ github.event.inputs.topk }} \
+            --unit_stake  ${{ github.event.inputs.unit_stake }} \
+            --data_dir    data \
+            --results_dir public/results \
+            --model_out   data/model_lgbm.txt
+
+      - name: Commit & push results (if changed)
+        run: |
+          set -e
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A data/eval data/model_lgbm.txt || true
+          if ! git diff --cached --quiet; then
+            git commit -m "train_eval: ${{
+              github.event.inputs.train_start }}-${{ github.event.inputs.train_end }} -> ${{
+              github.event.inputs.test_start }}-${{ github.event.inputs.test_end }}, topk=${{
+              github.event.inputs.topk }}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
