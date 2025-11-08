@@ -1,4 +1,4 @@
-name: Integrate Pro (build training tables)
+name: Integrate Pro (daily shards)
 
 on:
   workflow_dispatch:
@@ -14,11 +14,11 @@ on:
       out_format:
         description: "出力形式 (csv / parquet / both)"
         required: true
-        default: "csv"
+        default: "parquet"
       csv_compress:
         description: "CSVをgzip圧縮（.csv.gz）する"
         required: true
-        default: "true"
+        default: "false"
 
 permissions:
   contents: write
@@ -44,43 +44,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pyarrow
 
-      # 範囲内で実在するプログラム日を検出
-      - name: Discover available dates within range
+      - name: Discover dates in range
         id: discover
         env:
           START: ${{ github.event.inputs.start_date }}
           END: ${{ github.event.inputs.end_date }}
         run: |
           set -euo pipefail
-          START="${START}"
-          END="${END}"
-
-          # 期待構造: public/programs/v1/YYYY/MMDD/
           mapfile -t ALL_DIRS < <(find public/programs/v1 -mindepth 2 -maxdepth 2 -type d 2>/dev/null | sort || true)
           DATES=()
           for d in "${ALL_DIRS[@]}"; do
             y=$(basename "$(dirname "$d")")
             md=$(basename "$d")
-            if [[ "$y" =~ ^[0-9]{4}$ && "$md" =~ ^[0-9]{4}$ ]]; then
-              hd="${y}${md}"
-              if [[ "$hd" -ge "$START" && "$hd" -le "$END" ]]; then
-                DATES+=("$hd")
-              fi
+            [[ "$y" =~ ^[0-9]{4}$ && "$md" =~ ^[0-9]{4}$ ]] || continue
+            hd="${y}${md}"
+            if [[ "$hd" -ge "$START" && "$hd" -le "$END" ]]; then
+              DATES+=("$hd")
             fi
           done
-
           if [ "${#DATES[@]}" -eq 0 ]; then
-            echo "No program dirs found within range ${START}-${END}."
             echo "found_dates=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-
           uniq_sorted=$(printf "%s\n" "${DATES[@]}" | sort -u | tr '\n' ' ')
-          echo "Found dates: ${uniq_sorted}"
           echo "found_dates=${uniq_sorted}" >> "$GITHUB_OUTPUT"
 
-      # 日別シャードで出力（上書き防止）
-      - name: Integrate (daily shards; no overwrite)
+      - name: Build daily shards (no global merge)
         if: steps.discover.outputs.found_dates != ''
         env:
           DATES: ${{ steps.discover.outputs.found_dates }}
@@ -92,186 +81,39 @@ jobs:
           if [ "${CSV_COMPRESS,,}" = "true" ]; then
             CSV_COMP_FLAG="--csv_compress"
           fi
-
           for hd in ${DATES}; do
             YEAR="${hd:0:4}"
             MD="${hd:4:4}"
             PDIR="public/programs/v1/${YEAR}/${MD}"
-            OUTDIR="data/shards/${YEAR}/${MD}"
-
             echo "===> Processing ${YEAR}/${MD}"
             python scripts/integrate_pro.py \
               --program_dir "${PDIR}" \
               --exhibition_dir public/exhibition/v1 \
               --results_dir public/results \
               --racer_dir public/racers-annual \
-              --out_dir "${OUTDIR}" \
+              --out_dir "data/shards" \
               --out_format "${OUT_FMT}" \
               ${CSV_COMP_FLAG}
           done
 
-      # 偽 .csv.gz を修復（中身が平文CSVのままのファイルを正しく再圧縮）
-      - name: Fix mislabeled gz shards (re-gzip plain CSVs)
-        if: steps.discover.outputs.found_dates != ''
-        run: |
-          set -euo pipefail
-          shopt -s globstar nullglob
-          fixed=0
-          for f in data/shards/**/*.csv.gz; do
-            if gzip -t "$f" >/dev/null 2>&1; then
-              continue
-            else
-              echo "[FIX] $f is not a valid gzip; re-gzipping..."
-              plain="${f%.gz}"
-              mv "$f" "$plain"
-              gzip -f "$plain"
-              fixed=$((fixed+1))
-            fi
-          done
-          echo "[INFO] re-gzipped $fixed file(s)"
-
-      # シャードを結合して単一テーブルを生成（.csv/.csv.gz を再帰検索し確実に読込）
-      - name: Merge shards -> single tables
-        if: steps.discover.outputs.found_dates != ''
-        env:
-          OUT_FMT: ${{ github.event.inputs.out_format }}
-          CSV_COMPRESS: ${{ github.event.inputs.csv_compress }}
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import gzip
-          from pathlib import Path
-          import polars as pl
-
-          def read_csv_any(p: Path) -> pl.DataFrame:
-            s = str(p)
-            if s.endswith(".gz"):
-              with gzip.open(p, "rb") as f:
-                data = f.read()
-              return pl.read_csv(data, infer_schema_length=10000)
-            return pl.read_csv(p, infer_schema_length=10000)
-
-          def write_csv(df: pl.DataFrame, path: Path, compress: bool):
-            path.parent.mkdir(parents=True, exist_ok=True)
-            out = path
-            if compress and not str(out).endswith(".gz"):
-              out = Path(str(out) + ".gz")
-            df.write_csv(out)
-            print(f"[WRITE] {out} (rows={df.height})")
-
-          shards_root = Path("data/shards")
-          out_root = Path("data"); out_root.mkdir(parents=True, exist_ok=True)
-
-          out_fmt = "${{ github.event.inputs.out_format }}".lower()
-          csv_compress = "${{ github.event.inputs.csv_compress }}".lower() == "true"
-
-          def merge_csv(pattern: str, uniq_keys: list[str], out_name: str):
-            parts = sorted(shards_root.rglob(pattern))
-            print(f"[DEBUG] found {len(parts)} CSV shard(s) for {out_name}")
-            if not parts: return False
-            dfs = []
-            for p in parts:
-              try:
-                dfp = read_csv_any(p)
-                if dfp.height > 0:
-                  dfs.append(dfp)
-              except Exception as e:
-                print(f"[WARN] read_csv failed: {p} ({e})")
-            if not dfs:
-              print(f"[MERGE] no readable CSV shards for {out_name}")
-              return False
-            df = pl.concat(dfs, how="vertical", rechunk=True)
-            if uniq_keys:
-              df = df.unique(subset=uniq_keys, keep="last")
-            write_csv(df, out_root/out_name, csv_compress)
-            return True
-
-          def merge_parquet(pattern: str, uniq_keys: list[str], out_name: str):
-            parts = sorted(shards_root.rglob(pattern))
-            print(f"[DEBUG] found {len(parts)} Parquet shard(s) for {out_name}")
-            if not parts: return False
-            dfs = []
-            for p in parts:
-              try:
-                dfp = pl.read_parquet(p)
-                if dfp.height > 0:
-                  dfs.append(dfp)
-              except Exception as e:
-                print(f"[WARN] read_parquet failed: {p} ({e})")
-            if not dfs:
-              print(f"[MERGE] no readable Parquet shards for {out_name}")
-              return False
-            df = pl.concat(dfs, how="vertical", rechunk=True)
-            if uniq_keys:
-              df = df.unique(subset=uniq_keys, keep="last")
-            out_path = out_root/out_name
-            out_path.parent.mkdir(parents=True, exist_ok=True)
-            df.write_parquet(out_path)
-            print(f"[WRITE] {out_path} (rows={df.height})")
-            return True
-
-          # ---- integrated_pro ----
-          if out_fmt in ("csv","both"):
-            merge_csv("**/integrated_pro.csv", ["hd","jcd","rno","lane"], "integrated_pro.csv")
-            merge_csv("**/integrated_pro.csv.gz", ["hd","jcd","rno","lane"], "integrated_pro.csv")
-          if out_fmt in ("parquet","both"):
-            merge_parquet("**/integrated_pro.parquet", ["hd","jcd","rno","lane"], "integrated_pro.parquet")
-
-          # ---- train_120_pro ----
-          if out_fmt in ("csv","both"):
-            merge_csv("**/train_120_pro.csv", ["hd","jcd","rno","combo"], "train_120_pro.csv")
-            merge_csv("**/train_120_pro.csv.gz", ["hd","jcd","rno","combo"], "train_120_pro.csv")
-          if out_fmt in ("parquet","both"):
-            merge_parquet("**/train_120_pro.parquet", ["hd","jcd","rno","combo"], "train_120_pro.parquet")
-          PY
-
-      # Commit & Push（低速耐性＋リトライ）
-      - name: Commit & push results (robust)
+      - name: Commit & push shards
         if: steps.discover.outputs.found_dates != ''
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # ネットワーク揺れ対策
           git config --global http.lowSpeedLimit 1000
           git config --global http.lowSpeedTime 60
           git config --global http.version HTTP/1.1
-          git config --global pack.windowMemory "100m"
-          git config --global pack.packSizeLimit "100m"
-          git config --global pack.threads "1"
 
-          git add -A data || true
+          git add -A data/shards || true
           if ! git diff --cached --quiet; then
-            git commit -m "integrate_pro: merged shards for ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }} (${{ steps.discover.outputs.found_dates }})"
+            git commit -m "daily shards: ${{ github.event.inputs.start_date }}-${{ github.event.inputs.end_date }}"
+            git push
           else
             echo "No changes to commit."
           fi
 
-          # 最新に同期
-          git fetch origin main --prune
-          git rebase origin/main || true
-
-          # リトライ push（指数バックオフ）
-          n=0
-          until [ $n -ge 5 ]
-          do
-            if git push origin HEAD:main; then
-              echo "Push succeeded."
-              exit 0
-            fi
-            n=$((n+1))
-            delay=$((n*15))
-            echo "Push failed (attempt $n/5). Sync & retry after ${delay}s..."
-            git fetch origin main --prune || true
-            git rebase origin/main || true
-            sleep $delay
-          done
-
-          echo "Push failed after retries." >&2
-          exit 1
-
-      - name: Nothing to do (no dates)
+      - name: No dates
         if: steps.discover.outputs.found_dates == ''
-        run: |
-          echo "No program dates found in the specified range. Adjust start/end or fetch programs first."
+        run: echo "No program dates in range."
