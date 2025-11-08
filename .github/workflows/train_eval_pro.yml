@@ -1,4 +1,4 @@
-name: Train & Eval (pro) - Top18 All Races
+name: Train & Eval (pro) - Top18 All Races + SynthOdds Filters
 
 on:
   workflow_dispatch:
@@ -7,7 +7,14 @@ on:
       train_end:    { description: "学習終了 (YYYYMMDD)", required: true,  default: "20240229" }
       test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240301" }
       test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240331" }
-      topk:         { description: "TopN 買い目数（18で固定推奨）", required: true, default: "18" }
+      topk:         { description: "TopN 買い目数", required: true, default: "18" }
+      load_odds_always: { description: "常時オッズ読込（trueで合成オッズ必須）", required: true, default: "true" }
+
+      # ▼ 合成オッズ / バスケット系フィルタ
+      synth_odds_min:   { description: "TopN合成オッズ下限（例: 28）", required: true, default: "0.0" }
+      min_odds_min:     { description: "TopN内の最小オッズ下限（例: 8）", required: true, default: "0.0" }
+      ev_basket_min:    { description: "TopN平均EV下限", required: true, default: "0.0" }
+      odds_coverage_min:{ description: "オッズ取得必要本数（例: 10）", required: true, default: "0" }
 
 concurrency:
   group: eval-${{ github.ref }}
@@ -32,7 +39,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas lightgbm pyyaml pyarrow
 
-      - name: Build config (Top18 all races / filters OFF)
+      - name: Build config (Top18 / optional filters)
         run: |
           mkdir -p data
           cat > data/train_eval_pro.config.yaml <<'YAML'
@@ -46,10 +53,12 @@ jobs:
             data_dir: "data"
             results_dir: "public/results"
             odds_root: "public/odds/v1"
+
           topk: ${{ inputs.topk }}
           unit_stake: 100
-          rank_key: "proba"   # EVは使わない
-          # ▼ 全レースTop18（フィルタ無効化）
+          rank_key: "proba"             # EVを使わない場合
+          load_odds_always: ${{ inputs.load_odds_always }}
+
           filters:
             p1win_max: 1.0
             s18_min: 0.0
@@ -58,8 +67,16 @@ jobs:
             exclude_one_head: false
             drop_one_after_rank: false
             daily_cap: 0
+
+          # ▼ 合成オッズ/EVバスケット条件
+          synth_odds_min: ${{ inputs.synth_odds_min }}
+          min_odds_min: ${{ inputs.min_odds_min }}
+          ev_basket_min: ${{ inputs.ev_basket_min }}
+          odds_coverage_min: ${{ inputs.odds_coverage_min }}
+
           model_out: "data/model_lgbm.txt"
           YAML
+
           echo "----- data/train_eval_pro.config.yaml -----"
           cat data/train_eval_pro.config.yaml
 
@@ -96,7 +113,6 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # data/eval だけを強制追加（.gitignoreでdata/が無視されていても入る）
           if [ -d data/eval ]; then
             git add -f data/eval
           fi
@@ -106,9 +122,8 @@ jobs:
             exit 0
           fi
 
-          git commit -m "eval(top18-all): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
+          git commit -m "eval(top${{ inputs.topk }}): synthOdds=${{ inputs.synth_odds_min }} minOdds=${{ inputs.min_odds_min }} evb=${{ inputs.ev_basket_min }} cov=${{ inputs.odds_coverage_min }} [skip ci]"
 
-          # 同時更新対策でrebase pullをリトライ
           n=0
           until [ $n -ge 5 ]
           do
