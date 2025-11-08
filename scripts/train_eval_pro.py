@@ -9,10 +9,13 @@ import lightgbm as lgb
 
 def ensure_dir(p: Path): p.mkdir(parents=True, exist_ok=True)
 
+# 文字列日付の範囲フィルタ（Literalを渡す）
 def split_period_lazy(scan: pl.LazyFrame, start: str, end: str) -> pl.LazyFrame:
-    return (scan
-            .with_columns(pl.col("hd").cast(pl.Utf8))
-            .filter(pl.col("hd").is_between(start, end, closed="both")))
+    return (
+        scan
+        .with_columns(pl.col("hd").cast(pl.Utf8))
+        .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
+    )
 
 def load_results_amount(results_root: Path, hd: str, jcd: str, rno: int) -> int | None:
     y, md = hd[:4], hd[4:8]
@@ -55,29 +58,29 @@ def main():
     eval_dir = data_dir / "eval"
     ensure_dir(eval_dir)
 
-    # --- シャードを Lazy で読み込み（Parquet 優先、無ければ CSV）---
+    # ---- シャード検出（Parquet優先、無ければCSV/CSV.GZをLazyで）----
     shards_root = Path("data/shards")
-    pq_paths = list(shards_root.rglob("train_120_pro.parquet"))
-    csv_paths = list(shards_root.rglob("train_120_pro.csv"))
-    csv_gz_paths = list(shards_root.rglob("train_120_pro.csv.gz"))
+    pq_paths = sorted(shards_root.rglob("train_120_pro.parquet"))
+    csv_paths = sorted(shards_root.rglob("train_120_pro.csv"))
+    csv_gz_paths = sorted(shards_root.rglob("train_120_pro.csv.gz"))
 
-    lf: pl.LazyFrame | None = None
     if pq_paths:
         lf = pl.scan_parquet([str(p) for p in pq_paths])
     elif csv_paths or csv_gz_paths:
-        # Polarsは拡張子でgzipを自動判定してくれる環境が多い
-        lf = pl.scan_csv([*(str(p) for p in csv_paths), *(str(p) for p in csv_gz_paths)],
-                         infer_schema_length=10000)
+        lf = pl.scan_csv(
+            [*(str(p) for p in csv_paths), *(str(p) for p in csv_gz_paths)],
+            infer_schema_length=10000,
+        )
     else:
-        raise FileNotFoundError("No shards found under data/shards/**/train_120_pro.(parquet|csv[.gz])")
+        raise FileNotFoundError("No shards under data/shards/**/train_120_pro.(parquet|csv|csv.gz)")
 
-    # 期間分割（Lazy のまま）
+    # ---- 期間分割（Lazyのまま）----
     tr_lf = split_period_lazy(lf, args.train_start, args.train_end)
     te_lf = split_period_lazy(lf, args.test_start, args.test_end)
 
-    # 学習/評価に使う分だけ collect（必要最小限のメモリ）
-    tr_df = tr_lf.collect(streaming=True)
-    te_df = te_lf.collect(streaming=True)
+    # ---- collect（推奨のengine指定でストリーミング実行）----
+    tr_df = tr_lf.collect(engine="streaming")
+    te_df = te_lf.collect(engine="streaming")
 
     if tr_df.is_empty():
         raise RuntimeError("学習期間に該当するデータが空です。")
@@ -86,15 +89,21 @@ def main():
 
     # ---- 学習 ----
     Xtr, ytr, keytr, feat_cols = build_feature_df(tr_df)
-    train_set = lgb.Dataset(Xtr, label=ytr,
-                            categorical_feature=[c for c in feat_cols if str(Xtr[c].dtype)=="category"])
-    params = dict(objective="binary", metric="auc",
-                  learning_rate=0.05, num_leaves=63, max_depth=-1,
-                  min_data_in_leaf=50, feature_fraction=0.9,
-                  bagging_fraction=0.9, bagging_freq=1, lambda_l2=1.0,
-                  verbose=-1, num_threads=0, seed=20240301, force_col_wise=True)
-    booster = lgb.train(params, train_set, num_boost_round=1000,
-                        valid_sets=[train_set], valid_names=["train"], verbose_eval=200)
+    train_set = lgb.Dataset(
+        Xtr, label=ytr,
+        categorical_feature=[c for c in feat_cols if str(Xtr[c].dtype) == "category"]
+    )
+    params = dict(
+        objective="binary", metric="auc",
+        learning_rate=0.05, num_leaves=63, max_depth=-1,
+        min_data_in_leaf=50, feature_fraction=0.9,
+        bagging_fraction=0.9, bagging_freq=1, lambda_l2=1.0,
+        verbose=-1, num_threads=0, seed=20240301, force_col_wise=True,
+    )
+    booster = lgb.train(
+        params, train_set, num_boost_round=1000,
+        valid_sets=[train_set], valid_names=["train"], verbose_eval=200
+    )
     Path(args.model_out).parent.mkdir(parents=True, exist_ok=True)
     booster.save_model(args.model_out)
 
@@ -109,7 +118,6 @@ def main():
         gg = g.sort_values("proba", ascending=False).head(args.topk).copy()
         gg["rank"] = range(1, len(gg)+1)
         picks.append(gg)
-    import pandas as pd
     picks_df = pd.concat(picks, ignore_index=True)
 
     # Hit率（レース単位）
@@ -124,8 +132,8 @@ def main():
     for hd, jcd, rno in unique_races:
         if race_hit[(race_hit["hd"]==hd)&(race_hit["jcd"]==jcd)&(race_hit["rno"]==rno)]["race_hit"].iloc[0] == 1:
             amt = load_results_amount(results_root, hd, jcd, int(rno))
-            if amt is not None: returns += amt
-
+            if amt is not None:
+                returns += amt
     roi = returns / total_bet if total_bet > 0 else 0.0
 
     # 出力
@@ -144,7 +152,7 @@ def main():
         "total_bet": int(total_bet),
         "roi": float(roi),
         "model_path": args.model_out,
-        "features_used": list(tr_df.columns)
+        "features_used": [c for c in tr_df.columns if c not in ("hd","jcd","rno","combo","is_hit")],
     }
     summary_path = eval_dir / f"summary_{args.test_start}_{args.test_end}_k{args.topk}.json"
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
