@@ -8,18 +8,17 @@ on:
       test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240201" }
       test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240210" }
       topk:         { description: "TopN 買い目数",       required: true,  default: "18" }
-      p1win_max:    { description: "1号艇単勝率の上限",    required: true,  default: "0.50" }
-      exclude_one:  { description: "1頭を除外(true/false)",required: true,  default: "true" }
-      rank_key:     { description: "並べ順 (proba/ev)",    required: true,  default: "proba" }
-      ev_min:       { description: "EVフィルタ最小値",     required: true,  default: "0.0" }
-      drop_missing: { description: "オッズ欠損は除外",     required: true,  default: "false" }
+      p1win_max:    { description: "1号艇単勝率の上限",    required: true,  default: "0.40" }
+      s18_min:      { description: "S18 下限",             required: true,  default: "0.26" }
+      one_head_max: { description: "Top18の1頭比 上限",    required: true,  default: "0.55" }
+      exclude_one:  { description: "事前に1頭除外",        required: true,  default: "false" }
+      drop_after:   { description: "TopN確定後に1頭削除",   required: true,  default: "true" }
 
 jobs:
   run:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -33,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas lightgbm pyyaml pyarrow
 
-      - name: Build eval config
+      - name: Build config
         run: |
           mkdir -p data
           cat > data/train_eval_pro.config.yaml <<'YAML'
@@ -49,29 +48,30 @@ jobs:
             odds_root: "public/odds/v1"
           topk: ${{ inputs.topk }}
           unit_stake: 100
-          rank_key: "${{ inputs.rank_key }}"
-          ev:
-            min: ${{ inputs.ev_min }}
-            drop_if_missing_odds: ${{ inputs.drop_missing }}
+          rank_key: "proba"   # EVは後で
           filters:
             p1win_max: ${{ inputs.p1win_max }}
+            s18_min: ${{ inputs.s18_min }}
+            one_head_ratio_top18_max: ${{ inputs.one_head_max }}
+            min_non1_candidates_top18: 12
             exclude_one_head: ${{ inputs.exclude_one }}
+            drop_one_after_rank: ${{ inputs.drop_after }}
+            daily_cap: 0
           model_out: "data/model_lgbm.txt"
           YAML
+          cat data/train_eval_pro.config.yaml
 
       - name: Locate script
         id: locate
         shell: bash
         run: |
           set -euo pipefail
-          echo "Repo tree (top 3 levels):"
-          find . -maxdepth 3 -type f -name "train_eval_pro.py" -print || true
-          if [ -f "./train_eval_pro.py" ]; then
-            echo "script=./train_eval_pro.py" >> $GITHUB_OUTPUT
-          elif [ -f "./scripts/train_eval_pro.py" ]; then
+          if [ -f "./scripts/train_eval_pro.py" ]; then
             echo "script=./scripts/train_eval_pro.py" >> $GITHUB_OUTPUT
+          elif [ -f "./train_eval_pro.py" ]; then
+            echo "script=./train_eval_pro.py" >> $GITHUB_OUTPUT
           else
-            echo "::error::train_eval_pro.py not found in repo root or scripts/ . Commit the file or adjust the path."
+            echo "::error::train_eval_pro.py not found"
             exit 1
           fi
 
@@ -82,3 +82,4 @@ jobs:
       - name: Show outputs
         run: |
           ls -R data/eval || true
+          echo "Done."
