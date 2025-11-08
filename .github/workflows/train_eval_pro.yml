@@ -14,11 +14,16 @@ on:
       exclude_one:  { description: "事前に1頭除外",        required: true,  default: "false" }
       drop_after:   { description: "TopN確定後に1頭削除",   required: true,  default: "true" }
 
+concurrency:
+  group: eval-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -59,6 +64,7 @@ jobs:
             daily_cap: 0
           model_out: "data/model_lgbm.txt"
           YAML
+          echo "----- data/train_eval_pro.config.yaml -----"
           cat data/train_eval_pro.config.yaml
 
       - name: Locate script
@@ -81,5 +87,42 @@ jobs:
 
       - name: Show outputs
         run: |
-          ls -R data/eval || true
-          echo "Done."
+          echo "---- data/eval tree ----"
+          ls -lahR data/eval || true
+
+      # ==== ここから B: Commit & Push ====
+      - name: Commit & push eval outputs
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # data/eval だけを強制追加（.gitignore で data/ が無視されていてもOK）
+          if [ -d data/eval ]; then
+            git add -f data/eval
+          fi
+
+          # 変更がなければ終了
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "eval: ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
+
+          # リモート更新と競合を避けるため rebase pull をリトライ
+          n=0
+          until [ $n -ge 5 ]
+          do
+            if git pull --rebase; then
+              break
+            fi
+            n=$((n+1))
+            echo "Pull failed. Retry $n/5 after backoff..."
+            sleep $((2**n))
+          done
+
+          git push
