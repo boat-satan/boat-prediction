@@ -1,0 +1,32 @@
+{
+  "train_range": [
+    "20240101",
+    "20240229"
+  ],
+  "rows": 56296,
+  "features": [
+    "tenji_st_sec",
+    "tenji_is_f",
+    "tenji_f_over_sec",
+    "tenji_rank",
+    "st_rank",
+    "course_avg_st",
+    "course_first_rate",
+    "course_3rd_rate",
+    "lane_feat"
+  ],
+  "target": "st_sec",
+  "params": {
+    "objective": "regression",
+    "metric": "l2",
+    "learning_rate": 0.05,
+    "num_leaves": 63,
+    "min_data_in_leaf": 50,
+    "feature_fraction": 0.9,
+    "bagging_fraction": 0.9,
+    "bagging_freq": 1,
+    "lambda_l2": 1.0,
+    "num_boost_round": 800,
+    "seed": 20240301
+  }
+}
