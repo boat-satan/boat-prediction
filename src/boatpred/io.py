@@ -1,90 +1,100 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-src/boatpred/io.py
-
-入出力ユーティリティ:
-- shards(学習用120通り特徴)の読み込み (Parquet/CSV/CSV.GZ)
-- 期間フィルタで train/test DataFrame を抽出
-- オッズJSON/結果JSONの読み込み（フォーマット揺れ対応）
-- DataFrameへのオッズ一括マッピング
-- 評価出力( picks/summary )の保存
-
-依存: polars, pandas
-"""
+# src/boatpred/io.py
 from __future__ import annotations
-from pathlib import Path
 import json
-from typing import Iterable, Tuple, Optional, Dict
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 import polars as pl
 
 
-# ---------- 基本 ----------
+# ========= Path helpers =========
+def project_root(from_file: Optional[Path] = None) -> Path:
+    """
+    推奨: srcレイアウト。通常は本ファイルの2階層上がリポジトリROOTになる想定:
+      src/boatpred/io.py -> ROOT
+    """
+    if from_file is None:
+        here = Path(__file__).resolve()
+    else:
+        here = from_file.resolve()
+    return here.parents[2]
+
+
 def ensure_dir(p: Path) -> None:
     p.mkdir(parents=True, exist_ok=True)
 
 
-# ---------- shards 読み込み ----------
-def scan_shards(root: Path | str = "data/shards",
-                fname_basenames: Iterable[str] = ("train_120_pro.parquet",
-                                                  "train_120_pro.csv",
-                                                  "train_120_pro.csv.gz"),
-                infer_schema_length: int = 10000) -> pl.LazyFrame:
-    """
-    data/shards/**/{fname_basenames} を探索し、最初に見つかった拡張子群で LazyFrame を返す
-    """
-    root = Path(root)
-    pq = sorted(root.rglob(fname_basenames[0]))
-    csv = sorted(root.rglob(fname_basenames[1]))
-    csv_gz = sorted(root.rglob(fname_basenames[2]))
+# ========= Shards (train_120_pro.*) =========
+def find_shards(shards_root: Union[str, Path]) -> List[Path]:
+    root = Path(shards_root)
+    pq = sorted(root.rglob("train_120_pro.parquet"))
+    csv = sorted(root.rglob("train_120_pro.csv"))
+    csv_gz = sorted(root.rglob("train_120_pro.csv.gz"))
+    return [*pq, *csv, *csv_gz]
 
+
+def scan_shards(shard_paths: List[Path]) -> pl.LazyFrame:
+    if not shard_paths:
+        raise FileNotFoundError("No shards under data/shards/**/train_120_pro.(parquet|csv|csv.gz)")
+    # 優先順: parquet > csv > csv.gz
+    pq = [str(p) for p in shard_paths if p.suffix == ".parquet"]
     if pq:
-        return pl.scan_parquet([str(p) for p in pq])
-    if csv or csv_gz:
-        paths = [*(str(p) for p in csv), *(str(p) for p in csv_gz)]
-        return pl.scan_csv(paths, infer_schema_length=infer_schema_length)
+        return pl.scan_parquet(pq)
+    csv = [str(p) for p in shard_paths if p.suffix == ".csv"]
+    gz  = [str(p) for p in shard_paths if p.suffixes[-2:] == [".csv", ".gz"]]
+    if csv or gz:
+        return pl.scan_csv([*csv, *gz], infer_schema_length=10000)
+    # 保険
+    return pl.scan_parquet([str(shard_paths[0])])
 
-    raise FileNotFoundError(
-        f"No shards under {root}/**/({', '.join(fname_basenames)})"
-    )
 
-
-def split_period(lf: pl.LazyFrame, start: str, end: str) -> pl.DataFrame:
-    """
-    hd: 'YYYYMMDD' の列に対して期間フィルタ (both inclusive) を適用してcollect
-    """
+def split_period_lazy(scan: pl.LazyFrame, start: str, end: str) -> pl.LazyFrame:
+    # hd は "YYYYMMDD" の文字列として扱う
     return (
-        lf.with_columns(pl.col("hd").cast(pl.Utf8))
-          .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
-          .collect(engine="streaming")
+        scan.with_columns(pl.col("hd").cast(pl.Utf8))
+            .filter(pl.col("hd").is_between(pl.lit(start), pl.lit(end), closed="both"))
     )
 
 
-# ---------- 結果(配当) 読み込み ----------
-def load_result_amount(results_root: Path | str, hd, jcd, rno) -> Optional[int]:
-    """
-    public/results/YYYY/MMDD/{jcd}/{rno}R.json から三連単配当amountを返す
-    """
-    results_root = Path(results_root)
-    y = str(hd)[:4]
-    md = str(hd)[4:8]
+# ========= Results (official) =========
+def _norm_jcd(jcd: Union[str, int]) -> str:
     try:
-        jcd_str = f"{int(jcd):02d}"
+        return f"{int(jcd):02d}"
     except Exception:
-        jcd_str = str(jcd)
-    try:
-        rno_int = int(rno)
-    except Exception:
-        rno_int = int(str(rno).replace("R", ""))
+        return str(jcd)
 
-    p = results_root / y / md / jcd_str / f"{rno_int}R.json"
+
+def _norm_rno(rno: Union[str, int]) -> int:
+    try:
+        return int(rno)
+    except Exception:
+        return int(str(rno).replace("R", "").replace("r", ""))
+
+
+def load_result_json(results_root: Union[str, Path], hd, jcd, rno) -> Optional[dict]:
+    y  = str(hd)[:4]
+    md = str(hd)[4:8]
+    j  = _norm_jcd(jcd)
+    r  = _norm_rno(rno)
+    p = Path(results_root) / y / md / j / f"{r}R.json"
     if not p.exists():
         return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
 
-    js = json.loads(p.read_text(encoding="utf-8"))
+
+def load_trifecta_amount(results_root: Union[str, Path], hd, jcd, rno) -> Optional[int]:
+    """
+    3連単 配当金額（円）。見つからなければ None。
+    期待キー: obj['payouts']['trifecta']['amount']
+    """
+    js = load_result_json(results_root, hd, jcd, rno)
+    if not js:
+        return None
     tri = (js.get("payouts") or {}).get("trifecta")
     if not tri:
         return None
@@ -94,17 +104,34 @@ def load_result_amount(results_root: Path | str, hd, jcd, rno) -> Optional[int]:
         return None
 
 
-# ---------- オッズ 読み込み ----------
-def _odds_map_from_json(js: dict) -> Optional[Dict[str, float]]:
+# ========= Odds (3連単) =========
+def load_odds_json(odds_root: Union[str, Path], hd, jcd, rno) -> Optional[dict]:
+    y  = str(hd)[:4]
+    md = str(hd)[4:8]
+    j  = _norm_jcd(jcd)
+    r  = _norm_rno(rno)
+    p = Path(odds_root) / y / md / j / f"{r}R.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def odds_map_from_json(js: dict) -> Optional[Dict[str, float]]:
     """
-    いろいろなフォーマットを許容して combo -> odds(float) の辞書を返す
+    入力JSONの多様なスキーマを吸収して { "1-2-3": 6.7, ... } を返す。
     サポート:
-      1) {"trifecta": {"1-2-3": 15.1, ...}}  (dict形式)
-      2) {"trifecta": [{"combo":"1-2-3","odds":15.1}, ...]}  (list形式) ← ユーザーの例
-      3) {"odds":[{"combo":"1-2-3","odd":15.1}, ...]} などの list
-      4) {"1-2-3": 15.1, ...}  (フラット)
+      1) {"trifecta": { "1-2-3": 6.7, ... }}
+      2) {"trifecta": [ {"combo":"1-2-3","odds":6.7}, ... ]}  ※公開例
+      3) {"odds":[{"combo":...,"odd"/"odds"/"value":...}, ...]}
+      4) フラット {"1-2-3": "6.7", ...}
     """
-    # 1) trifecta が dict
+    if not isinstance(js, dict):
+        return None
+
+    # 1) dict under 'trifecta'
     tri = js.get("trifecta")
     if isinstance(tri, dict):
         out = {}
@@ -121,48 +148,49 @@ def _odds_map_from_json(js: dict) -> Optional[Dict[str, float]]:
         if out:
             return out
 
-    # 2) trifecta が list
+    # 2) list under 'trifecta'
     if isinstance(tri, list):
-        out = {}
+        m = {}
         for row in tri:
             if not isinstance(row, dict):
                 continue
             combo = row.get("combo") or row.get("combination") or row.get("key")
-            odd = row.get("odds") or row.get("odd") or row.get("value")
+            odd   = row.get("odds")  or row.get("odd")        or row.get("value")
             if combo is None or odd in (None, ""):
                 continue
             try:
-                out[str(combo)] = float(str(odd).replace(",", ""))
+                m[str(combo)] = float(str(odd).replace(",", ""))
             except Exception:
                 continue
-        if out:
-            return out
+        if m:
+            return m
 
-    # 3) list in "odds"/"trifecta_list"/"3t"/"list"
+    # 3) 'odds' list
     cand = js.get("odds") or js.get("trifecta_list") or js.get("3t") or js.get("list")
     if isinstance(cand, list):
-        out = {}
+        m = {}
         for row in cand:
             if not isinstance(row, dict):
                 continue
             combo = row.get("combo") or row.get("combination") or row.get("key")
-            odd = row.get("odds") or row.get("odd") or row.get("value")
+            odd   = row.get("odds")  or row.get("odd")        or row.get("value")
             if combo is None or odd in (None, ""):
                 continue
             try:
-                out[str(combo)] = float(str(odd).replace(",", ""))
+                m[str(combo)] = float(str(odd).replace(",", ""))
             except Exception:
                 continue
-        if out:
-            return out
+        if m:
+            return m
 
-    # 4) フラット
-    flat = {k: js[k] for k in js.keys() if isinstance(k, str) and "-" in k}
-    if flat:
+    # 4) flat
+    flat_keys = [k for k in js.keys() if isinstance(k, str) and "-" in k]
+    if flat_keys:
         out = {}
-        for k, v in flat.items():
+        for k in flat_keys:
+            v = js.get(k)
             try:
-                out[k] = float(str(v).replace(",", ""))
+                out[str(k)] = float(str(v).replace(",", ""))
             except Exception:
                 continue
         if out:
@@ -171,77 +199,75 @@ def _odds_map_from_json(js: dict) -> Optional[Dict[str, float]]:
     return None
 
 
-def load_odds_map(odds_root: Path | str, hd, jcd, rno) -> Optional[Dict[str, float]]:
-    """
-    public/odds/v1/YYYY/MMDD/{jcd}/{rno}R.json から combo->odds を返す
-    """
-    odds_root = Path(odds_root)
-    y = str(hd)[:4]
-    md = str(hd)[4:8]
-    try:
-        jcd_str = f"{int(jcd):02d}"
-    except Exception:
-        jcd_str = str(jcd)
-    try:
-        rno_int = int(rno)
-    except Exception:
-        rno_int = int(str(rno).replace("R", ""))
-
-    p = odds_root / y / md / jcd_str / f"{rno_int}R.json"
-    if not p.exists():
+def load_odds_map(odds_root: Union[str, Path], hd, jcd, rno) -> Optional[Dict[str, float]]:
+    js = load_odds_json(odds_root, hd, jcd, rno)
+    if not js:
         return None
-
-    js = json.loads(p.read_text(encoding="utf-8"))
-    return _odds_map_from_json(js)
+    return odds_map_from_json(js)
 
 
-# ---------- DataFrame へのオッズ一括付与 ----------
-def map_odds_for_frame(df: pd.DataFrame,
-                       odds_root: Path | str,
-                       hd_col: str = "hd",
-                       jcd_col: str = "jcd",
-                       rno_col: str = "rno",
-                       combo_col: str = "combo",
-                       out_col: str = "odds") -> pd.DataFrame:
+# ========= Writers =========
+def write_picks_csv(df: pd.DataFrame, out_path: Union[str, Path]) -> Path:
+    p = Path(out_path)
+    ensure_dir(p.parent)
+    df.to_csv(p, index=False, encoding="utf-8")
+    return p
+
+
+def write_json(obj: dict, out_path: Union[str, Path]) -> Path:
+    p = Path(out_path)
+    ensure_dir(p.parent)
+    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+    return p
+
+
+# ========= Convenience (train/evalで共通利用) =========
+def collect_period_df(
+    shards_root: Union[str, Path],
+    start: str,
+    end: str,
+    engine: str = "streaming",
+) -> pl.DataFrame:
     """
-    与えられた df (hd,jcd,rno,combo を含む) に、対応する 'odds' 列を追加して返す。
-    取得不能は np.nan。型は float。
+    shards_root から train_120_pro.* を見つけ、期間で絞って Collect。
     """
-    df = df.copy()
-    if out_col not in df.columns:
-        df[out_col] = np.nan
+    lf = scan_shards(find_shards(shards_root))
+    return split_period_lazy(lf, start, end).collect(engine=engine)
 
-    # 文字列化（マッピングの鍵）
-    df[combo_col] = df[combo_col].astype(str)
 
-    # グループ毎に読み込み・マップ
-    for (hd, jcd, rno), idx in df.groupby([hd_col, jcd_col, rno_col]).groups.items():
-        omap = load_odds_map(odds_root, hd, jcd, rno)
-        if not omap:
+def add_odds_and_ev(
+    pred_df: pd.DataFrame,
+    odds_root: Union[str, Path],
+    rank_key: str = "proba",
+    ev_min: float = 0.0,
+    ev_drop_if_missing_odds: bool = False,
+    force_load: bool = False,
+    also_require: Tuple[bool, bool, bool, bool] = (False, False, False, False),
+) -> pd.DataFrame:
+    """
+    予測DFに 'odds' と 'ev=proba*odds' を付与。
+    force_load=True か、rank_key=='ev' or ev_min>0 or ev_drop_if_missing_odds がTrueのときロード。
+    also_require は追加条件（合成オッズ/平均EV/coverage等の後段が必要な場合）をORで与える。
+    """
+    need_extra = any(also_require)
+    need = (rank_key == "ev") or (ev_min > 0) or ev_drop_if_missing_odds or force_load or need_extra
+    if not need:
+        return pred_df
+
+    df = pred_df.copy()
+    if "combo" not in df.columns:
+        raise ValueError("pred_df requires 'combo' column for odds mapping.")
+    df["combo"] = df["combo"].astype(str)
+    df["odds"] = np.nan
+
+    # まとめてループ（レース単位）
+    for (hd, jcd, rno), idxs in df.groupby(["hd", "jcd", "rno"]).groups.items():
+        om = load_odds_map(odds_root, hd, jcd, rno)
+        if not om:
             continue
-        sub = df.loc[idx]
-        mapped = pd.to_numeric(sub[combo_col].map(omap), errors="coerce")
-        df.loc[idx, out_col] = mapped.to_numpy(dtype=float)
+        sub = df.loc[idxs]
+        mapped = pd.to_numeric(sub["combo"].map(om), errors="coerce")
+        df.loc[idxs, "odds"] = mapped.to_numpy(dtype=float)
 
+    df["ev"] = df["proba"] * df["odds"]
     return df
-
-
-# ---------- 評価出力 ----------
-def save_picks_and_summary(picks_df: pd.DataFrame,
-                           summary: dict,
-                           eval_dir: Path | str,
-                           picks_filename: str,
-                           summary_filename: str) -> Tuple[Path, Path]:
-    """
-    picksとsummaryを所定の場所に保存し、保存先Pathを返す
-    """
-    eval_dir = Path(eval_dir)
-    ensure_dir(eval_dir)
-
-    picks_path = eval_dir / picks_filename
-    picks_df.to_csv(picks_path, index=False, encoding="utf-8")
-
-    summary_path = eval_dir / summary_filename
-    summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    return picks_path, summary_path
