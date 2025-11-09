@@ -53,6 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -64,7 +65,7 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install polars pandas lightgbm pyyaml pyarrow
+          pip install --upgrade polars pandas lightgbm pyyaml pyarrow
 
       - name: Build config (from 10 inputs)
         run: |
@@ -83,13 +84,20 @@ jobs:
             start: "${{ inputs.test_start }}"
             end:   "${{ inputs.test_end }}"
 
-          # 評価系
-          topk: ${{ inputs.topk }}
-          unit_stake: ${{ inputs.unit_stake }}
-          rank_key: "${{ inputs.rank_key }}"
-          load_odds_always: ${{ inputs.load_odds_always }}
+          # ===== 評価系（evaluate_topN 用） =====
+          eval:
+            topk: ${{ fromJSON(inputs.topk) }}
+            unit_stake: ${{ fromJSON(inputs.unit_stake) }}
+            rank_key: "${{ inputs.rank_key }}"
+            ev_min: 0.0
+            ev_drop_if_missing_odds: false
+            load_odds_always: ${{ inputs.load_odds_always == 'true' }}
+            synth_odds_min: ${{ fromJSON(inputs.synth_odds_min) }}
+            min_odds_min: 0.0
+            ev_basket_min: ${{ fromJSON(inputs.ev_basket_min) }}
+            odds_coverage_min: 0
 
-          # 形状フィルタ(Top18) — 必要なら後でこのファイルを編集
+          # ===== レース形状フィルタ（Top18ベース） =====
           filters:
             p1win_max: 1.0
             s18_min: 0.0
@@ -97,19 +105,23 @@ jobs:
             min_non1_candidates_top18: 0
             daily_cap: 0
 
-          # バスケット(TopN)
-          synth_odds_min: ${{ inputs.synth_odds_min }}
-          min_odds_min: 0.0         # ←固定したいならここを編集
-          ev_basket_min: ${{ inputs.ev_basket_min }}
-          odds_coverage_min: 0      # ←固定
+          # ===== ST ブロックの出力（将来用メタ） =====
+          st:
+            enabled: true
+            shards_root: "data/shards"
+            out_dir: "data/st_out"
+            model_out: "data/models/st_lgbm.txt"
+            meta_out:  "data/models/st_lgbm.meta.json"
 
-          # 将来: 学習ブロック用の出力モデル置き場
+          # 互換用（現段階では未使用）
           model_out: "data/model_lgbm.txt"
           YAML
           echo "----- data/pipeline.config.yaml -----"
           cat data/pipeline.config.yaml
 
       - name: Run pipeline
+        env:
+          PYTHONPATH: .
         run: |
           python scripts/train_eval_pipeline.py --config data/pipeline.config.yaml
 
@@ -117,6 +129,8 @@ jobs:
         run: |
           echo "---- data/eval ----"
           ls -lahR data/eval || true
+          echo "---- data/st_out ----"
+          ls -lahR data/st_out || true
 
       - name: Commit & push eval outputs
         if: always()
@@ -124,7 +138,7 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/eval || true
+          git add -f data/eval data/st_out || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -133,7 +147,7 @@ jobs:
           n=0
           until [ $n -ge 5 ]
           do
-            if git pull --rebase; then
+            if git pull --rebase --autostash; then
               break
             fi
             n=$((n+1))
