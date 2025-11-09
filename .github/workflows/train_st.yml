@@ -1,4 +1,4 @@
-name: Train ST (LightGBM)
+name: Train Single (Win) Model
 
 on:
   workflow_dispatch:
@@ -11,21 +11,17 @@ on:
         description: "学習終了 (YYYYMMDD)"
         required: true
         default: "20240131"
-      staging_root:
-        description: "staging 親ディレクトリ (data/staging)"
+      test_start:
+        description: "テスト開始 (YYYYMMDD)"
         required: true
-        default: "data/staging"
-      model_out:
-        description: "保存先モデル (path)"
+        default: "20240201"
+      test_end:
+        description: "テスト終了 (YYYYMMDD)"
         required: true
-        default: "data/models/st_lgbm.txt"
-      keep_penalized:
-        description: "F/遅れを含めて学習 (true/false)"
-        required: true
-        default: "false"
+        default: "20240229"
 
 concurrency:
-  group: train-st-${{ github.ref }}
+  group: train-single-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -44,55 +40,47 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
+          # pyarrow を必ず入れておく（to_pandas() の高速経路 & 互換）
           pip install polars pandas lightgbm pyarrow
 
-      - name: Show staging tree (optional)
+      - name: Defensive mkdirs (optional)
         run: |
-          echo "---- data/staging (tree, if exists) ----"
-          ls -lahR data/staging || true
+          mkdir -p data/staging
+          mkdir -p data/proba/single
+          mkdir -p data/models/single
 
-      - name: Train ST model
+      - name: Train Single
         run: |
-          set -euo pipefail
-          KEEP=""
-          if [[ "${{ inputs.keep_penalized }}" == "true" ]]; then
-            KEEP="--keep_penalized"
-          fi
-
-          python scripts/train_st.py \
-            --staging_root "${{ inputs.staging_root }}" \
+          python scripts/train_single.py \
+            --staging_root data/staging \
+            --out_root data/proba/single \
+            --model_root data/models/single \
             --train_start "${{ inputs.train_start }}" \
             --train_end   "${{ inputs.train_end }}" \
-            --model_out   "${{ inputs.model_out }}" \
-            --meta_out    "data/models/st_lgbm.meta.json" \
-            --fi_out      "data/models/st_lgbm.feature_importance.csv" \
-            $KEEP
+            --test_start  "${{ inputs.test_start }}" \
+            --test_end    "${{ inputs.test_end }}"
 
       - name: Show outputs
         run: |
-          echo "---- models ----"
-          ls -lah data/models || true
-          echo "---- head(meta) ----"
-          head -n 50 data/models/st_lgbm.meta.json || true
-          echo "---- feature_importance ----"
-          head -n 30 data/models/st_lgbm.feature_importance.csv || true
+          echo "---- data/proba/single ----"
+          ls -lahR data/proba/single || true
+          echo "---- data/models/single ----"
+          ls -lahR data/models/single || true
 
-      - name: Commit & push model artifacts
+      - name: Commit & push outputs
         if: always()
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/models || true
+          git add -f data/proba/single data/models/single || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "train_st: model ${GITHUB_RUN_NUMBER} [skip ci]"
+          git commit -m "single(win): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
           for n in 0 1 2 3 4; do
-            if git pull --rebase; then
-              git push && exit 0
-            fi
+            git pull --rebase && break || true
             echo "Pull failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
