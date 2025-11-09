@@ -18,12 +18,6 @@ on:
         description: "staging CSVをgzip圧縮する？ (true/false)"
         required: true
         default: "false"
-      out_format:
-        description: "出力形式 (csv|parquet|both)"
-        required: true
-        default: "csv"
-        type: choice
-        options: [csv, parquet, both]
 
 concurrency:
   group: build-staging-${{ github.ref }}
@@ -34,7 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -48,17 +41,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas pyyaml
 
-      - name: Resolve target dirs (program/exhibition/results)
-        id: resolve
+      - name: Build staging
         shell: bash
         run: |
           set -euo pipefail
 
           SCOPE="${{ inputs.scope }}"
           DATE="${{ inputs.date }}"
-          PROG_ROOT="public/programs/v1"
-          EXH_ROOT="public/exhibition/v1"
-          RES_ROOT="public/results"
+          IN_ROOT="data/shards"
+          OUT_ROOT="data/staging"
+
+          mkdir -p "${OUT_ROOT}"
 
           if [[ "$SCOPE" == "day" ]]; then
             if [[ ! "$DATE" =~ ^[0-9]{8}$ ]]; then
@@ -66,44 +59,26 @@ jobs:
               exit 1
             fi
             YEAR="${DATE:0:4}"
-            MD="${DATE:4:4}"   # MMDD
-            PROG_DIR="$PROG_ROOT/$YEAR/$MD"
-            EXH_DIR="$EXH_ROOT/$YEAR/$MD"
-            RES_DIR="$RES_ROOT/$YEAR/$MD"
+            MD="${DATE:4:4}"
+            IN_DIR="${IN_ROOT}/${YEAR}/${MD}"
+            OUT_DIR="${OUT_ROOT}/${YEAR}/${MD}"
           else
-            PROG_DIR="$PROG_ROOT"
-            EXH_DIR="$EXH_ROOT"
-            RES_DIR="$RES_ROOT"
+            IN_DIR="${IN_ROOT}"
+            OUT_DIR="${OUT_ROOT}"
           fi
 
-          echo "prog_dir=$PROG_DIR" >> $GITHUB_OUTPUT
-          echo "exh_dir=$EXH_DIR"   >> $GITHUB_OUTPUT
-          echo "res_dir=$RES_DIR"   >> $GITHUB_OUTPUT
+          if [[ ! -d "$IN_DIR" ]]; then
+            echo "[FATAL] Input directory not found: $IN_DIR" >&2
+            exit 1
+          fi
 
-          echo "[info] Using:"
-          echo "  program_dir   = $PROG_DIR"
-          echo "  exhibition_dir= $EXH_DIR"
-          echo "  results_dir   = $RES_DIR"
-
-      - name: Build staging CSVs
-        run: |
-          set -euo pipefail
-          mkdir -p data/staging
           PY="scripts/build_staging_from_integrated.py"
-
           if [[ ! -f "$PY" ]]; then
             echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2
             exit 1
           fi
 
-          # 引数を構成
-          ARGS=(--program_dir "${{ steps.resolve.outputs.prog_dir }}"
-                --exhibition_dir "${{ steps.resolve.outputs.exh_dir }}"
-                --results_dir "${{ steps.resolve.outputs.res_dir }}"
-                --out_dir "data/staging"
-                --out_format "${{ inputs.out_format }}")
-
-          # 圧縮指定
+          ARGS=(--in_root "$IN_DIR" --out_root "$OUT_DIR")
           if [[ "${{ inputs.csv_compress }}" == "true" ]]; then
             ARGS+=("--csv_compress")
           fi
@@ -127,7 +102,7 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "staging: build from integrated_pro (${{ inputs.scope }} ${{ inputs.date }}) [skip ci]"
+          git commit -m "staging: build from data/shards (${ { inputs.scope } } ${ { inputs.date } }) [skip ci]"
           n=0
           until [ $n -ge 5 ]
           do
