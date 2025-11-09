@@ -2,287 +2,308 @@
 # -*- coding: utf-8 -*-
 """
 build_staging_from_integrated.py
-- data/shards/YYYY/MMDD/integrated_pro.csv を読んで ST 学習用のステージングを作る
-- public/results/YYYY/MMDD/{jcd}/{rno}R.json から公式ST/決まり手も吸い上げ
-- 出力: data/staging/YYYY/MMDD/st_train.csv  （CSV or gzip, 1行1艇）
-    列:
-      hd,jcd,rno,lane,regno,
-      st_sec,st_is_f,st_is_late,st_penalized,st_observed,
-      tenji_st_sec,tenji_is_f,tenji_f_over_sec,
-      tenji_rank,st_rank,
-      course_avg_st,course_first_rate,course_3rd_rate
-- 仕様:
-  * 展示STが 0.000x の “ダミーF表現”（例 F.04→0.0004）を再変換してフラグ化。
-  * 展示ランクは F を最下位、欠損も最下位で dense-rank（1が最良）。
-  * 出力ディレクトリは必ず data/staging/YYYY/MMDD/
-"""
+- 入力: data/shards/YYYY/MMDD/integrated_pro.csv
+- 公式結果: public/results/YYYY/MMDD/JC/NR.json
+- 出力: data/staging/YYYY/MMDD/st_train.csv
 
+出力列:
+  hd,jcd,rno,lane,regno,
+  st_sec,st_is_f,st_is_late,st_penalized,st_observed,
+  tenji_st_sec,tenji_is_f,tenji_f_over_sec,
+  tenji_rank,st_rank,
+  course_avg_st,course_first_rate,course_3rd_rate
+"""
 from __future__ import annotations
-import argparse
-import json
 from pathlib import Path
-from typing import Dict, Optional, Tuple
+import argparse, csv, json
+from typing import Dict, Tuple, List, Any, Optional
 
 import polars as pl
 
-# ---------------------
-# ユーティリティ
-# ---------------------
-def z2(x: str | int) -> str:
-    s = str(x)
-    return s if len(s) >= 2 else s.zfill(2)
 
-def read_integrated_csv(path: Path) -> pl.DataFrame:
-    df = pl.read_csv(
-        path,
-        infer_schema_length=2000,
-        null_values=["", "null", "None"],
-    )
-    # 必須列が無ければエラー
-    need = [
+# ---------- helpers ----------
+def z2(x) -> str:
+    try:
+        return f"{int(str(x).strip()):02d}"
+    except Exception:
+        s = str(x).strip()
+        return s if len(s) >= 2 else s.zfill(2)
+
+
+def parse_official_st_text(sttxt) -> Tuple[Optional[float], int, int, int, int]:
+    """
+    公式 ST テキスト正規化:
+      '0.13' → (0.13,0,0,0,1)
+      'F.04' → (0.04,1,0,1,1)
+      'L.02' → (0.02,0,1,1,1)
+      None/空 → (None,0,0,0,0)
+    """
+    s = "" if sttxt is None else str(sttxt).strip()
+    if s == "":
+        return (None, 0, 0, 0, 0)
+
+    up = s.upper()
+    is_f = 1 if up.startswith("F") else 0
+    is_l = 1 if up.startswith("L") else 0
+    penal = 1 if (is_f or is_l) else 0
+
+    # 'F.04' → '.04'
+    num = up.replace("F", "").replace("L", "").strip()
+    if num.startswith("."):
+        num = "0" + num
+
+    try:
+        v = float(num)
+    except Exception:
+        return (None, 0, 0, 0, 0)
+
+    return (v, is_f, is_l, penal, 1)
+
+
+def load_official_results(results_root: Path, hd: str, jcd: str, rno: int
+                          ) -> Dict[int, Tuple[Optional[float], int, int, int, int]]:
+    """
+    lane -> (st_sec, st_is_f, st_is_late, st_penalized, st_observed)
+    優先度: results[].st → start[].st（未観測のみ補完）
+    """
+    year, md = hd[:4], hd[4:8]
+    jj = z2(jcd)
+    p = results_root / year / md / jj / f"{rno}R.json"
+    if not p.exists():
+        return {}
+
+    try:
+        js = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    out: Dict[int, Tuple[Optional[float], int, int, int, int]] = {}
+
+    for it in (js.get("results") or []):
+        try:
+            lane = int(str(it.get("lane")).strip())
+        except Exception:
+            continue
+        out[lane] = parse_official_st_text(it.get("st"))
+
+    for it in (js.get("start") or []):
+        try:
+            lane = int(str(it.get("lane")).strip())
+        except Exception:
+            continue
+        if lane in out and out[lane][4] == 1:  # already observed from results
+            continue
+        out[lane] = parse_official_st_text(it.get("st"))
+
+    return out
+
+
+def normalize_exhibition_st(val) -> Tuple[Optional[float], int, Optional[float]]:
+    """
+    展示STの元データは F.04 → 0.0004 のように格納されている想定。
+    - 0 < val < 0.01 → F扱い: tenji_is_f=1, tenji_f_over_sec=val*100, tenji_st_sec=None
+    - val >= 0.01   → 通常: tenji_is_f=0, tenji_f_over_sec=None, tenji_st_sec=val
+    - None/その他   → 欠損
+    """
+    if val is None:
+        return (None, 0, None)
+    try:
+        x = float(val)
+    except Exception:
+        return (None, 0, None)
+
+    if x > 0.0 and x < 0.01:
+        return (None, 1, round(x * 100.0, 3))  # 0.0004 → 0.04
+    elif x >= 0.01:
+        return (x, 0, None)
+    else:
+        return (None, 0, None)
+
+
+def dense_rank_asc(values: List[Optional[float]]) -> List[int]:
+    """
+    None は最後に回す昇順 dense rank。最小=1。
+    """
+    # sentinel: None -> +inf
+    keyed = [(float("inf") if v is None else float(v), i) for i, v in enumerate(values)]
+    keyed_sorted = sorted(keyed, key=lambda t: t[0])
+
+    ranks = [0] * len(values)
+    cur_rank = 0
+    last_val = None
+    for (val, idx) in keyed_sorted:
+        if last_val is None or val != last_val:
+            cur_rank += 1
+            last_val = val
+        ranks[idx] = cur_rank
+    return ranks
+
+
+# ---------- core processing ----------
+def process_one_day(integrated_csv: Path,
+                    results_root: Path,
+                    out_dir: Path) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # 読み込み（eagerでOK）
+    df = pl.read_csv(integrated_csv, infer_schema_length=2000)
+
+    # 必要列チェック & 補完
+    req_cols = [
         "hd","jcd","rno","lane","racer_id",
-        "tenji_st","st_rank","course_avg_st","course_first_rate","course_3rd_rate"
+        "tenji_st","st_rank",  # st_rank は展示の相対順位（元データ）。再計算は tenji_rank で行う。
+        "course_avg_st","course_first_rate","course_3rd_rate",
     ]
-    for c in need:
+    for c in req_cols:
         if c not in df.columns:
-            raise RuntimeError(f"[FATAL] {path}: missing column '{c}'")
-    # 型と整形
+            df = df.with_columns(pl.lit(None).alias(c))
+
+    # 型整備
     df = df.with_columns([
         pl.col("hd").cast(pl.Utf8, strict=False),
         pl.col("jcd").cast(pl.Utf8, strict=False),
         pl.col("rno").cast(pl.Int64, strict=False),
         pl.col("lane").cast(pl.Int64, strict=False),
-        pl.col("racer_id").alias("regno").cast(pl.Int64, strict=False),
-
-        pl.col("tenji_st").cast(pl.Float64, strict=False).alias("tenji_st_raw"),
+        pl.col("racer_id").cast(pl.Utf8, strict=False),
+        pl.col("tenji_st").cast(pl.Float64, strict=False),
         pl.col("st_rank").cast(pl.Int64, strict=False),
         pl.col("course_avg_st").cast(pl.Float64, strict=False),
         pl.col("course_first_rate").cast(pl.Float64, strict=False),
         pl.col("course_3rd_rate").cast(pl.Float64, strict=False),
     ])
-    return df
 
-def parse_official_st_text(st: Optional[str]) -> Tuple[Optional[float], int, int, int, int]:
-    """
-    公式結果JSONの start[*].st 文字列を解釈:
-      "0.05" -> (0.05,0,0,0,1)
-      "F.04" -> (None,1,0,1,1)  # over秒はここでは保持しない（学習には不要）
-      "L.02" -> (None,0,1,1,1)
-      None/"" -> (None,0,0,0,0)
-    """
-    if not st:
-        return (None, 0, 0, 0, 0)
-    s = st.strip().upper()
-    if s.startswith("F."):
-        return (None, 1, 0, 1, 1)
-    if s.startswith("L."):
-        return (None, 0, 1, 1, 1)
-    # 通常 0.XX
-    try:
-        return (float(s), 0, 0, 0, 1)
-    except Exception:
-        return (None, 0, 0, 0, 0)
+    # jcd をゼロパディング
+    df = df.with_columns(pl.col("jcd").map_elements(z2).alias("jcd"))
 
-def decode_tenji_st(val: Optional[float]) -> Tuple[Optional[float], int, Optional[float]]:
-    """
-    integrated_pro の展示STは、通常は 0.05 のような秒。
-    F の場合は 0.0004 (F.04) のようにエンコードされている前提。
-    ここで F を検出してフラグ化し、over秒(0.04)を算出。
-    戻り値: (tenji_st_sec, tenji_is_f, tenji_f_over_sec)
-      - F でない通常値→ (そのまま, 0, None)
-      - F ダミー(0.000x) → (None, 1, x/100 のover秒 = 0.000x*100)
-      - 欠損 → (None, 0, None)
-    """
-    if val is None:
-        return (None, 0, None)
-    if val < 0.001:  # 0.0009以下は F のダミー
-        over = round(val * 100.0, 3)  # 0.0004 -> 0.04
-        return (None, 1, over)
-    return (float(val), 0, None)
+    # 組ごとに処理
+    groups = df.group_by(["hd","jcd","rno"], maintain_order=True).agg(pl.all())
 
-def tenji_dense_rank(group: pl.DataFrame) -> pl.Series:
-    """
-    展示ランク: 値の小さい方が上位。
-    ただし F(tenji_is_f=1) と 欠損 は最下位扱いにするため、ソートキーを工夫。
-      key = 
-        - 通常: tenji_st_sec
-        - F or 欠損: 大きな値 (1e9)
-    """
-    key = []
-    for is_f, sec in zip(group["tenji_is_f"], group["tenji_st_sec"]):
-        if is_f == 1 or sec is None:
-            key.append(1e9)
-        else:
-            key.append(float(sec))
-    # 昇順で順位（1..n）、同値は同順位(dense-rank)
-    order = pl.Series(key).rank(method="dense", descending=False)
-    return order
+    # 収集行
+    out_rows: List[Dict[str, Any]] = []
 
-def load_official_results(results_root: Path, hd: str, jcd: str, rno: int) -> Dict[int, Tuple[Optional[float], int, int, int, int]]:
-    """
-    公式結果JSONから lane -> (st_sec,is_f,is_late,penalized,observed) を返す
-    なければ空dict
-    """
-    year = hd[:4]
-    md = hd[4:8]
-    j = z2(jcd)
-    p = results_root / year / md / j / f"{rno}R.json"
-    if not p.exists():
-        return {}
-    try:
-        js = json.loads(p.read_text(encoding="utf-8"))
-        arr = js.get("start") or []
-        out: Dict[int, Tuple[Optional[float], int, int, int, int]] = {}
-        for it in arr:
-            lane = int(it.get("lane"))
-            sttxt = it.get("st")
-            out[lane] = parse_official_st_text(sttxt)
-        return out
-    except Exception:
-        return {}
+    for rec in groups.iter_rows(named=True):
+        hd = rec["hd"]; jcd = rec["jcd"]; rno = int(rec["rno"])
+        sub = pl.DataFrame({k: rec[k] for k in df.columns})
 
-# ---------------------
-# メイン処理
-# ---------------------
-def process_one_day(integrated_path: Path, results_root: Path, out_root: Path, out_format: str = "csv", csv_compress: bool = False) -> None:
-    # 入力読み込み
-    df = read_integrated_csv(integrated_path)
+        # 公式ST読み込み（results優先→start補完）
+        st_map = load_official_results(results_root, str(hd), str(jcd), rno)
 
-    # パスから日付フォルダを復元
-    # .../data/shards/YYYY/MMDD/integrated_pro.csv
-    year = integrated_path.parent.parent.name    # YYYY
-    md   = integrated_path.parent.name           # MMDD
-    day_out = out_root / year / md
-    day_out.mkdir(parents=True, exist_ok=True)
+        # 展示STの正規化（F.04→0.0004 をここで戻す）
+        tenji_vals: List[Optional[float]] = []
+        for lane_val, tenji_st_val in zip(sub["lane"].to_list(), sub["tenji_st"].to_list()):
+            tenji_st_sec, tenji_is_f, tenji_f_over_sec = normalize_exhibition_st(tenji_st_val)
+            tenji_vals.append(tenji_st_sec)
+            # 仮で格納（後で row 作る時にまた計算して入れる）
+            # ここでは rank 用だけ先に欲しい
+            pass
 
-    # 展示STの再解釈（Fダミー→フラグ化）
-    df = df.with_columns([
-        pl.col("tenji_st_raw").map_elements(lambda v: decode_tenji_st(v)[0]).alias("tenji_st_sec"),
-        pl.col("tenji_st_raw").map_elements(lambda v: decode_tenji_st(v)[1]).alias("tenji_is_f"),
-        pl.col("tenji_st_raw").map_elements(lambda v: decode_tenji_st(v)[2]).alias("tenji_f_over_sec"),
-    ])
+        # tenji_rank（Noneは最後）
+        tenji_rank_list = dense_rank_asc(tenji_vals)
 
-    # 公式STの取り込み（レース毎）
-    # 先にキーだけ抽出
-    key_cols = ["hd", "jcd", "rno", "lane", "regno",
-                "tenji_st_sec", "tenji_is_f", "tenji_f_over_sec",
-                "st_rank", "course_avg_st", "course_first_rate", "course_3rd_rate"]
-    use = df.select([c for c in key_cols if c in df.columns]).with_columns([
-        pl.col("hd").cast(pl.Utf8),
-        pl.col("jcd").cast(pl.Utf8),
-        pl.col("rno").cast(pl.Int64),
-        pl.col("lane").cast(pl.Int64),
-        pl.col("regno").cast(pl.Int64),
-    ])
+        # st_rank（公式STで再ランキング。欠損は最後）
+        # まず lane順に st を並べる
+        lanes: List[int] = [int(x) for x in sub["lane"].to_list()]
+        st_vals: List[Optional[float]] = []
+        st_meta: Dict[int, Tuple[Optional[float], int, int, int, int]] = {}
+        for lane in lanes:
+            tpl = st_map.get(lane, (None,0,0,0,0))
+            st_meta[lane] = tpl
+            st_vals.append(tpl[0])
+        st_rank_list = dense_rank_asc(st_vals)
 
-    # 公式STを列として埋める
-    # collect rows, enrich per race
-    rows = []
-    for (hd, jcd, rno), g in use.group_by(["hd", "jcd", "rno"], maintain_order=True):
-        st_map = load_official_results(results_root, hd, jcd, int(rno))
-        # 展示ランクをこのグループ内で再算定（F/欠損を最下位）
-        g = g.with_columns([
-            tenji_dense_rank(g).alias("tenji_rank")
-        ])
-        for rec in g.iter_rows(named=True):
-            lane = int(rec["lane"])
-            st_tuple = st_map.get(lane, (None, 0, 0, 0, 0))
-            st_sec, st_is_f, st_is_late, st_pen, st_obs = st_tuple
-            rows.append({
-                "hd": hd,
-                "jcd": jcd,
-                "rno": int(rno),
+        # レコード化
+        for i in range(len(sub)):
+            lane = int(sub["lane"][i])
+            regno_raw = sub["racer_id"][i]
+            try:
+                regno = int(str(regno_raw)) if regno_raw is not None else None
+            except Exception:
+                regno = None
+
+            tenji_st_val = sub["tenji_st"][i]
+            tenji_st_sec, tenji_is_f, tenji_f_over_sec = normalize_exhibition_st(tenji_st_val)
+
+            st_sec, st_is_f, st_is_late, st_penalized, st_observed = st_meta.get(lane, (None,0,0,0,0))
+
+            row = {
+                "hd": str(hd),
+                "jcd": str(jcd),
+                "rno": rno,
                 "lane": lane,
-                "regno": int(rec["regno"]) if rec["regno"] is not None else None,
-
+                "regno": regno,
                 "st_sec": st_sec,
                 "st_is_f": st_is_f,
                 "st_is_late": st_is_late,
-                "st_penalized": st_pen,
-                "st_observed": st_obs,
+                "st_penalized": st_penalized,
+                "st_observed": st_observed,
+                "tenji_st_sec": tenji_st_sec,
+                "tenji_is_f": tenji_is_f,
+                "tenji_f_over_sec": tenji_f_over_sec,
+                "tenji_rank": int(tenji_rank_list[i]),
+                "st_rank": int(st_rank_list[i]),
+                "course_avg_st": sub["course_avg_st"][i],
+                "course_first_rate": sub["course_first_rate"][i],
+                "course_3rd_rate": sub["course_3rd_rate"][i],
+            }
+            out_rows.append(row)
 
-                "tenji_st_sec": rec["tenji_st_sec"],
-                "tenji_is_f": rec["tenji_is_f"],
-                "tenji_f_over_sec": rec["tenji_f_over_sec"],
-                "tenji_rank": int(rec["tenji_rank"]),
+    if not out_rows:
+        print(f"[WARN] no rows for {integrated_csv}")
+        return
 
-                "st_rank": int(rec["st_rank"]) if rec["st_rank"] is not None else None,
-                "course_avg_st": rec["course_avg_st"],
-                "course_first_rate": rec["course_first_rate"],
-                "course_3rd_rate": rec["course_3rd_rate"],
-            })
+    # 出力（YYYY/MMDD で保存）
+    # integrated_pro.csv の親ディレクトリから日付を特定
+    # shards_root/YYYY/MMDD/integrated_pro.csv
+    parts = integrated_csv.parts
+    # .../shards/YYYY/MMDD/integrated_pro.csv
+    try:
+        md = parts[-2]  # MMDD
+        yyyy = parts[-3]  # YYYY
+    except Exception:
+        # フォールバック: レコード先頭から抽出
+        hd0 = out_rows[0]["hd"]
+        yyyy, md = hd0[:4], hd0[4:8]
 
-    out_df = pl.DataFrame(rows, schema={
-        "hd": pl.Utf8,
-        "jcd": pl.Utf8,
-        "rno": pl.Int64,
-        "lane": pl.Int64,
-        "regno": pl.Int64,
+    day_out_dir = out_dir / str(yyyy) / str(md)
+    day_out_dir.mkdir(parents=True, exist_ok=True)
 
-        "st_sec": pl.Float64,
-        "st_is_f": pl.Int64,
-        "st_is_late": pl.Int64,
-        "st_penalized": pl.Int64,
-        "st_observed": pl.Int64,
+    out_path = day_out_dir / "st_train.csv"
+    with out_path.open("w", newline="", encoding="utf-8") as fo:
+        w = csv.DictWriter(fo, fieldnames=[
+            "hd","jcd","rno","lane","regno",
+            "st_sec","st_is_f","st_is_late","st_penalized","st_observed",
+            "tenji_st_sec","tenji_is_f","tenji_f_over_sec",
+            "tenji_rank","st_rank",
+            "course_avg_st","course_first_rate","course_3rd_rate",
+        ])
+        w.writeheader()
+        w.writerows(out_rows)
 
-        "tenji_st_sec": pl.Float64,
-        "tenji_is_f": pl.Int64,
-        "tenji_f_over_sec": pl.Float64,
-        "tenji_rank": pl.Int64,
+    print(f"[WRITE] {out_path} (rows={len(out_rows)})")
 
-        "st_rank": pl.Int64,
-        "course_avg_st": pl.Float64,
-        "course_first_rate": pl.Float64,
-        "course_3rd_rate": pl.Float64,
-    })
-
-    # 出力
-    if out_format in ("csv", "both"):
-        p = day_out / "st_train.csv"
-        if csv_compress:
-            p = Path(str(p) + ".gz")
-            out_df.write_csv(p, include_header=True)
-        else:
-            out_df.write_csv(p, include_header=True)
-        print(f"[WRITE] {p} (rows={out_df.height})")
-
-    if out_format in ("parquet", "both"):
-        p = day_out / "st_train.parquet"
-        out_df.write_parquet(p)
-        print(f"[WRITE] {p} (rows={out_df.height})")
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--shards_root", default="data/shards")
     ap.add_argument("--results_root", default="public/results")
     ap.add_argument("--out_root", default="data/staging")
-    ap.add_argument("--out_format", default="csv", choices=["csv","parquet","both"])
-    ap.add_argument("--csv_compress", action="store_true")
+    ap.add_argument("--out_format", default="csv", choices=["csv"])  # 現状csvのみ
     args = ap.parse_args()
 
     shards_root = Path(args.shards_root)
     results_root = Path(args.results_root)
     out_root = Path(args.out_root)
-    out_root.mkdir(parents=True, exist_ok=True)
 
     files = sorted(shards_root.glob("**/integrated_pro.csv"))
     print(f"[INFO] found {len(files)} integrated_pro.csv files")
-    if not files:
-        print(f"[WARN] no integrated_pro.csv under {shards_root}")
-        return
 
-    for f in files:
-        print(f"[INFO] reading {f}")
+    for p in files:
+        print(f"[INFO] reading {p}")
         try:
-            process_one_day(
-                integrated_path=f,
-                results_root=results_root,
-                out_root=out_root,
-                out_format=args.out_format,
-                csv_compress=args.csv_compress,
-            )
+            process_one_day(p, results_root, out_root)
         except Exception as e:
-            print(f"[ERROR] {f}: {e}")
+            print(f"[ERROR] {p}: {e}")
+
 
 if __name__ == "__main__":
     main()
