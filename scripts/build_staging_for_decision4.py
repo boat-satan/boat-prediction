@@ -10,7 +10,8 @@ import lightgbm as lgb
 
 # ====== 定数 ======
 CLS_ORDER = ["NIGE", "SASHI", "MAKURI", "MAKURI_SASHI"]
-ID_COLS = ["hd","jcd","rno","lane","racer_id","racer_name"]
+# lane は読み込み時に lane_id へ改名して衝突回避
+ID_COLS = ["hd","jcd","rno","lane_id","racer_id","racer_name"]
 
 PREF_FEATS = [
     "course_first_rate","course_3rd_rate","course_avg_st",
@@ -20,8 +21,7 @@ PREF_FEATS = [
     "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
     "power_lane","power_inner","power_outer","outer_over_inner",
     "dash_attack_flag","is_strong_wind","is_crosswind",
-    # lane はIDと衝突するので後で lane_feat として扱う
-    "lane",
+    # lane 自体は使わず、lane_id から lane_feat を作る
 ]
 
 @dataclass
@@ -75,7 +75,30 @@ def _collect(staging_root: str, start: str, end: str, fname="decision4_train.csv
             lfs.append(pl.scan_csv(str(p), ignore_errors=True))
     if not lfs:
         return pl.DataFrame()
-    return pl.concat(lfs).collect(streaming=True)
+    df = pl.concat(lfs).collect(streaming=True)
+
+    # ▼ ここで lane → lane_id に正規化（衝突の根を断つ）
+    if "lane" in df.columns and "lane_id" not in df.columns:
+        df = df.rename({"lane": "lane_id"})
+
+    # 万一、重複列名が混入していた場合の保険（同名は __dupN 付与）
+    seen = set()
+    rename_map = {}
+    for c in df.columns:
+        if c in seen:
+            k = 1
+            newc = f"{c}__dup{k}"
+            while newc in seen:
+                k += 1
+                newc = f"{c}__dup{k}"
+            rename_map[c] = newc
+            seen.add(newc)
+        else:
+            seen.add(c)
+    if rename_map:
+        df = df.rename(rename_map)
+
+    return df
 
 # ====== 特徴選択 ======
 def _select_features(df: pl.DataFrame):
@@ -83,7 +106,6 @@ def _select_features(df: pl.DataFrame):
     if "decision4" not in cols:
         raise RuntimeError("入力に decision4 列がありません（NIGE/SASHI/MAKURI/MAKURI_SASHI）。")
 
-    # ラベル -> 0..3
     df = df.with_columns(
         pl.col("decision4").cast(pl.Utf8, strict=False)
     ).with_columns(
@@ -95,7 +117,7 @@ def _select_features(df: pl.DataFrame):
          .alias("y")
     ).drop_nulls(subset=["y"])
 
-    # 数値のみ拾う
+    # 数値だけ採用
     cand_feats = []
     for c in PREF_FEATS:
         if c in cols:
@@ -103,23 +125,24 @@ def _select_features(df: pl.DataFrame):
             if "Int" in str(dt) or "Float" in str(dt):
                 cand_feats.append(c)
 
-    # lane はIDと重複するため、特徴としては lane_feat にリネームして選択
-    feature_exprs = []
-    feature_names = []
-    for c in cand_feats:
-        if c == "lane":
-            feature_exprs.append(pl.col("lane").alias("lane_feat"))
-            feature_names.append("lane_feat")
-        else:
-            feature_exprs.append(pl.col(c).alias(c))
-            feature_names.append(c)
+    # lane_feat を生成（lane_id が無い場合は 0 に）
+    feat_exprs = []
+    feat_names = []
+    if "lane_id" in cols:
+        feat_exprs.append(pl.col("lane_id").cast(pl.Float64).alias("lane_feat"))
+    else:
+        feat_exprs.append(pl.lit(0.0).alias("lane_feat"))
+    feat_names.append("lane_feat")
 
-    # ID 列（存在するものだけ）
+    for c in cand_feats:
+        feat_exprs.append(pl.col(c).alias(c))
+        feat_names.append(c)
+
+    # ID列（存在するもののみ）
     id_exprs = [pl.col(c).alias(c) for c in ID_COLS if c in cols]
 
-    # 重複回避した select
-    df2 = df.select(id_exprs + [pl.col("y")] + feature_exprs)
-    return df2, feature_names
+    df2 = df.select(id_exprs + [pl.col("y")] + feat_exprs)
+    return df2, feat_names
 
 # ====== 学習/推論 ======
 def _fit(train_df: pl.DataFrame, feats: list[str], cfg: Cfg) -> lgb.Booster:
@@ -141,15 +164,26 @@ def _fit(train_df: pl.DataFrame, feats: list[str], cfg: Cfg) -> lgb.Booster:
     return booster
 
 def _predict(booster: lgb.Booster, test_df: pl.DataFrame, feats: list[str]) -> pl.DataFrame:
-    id_df = test_df.select([c for c in ID_COLS if c in test_df.columns])
+    # 予測用に ID を確保
+    keep_ids = [c for c in ID_COLS if c in test_df.columns]
+    id_df = test_df.select(keep_ids)
+
     X = test_df.select(feats).to_pandas(use_pyarrow_extension_array=False)
     proba = booster.predict(X)  # (n,4)
-    pdf = id_df.to_pandas(use_pyarrow_extension_array=False)
-    pdf["proba_nige"]          = proba[:,0]
-    pdf["proba_sashi"]         = proba[:,1]
-    pdf["proba_makuri"]        = proba[:,2]
-    pdf["proba_makuri_sashi"]  = proba[:,3]
-    return pl.from_pandas(pdf)
+
+    # 出力：lane_id -> lane に戻す
+    out = id_df.with_columns([
+        pl.when(pl.col("lane_id").is_not_null()).then(pl.col("lane_id")).otherwise(None).alias("lane")
+    ])
+    out = out.drop("lane_id") if "lane_id" in out.columns else out
+
+    out = out.with_columns([
+        pl.lit(proba[:,0]).alias("proba_nige"),
+        pl.lit(proba[:,1]).alias("proba_sashi"),
+        pl.lit(proba[:,2]).alias("proba_makuri"),
+        pl.lit(proba[:,3]).alias("proba_makuri_sashi"),
+    ])
+    return out
 
 # ====== main ======
 def main():
@@ -192,17 +226,8 @@ def main():
         log("[WARN] テスト期間に decision4_train.csv が見つかりません。推論スキップ。")
         return
 
-    # test も lane を lane_feat に揃えた形で選択
-    cols = set(test_df_raw.columns)
-    keep_exprs = [pl.col(c).alias(c) for c in ID_COLS if c in cols]
-    feat_exprs = []
-    for c in feats:
-        if c == "lane_feat":
-            feat_exprs.append(pl.col("lane").alias("lane_feat"))
-        else:
-            feat_exprs.append(pl.col(c).alias(c))
-    test_df = test_df_raw.select(keep_exprs + feat_exprs)
-
+    # test 側も lane_id 正規化は _collect 内で済んでいる
+    test_df, _ = _select_features(test_df_raw)  # feats 名は学習時と同じ
     pred_df = _predict(booster, test_df, feats)
 
     for (hd,), sub in pred_df.group_by("hd", maintain_order=True):
