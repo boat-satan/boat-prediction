@@ -72,7 +72,7 @@ jobs:
       - name: Train ST model (new)
         run: |
           set -euo pipefail
-          python scripts/st_train.py \
+          python scripts/train_st.py \
             --staging_root "${{ inputs.staging_root }}" \
             --start "${{ inputs.start }}" \
             --end   "${{ inputs.end }}" \
