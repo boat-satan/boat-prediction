@@ -1,285 +1,225 @@
-# scripts/build_staging_from_integrated.py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+build_staging_from_integrated.py
+- data/shards/YYYY/MMDD/integrated_pro.csv を読み、
+  ST学習用のステージングを data/staging/YYYY/MMDD/ に出力する。
+- F(フライング)や明らかな異常STをランク対象から除外し、nulls_last でランク付与。
+- リザルトJSON(public/results/YYYY/MMDD/JCD/{rno}R.json)から当該レースの実STを取得して
+  ST学習ターゲットを作る。
+
+出力（1日ごと）:
+- st_train.csv[.gz]
+  列: hd,jcd,rno,lane,regno,st   （学習に最低限必要十分）
+  付随: tenji_st, tenji_rank, st_rank など一部特徴も一緒に格納（学習側で使うなら参照可能）
+
+使い方例:
+  python scripts/build_staging_from_integrated.py \
+    --shards_root data/shards \
+    --results_root public/results \
+    --out_root data/staging \
+    --out_format csv --csv_compress
+"""
+
 from __future__ import annotations
-import argparse, json, gzip
+import argparse, json
 from pathlib import Path
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Tuple, List, Optional
 
 import polars as pl
 
-# =========================
-# Utils
-# =========================
-def _z2(x: str | int) -> str:
-    try:
-        return f"{int(str(x).strip()):02d}"
-    except Exception:
-        s = str(x).strip()
-        return s.zfill(2)
 
-def _read_json(p: Path) -> Dict[str, Any] | None:
+# ------------------------
+# ユーティリティ
+# ------------------------
+def _z2(jcd: str | int) -> str:
+    s = str(jcd)
+    return s.zfill(2) if len(s) < 2 else s
+
+def _read_json(p: Path) -> Optional[dict]:
     try:
         with p.open("r", encoding="utf-8") as f:
             return json.load(f)
-    except FileNotFoundError:
+    except Exception:
         return None
-    except Exception as e:
-        print(f"[WARN] JSON load failed: {p} ({e})")
-        return None
+
+def _collect_results_st(results_root: Path, keys: List[Tuple[str, str, int]]) -> Dict[Tuple[str, str, int, int], float]:
+    """
+    リザルトから ST 値を集める。
+    return: {(hd,jcd,rno,lane) -> st_float}
+    """
+    out: Dict[Tuple[str, str, int, int], float] = {}
+    for hd, jcd, rno in keys:
+        year, md = hd[:4], hd[4:8]
+        jcd2 = _z2(jcd)
+        rp = results_root / year / md / jcd2 / f"{rno}R.json"
+        js = _read_json(rp)
+        if not js:
+            continue
+        # results[].lane と start[].st の両方があるケースがあるが、
+        # 公式は start[].lane/st の配列で良い
+        start = js.get("start") or []
+        for ent in start:
+            try:
+                lane = int(ent.get("lane"))
+                stv = float(ent.get("st"))
+            except Exception:
+                continue
+            out[(hd, jcd2, rno, lane)] = stv
+    return out
 
 def _write_csv(df: pl.DataFrame, path: Path, compress: bool):
     path.parent.mkdir(parents=True, exist_ok=True)
     if compress:
-        if not str(path).endswith(".gz"):
-            path = Path(str(path) + ".gz")
-        with gzip.open(path, "wt", encoding="utf-8", newline="") as fo:
-            df.write_csv(fo)
+        p = Path(str(path) + ".gz") if not str(path).endswith(".gz") else path
+        df.write_csv(p)
+        print(f"[WRITE] {p} (rows={df.height})")
     else:
         df.write_csv(path)
-    print(f"[WRITE] {path} (rows={df.height})")
+        print(f"[WRITE] {path} (rows={df.height})")
 
-def _write_parquet(df: pl.DataFrame, path: Path):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    df.write_parquet(path)
-    print(f"[WRITE] {path} (rows={df.height})")
 
-# =========================
-# Load integrated_pro.csv
-# =========================
-INTEGRATED_DTYPES: Dict[str, pl.DataType] = {
-    "hd": pl.Utf8, "jcd": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64,
-    "racer_id": pl.Utf8, "racer_name": pl.Utf8,
-    "weather_sky": pl.Utf8, "wind_dir": pl.Utf8,
-    "wind_speed_m": pl.Float64, "wave_height_cm": pl.Float64,
-    "title": pl.Utf8, "decision": pl.Utf8,
-    "national_win": pl.Float64, "national_2r": pl.Float64, "national_3r": pl.Float64,
-    "local_win": pl.Float64, "local_2r": pl.Float64, "local_3r": pl.Float64,
-    "motor_id": pl.Float64, "motor_rate2": pl.Float64, "motor_rate3": pl.Float64,
-    "boat_id": pl.Float64, "boat_rate2": pl.Float64, "boat_rate3": pl.Float64,
-    "weightKg": pl.Float64, "tiltDeg": pl.Float64,
-    "tenji_sec": pl.Float64, "tenji_st": pl.Float64, "isF_tenji": pl.Int64,
-    "course_first_rate": pl.Float64, "course_3rd_rate": pl.Float64, "course_avg_st": pl.Float64,
-    "kimarite_makuri": pl.Float64, "kimarite_sashi": pl.Float64,
-    "kimarite_makuri_sashi": pl.Float64, "kimarite_nuki": pl.Float64,
-    "tenji_rank": pl.Int64, "st_rank": pl.Int64,
-    "power_lane": pl.Float64, "power_inner": pl.Float64, "power_outer": pl.Float64,
-    "outer_over_inner": pl.Float64,
-    "st_diff_4_vs_3": pl.Float64, "st_diff_5_vs_4": pl.Float64, "st_diff_6_vs_5": pl.Float64,
-    "dash_attack_flag": pl.Int64, "is_strong_wind": pl.Int64, "is_crosswind": pl.Int64,
-    "label_3t": pl.Utf8,
-}
+# ------------------------
+# ステージング作成
+# ------------------------
+def process_one_day(integrated_path: Path,
+                    results_root: Path,
+                    out_day_root: Path,
+                    out_format: str,
+                    csv_compress: bool):
+    """
+    1日分の integrated_pro.csv を読み、st_train.* を出力
+    """
+    print(f"[INFO] reading {integrated_path}")
+    df6 = pl.read_csv(integrated_path)
 
-def load_integrated_all(shards_root: Path) -> pl.DataFrame:
-    files = sorted(shards_root.glob("**/integrated_pro.csv"))
-    print(f"[INFO] found {len(files)} integrated_pro.csv files")
-    if not files:
-        return pl.DataFrame(schema={"hd": pl.Utf8})
-
-    dfs = []
-    for p in files:
-        df = pl.read_csv(p, dtypes=INTEGRATED_DTYPES, ignore_errors=True)
-        # 最低限の型とキー整形
-        df = df.with_columns([
-            pl.col("hd").cast(pl.Utf8),
-            pl.col("jcd").cast(pl.Utf8).str.zfill(2),
-            pl.col("rno").cast(pl.Int64),
-            pl.col("lane").cast(pl.Int64),
-            pl.col("racer_id").cast(pl.Utf8),
-        ]).filter(pl.col("hd").is_not_null())
-
-        # 欠落カラムを埋める（将来互換）
-        for c, dt in INTEGRATED_DTYPES.items():
-            if c not in df.columns:
-                df = df.with_columns(pl.lit(None, dtype=dt).alias(c))
-
-        dfs.append(df)
-
-    return pl.concat(dfs, how="vertical", rechunk=True)
-
-# =========================
-# Build staging per day
-# =========================
-def build_staging(df_all: pl.DataFrame, results_root: Path, out_root: Path,
-                  out_format: str = "csv", csv_compress: bool = False):
-    if df_all.is_empty():
-        print("[WARN] no rows in integrated dataframe")
-        return
-
-    # hd(YYYYMMDD) から year, md を作って日毎に処理
-    df_all = df_all.with_columns([
-        pl.col("hd").cast(pl.Utf8),
-        pl.col("jcd").cast(pl.Utf8).str.zfill(2),
-        pl.col("rno").cast(pl.Int64),
-        pl.col("lane").cast(pl.Int64),
-        pl.col("racer_id").cast(pl.Utf8),
-        pl.col("hd").str.slice(0, 4).alias("_year"),
-        pl.col("hd").str.slice(4, 4).alias("_md"),
+    # ---- 型の正規化（比較/結合時の型不一致を回避）----
+    # hd/jcd は文字列、rno/lane は整数、racer_id→regno(int)
+    df6 = df6.with_columns([
+        pl.col("hd").cast(pl.Utf8, strict=False),
+        pl.col("jcd").cast(pl.Utf8, strict=False),
+        pl.col("rno").cast(pl.Int64, strict=False),
+        pl.col("lane").cast(pl.Int64, strict=False),
+        pl.col("racer_id").cast(pl.Utf8, strict=False),
+        pl.col("tenji_st").cast(pl.Float64, strict=False),
+        pl.col("tenji_sec").cast(pl.Float64, strict=False),
+        pl.col("isF_tenji").cast(pl.Int64, strict=False),
     ])
 
-    # /YYYY/MMDD/ で書くために日毎のパーティション
-    day_parts = df_all.partition_by(["_year", "_md"], maintain_order=True)
-    for day_df in day_parts:
-        year = day_df[0, "_year"]
-        md   = day_df[0, "_md"]
-        out_dir = out_root / year / md
-        out_dir.mkdir(parents=True, exist_ok=True)
+    # regno 列（学習側の想定に合わせる）
+    df6 = df6.with_columns([
+        pl.col("racer_id").str.strip_chars().cast(pl.Int64, strict=False).alias("regno")
+    ])
 
-        # レース毎パーティション
-        race_parts = day_df.partition_by(["hd","jcd","rno"], maintain_order=True)
+    # ---- F/異常ST をランク対象から除外し、ランク付け ----
+    # _is_f: Fフラグ（isF_tenji==1）
+    df6 = df6.with_columns([
+        pl.when(pl.col("isF_tenji") == 1).then(1).otherwise(0).alias("_is_f")
+    ])
 
-        # それぞれで展示STランク（F最下位）を再計算
-        racecard_list: List[pl.DataFrame] = []
-        st_rows: List[dict] = []
-        win_rows: List[dict] = []
+    # 展示STのサニタイズ: F or ST<0.03 はランク除外（null）
+    df6 = df6.with_columns([
+        pl.when(pl.col("_is_f") == 1).then(None)
+         .otherwise(
+            pl.when(pl.col("tenji_st") < 0.03).then(None).otherwise(pl.col("tenji_st"))
+         ).alias("_st_sanit")
+    ])
 
-        for g in race_parts:
-            if g.is_empty():
-                continue
+    # ランク（null は最後に送る）
+    df6 = df6.with_columns([
+        pl.col("tenji_sec").rank(method="dense", descending=False, nulls_last=True).alias("tenji_rank"),
+        pl.col("_st_sanit").rank(method="dense", descending=False, nulls_last=True).alias("st_rank"),
+    ])
 
-            # F判定（tenji_st < 0.01 をF扱い）
-            g = g.with_columns([
-                (pl.col("tenji_st").is_not_null() & (pl.col("tenji_st") < 0.01)).cast(pl.Int8).alias("_is_f"),
-                # ランク用の値: F→999.0、未定義→null、それ以外→そのまま
-                pl.when(pl.col("_is_f") == 1).then(pl.lit(999.0))
-                  .when(pl.col("tenji_st").is_null()).then(pl.lit(None, dtype=pl.Float64))
-                  .otherwise(pl.col("tenji_st"))
-                  .alias("_st_for_rank"),
-            ])
+    # ---- リザルトから実STを取得してターゲット列を作る ----
+    # キーの抽出（hd, jcd, rno）ユニーク
+    keys_df = df6.select(["hd", "jcd", "rno"]).unique()
+    keys: List[Tuple[str, str, int]] = [
+        (r[0], r[1], int(r[2])) for r in keys_df.iter_rows()
+    ]
+    st_map = _collect_results_st(results_root, keys)  # {(hd,jcd2,rno,lane) -> st}
 
-            # ここで within-race のランク再計算
-            g = g.with_columns([
-                pl.col("tenji_sec").rank(method="dense", descending=False).alias("tenji_rank_re"),
-                pl.col("_st_for_rank").rank(method="dense", descending=False).alias("st_rank_re"),
-            ])
+    # jcd を2桁化した列を作って結合キーに使う
+    df6 = df6.with_columns([
+        pl.col("jcd").map_elements(lambda x: _z2(x), return_dtype=pl.Utf8).alias("jcd2")
+    ])
 
-            # racecard（再計算した rank を使う）
-            racecard_cols = [
-                "hd","jcd","rno","lane","racer_id","racer_name","grade","age",
-                "weather_sky","wind_dir","wind_speed_m","wave_height_cm","title","decision",
-                "national_win","national_2r","national_3r",
-                "local_win","local_2r","local_3r",
-                "motor_id","motor_rate2","motor_rate3",
-                "boat_id","boat_rate2","boat_rate3",
-                "weightKg","tiltDeg","tenji_sec","tenji_st","isF_tenji",
-                "course_first_rate","course_3rd_rate","course_avg_st",
-                "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
-                # 置き換えたランク
-                "tenji_rank_re","st_rank_re",
-                "power_lane","power_inner","power_outer","outer_over_inner",
-                "st_diff_4_vs_3","st_diff_5_vs_4","st_diff_6_vs_5",
-                "dash_attack_flag","is_strong_wind","is_crosswind",
-                "label_3t",
-            ]
-            rc = g.select([c for c in racecard_cols if c in g.columns]) \
-                 .rename({"tenji_rank_re":"tenji_rank","st_rank_re":"st_rank"})
-            racecard_list.append(rc)
+    # 実STを join（キー: hd,jcd2,rno,lane）
+    # 先に dict を DataFrame に
+    if st_map:
+        st_rows = [{"hd": k[0], "jcd2": k[1], "rno": k[2], "lane": k[3], "st": v} for k, v in st_map.items()]
+        st_df = pl.DataFrame(st_rows, schema={"hd": pl.Utf8, "jcd2": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64, "st": pl.Float64})
+    else:
+        st_df = pl.DataFrame({"hd": [], "jcd2": [], "rno": [], "lane": [], "st": []},
+                             schema={"hd": pl.Utf8, "jcd2": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64, "st": pl.Float64})
 
-            # results から実ST・決まり手
-            hd = g[0, "hd"]; jcd = g[0, "jcd"]; rno = int(g[0, "rno"])
-            res_path = results_root / hd[:4] / hd[4:8] / _z2(jcd) / f"{rno}R.json"
-            res = _read_json(res_path)
+    joined = df6.join(
+        st_df, on=["hd", "jcd2", "rno", "lane"], how="left"
+    )
 
-            lane_to_st = {}
-            decision = None
-            if res:
-                for it in (res.get("start") or []):
-                    try:
-                        lane_to_st[int(it.get("lane"))] = float(it.get("st"))
-                    except Exception:
-                        pass
-                meta = res.get("meta") or {}
-                decision = meta.get("decision")
+    # ---- ST学習用の最小カラムに落としつつ、いくつか便利特徴も同梱 ----
+    st_train = joined.select([
+        "hd",
+        pl.col("jcd2").alias("jcd"),
+        "rno",
+        "lane",
+        "regno",
+        pl.col("st").alias("st"),               # ターゲット
+        # 参考特徴（学習側で使いたければどうぞ）
+        "tenji_st",
+        "tenji_rank",
+        "st_rank",
+        "course_avg_st",
+        "course_first_rate",
+        "course_3rd_rate",
+    ])
 
-            # races_st行
-            for row in g.iter_rows(named=True):
-                st_rows.append({
-                    "hd": hd, "jcd": _z2(jcd), "rno": rno,
-                    "lane": int(row.get("lane")),
-                    "racer_id": row.get("racer_id"),
-                    "st": lane_to_st.get(int(row.get("lane"))),
-                    "tenji_st": row.get("tenji_st"),
-                    "course_avg_st": row.get("course_avg_st"),
-                    "st_rank": row.get("st_rank"),      # 再計算済み
-                    "power_lane": row.get("power_lane"),
-                })
+    # ---- 出力 ----
+    out_day_root.mkdir(parents=True, exist_ok=True)
+    if out_format in ("csv", "both"):
+        _write_csv(st_train, out_day_root / "st_train.csv", csv_compress)
+    if out_format in ("parquet", "both"):
+        p = out_day_root / "st_train.parquet"
+        st_train.write_parquet(p)
+        print(f"[WRITE] {p} (rows={st_train.height})")
 
-            # winners行（1-2-3 の 先頭コース）
-            label = g[0, "label_3t"]
-            win_lane, win_regno = None, None
-            if isinstance(label, str) and "-" in label:
-                try:
-                    win_lane = int(label.split("-")[0])
-                    sub = g.filter(pl.col("lane") == win_lane)
-                    if not sub.is_empty():
-                        win_regno = sub[0, "racer_id"]
-                except Exception:
-                    pass
-            win_rows.append({
-                "hd": hd, "jcd": _z2(jcd), "rno": rno,
-                "win_lane": win_lane, "win_racer_id": win_regno,
-                "decision": (decision if decision else g[0, "decision"]),
-            })
 
-        # 日のDF
-        racecard_df = pl.concat(racecard_list, how="vertical", rechunk=True) if racecard_list else pl.DataFrame()
-        races_st_df = pl.DataFrame(st_rows, schema={
-            "hd": pl.Utf8, "jcd": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64,
-            "racer_id": pl.Utf8, "st": pl.Float64,
-            "tenji_st": pl.Float64, "course_avg_st": pl.Float64,
-            "st_rank": pl.Int64, "power_lane": pl.Float64
-        }) if st_rows else pl.DataFrame(schema={
-            "hd": pl.Utf8, "jcd": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64,
-            "racer_id": pl.Utf8, "st": pl.Float64,
-            "tenji_st": pl.Float64, "course_avg_st": pl.Float64,
-            "st_rank": pl.Int64, "power_lane": pl.Float64
-        })
-        winners_df = pl.DataFrame(win_rows, schema={
-            "hd": pl.Utf8, "jcd": pl.Utf8, "rno": pl.Int64,
-            "win_lane": pl.Int64, "win_racer_id": pl.Utf8, "decision": pl.Utf8
-        }) if win_rows else pl.DataFrame(schema={
-            "hd": pl.Utf8, "jcd": pl.Utf8, "rno": pl.Int64,
-            "win_lane": pl.Int64, "win_racer_id": pl.Utf8, "decision": pl.Utf8
-        })
-
-        # 書き出し（/YYYY/MMDD/）
-        if out_format in ("csv","both"):
-            _write_csv(racecard_df, out_dir / "racecard.csv", csv_compress)
-            _write_csv(races_st_df, out_dir / "races_st.csv", csv_compress)
-            _write_csv(winners_df,  out_dir / "winners.csv",  csv_compress)
-        if out_format in ("parquet","both"):
-            _write_parquet(racecard_df, out_dir / "racecard.parquet")
-            _write_parquet(races_st_df, out_dir / "races_st.parquet")
-            _write_parquet(winners_df,  out_dir / "winners.parquet")
-
-# =========================
-# CLI
-# =========================
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--shards_root",  default="data/shards")
-    ap.add_argument("--results_root", default="public/results")
-    ap.add_argument("--out_root",     default="data/staging")
-    ap.add_argument("--out_format",   default="csv", choices=["csv","parquet","both"])
-    ap.add_argument("--csv_compress", action="store_true")
+    ap.add_argument("--shards_root",   default="data/shards")
+    ap.add_argument("--results_root",  default="public/results")
+    ap.add_argument("--out_root",      default="data/staging")
+    ap.add_argument("--out_format",    default="csv", choices=["csv","parquet","both"])
+    ap.add_argument("--csv_compress",  action="store_true")
     args = ap.parse_args()
 
     shards_root  = Path(args.shards_root)
     results_root = Path(args.results_root)
     out_root     = Path(args.out_root)
 
-    df_all = load_integrated_all(shards_root)
-    if df_all.is_empty():
-        print(f"[WARN] no integrated_pro.csv under {shards_root}")
-        return
+    if not shards_root.exists():
+        raise FileNotFoundError(f"[FATAL] shards_root not found: {shards_root}")
 
-    build_staging(
-        df_all=df_all,
-        results_root=results_root,
-        out_root=out_root,
-        out_format=args.out_format,
-        csv_compress=args.csv_compress,
-    )
+    # パターン: data/shards/YYYY/MMDD/integrated_pro.csv を全走査
+    targets: List[Path] = sorted(shards_root.glob("*/????/integrated_pro.csv"))
+    print(f"[INFO] found {len(targets)} integrated_pro.csv files")
+
+    for ipath in targets:
+        # ipath: .../data/shards/YYYY/MMDD/integrated_pro.csv
+        md = ipath.parent.name  # MMDD
+        year = ipath.parent.parent.name  # YYYY
+
+        # staging/YYYY/MMDD/
+        out_day_root = out_root / year / md
+        process_one_day(
+            integrated_path=ipath,
+            results_root=results_root,
+            out_day_root=out_day_root,
+            out_format=args.out_format,
+            csv_compress=args.csv_compress,
+        )
+
+    print("[DONE] staging build finished.")
 
 if __name__ == "__main__":
     main()
