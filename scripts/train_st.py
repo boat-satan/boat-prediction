@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from __future__ import annotations
+"""
+ST（スタートタイミング）予測モデル学習スクリプト（事後情報除外版）
 
+入力: data/staging/YYYY/MMDD/st_train.csv
+出力: data/models/st_lgbm.txt, meta.json, feature_importance.csv
+
+特徴量: 展示ST・展示F情報・ランク・コース傾向など（事前データのみ）
+除外: st_is_f, st_is_late, st_penalized, st_observed（事後情報）
+"""
+
+from __future__ import annotations
 import argparse, json, sys
 from pathlib import Path
 from typing import List, Sequence
@@ -11,29 +20,22 @@ import pandas as pd
 import lightgbm as lgb
 
 
-# -----------------------------
-# ユーティリティ
-# -----------------------------
+# ======================================================
+# Utility
+# ======================================================
 def ensure_parent(p: Path) -> None:
+    """親ディレクトリを作成"""
     p.parent.mkdir(parents=True, exist_ok=True)
 
 def _ymd_ord(s: str) -> int:
     return int(s[:4]) * 372 + int(s[4:6]) * 31 + int(s[6:8])
 
-def _within(hd: str, d1: str, d2: str) -> bool:
-    return _ymd_ord(d1) <= _ymd_ord(hd) <= _ymd_ord(d2)
 
-
-# -----------------------------
-# 入力読み込み（Lazy）
-# -----------------------------
+# ======================================================
+# データ読み込み
+# ======================================================
 def read_staging_days(staging_root: Path, d1: str, d2: str) -> pl.LazyFrame:
-    """
-    staging_root/YYYY/MMDD/st_train.csv を d1..d2 で集約 (Lazy)
-    """
-    if len(d1) != 8 or len(d2) != 8:
-        raise ValueError("train_start/train_end は YYYYMMDD 形式で指定してください。")
-
+    """staging_root/YYYY/MMDD/st_train.csv を d1..d2 範囲で集約"""
     pattern = str(staging_root / "*" / "*" / "st_train.csv")
     lf = (
         pl.scan_csv(
@@ -44,13 +46,7 @@ def read_staging_days(staging_root: Path, d1: str, d2: str) -> pl.LazyFrame:
                 "rno": pl.Int64,
                 "lane": pl.Int64,
                 "regno": pl.Utf8,
-                # 目的変数とST関連
                 "st_sec": pl.Float64,
-                "st_is_f": pl.Int64,
-                "st_is_late": pl.Int64,
-                "st_penalized": pl.Int64,
-                "st_observed": pl.Int64,
-                # 展示・コース統計
                 "tenji_st_sec": pl.Float64,
                 "tenji_is_f": pl.Int64,
                 "tenji_f_over_sec": pl.Float64,
@@ -68,14 +64,14 @@ def read_staging_days(staging_root: Path, d1: str, d2: str) -> pl.LazyFrame:
     return lf
 
 
-# -----------------------------
+# ======================================================
 # 特徴量定義
-# -----------------------------
+# ======================================================
 ID_COLS = ["hd", "jcd", "rno", "lane", "regno"]
 TARGET = "st_sec"
 
-# staging 作成時点で揃っている典型的な説明変数たち
-RAW_FEATURES: List[str] = [
+# --- 事前に利用可能な安全な特徴量 ---
+FEATURES: List[str] = [
     "tenji_st_sec",
     "tenji_is_f",
     "tenji_f_over_sec",
@@ -84,67 +80,38 @@ RAW_FEATURES: List[str] = [
     "course_avg_st",
     "course_first_rate",
     "course_3rd_rate",
-    # 学習上の安定化用フラグ（情報になる可能性があるのでそのまま使えるようにする）
-    "st_observed",
-    "st_is_f",
-    "st_is_late",
-    "st_penalized",
-    # 位置（弱いがリークではない）
-    "lane",
+    "lane",  # スタート位置
 ]
 
 
-# -----------------------------
+# ======================================================
 # 学習テーブル構築
-# -----------------------------
+# ======================================================
 def build_training_table(
     lf: pl.LazyFrame,
-    drop_penalized: bool = True,
     drop_missing_target: bool = True,
 ) -> tuple[pl.DataFrame, List[str]]:
-    """
-    学習テーブルを構築。LightGBM が欠損を扱えるので数値の欠損はあえて埋めない。
-    フラグは 0/1 化しておく。
-    """
-    # 必要列を安全に選択（存在しなければ None）
-    def safe_col(name: str, dtype: pl.DataType | None = None) -> pl.Expr:
-        expr = pl.when(pl.col(name).is_not_null()).then(pl.col(name)).otherwise(None)
-        if dtype is not None:
-            expr = expr.cast(dtype, strict=False)
-        return expr.alias(name)
+    """学習用 DataFrame 構築"""
+    # 欠損・型補正
+    lf = lf.with_columns([
+        pl.col("tenji_is_f").cast(pl.Int64).fill_null(0),
+        pl.col("tenji_rank").cast(pl.Int64).fill_null(0),
+        pl.col("st_rank").cast(pl.Int64).fill_null(0),
+        pl.col("tenji_st_sec").cast(pl.Float64, strict=False),
+        pl.col("tenji_f_over_sec").cast(pl.Float64, strict=False),
+        pl.col("course_avg_st").cast(pl.Float64, strict=False),
+        pl.col("course_first_rate").cast(pl.Float64, strict=False),
+        pl.col("course_3rd_rate").cast(pl.Float64, strict=False),
+        pl.col("st_sec").cast(pl.Float64, strict=False),
+    ])
 
-    need_cols = list(set(ID_COLS + [TARGET] + RAW_FEATURES))
-    sel_exprs: List[pl.Expr] = [safe_col(c) for c in need_cols]
-    lf = lf.select(sel_exprs)
-
-    # フラグ系は 0/1 に正規化
-    flag_cols = ["st_observed", "st_is_f", "st_is_late", "st_penalized", "tenji_is_f", "tenji_rank", "st_rank"]
-    lf = lf.with_columns([pl.col(c).cast(pl.Int64).fill_null(0) for c in flag_cols])
-
-    # 数値系の型を固定（欠損は保持）
-    num_cols = [
-        "st_sec",
-        "tenji_st_sec",
-        "tenji_f_over_sec",
-        "course_avg_st",
-        "course_first_rate",
-        "course_3rd_rate",
-    ]
-    lf = lf.with_columns([pl.col(c).cast(pl.Float64, strict=False) for c in num_cols])
-
-    # 裁決あり（F/遅れ等）を除外したい場合
-    if drop_penalized:
-        lf = lf.filter(pl.col("st_penalized") == 0)
-
-    # 目的変数の欠損除外
     if drop_missing_target:
         lf = lf.filter(pl.col(TARGET).is_not_null())
 
-    # 出力用：ID・TARGET・特徴量
+    # 出力列（lane重複対策で別名付与）
     out_exprs: List[pl.Expr] = [pl.col(c) for c in ID_COLS + [TARGET]]
     feature_cols: List[str] = []
-    for c in RAW_FEATURES:
-        # ID と被る列名は _feat に退避
+    for c in FEATURES:
         out_name = c if c not in ID_COLS else f"{c}_feat"
         out_exprs.append(pl.col(c).alias(out_name))
         feature_cols.append(out_name)
@@ -153,9 +120,9 @@ def build_training_table(
     return df, feature_cols
 
 
-# -----------------------------
+# ======================================================
 # LightGBM 学習
-# -----------------------------
+# ======================================================
 def train_lgbm(df: pl.DataFrame, feature_cols: Sequence[str]) -> tuple[lgb.Booster, List[str]]:
     pdf = df.to_pandas(use_pyarrow_extension_array=False)
     y = pdf[TARGET].astype(float).values
@@ -178,6 +145,7 @@ def train_lgbm(df: pl.DataFrame, feature_cols: Sequence[str]) -> tuple[lgb.Boost
         verbose=-1,
         force_col_wise=True,
     )
+
     booster = lgb.train(
         params,
         dset,
@@ -189,42 +157,32 @@ def train_lgbm(df: pl.DataFrame, feature_cols: Sequence[str]) -> tuple[lgb.Boost
     return booster, list(feature_cols)
 
 
-# -----------------------------
-# メイン
-# -----------------------------
+# ======================================================
+# Main
+# ======================================================
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--staging_root", default="data/staging")
-    ap.add_argument("--train_start", required=True, help="YYYYMMDD")
-    ap.add_argument("--train_end",   required=True, help="YYYYMMDD")
+    ap.add_argument("--train_start", required=True)
+    ap.add_argument("--train_end", required=True)
     ap.add_argument("--model_out", default="data/models/st_lgbm.txt")
-    ap.add_argument("--meta_out",  default="data/models/st_lgbm.meta.json")
-    ap.add_argument("--fi_out",    default="data/models/st_lgbm.feature_importance.csv")
-    ap.add_argument("--keep_penalized", action="store_true", help="裁決あり(F/遅れなど)も学習に含める")
+    ap.add_argument("--meta_out", default="data/models/st_lgbm.meta.json")
+    ap.add_argument("--fi_out", default="data/models/st_lgbm.feature_importance.csv")
     args = ap.parse_args()
 
     staging_root = Path(args.staging_root)
 
-    # 収集
-    lf_pool = read_staging_days(staging_root, args.train_start, args.train_end)
-
-    # 学習テーブル
-    df_train, feature_cols = build_training_table(
-        lf_pool,
-        drop_penalized=(not args.keep_penalized),
-        drop_missing_target=True,
-    )
+    lf = read_staging_days(staging_root, args.train_start, args.train_end)
+    df_train, feature_cols = build_training_table(lf, drop_missing_target=True)
 
     if df_train.height == 0:
-        print("[FATAL] 学習データが0件です。staging に対象期間の st_train.csv があるか確認してください。", file=sys.stderr)
+        print("[FATAL] 学習データが0件です。st_train.csv を確認してください。", file=sys.stderr)
         sys.exit(1)
 
     print(f"[INFO] train rows: {df_train.height}, features: {len(feature_cols)} -> {feature_cols}")
 
-    # 学習
     booster, feats = train_lgbm(df_train, feature_cols)
 
-    # 保存
     model_out = Path(args.model_out)
     meta_out  = Path(args.meta_out)
     fi_out    = Path(args.fi_out)
@@ -256,7 +214,6 @@ def main():
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print(f"[SAVE] meta -> {meta_out}")
 
-    # Feature Importance
     fi = pd.DataFrame({
         "feature": feats,
         "gain": booster.feature_importance(importance_type="gain"),
