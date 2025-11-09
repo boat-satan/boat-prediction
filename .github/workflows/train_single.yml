@@ -1,0 +1,85 @@
+name: Train Single (Win) Model
+
+on:
+  workflow_dispatch:
+    inputs:
+      train_start:
+        description: "学習開始 (YYYYMMDD)"
+        required: true
+        default: "20240101"
+      train_end:
+        description: "学習終了 (YYYYMMDD)"
+        required: true
+        default: "20240131"
+      pred_start:
+        description: "予測開始 (YYYYMMDD)"
+        required: true
+        default: "20240201"
+      pred_end:
+        description: "予測終了 (YYYYMMDD)"
+        required: true
+        default: "20240229"
+
+concurrency:
+  group: train-single-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars pandas lightgbm
+
+      - name: Train single model & predict
+        run: |
+          python scripts/train_single.py \
+            --staging_root data/staging \
+            --results_root public/results \
+            --train_start  "${{ inputs.train_start }}" \
+            --train_end    "${{ inputs.train_end }}" \
+            --pred_start   "${{ inputs.pred_start }}" \
+            --pred_end     "${{ inputs.pred_end }}" \
+            --model_out data/models/single_lgbm.txt \
+            --proba_out_root data/proba/single
+
+      - name: Show outputs
+        run: |
+          echo "---- data/models ----"
+          ls -lahR data/models || true
+          echo "---- data/proba/single ----"
+          ls -lahR data/proba/single || true
+
+      - name: Commit & push outputs
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/models data/proba/single || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "single: train=${{ inputs.train_start }}..${{ inputs.train_end }} pred=${{ inputs.pred_start }}..${{ inputs.pred_end }} [skip ci]"
+          # 軽いリトライ付き push
+          for n in 0 1 2 3 4; do
+            if git pull --rebase; then
+              git push && exit 0
+            fi
+            echo "Pull failed. Retry $((n+1))/5..."
+            sleep $((2**n))
+          done
+          git push
