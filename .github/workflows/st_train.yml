@@ -1,0 +1,121 @@
+name: ST Train (new, from staging)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "学習開始 (YYYYMMDD, 省略可)"
+        required: false
+        default: "20240101"
+      end:
+        description: "学習終了 (YYYYMMDD, 省略可)"
+        required: false
+        default: "20240131"
+      staging_root:
+        description: "staging ルートディレクトリ"
+        required: true
+        default: "data/staging"
+      model_out:
+        description: "モデル出力パス"
+        required: true
+        default: "data/models/st_new.txt"
+      meta_out:
+        description: "メタ出力パス"
+        required: true
+        default: "data/models/st_new.meta.json"
+      history_out:
+        description: "学習履歴Parquet出力"
+        required: true
+        default: "data/history/st_history.parquet"
+      fi_out:
+        description: "特徴量重要度CSV出力"
+        required: true
+        default: "data/models/st_new.fi.csv"
+
+concurrency:
+  group: st-train-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # push用に履歴を確保
+          ref: ${{ github.ref_name }}
+
+      - name: Ensure working branch (avoid detached HEAD)
+        run: |
+          set -euo pipefail
+          git fetch origin ${{ github.ref_name }} --depth=1 || true
+          git checkout -B ${{ github.ref_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars lightgbm numpy
+
+      - name: Show discovered staging days
+        run: |
+          echo "---- tree of ${{ inputs.staging_root }} ----"
+          ls -lahR "${{ inputs.staging_root }}" || true
+
+      - name: Train ST model (new)
+        run: |
+          set -euo pipefail
+          python scripts/st_train.py \
+            --staging_root "${{ inputs.staging_root }}" \
+            --start "${{ inputs.start }}" \
+            --end   "${{ inputs.end }}" \
+            --model_out "${{ inputs.model_out }}" \
+            --meta_out  "${{ inputs.meta_out }}" \
+            --history_out "${{ inputs.history_out }}" \
+            --fi_out "${{ inputs.fi_out }}"
+
+      - name: Show outputs
+        run: |
+          echo "---- models ----"
+          ls -lah $(dirname "${{ inputs.model_out }}") || true
+          echo "---- history ----"
+          ls -lah $(dirname "${{ inputs.history_out }}") || true
+
+      - name: Commit & push model artifacts
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -f \
+            "${{ inputs.model_out }}" \
+            "${{ inputs.meta_out }}" \
+            "${{ inputs.history_out }}" \
+            "${{ inputs.fi_out }}" || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "st: train new (${GITHUB_WORKFLOW} #${GITHUB_RUN_NUMBER}) [skip ci]"
+
+          # 軽いリトライ付きでrebase-pull→push
+          for n in 0 1 2 3 4; do
+            if git pull --rebase origin ${{ github.ref_name }}; then
+              git push origin ${{ github.ref_name }} && exit 0
+            fi
+            echo "Pull/Rebase failed. Retry $((n+1))/5..."
+            sleep $((2**n))
+          done
+
+          # 最後の保険
+          git push origin HEAD:${{ github.ref_name }}
