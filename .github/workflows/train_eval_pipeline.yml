@@ -1,48 +1,34 @@
-name: Train Eval Pipeline (Compose120 → Eval)
+name: Train/Eval Pipeline
 
 on:
   workflow_dispatch:
-    inputs:
-      config_path:
-        description: "設定ファイルパス"
-        required: false
-        default: "data/pipeline.config.yaml"
-
-permissions:
-  contents: write
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
-          pip install pandas numpy pyyaml lightgbm polars
+          python -m pip install --upgrade pip
+          pip install pandas numpy pyyaml lightgbm polars pyarrow
+
+      - name: Add PYTHONPATH
+        run: echo "PYTHONPATH=src" >> $GITHUB_ENV
 
       - name: Run pipeline
         run: |
-          python scripts/train_eval_pipeline.py --config "${{ github.event.inputs.config_path }}"
+          python scripts/train_eval_pipeline.py --config "data/pipeline.config.yaml"
 
-      - name: Show result summary
+      - name: Show outputs
         run: |
-          echo "---- 最新 summary ----"
-          ls -lt data/eval/summary_*.json | head -n 3 || true
-          echo
-          tail -n 30 $(ls -t data/eval/summary_*.json | head -n 1) || true
-
-      - name: Commit & Push results
-        if: success()
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add data/eval/*.json data/eval/*.csv || true
-          git commit -m "Add eval results [skip ci]" || echo "No changes to commit"
-          git push
+          ls -lahR data/eval || true
