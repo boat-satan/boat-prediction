@@ -1,0 +1,53 @@
+{
+  "train_range": [
+    "20240101",
+    "20240229"
+  ],
+  "rows": 51924,
+  "features": [
+    "tenji_sec",
+    "tenji_rank",
+    "st_rank",
+    "course_avg_st",
+    "course_first_rate",
+    "course_3rd_rate",
+    "motor_rate2",
+    "motor_rate3",
+    "boat_rate2",
+    "boat_rate3",
+    "wind_speed_m",
+    "wave_height_cm",
+    "kimarite_makuri",
+    "kimarite_sashi",
+    "kimarite_makuri_sashi",
+    "kimarite_nuki",
+    "power_lane",
+    "power_inner",
+    "power_outer",
+    "outer_over_inner",
+    "dash_attack_flag",
+    "is_strong_wind",
+    "is_crosswind",
+    "lane_feat"
+  ],
+  "labels": [
+    "NIGE",
+    "SASHI",
+    "MAKURI",
+    "MAKURI_SASHI"
+  ],
+  "params": {
+    "objective": "multiclass",
+    "num_class": 4,
+    "metric": "multi_logloss",
+    "learning_rate": 0.05,
+    "num_leaves": 63,
+    "min_data_in_leaf": 50,
+    "feature_fraction": 0.9,
+    "bagging_fraction": 0.9,
+    "bagging_freq": 1,
+    "lambda_l2": 1.0,
+    "num_boost_round": 800,
+    "seed": 20240301
+  }
+}
