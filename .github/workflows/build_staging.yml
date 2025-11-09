@@ -1,0 +1,141 @@
+# .github/workflows/build_staging.yml
+name: Build Staging (from integrated_pro)
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "処理対象: day or all"
+        required: true
+        default: "day"
+        type: choice
+        options: [day, all]
+      date:
+        description: "scope=day のみ (YYYYMMDD)"
+        required: false
+        default: "20240101"
+      csv_compress:
+        description: "staging CSVをgzip圧縮する？ (true/false)"
+        required: true
+        default: "false"
+      out_format:
+        description: "出力形式 (csv|parquet|both)"
+        required: true
+        default: "csv"
+        type: choice
+        options: [csv, parquet, both]
+
+concurrency:
+  group: build-staging-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars pandas pyyaml
+
+      - name: Resolve target dirs (program/exhibition/results)
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          SCOPE="${{ inputs.scope }}"
+          DATE="${{ inputs.date }}"
+          PROG_ROOT="public/programs/v1"
+          EXH_ROOT="public/exhibition/v1"
+          RES_ROOT="public/results"
+
+          if [[ "$SCOPE" == "day" ]]; then
+            if [[ ! "$DATE" =~ ^[0-9]{8}$ ]]; then
+              echo "DATE must be YYYYMMDD when scope=day" >&2
+              exit 1
+            fi
+            YEAR="${DATE:0:4}"
+            MD="${DATE:4:4}"   # MMDD
+            PROG_DIR="$PROG_ROOT/$YEAR/$MD"
+            EXH_DIR="$EXH_ROOT/$YEAR/$MD"
+            RES_DIR="$RES_ROOT/$YEAR/$MD"
+          else
+            PROG_DIR="$PROG_ROOT"
+            EXH_DIR="$EXH_ROOT"
+            RES_DIR="$RES_ROOT"
+          fi
+
+          echo "prog_dir=$PROG_DIR" >> $GITHUB_OUTPUT
+          echo "exh_dir=$EXH_DIR"   >> $GITHUB_OUTPUT
+          echo "res_dir=$RES_DIR"   >> $GITHUB_OUTPUT
+
+          echo "[info] Using:"
+          echo "  program_dir   = $PROG_DIR"
+          echo "  exhibition_dir= $EXH_DIR"
+          echo "  results_dir   = $RES_DIR"
+
+      - name: Build staging CSVs
+        run: |
+          set -euo pipefail
+          mkdir -p data/staging
+          PY="scripts/build_staging_from_integrated.py"
+
+          if [[ ! -f "$PY" ]]; then
+            echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2
+            exit 1
+          fi
+
+          # 引数を構成
+          ARGS=(--program_dir "${{ steps.resolve.outputs.prog_dir }}"
+                --exhibition_dir "${{ steps.resolve.outputs.exh_dir }}"
+                --results_dir "${{ steps.resolve.outputs.res_dir }}"
+                --out_dir "data/staging"
+                --out_format "${{ inputs.out_format }}")
+
+          # 圧縮指定
+          if [[ "${{ inputs.csv_compress }}" == "true" ]]; then
+            ARGS+=("--csv_compress")
+          fi
+
+          echo "[run] python $PY ${ARGS[*]}"
+          python "$PY" "${ARGS[@]}"
+
+      - name: Show outputs
+        run: |
+          echo "---- data/staging (tree) ----"
+          ls -lahR data/staging || true
+
+      - name: Commit & push staging outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/staging || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "staging: build from integrated_pro (${{ inputs.scope }} ${{ inputs.date }}) [skip ci]"
+          n=0
+          until [ $n -ge 5 ]
+          do
+            if git pull --rebase; then
+              break
+            fi
+            n=$((n+1))
+            echo "Pull failed. Retry $n/5..."
+            sleep $((2**n))
+          done
+          git push
