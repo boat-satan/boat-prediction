@@ -27,8 +27,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      SCOPE: ${{ inputs.scope }}
+      DATE: ${{ inputs.date }}
+      CSV_COMPRESS: ${{ inputs.csv_compress }}
+      IN_ROOT: data/shards
+      OUT_ROOT: data/staging
+      PY: scripts/build_staging_from_integrated.py
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,36 +49,49 @@ jobs:
           python -m pip install --upgrade pip
           pip install polars pandas pyyaml
 
+      - name: Resolve paths
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$OUT_ROOT"
+
+          if [[ "$SCOPE" == "day" ]]; then
+            if [[ ! "$DATE" =~ ^[0-9]{8}$ ]]; then
+              echo "DATE must be YYYYMMDD when scope=day (got: '$DATE')" >&2
+              exit 1
+            fi
+            YEAR="${DATE:0:4}"
+            MD="${DATE:4:4}"
+            echo "YEAR=$YEAR" >> $GITHUB_ENV
+            echo "MD=$MD" >> $GITHUB_ENV
+            echo "IN_DIR=$IN_ROOT/$YEAR/$MD" >> $GITHUB_ENV
+            echo "OUT_DIR=$OUT_ROOT/$YEAR/$MD" >> $GITHUB_ENV
+          else
+            echo "YEAR=" >> $GITHUB_ENV
+            echo "MD=" >> $GITHUB_ENV
+            echo "IN_DIR=$IN_ROOT" >> $GITHUB_ENV
+            echo "OUT_DIR=$OUT_ROOT" >> $GITHUB_ENV
+          fi
+
       - name: Build staging
         shell: bash
         run: |
           set -euo pipefail
 
-          SCOPE="${{ inputs.scope }}"
-          DATE="${{ inputs.date }}"
-          IN_ROOT="data/shards"
-          OUT_ROOT="data/staging"
-
-          mkdir -p "${OUT_ROOT}"
-
-          if [[ "$SCOPE" == "day" ]]; then
-            [[ "$DATE" =~ ^[0-9]{8}$ ]] || { echo "DATE must be YYYYMMDD when scope=day" >&2; exit 1; }
-            YEAR="${DATE:0:4}"
-            MD="${DATE:4:4}"
-            IN_DIR="${IN_ROOT}/${YEAR}/${MD}"
-            OUT_DIR="${OUT_ROOT}/${YEAR}/${MD}"
-          else
-            IN_DIR="${IN_ROOT}"
-            OUT_DIR="${OUT_ROOT}"
+          if [[ ! -f "$PY" ]]; then
+            echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2
+            exit 1
           fi
 
-          [[ -d "$IN_DIR" ]] || { echo "[FATAL] Input directory not found: $IN_DIR" >&2; exit 1; }
-
-          PY="scripts/build_staging_from_integrated.py"
-          [[ -f "$PY" ]] || { echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2; exit 1; }
+          if [[ ! -d "$IN_DIR" ]]; then
+            echo "[FATAL] Input directory not found: $IN_DIR" >&2
+            echo "data/shards の生成がまだなら、先に shards を作ってください。" >&2
+            exit 1
+          fi
 
           ARGS=(--in_root "$IN_DIR" --out_root "$OUT_DIR")
-          if [[ "${{ inputs.csv_compress }}" == "true" ]]; then
+          if [[ "${CSV_COMPRESS,,}" == "true" ]]; then
             ARGS+=("--csv_compress")
           fi
 
@@ -78,8 +100,8 @@ jobs:
 
       - name: Show outputs
         run: |
-          echo "---- data/staging (tree) ----"
-          ls -lahR data/staging || true
+          echo "---- $OUT_ROOT (tree) ----"
+          ls -lahR "$OUT_ROOT" || true
 
       - name: Commit & push staging outputs
         if: always()
@@ -88,18 +110,26 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/staging || true
+
+          git add -f "$OUT_ROOT" || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "staging: build from data/shards (${{ inputs.scope }} ${{ inputs.date }}) [skip ci]"
-          # 競合回避のため軽くリトライ
+
+          # scope=all のとき DATE が空になってもOKなように可読メッセージに
+          MSG_SCOPE="$SCOPE"
+          MSG_DATE="${DATE:-'-'}"
+          git commit -m "staging: build from data/shards ($MSG_SCOPE $MSG_DATE) [skip ci]"
+
+          # 軽くリトライ付きでpush
           for n in 0 1 2 3 4; do
-            if git pull --rebase; then
-              git push && exit 0
+            if git pull --rebase --autostash; then
+              if git push; then
+                exit 0
+              fi
             fi
-            echo "Pull failed. Retry $((n+1))/5..."
+            echo "Pull/Push failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
           # 最後にもう一度だけpush試行
