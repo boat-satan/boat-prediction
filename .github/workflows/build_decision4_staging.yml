@@ -1,0 +1,99 @@
+name: Build Decision4 Staging (逃げ・差し・まくり・まくり差し)
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "処理範囲 (day / all)"
+        required: true
+        default: "all"
+        type: choice
+        options: [day, all]
+      date:
+        description: "scope=day の場合のみ YYYYMMDD"
+        required: false
+        default: "20240101"
+
+concurrency:
+  group: build-decision4-staging-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars pandas
+
+      - name: Build Decision4 Staging
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          SCOPE="${{ inputs.scope }}"
+          DATE="${{ inputs.date }}"
+
+          INTEGRATED_ROOT="data/shards"
+          RESULTS_ROOT="public/results"
+          OUT_ROOT="data/staging"
+
+          mkdir -p "${OUT_ROOT}"
+
+          PY="scripts/build_staging_for_decision4.py"
+          [[ -f "$PY" ]] || { echo "[FATAL] $PY not found"; exit 1; }
+
+          if [[ "$SCOPE" == "day" ]]; then
+            [[ "$DATE" =~ ^[0-9]{8}$ ]] || { echo "DATE must be YYYYMMDD"; exit 1; }
+            YEAR="${DATE:0:4}"
+            MD="${DATE:4:4}"
+            echo "[run] building single day: $YEAR/$MD"
+            python "$PY" \
+              --integrated_root "${INTEGRATED_ROOT}/${YEAR}/${MD}" \
+              --results_root "${RESULTS_ROOT}/${YEAR}/${MD}" \
+              --out_root "${OUT_ROOT}"
+          else
+            echo "[run] building for all data"
+            python "$PY" \
+              --integrated_root "${INTEGRATED_ROOT}" \
+              --results_root "${RESULTS_ROOT}" \
+              --out_root "${OUT_ROOT}"
+          fi
+
+      - name: Show outputs
+        run: |
+          echo "---- data/staging (decision4) ----"
+          find data/staging -type f -name "decision4_train.csv" | sort | xargs -r ls -lh
+
+      - name: Commit & push outputs
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -f data/staging || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "staging(decision4): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
+          for n in 0 1 2 3 4; do
+            git pull --rebase && break || true
+            echo "Pull failed. Retry $((n+1))/5..."
+            sleep $((2**n))
+          done
+          git push
