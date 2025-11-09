@@ -1,4 +1,3 @@
-# .github/workflows/build_staging.yml
 name: Build Staging (from integrated_pro)
 
 on:
@@ -54,10 +53,7 @@ jobs:
           mkdir -p "${OUT_ROOT}"
 
           if [[ "$SCOPE" == "day" ]]; then
-            if [[ ! "$DATE" =~ ^[0-9]{8}$ ]]; then
-              echo "DATE must be YYYYMMDD when scope=day" >&2
-              exit 1
-            fi
+            [[ "$DATE" =~ ^[0-9]{8}$ ]] || { echo "DATE must be YYYYMMDD when scope=day" >&2; exit 1; }
             YEAR="${DATE:0:4}"
             MD="${DATE:4:4}"
             IN_DIR="${IN_ROOT}/${YEAR}/${MD}"
@@ -67,16 +63,10 @@ jobs:
             OUT_DIR="${OUT_ROOT}"
           fi
 
-          if [[ ! -d "$IN_DIR" ]]; then
-            echo "[FATAL] Input directory not found: $IN_DIR" >&2
-            exit 1
-          fi
+          [[ -d "$IN_DIR" ]] || { echo "[FATAL] Input directory not found: $IN_DIR" >&2; exit 1; }
 
           PY="scripts/build_staging_from_integrated.py"
-          if [[ ! -f "$PY" ]]; then
-            echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2
-            exit 1
-          fi
+          [[ -f "$PY" ]] || { echo "[FATAL] $PY が見つかりません。リポジトリに追加してください。" >&2; exit 1; }
 
           ARGS=(--in_root "$IN_DIR" --out_root "$OUT_DIR")
           if [[ "${{ inputs.csv_compress }}" == "true" ]]; then
@@ -93,6 +83,7 @@ jobs:
 
       - name: Commit & push staging outputs
         if: always()
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
@@ -102,15 +93,14 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "staging: build from data/shards (${ { inputs.scope } } ${ { inputs.date } }) [skip ci]"
-          n=0
-          until [ $n -ge 5 ]
-          do
+          git commit -m "staging: build from data/shards (${{ inputs.scope }} ${{ inputs.date }}) [skip ci]"
+          # 競合回避のため軽くリトライ
+          for n in 0 1 2 3 4; do
             if git pull --rebase; then
-              break
+              git push && exit 0
             fi
-            n=$((n+1))
-            echo "Pull failed. Retry $n/5..."
+            echo "Pull failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
+          # 最後にもう一度だけpush試行
           git push
