@@ -31,9 +31,11 @@ jobs:
       SCOPE: ${{ inputs.scope }}
       DATE: ${{ inputs.date }}
       CSV_COMPRESS: ${{ inputs.csv_compress }}
-      IN_ROOT: data/shards
+      SHARDS_ROOT: data/shards
+      RESULTS_ROOT: public/results
       OUT_ROOT: data/staging
       PY: scripts/build_staging_from_integrated.py
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +46,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install polars pandas pyyaml
@@ -65,12 +67,12 @@ jobs:
             MD="${DATE:4:4}"
             echo "YEAR=$YEAR" >> $GITHUB_ENV
             echo "MD=$MD" >> $GITHUB_ENV
-            echo "IN_DIR=$IN_ROOT/$YEAR/$MD" >> $GITHUB_ENV
+            echo "IN_DIR=$SHARDS_ROOT/$YEAR/$MD" >> $GITHUB_ENV
             echo "OUT_DIR=$OUT_ROOT/$YEAR/$MD" >> $GITHUB_ENV
           else
             echo "YEAR=" >> $GITHUB_ENV
             echo "MD=" >> $GITHUB_ENV
-            echo "IN_DIR=$IN_ROOT" >> $GITHUB_ENV
+            echo "IN_DIR=$SHARDS_ROOT" >> $GITHUB_ENV
             echo "OUT_DIR=$OUT_ROOT" >> $GITHUB_ENV
           fi
 
@@ -90,7 +92,7 @@ jobs:
             exit 1
           fi
 
-          ARGS=(--in_root "$IN_DIR" --out_root "$OUT_DIR")
+          ARGS=(--shards_root "$IN_DIR" --results_root "$RESULTS_ROOT" --out_root "$OUT_DIR" --out_format "csv")
           if [[ "${CSV_COMPRESS,,}" == "true" ]]; then
             ARGS+=("--csv_compress")
           fi
@@ -117,7 +119,6 @@ jobs:
             exit 0
           fi
 
-          # scope=all のとき DATE が空になってもOKなように可読メッセージに
           MSG_SCOPE="$SCOPE"
           MSG_DATE="${DATE:-'-'}"
           git commit -m "staging: build from data/shards ($MSG_SCOPE $MSG_DATE) [skip ci]"
@@ -132,5 +133,5 @@ jobs:
             echo "Pull/Push failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
-          # 最後にもう一度だけpush試行
+
           git push
