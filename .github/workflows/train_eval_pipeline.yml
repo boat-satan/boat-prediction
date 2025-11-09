@@ -1,16 +1,54 @@
-name: Train/Eval Pipeline
+name: Train & Evaluate Pipeline (integrated)
 
 on:
   workflow_dispatch:
+    inputs:
+      scope:
+        description: "実行スコープ: day / month / year"
+        required: true
+        default: "month"
+      date:
+        description: "scope=day のみ YYYYMMDD"
+        required: false
+        default: "20240201"
+      year:
+        description: "scope=month/year で使用 (YYYY)"
+        required: false
+        default: "2024"
+      month:
+        description: "scope=month で使用 (1..12)"
+        required: false
+        default: "2"
+      train_start:
+        description: "学習開始日 YYYYMMDD"
+        required: true
+        default: "20240101"
+      train_end:
+        description: "学習終了日 YYYYMMDD"
+        required: true
+        default: "20240130"
+      test_start:
+        description: "テスト開始日 YYYYMMDD"
+        required: true
+        default: "20240201"
+      test_end:
+        description: "テスト終了日 YYYYMMDD"
+        required: true
+        default: "20240229"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pipeline-${{ github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -19,16 +57,66 @@ jobs:
 
       - name: Install deps
         run: |
+          set -e
           python -m pip install --upgrade pip
-          pip install pandas numpy pyyaml lightgbm polars pyarrow
+          pip install pandas polars lightgbm pyyaml numpy
 
-      - name: Add PYTHONPATH
+      - name: Ensure directories
+        run: |
+          mkdir -p data/shards data/compose data/eval public/odds/v1 public/results
+
+      - name: Export PYTHONPATH
         run: echo "PYTHONPATH=src" >> $GITHUB_ENV
 
-      - name: Run pipeline
+      - name: Generate pipeline config
         run: |
-          python scripts/train_eval_pipeline.py --config "data/pipeline.config.yaml"
+          cat <<'YAML' > data/pipeline.config.yaml
+          paths:
+            data_dir: "data"
+            out_dir: "data/eval"
+            compose_dir: "data/compose"
+            odds_root: "public/odds/v1"
+            results_dir: "public/results"
 
-      - name: Show outputs
+          train:
+            start: "${{ inputs.train_start }}"
+            end:   "${{ inputs.train_end }}"
+
+          test:
+            start: "${{ inputs.test_start }}"
+            end:   "${{ inputs.test_end }}"
+
+          eval:
+            topk: 18
+            unit_stake: 100
+            rank_key: "proba"
+            ev_min: 0.0
+            ev_drop_if_missing_odds: false
+            load_odds_always: true
+            synth_odds_min: 0.0
+            min_odds_min: 0.0
+            ev_basket_min: 0.0
+            odds_coverage_min: 0
+
+          filters:
+            p1win_max: 1.0
+            s18_min: 0.0
+            one_head_ratio_top18_max: 1.0
+            min_non1_candidates_top18: 0
+            daily_cap: 0
+
+          model_out: "data/model_lgbm.txt"
+          YAML
+
+      - name: Run Train & Eval Pipeline
         run: |
-          ls -lahR data/eval || true
+          python scripts/train_eval_pipeline.py --config data/pipeline.config.yaml
+
+      - name: Commit & push outputs
+        if: always()
+        run: |
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git config --global user.name  "github-actions"
+          git add data/model_lgbm.txt data/compose/ data/eval/
+          git commit -m "Auto pipeline run (${{ inputs.test_start }}-${{ inputs.test_end }})" || echo "No changes"
+          git push
