@@ -1,341 +1,199 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-決まり手4分類(逃げ/差し/まくり/まくり差し) 学習・推論 全差し替え版
-
-- 入力: data/staging/YYYY/MMDD/decision4_train.csv
-  例の列（最低限）:
-    hd,jcd,rno,lane,racer_id,racer_name,decision4,
-    course_first_rate,course_3rd_rate,course_avg_st,
-    tenji_st,tenji_sec,tenji_rank,st_rank,
-    motor_rate2,motor_rate3,boat_rate2,boat_rate3,
-    wind_speed_m,wave_height_cm,
-    kimarite_makuri,kimarite_sashi,kimarite_makuri_sashi,kimarite_nuki,
-    power_lane,power_inner,power_outer,outer_over_inner,
-    dash_attack_flag,is_strong_wind,is_crosswind
-- 出力:
-  モデル: data/models/decision4/model.txt (+ meta.json / feature_importance.csv)
-  予測:   data/proba/decision4/YYYY/MMDD/decision4_proba_{test_start}_{test_end}.csv
-    (列: hd,jcd,rno,lane,racer_id,racer_name,proba_nige,proba_sashi,proba_makuri,proba_makuri_sashi)
-"""
-
 from __future__ import annotations
-import argparse, json, sys, glob
+import argparse
+import re
 from pathlib import Path
-from typing import List, Sequence
+import sys
 
 import polars as pl
-import pandas as pd
-import lightgbm as lgb
 
-# -----------------------------
-# 定数
-# -----------------------------
-VALID_LABELS = ["NIGE", "SASHI", "MAKURI", "MAKURI_SASHI"]  # 学習対象
-LABEL_TO_IDX = {k:i for i,k in enumerate(VALID_LABELS)}
-IDX_TO_LABEL = {i:k for k,i in LABEL_TO_IDX.items()}
+# 4クラスだけ残す
+DEC4 = {
+    "逃げ": "NIGE",
+    "差し": "SASHI",
+    "まくり": "MAKURI",
+    "まくり差し": "MAKURI_SASHI",
+}
 
-ID_COLS = ["hd","jcd","rno","lane","racer_id","racer_name"]
-TARGET = "decision4"
+INTEG_BASENAME = "integrated_pro.csv"
 
-# 特徴に使う候補（存在しない列は自動スキップ）
-PREF_FEATS = [
-    # 展示/スタート周り
-    "tenji_sec","tenji_rank","st_rank",
-    "course_avg_st","course_first_rate","course_3rd_rate",
-    # モーター/ボート
-    "motor_rate2","motor_rate3","boat_rate2","boat_rate3",
-    # 風・波
-    "wind_speed_m","wave_height_cm",
-    # 過去決まり手傾向
-    "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
-    # パワー系
-    "power_lane","power_inner","power_outer","outer_over_inner",
-    # フラグ
-    "dash_attack_flag","is_strong_wind","is_crosswind",
-    # lane は特徴として別名で持つ（重複回避）
-    "lane",
-]
-
-# -----------------------------
-# ユーティリティ
-# -----------------------------
 def log(msg: str): print(msg, flush=True)
-def err(msg: str): print(msg, file=sys.stderr, flush=True)
+def warn(msg: str): print(f"[WARN] {msg}", flush=True)
+def fatal(msg: str):
+    print(f"[FATAL] {msg}", file=sys.stderr, flush=True)
+    sys.exit(1)
 
-def ensure_parent(p: Path) -> Path:
-    p.parent.mkdir(parents=True, exist_ok=True)
-    return p
-
-def _ymd_paths(root: Path, yyyymmdd_from: str, yyyymmdd_to: str) -> list[Path]:
-    def to_ord(y, m, d): return y * 372 + m * 31 + d
-    s_y, s_m, s_d = int(yyyymmdd_from[:4]), int(yyyymmdd_from[4:6]), int(yyyymmdd_from[6:8])
-    e_y, e_m, e_d = int(yyyymmdd_to[:4]),   int(yyyymmdd_to[4:6]),   int(yyyymmdd_to[6:8])
-    s_ord, e_ord = to_ord(s_y, s_m, s_d), to_ord(e_y, e_m, e_d)
-
-    picked: list[Path] = []
-    for ydir in sorted(root.glob("[0-9]" * 4)):
-        if not ydir.is_dir(): continue
-        y = int(ydir.name)
-        for md in sorted(ydir.glob("[0-9]" * 4)):
-            if not md.is_dir(): continue
-            m, d = int(md.name[:2]), int(md.name[2:])
-            od = to_ord(y, m, d)
-            if s_ord <= od <= e_ord:
-                picked.append(md)
-    return picked
-
-def find_decision_csvs(staging_root: str, start: str, end: str) -> list[Path]:
-    root = Path(staging_root)
-    day_dirs = _ymd_paths(root, start, end)
-    files: list[Path] = []
-    for dd in day_dirs:
-        p = dd / "decision4_train.csv"
-        if p.exists():
-            files.append(p)
-        else:
-            # フォールバック: *decision* を含むCSV
-            alt = [Path(x) for x in glob.glob(str(dd / "*decision*.csv"))]
-            for a in alt:
-                if a.exists() and a.suffix.lower() == ".csv":
-                    files.append(a)
-                    break
-    return files
-
-def load_lazy(paths: list[Path]) -> pl.LazyFrame:
-    if not paths:
-        return pl.LazyFrame()  # 空
-    # 複数CSVをスキャン
-    lfs = []
-    for p in paths:
-        lfs.append(pl.scan_csv(str(p), ignore_errors=True))
-    return pl.concat(lfs)
-
-# -----------------------------
-# データ整形
-# -----------------------------
-def build_train_table(lf: pl.LazyFrame) -> tuple[pl.DataFrame, list[str]]:
+def find_integrated_csvs(root: Path) -> list[Path]:
     """
-    - VALID_LABELS のみ残す
-    - ID はそのまま、特徴は lane を lane_feat にリネーム
+    root が日付フォルダでも、年フォルダでも、ルートでもOK。
+    とにかく再帰で integrated_pro.csv を集める。
     """
-    if lf is None or isinstance(lf, pl.LazyFrame) and len(lf.collect_schema().names()) == 0:
-        return pl.DataFrame(), []
+    if root.is_file() and root.name == INTEG_BASENAME:
+        return [root]
+    if root.is_dir():
+        return list(root.rglob(INTEG_BASENAME))
+    return []
 
-    # 必要列を安全に取りに行く
-    all_need = list(set(ID_COLS + [TARGET] + PREF_FEATS))
-    exprs: list[pl.Expr] = []
-    for c in all_need:
-        if c in ID_COLS:
-            exprs.append(pl.col(c).alias(c).cast(pl.Utf8) if c in ("hd","jcd","racer_id","racer_name") else pl.col(c).alias(c))
-        else:
-            # 数値として扱いたい列はFloat/Intに寄せる（存在しなければ null）
-            exprs.append(pl.when(pl.col(c).is_not_null()).then(pl.col(c)).otherwise(None).alias(c))
+def y_md_from_path(p: Path) -> tuple[str, str]:
+    """
+    パス末尾の “…/YYYY/MMDD/integrated_pro.csv” から YYYY, MMDD を安全抽出。
+    失敗したら空文字を返す。
+    """
+    s = str(p).replace("\\", "/")
+    m = re.search(r"/(\d{4})/(\d{4})/integrated_pro\.csv$", s)
+    if not m:
+        return "", ""
+    return m.group(1), m.group(2)
 
-    lf2 = lf.select(exprs)
-
-    # ラベルフィルタ（NIGE/SASHI/MAKURI/MAKURI_SASHI のみ）
-    lf2 = lf2.filter(pl.col(TARGET).is_in(VALID_LABELS))
-
-    # lane を特徴では lane_feat 名に（ID には lane を残す）
-    feat_exprs: list[pl.Expr] = []
-    use_feats: list[str] = []
-    for c in PREF_FEATS:
-        if c == "lane":
-            feat_exprs.append(pl.col("lane").cast(pl.Int64, strict=False).alias("lane_feat"))
-            use_feats.append("lane_feat")
-        else:
-            feat_exprs.append(pl.col(c).cast(pl.Float64, strict=False).alias(c))
-            use_feats.append(c)
-
-    # 出力列（ID + ターゲット + 特徴）
-    out = lf2.select(
-        [pl.col(k) for k in ID_COLS] +
-        [pl.col(TARGET)] +
-        feat_exprs
-    ).collect()
-
-    return out, use_feats
-
-def to_lgb_dataset(df: pl.DataFrame, feat_cols: list[str]) -> tuple[pd.DataFrame, pd.Series]:
-    # pandas へ
-    pdf = df.select(ID_COLS + [TARGET] + feat_cols).to_pandas(use_pyarrow_extension_array=False)
-    # ラベルを idx に
-    y = pdf[TARGET].map(LABEL_TO_IDX).astype(int)
-    X = pdf[feat_cols]
-    return X, y
-
-# -----------------------------
-# 学習
-# -----------------------------
-def train_lgbm_multiclass(X: pd.DataFrame, y: pd.Series, num_class: int = 4) -> lgb.Booster:
-    params = dict(
-        objective="multiclass",
-        num_class=num_class,
-        metric="multi_logloss",
-        learning_rate=0.05,
-        num_leaves=63,
-        max_depth=-1,
-        min_data_in_leaf=50,
-        feature_fraction=0.9,
-        bagging_fraction=0.9,
-        bagging_freq=1,
-        lambda_l2=1.0,
-        num_threads=0,
-        seed=20240301,
-        verbose=-1,
-        force_col_wise=True,
+def read_integrated(path: Path) -> pl.DataFrame:
+    """
+    integrated_pro.csv を読み込む（型は必要最小限だけ上書き）
+    """
+    return pl.read_csv(
+        path,
+        ignore_errors=True,
+        try_parse_dates=False,
+        new_columns=None,
     )
-    dtrain = lgb.Dataset(X, label=y, feature_name=list(X.columns), free_raw_data=True)
-    booster = lgb.train(
-        params,
-        dtrain,
-        num_boost_round=800,
-        valid_sets=[dtrain],
-        valid_names=["train"],
-        callbacks=[lgb.log_evaluation(period=200)],
-    )
-    return booster
 
-# -----------------------------
-# 推論
-# -----------------------------
-def build_test_table(lf: pl.LazyFrame, feat_cols: list[str]) -> pl.DataFrame:
-    if lf is None or isinstance(lf, pl.LazyFrame) and len(lf.collect_schema().names()) == 0:
-        return pl.DataFrame()
+def filter_to_day(df: pl.DataFrame, y: str, md: str) -> pl.DataFrame:
+    """
+    ファイル1本に複数日が混ざっていても hd で日付絞り込み。
+    hd は数値/文字の両対応でフィルタ。
+    """
+    ymd = y + md  # YYYYMMDD
+    if "hd" not in df.columns:
+        return df  # 念の為（無ければスルー）
+    # 文字・数値両対応
+    return df.with_columns(pl.col("hd").cast(pl.Utf8, strict=False)) \
+             .filter(pl.col("hd") == ymd)
 
-    # IDはそのまま、特徴も学習と同名で揃える（lane→lane_feat）
-    exprs: list[pl.Expr] = [pl.col(c).alias(c) for c in ID_COLS if c in lf.collect_schema().names()]
-    for c in feat_cols:
-        if c == "lane_feat":
-            # lane->lane_feat
-            exprs.append(pl.col("lane").cast(pl.Int64, strict=False).alias("lane_feat"))
-        else:
-            exprs.append(pl.when(pl.col(c).is_not_null()).then(pl.col(c)).otherwise(None).cast(pl.Float64, strict=False).alias(c))
+def normalize_decision4(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    決まり手4クラスに正規化。対象外は除外。
+    """
+    if "decision" not in df.columns:
+        return df.head(0)
 
-    return lf.select(exprs).collect()
+    # decision を文字列へ
+    df2 = df.with_columns(pl.col("decision").cast(pl.Utf8, strict=False))
+    # マッピング
+    dec_map = pl.Series("decision", list(DEC4.keys()))
+    cls_map = pl.Series("decision4", list(DEC4.values()))
+    map_df = pl.DataFrame({"decision": dec_map, "decision4": cls_map})
 
-def _predict(booster: lgb.Booster, test_df: pl.DataFrame, feat_cols: list[str]) -> pl.DataFrame:
-    if test_df.height == 0:
-        return pl.DataFrame()
+    df3 = df2.join(map_df, on="decision", how="left")
+    df3 = df3.filter(pl.col("decision4").is_not_null())
 
-    # ID テーブル
-    out = test_df.select([c for c in ID_COLS if c in test_df.columns])
+    return df3
 
-    # lane 重複対策: ID に lane がある前提。lane_id が紛れていたら落とす。
-    if "lane_id" in out.columns and "lane" in out.columns:
-        out = out.drop("lane_id")
+def select_features_for_decision4(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    各レーン行を保持したまま、学習に使いそうな列を抽出。
+    ラベルは race-level（同一レースで同一）だが lane ごとに特徴が異なる想定。
+    """
+    # 必須ID
+    base_cols = ["hd", "jcd", "rno", "lane", "racer_id", "racer_name"]
+    # integrated_proに入っている代表的な特徴
+    cand_feats = [
+        "course_first_rate", "course_3rd_rate", "course_avg_st",
+        "tenji_st", "tenji_sec", "tenji_rank", "st_rank",
+        "motor_rate2", "motor_rate3", "boat_rate2", "boat_rate3",
+        "wind_speed_m", "wave_height_cm",
+        "kimarite_makuri", "kimarite_sashi", "kimarite_makuri_sashi", "kimarite_nuki",
+        "power_lane", "power_inner", "power_outer", "outer_over_inner",
+        "dash_attack_flag", "is_strong_wind", "is_crosswind",
+    ]
 
-    # 特徴→pandas
-    X = test_df.select(feat_cols).to_pandas(use_pyarrow_extension_array=False)
-    proba = booster.predict(X)  # shape (n, 4)
+    keep = [c for c in base_cols if c in df.columns] + ["decision4"]
+    for c in cand_feats:
+        if c in df.columns:
+            keep.append(c)
 
-    out = out.with_columns([
-        pl.lit(proba[:, LABEL_TO_IDX["NIGE"]]).alias("proba_nige"),
-        pl.lit(proba[:, LABEL_TO_IDX["SASHI"]]).alias("proba_sashi"),
-        pl.lit(proba[:, LABEL_TO_IDX["MAKURI"]]).alias("proba_makuri"),
-        pl.lit(proba[:, LABEL_TO_IDX["MAKURI_SASHI"]]).alias("proba_makuri_sashi"),
-    ])
+    # tenji_st(=展示ST秒) が “F0.01→0.0001” などの前処理を既にしている前提の環境もあるので、
+    # ここでは文字列→数値の安全変換（失敗はnull）
+    out = df.select([pl.col(c) for c in keep]).with_columns([
+        pl.col("hd").cast(pl.Utf8, strict=False),
+        pl.col("jcd").cast(pl.Utf8, strict=False),
+        pl.col("rno").cast(pl.Int64, strict=False),
+        pl.col("lane").cast(pl.Int64, strict=False),
+        pl.col("tenji_st").cast(pl.Float64, strict=False) if "tenji_st" in keep else pl.lit(None).alias("_dummy0"),
+        pl.col("tenji_sec").cast(pl.Float64, strict=False) if "tenji_sec" in keep else pl.lit(None).alias("_dummy1"),
+        pl.col("tenji_rank").cast(pl.Int64, strict=False) if "tenji_rank" in keep else pl.lit(None).alias("_dummy2"),
+        pl.col("st_rank").cast(pl.Int64, strict=False) if "st_rank" in keep else pl.lit(None).alias("_dummy3"),
+    ]).drop(["_dummy0","_dummy1","_dummy2","_dummy3"], strict=False)
+
     return out
 
-# -----------------------------
-# メイン
-# -----------------------------
+def write_day(out_root: Path, y: str, md: str, df: pl.DataFrame) -> Path:
+    out_dir = out_root / y / md
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "decision4_train.csv"
+    df.write_csv(out_path)
+    return out_path
+
+def process_one_csv(in_csv: Path, out_root: Path) -> int:
+    y, md = y_md_from_path(in_csv)
+    if not y or not md:
+        warn(f"{in_csv}: year/mmdd の抽出に失敗（スキップ）")
+        return 0
+
+    try:
+        raw = read_integrated(in_csv)
+    except Exception as e:
+        warn(f"{in_csv}: read_csv failed: {e}")
+        return 0
+
+    # 日付で絞る（保険）
+    day = filter_to_day(raw, y, md)
+    if day.height == 0:
+        # ファイル内に他日付しかない/欠損ならスキップ
+        warn(f"{in_csv}: day filter no rows for {y}{md}")
+        return 0
+
+    # 4クラスだけ残す
+    day4 = normalize_decision4(day)
+    if day4.height == 0:
+        # その日の全Rが対象外決まり手（抜き/恵まれ 等）ならスキップ
+        return 0
+
+    # 特徴列ピックアップ
+    out_df = select_features_for_decision4(day4)
+    if out_df.height == 0:
+        return 0
+
+    out_path = write_day(out_root, y, md, out_df)
+    log(f"[WRITE] {out_path} rows={out_df.height}")
+    return out_df.height
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--staging_root", default="data/staging")
-    ap.add_argument("--out_root",     default="data/proba/decision4")
-    ap.add_argument("--model_root",   default="data/models/decision4")
-
-    ap.add_argument("--train_start",  required=True)
-    ap.add_argument("--train_end",    required=True)
-    ap.add_argument("--test_start",   default=None)
-    ap.add_argument("--test_end",     default=None)
-
-    ap.add_argument("--model_out", default=None, help="直指定する場合のみ使用。未指定なら model_root/model.txt")
+    ap.add_argument("--integrated_root", required=True, help="data/shards もしくは日付フォルダ/年フォルダ")
+    ap.add_argument("--results_root", default=None, help="未使用（将来拡張）")
+    ap.add_argument("--out_root", required=True, help="出力先 data/staging")
     args = ap.parse_args()
 
-    # 入力探索
-    train_files = find_decision_csvs(args.staging_root, args.train_start, args.train_end)
-    if not train_files:
-        err(f"[FATAL] train CSV が見つかりません: {args.staging_root} [{args.train_start}..{args.train_end}]")
-        sys.exit(1)
-    log(f"[INFO] train files: {len(train_files)}")
+    integ_root = Path(args.integrated_root)
+    out_root = Path(args.out_root)
 
-    lf_train = load_lazy(train_files)
-    df_train, feat_cols = build_train_table(lf_train)
-    if df_train.height == 0:
-        err("[FATAL] 学習対象データが0件（decision4が NIGE/SASHI/MAKURI/MAKURI_SASHI に該当しない可能性）。")
-        sys.exit(1)
+    files = find_integrated_csvs(integ_root)
+    if not files:
+        fatal(f"integrated_pro.csv が見つかりません: {integ_root}")
 
-    # 学習
-    X_train, y_train = to_lgb_dataset(df_train, feat_cols)
-    log(f"[INFO] train rows: {len(X_train)}, features: {len(feat_cols)} -> {feat_cols}")
-    booster = train_lgbm_multiclass(X_train, y_train, num_class=4)
+    log(f"[INFO] found {len(files)} integrated_pro.csv files")
 
-    # 保存
-    model_path = Path(args.model_out) if args.model_out else Path(args.model_root) / "model.txt"
-    meta_path  = model_path.with_suffix(".meta.json")
-    fi_path    = model_path.with_suffix(".feature_importance.csv")
-    ensure_parent(model_path); ensure_parent(meta_path); ensure_parent(fi_path)
+    total = 0
+    for p in sorted(files):
+        try:
+            total += process_one_csv(p, out_root)
+        except Exception as e:
+            warn(f"{p}: {e}")
 
-    booster.save_model(str(model_path))
-    log(f"[SAVE] model -> {model_path}")
-
-    meta = {
-        "train_range": [args.train_start, args.train_end],
-        "rows": int(len(X_train)),
-        "features": feat_cols,
-        "labels": VALID_LABELS,
-        "params": {
-            "objective": "multiclass",
-            "num_class": 4,
-            "metric": "multi_logloss",
-            "learning_rate": 0.05,
-            "num_leaves": 63,
-            "min_data_in_leaf": 50,
-            "feature_fraction": 0.9,
-            "bagging_fraction": 0.9,
-            "bagging_freq": 1,
-            "lambda_l2": 1.0,
-            "num_boost_round": 800,
-            "seed": 20240301,
-        },
-    }
-    with open(meta_path, "w", encoding="utf-8") as f:
-        json.dump(meta, f, ensure_ascii=False, indent=2)
-    log(f"[SAVE] meta -> {meta_path}")
-
-    # FI
-    import numpy as np
-    fi = pd.DataFrame({
-        "feature": feat_cols,
-        "gain": booster.feature_importance(importance_type="gain"),
-        "split": booster.feature_importance(importance_type="split"),
-    }).sort_values("gain", ascending=False)
-    fi.to_csv(fi_path, index=False)
-    log(f"[SAVE] feature importance -> {fi_path}")
-
-    # 推論（任意）
-    if args.test_start and args.test_end:
-        test_files = find_decision_csvs(args.staging_root, args.test_start, args.test_end)
-        if not test_files:
-            log(f"[WARN] test CSV が見つかりません: {args.staging_root} [{args.test_start}..{args.test_end}]")
-            return
-        log(f"[INFO] test files: {len(test_files)}")
-
-        lf_test = load_lazy(test_files)
-        df_test = build_test_table(lf_test, feat_cols)
-        if df_test.height == 0:
-            log("[WARN] テストデータが空。予測スキップ。")
-            return
-
-        pred = _predict(booster, df_test, feat_cols)
-
-        y = args.test_start[:4]; md = args.test_start[4:8]
-        out_csv = ensure_parent(Path(args.out_root) / y / md / f"decision4_proba_{args.test_start}_{args.test_end}.csv")
-        pred.write_csv(str(out_csv))
-        log(f"[WRITE] {out_csv} rows={pred.height}")
+    if total == 0:
+        warn("出力対象データがありません。")
+    else:
+        log(f"[DONE] total rows = {total}")
 
 if __name__ == "__main__":
     main()
