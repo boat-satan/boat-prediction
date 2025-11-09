@@ -1,34 +1,51 @@
-name: Train & Eval Pipeline (compose→eval, pyarrow fixed)
+name: Train & Eval Pipeline (Slim-10)
 
 on:
   workflow_dispatch:
     inputs:
-      # ---- period ----
-      train_start:  { description: "学習開始 (YYYYMMDD)", required: true,  default: "20240101" }
-      train_end:    { description: "学習終了 (YYYYMMDD)", required: true,  default: "20240130" }
-      test_start:   { description: "検証開始 (YYYYMMDD)", required: true,  default: "20240201" }
-      test_end:     { description: "検証終了 (YYYYMMDD)", required: true,  default: "20240229" }
-      # ---- eval core ----
-      topk:         { description: "TopN",                 required: true,  default: "12" }
-      unit_stake:   { description: "1点あたりのベット額", required: true,  default: "100" }
-      rank_key:     { description: "並べ順 proba|ev",      required: true,  default: "proba" }
-      ev_min:       { description: "EV下限(使う時だけ)",  required: true,  default: "0.0" }
-      ev_drop_if_missing_odds: { description: "オッズ欠損を落とす", required: true, default: "false" }
-      load_odds_always:        { description: "常時オッズ読込",     required: true, default: "true" }
-      # ---- basket filters ----
-      synth_odds_min:    { description: "合成オッズ下限",  required: true, default: "0.0" }
-      min_odds_min:      { description: "TopN最小オッズ下限", required: true, default: "0.0" }
-      ev_basket_min:     { description: "TopN平均EV下限", required: true, default: "0.0" }
-      odds_coverage_min: { description: "TopNでオッズ取得件数下限", required: true, default: "0" }
-      # ---- shape filters (Top18ベース) ----
-      p1win_max:   { description: "1号艇単勝率上限", required: true, default: "1.0" }
-      s18_min:     { description: "Top18確率合計下限", required: true, default: "0.0" }
-      oh_max:      { description: "Top18に占める1頭比率上限", required: true, default: "1.0" }
-      non1_min:    { description: "Top18内の非1頭本数下限", required: true, default: "0" }
-      daily_cap:   { description: "日内上限(0=無制限)", required: true, default: "0" }
+      train_start:
+        description: "学習開始 (YYYYMMDD)"
+        required: true
+        default: "20240101"
+      train_end:
+        description: "学習終了 (YYYYMMDD)"
+        required: true
+        default: "20240131"
+      test_start:
+        description: "検証開始 (YYYYMMDD)"
+        required: true
+        default: "20240201"
+      test_end:
+        description: "検証終了 (YYYYMMDD)"
+        required: true
+        default: "20240229"
+      topk:
+        description: "TopN (例: 12/18)"
+        required: true
+        default: "18"
+      unit_stake:
+        description: "1点あたり金額"
+        required: true
+        default: "100"
+      rank_key:
+        description: "並べ順 (proba|ev)"
+        required: true
+        default: "proba"
+      load_odds_always:
+        description: "常時オッズ読込 (true/false)"
+        required: true
+        default: "true"
+      synth_odds_min:
+        description: "TopN合成オッズ下限 (0で無効)"
+        required: true
+        default: "0"
+      ev_basket_min:
+        description: "TopN平均EV下限 (0で無効)"
+        required: true
+        default: "0"
 
 concurrency:
-  group: pipeline-${{ github.ref }}
+  group: eval-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -36,7 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -45,87 +61,75 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install deps (includes pyarrow)
+      - name: Install deps
         run: |
-          set -e
           python -m pip install --upgrade pip
-          pip install pandas polars lightgbm pyyaml numpy pyarrow
+          pip install polars pandas lightgbm pyyaml pyarrow
 
-      - name: Build pipeline config
+      - name: Build config (from 10 inputs)
         run: |
-          set -e
           mkdir -p data
           cat > data/pipeline.config.yaml <<'YAML'
           paths:
             data_dir: "data"
-            out_dir: "data/eval"
+            out_dir:  "data/eval"
             odds_root: "public/odds/v1"
             results_dir: "public/results"
 
           train:
             start: "${{ inputs.train_start }}"
             end:   "${{ inputs.train_end }}"
-
           test:
             start: "${{ inputs.test_start }}"
             end:   "${{ inputs.test_end }}"
 
-          # 評価パラメータ
-          eval:
-            topk: ${{ inputs.topk }}
-            unit_stake: ${{ inputs.unit_stake }}
-            rank_key: "${{ inputs.rank_key }}"
-            ev_min: ${{ inputs.ev_min }}
-            ev_drop_if_missing_odds: ${{ inputs.ev_drop_if_missing_odds }}
-            load_odds_always: ${{ inputs.load_odds_always }}
-            synth_odds_min: ${{ inputs.synth_odds_min }}
-            min_odds_min: ${{ inputs.min_odds_min }}
-            ev_basket_min: ${{ inputs.ev_basket_min }}
-            odds_coverage_min: ${{ inputs.odds_coverage_min }}
+          # 評価系
+          topk: ${{ inputs.topk }}
+          unit_stake: ${{ inputs.unit_stake }}
+          rank_key: "${{ inputs.rank_key }}"
+          load_odds_always: ${{ inputs.load_odds_always }}
 
+          # 形状フィルタ(Top18) — 必要なら後でこのファイルを編集
           filters:
-            p1win_max: ${{ inputs.p1win_max }}
-            s18_min: ${{ inputs.s18_min }}
-            one_head_ratio_top18_max: ${{ inputs.oh_max }}
-            min_non1_candidates_top18: ${{ inputs.non1_min }}
-            daily_cap: ${{ inputs.daily_cap }}
-          YAML
+            p1win_max: 1.0
+            s18_min: 0.0
+            one_head_ratio_top18_max: 1.0
+            min_non1_candidates_top18: 0
+            daily_cap: 0
 
+          # バスケット(TopN)
+          synth_odds_min: ${{ inputs.synth_odds_min }}
+          min_odds_min: 0.0         # ←固定したいならここを編集
+          ev_basket_min: ${{ inputs.ev_basket_min }}
+          odds_coverage_min: 0      # ←固定
+
+          # 将来: 学習ブロック用の出力モデル置き場
+          model_out: "data/model_lgbm.txt"
+          YAML
           echo "----- data/pipeline.config.yaml -----"
           cat data/pipeline.config.yaml
 
-      - name: Run pipeline (train→predict→eval)
-        env:
-          PYTHONPATH: ${{ github.workspace }}
+      - name: Run pipeline
         run: |
-          set -e
           python scripts/train_eval_pipeline.py --config data/pipeline.config.yaml
 
       - name: Show outputs
         run: |
-          echo "---- data/eval tree ----"
+          echo "---- data/eval ----"
           ls -lahR data/eval || true
 
-      - name: Commit & push outputs
+      - name: Commit & push eval outputs
         if: always()
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if [ -d data/eval ]; then
-            git add -f data/eval
-          fi
-
+          git add -f data/eval || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-
-          git commit -m "pipeline: ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
-
+          git commit -m "pipeline(eval): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
           n=0
           until [ $n -ge 5 ]
           do
@@ -133,8 +137,7 @@ jobs:
               break
             fi
             n=$((n+1))
-            echo "Pull failed. Retry $n/5 after backoff..."
+            echo "Pull failed. Retry $n/5..."
             sleep $((2**n))
           done
-
           git push
