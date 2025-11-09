@@ -1,0 +1,34 @@
+train:
+  start: "20240101"
+  end:   "20240130"
+test:
+  start: "20240201"
+  end:   "20240229"
+
+paths:
+  data_dir: "data"
+  out_dir: "data/eval"
+  odds_root: "public/odds/v1"
+  results_dir: "public/results"
+
+inputs:
+  pred_csv: "data/compose/preds_202402_k120.csv"
+
+eval:
+  topk: 18
+  unit_stake: 100
+  rank_key: "proba"
+  ev_min: 0.0
+  ev_drop_if_missing_odds: false
+  load_odds_always: true
+  synth_odds_min: 0.0
+  min_odds_min: 0.0
+  ev_basket_min: 0.0
+  odds_coverage_min: 0
+
+filters:
+  p1win_max: 1.0
+  s18_min: 0.0
+  one_head_ratio_top18_max: 1.0
+  min_non1_candidates_top18: 0
+  daily_cap: 0
