@@ -4,21 +4,12 @@
 build_staging_from_integrated.py
 - data/shards/YYYY/MMDD/integrated_pro.csv を読み、
   ST学習用のステージングを data/staging/YYYY/MMDD/ に出力する。
-- F(フライング)や明らかな異常STをランク対象から除外し、nulls_last でランク付与。
-- リザルトJSON(public/results/YYYY/MMDD/JCD/{rno}R.json)から当該レースの実STを取得して
-  ST学習ターゲットを作る。
+- F(フライング)や異常STをランク対象から除外（null化）し、null を巨大数に置換して rank することで
+  実質的に「nulls_last」相当の並びを再現。
+- リザルト(public/results/YYYY/MMDD/JCD/{rno}R.json)から実STを取得しターゲット列に付与。
 
 出力（1日ごと）:
-- st_train.csv[.gz]
-  列: hd,jcd,rno,lane,regno,st   （学習に最低限必要十分）
-  付随: tenji_st, tenji_rank, st_rank など一部特徴も一緒に格納（学習側で使うなら参照可能）
-
-使い方例:
-  python scripts/build_staging_from_integrated.py \
-    --shards_root data/shards \
-    --results_root public/results \
-    --out_root data/staging \
-    --out_format csv --csv_compress
+- st_train.csv[.gz] : hd,jcd,rno,lane,regno,st (+ tenji_st, tenji_rank, st_rank 等)
 """
 
 from __future__ import annotations
@@ -56,8 +47,6 @@ def _collect_results_st(results_root: Path, keys: List[Tuple[str, str, int]]) ->
         js = _read_json(rp)
         if not js:
             continue
-        # results[].lane と start[].st の両方があるケースがあるが、
-        # 公式は start[].lane/st の配列で良い
         start = js.get("start") or []
         for ent in start:
             try:
@@ -93,8 +82,7 @@ def process_one_day(integrated_path: Path,
     print(f"[INFO] reading {integrated_path}")
     df6 = pl.read_csv(integrated_path)
 
-    # ---- 型の正規化（比較/結合時の型不一致を回避）----
-    # hd/jcd は文字列、rno/lane は整数、racer_id→regno(int)
+    # ---- 型の正規化 ----
     df6 = df6.with_columns([
         pl.col("hd").cast(pl.Utf8, strict=False),
         pl.col("jcd").cast(pl.Utf8, strict=False),
@@ -106,18 +94,16 @@ def process_one_day(integrated_path: Path,
         pl.col("isF_tenji").cast(pl.Int64, strict=False),
     ])
 
-    # regno 列（学習側の想定に合わせる）
+    # regno 列
     df6 = df6.with_columns([
         pl.col("racer_id").str.strip_chars().cast(pl.Int64, strict=False).alias("regno")
     ])
 
-    # ---- F/異常ST をランク対象から除外し、ランク付け ----
-    # _is_f: Fフラグ（isF_tenji==1）
+    # ---- F/異常ST の除外（ランク対象から）----
     df6 = df6.with_columns([
         pl.when(pl.col("isF_tenji") == 1).then(1).otherwise(0).alias("_is_f")
     ])
-
-    # 展示STのサニタイズ: F or ST<0.03 はランク除外（null）
+    # 0.03 未満はFや異常値扱いとしてランクから除外
     df6 = df6.with_columns([
         pl.when(pl.col("_is_f") == 1).then(None)
          .otherwise(
@@ -125,27 +111,27 @@ def process_one_day(integrated_path: Path,
          ).alias("_st_sanit")
     ])
 
-    # ランク（null は最後に送る）
+    # ---- ランク付け（nulls_last 相当を擬似的に再現）----
+    # null は巨大数へ置換して rank → 実質的に「nullが最後」
+    BIG = 1e9
     df6 = df6.with_columns([
-        pl.col("tenji_sec").rank(method="dense", descending=False, nulls_last=True).alias("tenji_rank"),
-        pl.col("_st_sanit").rank(method="dense", descending=False, nulls_last=True).alias("st_rank"),
+        pl.col("tenji_sec").fill_null(BIG).alias("_tenji_sec_rank_src"),
+        pl.col("_st_sanit").fill_null(BIG).alias("_st_rank_src"),
+    ])
+    df6 = df6.with_columns([
+        pl.col("_tenji_sec_rank_src").rank(method="dense", descending=False).alias("tenji_rank"),
+        pl.col("_st_rank_src").rank(method="dense", descending=False).alias("st_rank"),
     ])
 
-    # ---- リザルトから実STを取得してターゲット列を作る ----
-    # キーの抽出（hd, jcd, rno）ユニーク
+    # ---- リザルトから実STを付与 ----
     keys_df = df6.select(["hd", "jcd", "rno"]).unique()
-    keys: List[Tuple[str, str, int]] = [
-        (r[0], r[1], int(r[2])) for r in keys_df.iter_rows()
-    ]
-    st_map = _collect_results_st(results_root, keys)  # {(hd,jcd2,rno,lane) -> st}
+    keys: List[Tuple[str, str, int]] = [(r[0], r[1], int(r[2])) for r in keys_df.iter_rows()]
+    st_map = _collect_results_st(results_root, keys)
 
-    # jcd を2桁化した列を作って結合キーに使う
     df6 = df6.with_columns([
         pl.col("jcd").map_elements(lambda x: _z2(x), return_dtype=pl.Utf8).alias("jcd2")
     ])
 
-    # 実STを join（キー: hd,jcd2,rno,lane）
-    # 先に dict を DataFrame に
     if st_map:
         st_rows = [{"hd": k[0], "jcd2": k[1], "rno": k[2], "lane": k[3], "st": v} for k, v in st_map.items()]
         st_df = pl.DataFrame(st_rows, schema={"hd": pl.Utf8, "jcd2": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64, "st": pl.Float64})
@@ -153,19 +139,16 @@ def process_one_day(integrated_path: Path,
         st_df = pl.DataFrame({"hd": [], "jcd2": [], "rno": [], "lane": [], "st": []},
                              schema={"hd": pl.Utf8, "jcd2": pl.Utf8, "rno": pl.Int64, "lane": pl.Int64, "st": pl.Float64})
 
-    joined = df6.join(
-        st_df, on=["hd", "jcd2", "rno", "lane"], how="left"
-    )
+    joined = df6.join(st_df, on=["hd", "jcd2", "rno", "lane"], how="left")
 
-    # ---- ST学習用の最小カラムに落としつつ、いくつか便利特徴も同梱 ----
+    # ---- ST学習用の最小カラムに落とす（+参考特徴）----
     st_train = joined.select([
         "hd",
         pl.col("jcd2").alias("jcd"),
         "rno",
         "lane",
         "regno",
-        pl.col("st").alias("st"),               # ターゲット
-        # 参考特徴（学習側で使いたければどうぞ）
+        pl.col("st").alias("st"),
         "tenji_st",
         "tenji_rank",
         "st_rank",
@@ -174,7 +157,7 @@ def process_one_day(integrated_path: Path,
         "course_3rd_rate",
     ])
 
-    # ---- 出力 ----
+    # ---- 出力（YYYY/MMDD）----
     out_day_root.mkdir(parents=True, exist_ok=True)
     if out_format in ("csv", "both"):
         _write_csv(st_train, out_day_root / "st_train.csv", csv_compress)
@@ -200,16 +183,13 @@ def main():
     if not shards_root.exists():
         raise FileNotFoundError(f"[FATAL] shards_root not found: {shards_root}")
 
-    # パターン: data/shards/YYYY/MMDD/integrated_pro.csv を全走査
+    # data/shards/YYYY/MMDD/integrated_pro.csv
     targets: List[Path] = sorted(shards_root.glob("*/????/integrated_pro.csv"))
     print(f"[INFO] found {len(targets)} integrated_pro.csv files")
 
     for ipath in targets:
-        # ipath: .../data/shards/YYYY/MMDD/integrated_pro.csv
-        md = ipath.parent.name  # MMDD
+        md = ipath.parent.name   # MMDD
         year = ipath.parent.parent.name  # YYYY
-
-        # staging/YYYY/MMDD/
         out_day_root = out_root / year / md
         process_one_day(
             integrated_path=ipath,
