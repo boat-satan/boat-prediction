@@ -1,211 +1,372 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-src/boatpred/st_model.py
-
-ST(スタートタイミング)回帰モデルのコア:
-- DataFrame から特徴量/目的変数を抽出
-- LightGBM で学習 (回帰)
-- 予測
-- モデルの保存/読み込み
-
-前提: 1行=1艇（レーン）レベルの行構造
-必須列:
-  - hd:        'YYYYMMDD' (str/int 可)
-  - jcd:       場コード
-  - rno:       レース番号
-  - lane:      1..6
-  - target_st: 実績ST (秒; 例: 0.12). 列名は引数 target_col で指定
-その他は特徴量として利用
-
-使い方（ライブラリとして）:
-    from boatpred.st_model import STRegressor, build_Xy
-
-    # 1) 特徴/目的の抽出
-    X, y, meta, feat_cols = build_Xy(df, target_col="st",
-                                     id_cols=("hd","jcd","rno","lane"),
-                                     drop_cols=("st","some_label_only_cols"))
-
-    # 2) 学習
-    model = STRegressor().fit(X, y, categorical=cat_cols)
-
-    # 3) 推論
-    yhat = model.predict(X_new)
-
-    # 4) 保存/読込
-    model.save("data/models/st_lgbm.txt")
-    model2 = STRegressor.load("data/models/st_lgbm.txt")
-
-依存: lightgbm, pandas, numpy
-"""
+# src/boatpred/st_model.py
 from __future__ import annotations
-from dataclasses import dataclass
-from typing import Iterable, List, Tuple, Optional
-
+from dataclasses import dataclass, asdict
+from typing import List, Tuple, Optional, Dict
+from datetime import datetime
+import json
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
 
 
-# ---------------------- 前処理ユーティリティ ----------------------
-def _as_category_inplace(df: pd.DataFrame, cols: Iterable[str]) -> None:
-    for c in cols:
-        if c in df.columns and (df[c].dtype == "object" or str(df[c].dtype).startswith("category")):
-            df[c] = df[c].astype("category")
+# ========= 時間減衰ユーティリティ =========
+def _to_date(s: str) -> datetime:
+    return datetime.strptime(str(s), "%Y%m%d")
 
 
-def build_Xy(df_entries: pd.DataFrame,
-             target_col: str = "st",
-             id_cols: Iterable[str] = ("hd", "jcd", "rno", "lane"),
-             drop_cols: Iterable[str] = ()) -> Tuple[pd.DataFrame, np.ndarray, pd.DataFrame, List[str]]:
-    """
-    1行=1艇の DataFrame から (X, y, meta, feat_cols) を作る。
-    - meta: id列のみ（hd,jcd,rno,lane）を返す（予測後のマージ用）
-    - feat_cols: 学習に使用した特徴量リスト
-    """
-    df = df_entries.copy()
-
-    # id/meta
-    id_cols = list(id_cols)
-    for c in id_cols:
-        if c not in df.columns:
-            raise KeyError(f"required id column not found: {c}")
-
-    if target_col not in df.columns:
-        raise KeyError(f"target column not found: {target_col}")
-
-    meta = df[id_cols].copy()
-    y = pd.to_numeric(df[target_col], errors="coerce").to_numpy(dtype=float)
-
-    # 使用不可列を落として特徴量抽出
-    banned = set(id_cols) | {target_col} | set(drop_cols)
-    feat_cols = [c for c in df.columns if c not in banned]
-
-    # 欠損や文字列の最低限対応
-    X = df[feat_cols].copy()
-    # object→category（カテゴリ扱い）
-    obj_cols = [c for c in feat_cols if X[c].dtype == "object"]
-    _as_category_inplace(X, obj_cols)
-
-    # すべて数値/カテゴリへ（LightGBMはカテゴリを直接受けられる）
-    return X, y, meta, feat_cols
+def time_decay_weights(hd: pd.Series, ref_end: str, half_life_days: float) -> np.ndarray:
+    """指数減衰 w = 2^(-days/half_life). hdはYYYYMMDD文字列または数値。"""
+    ref = _to_date(ref_end)
+    days = (ref - hd.astype(str).map(_to_date)).dt.days.astype(float)
+    w = np.power(2.0, -days / max(half_life_days, 1e-6))
+    w[w < 1e-12] = 0.0
+    return w.values
 
 
-# ---------------------- モデル本体 ----------------------
+# ========= 設定 =========
 @dataclass
-class STRegressor:
+class STConfig:
+    # 目標値(ST)のクリップ範囲（単位: 秒）
+    st_clip_min: float = -0.20
+    st_clip_max: float = 0.40
+
+    # 時間減衰
+    half_life_racer: float = 240.0     # 選手個人の時系列
+    half_life_course: float = 240.0    # コース平均
+
+    # 直近窓
+    roll_short: int = 5
+    roll_long: int = 20
+
+    # LGBM回帰のハイパラ（軽めのデフォルト）
+    learning_rate: float = 0.05
+    num_leaves: int = 63
+    max_depth: int = -1
+    min_data_in_leaf: int = 50
+    feature_fraction: float = 0.9
+    bagging_fraction: float = 0.9
+    bagging_freq: int = 1
+    lambda_l2: float = 1.0
+    num_boost_round: int = 800
+    seed: int = 20240301
+    num_threads: int = 0
+
+    # メタ保存
+    model_out: str = "data/models/st_lgbm.txt"
+    meta_out: str = "data/models/st_lgbm.meta.json"
+
+
+# ========= 特徴量生成（学習/推論共通で使う） =========
+def _clip_st(x: pd.Series, mn: float, mx: float) -> pd.Series:
+    return x.clip(lower=mn, upper=mx)
+
+
+def _agg_mean_std(x: pd.Series) -> Tuple[float, float]:
+    return float(x.mean()), float(x.std(ddof=0) if len(x) > 1 else 0.0)
+
+
+def _build_historical_tables(
+    hist_df: pd.DataFrame,
+    ref_end: str,
+    cfg: STConfig,
+    hd_col: str = "hd",
+    reg_col: str = "regno",
+    lane_col: str = "lane",
+    st_col: str = "st",
+) -> Dict[str, pd.DataFrame]:
     """
-    LightGBM回帰の薄いラッパ。
+    過去実績から派生テーブルを作成:
+      - 選手×コース（加重平均/分散、直近rolling）
+      - 選手全体
+      - コース平均
     """
-    params: Optional[dict] = None
-    num_boost_round: int = 2000
-    early_stopping_rounds: Optional[int] = 200
-    model: Optional[lgb.Booster] = None
-    feature_names_: Optional[List[str]] = None
-    categorical_: Optional[List[str]] = None
+    df = hist_df[[hd_col, reg_col, lane_col, st_col]].dropna().copy()
+    df[lane_col] = df[lane_col].astype(int)
+    df[st_col] = _clip_st(df[st_col].astype(float), cfg.st_clip_min, cfg.st_clip_max)
 
-    def default_params(self) -> dict:
-        return dict(
-            objective="regression",
-            metric="rmse",
-            learning_rate=0.03,
-            num_leaves=127,
-            max_depth=-1,
-            min_data_in_leaf=80,
-            feature_fraction=0.9,
-            bagging_fraction=0.9,
-            bagging_freq=1,
-            lambda_l2=1.0,
-            verbose=-1,
-            num_threads=0,
-            seed=20240301,
-            force_col_wise=True,
-        )
+    # 重み
+    w_r = time_decay_weights(df[hd_col], ref_end, cfg.half_life_racer)
+    w_c = time_decay_weights(df[hd_col], ref_end, cfg.half_life_course)
+    df["_wr"] = w_r
+    df["_wc"] = w_c
 
-    def fit(self,
-            X: pd.DataFrame,
-            y: np.ndarray,
-            categorical: Optional[Iterable[str]] = None,
-            valid: Optional[Tuple[pd.DataFrame, np.ndarray]] = None) -> "STRegressor":
-        """
-        学習。validが無ければ学習データをそのまま検証に用いる（過学習検知用ログ程度）。
-        """
-        self.feature_names_ = list(X.columns)
-        self.categorical_ = [c for c in (categorical or []) if c in X.columns]
+    # ---- 選手×コース：時間減衰付き 平均/分散 と 直近ローリング ----
+    # 時系列ソート
+    df = df.sort_values([reg_col, lane_col, hd_col]).reset_index(drop=True)
 
-        params = (self.params or self.default_params()).copy()
+    # 加重平均・分散
+    def _w_stats(group: pd.DataFrame) -> pd.Series:
+        w = group["_wr"].values
+        x = group[st_col].values
+        if w.sum() <= 0:
+            mu = float(np.nan)
+            var = float(np.nan)
+        else:
+            mu = float(np.average(x, weights=w))
+            var = float(np.average((x - mu) ** 2, weights=w))
+        # 直近ローリング（重み無しの素の移動平均）
+        x_s = pd.Series(x)
+        r_short = float(x_s.tail(cfg.roll_short).mean()) if len(x_s) >= 1 else np.nan
+        r_long = float(x_s.tail(cfg.roll_long).mean()) if len(x_s) >= 1 else np.nan
+        return pd.Series({
+            "st_rc_mu": mu,
+            "st_rc_var": var,
+            "st_rc_roll_s": r_short,
+            "st_rc_roll_l": r_long,
+            "n_rc": float((group["_wr"] > 0).sum())
+        })
 
-        train_set = lgb.Dataset(
-            X,
-            label=y,
-            categorical_feature=self.categorical_,
-            feature_name=self.feature_names_,
-            free_raw_data=False,
-        )
+    rc_tbl = (
+        df.groupby([reg_col, lane_col], as_index=False)
+          .apply(_w_stats)
+          .reset_index(drop=True)
+    )
 
-        valid_sets = [train_set]
-        valid_names = ["train"]
+    # ---- 選手全体：時間減衰付き ----
+    def _r_stats(group: pd.DataFrame) -> pd.Series:
+        w = group["_wr"].values
+        x = group[st_col].values
+        if w.sum() <= 0:
+            mu = float(np.nan)
+            var = float(np.nan)
+        else:
+            mu = float(np.average(x, weights=w))
+            var = float(np.average((x - mu) ** 2, weights=w))
+        x_s = pd.Series(x)
+        r_short = float(x_s.tail(cfg.roll_short).mean()) if len(x_s) >= 1 else np.nan
+        r_long = float(x_s.tail(cfg.roll_long).mean()) if len(x_s) >= 1 else np.nan
+        return pd.Series({
+            "st_r_mu": mu,
+            "st_r_var": var,
+            "st_r_roll_s": r_short,
+            "st_r_roll_l": r_long,
+            "n_r": float((group["_wr"] > 0).sum())
+        })
 
-        if valid is not None:
-            Xv, yv = valid
-            valid_set = lgb.Dataset(
-                Xv,
-                label=yv,
-                categorical_feature=[c for c in self.categorical_ if c in Xv.columns],
-                feature_name=list(Xv.columns),
-                free_raw_data=False,
-            )
-            valid_sets = [train_set, valid_set]
-            valid_names = ["train", "valid"]
+    r_tbl = (
+        df.groupby(reg_col, as_index=False)
+          .apply(_r_stats)
+          .reset_index(drop=True)
+    )
 
-        self.model = lgb.train(
-            params,
-            train_set,
-            num_boost_round=self.num_boost_round,
-            valid_sets=valid_sets,
-            valid_names=valid_names,
-            callbacks=[lgb.log_evaluation(period=200)]
-                     + ([lgb.early_stopping(self.early_stopping_rounds)] if self.early_stopping_rounds else [])
-        )
-        return self
+    # ---- コース平均：時間減衰付き ----
+    def _c_stats(group: pd.DataFrame) -> pd.Series:
+        w = group["_wc"].values
+        x = group[st_col].values
+        if w.sum() <= 0:
+            mu = float(np.nan)
+            var = float(np.nan)
+        else:
+            mu = float(np.average(x, weights=w))
+            var = float(np.average((x - mu) ** 2, weights=w))
+        return pd.Series({
+            "st_c_mu": mu,
+            "st_c_var": var,
+            "n_c": float((group["_wc"] > 0).sum())
+        })
 
-    def predict(self, X: pd.DataFrame, num_iteration: Optional[int] = None) -> np.ndarray:
-        if self.model is None:
-            raise RuntimeError("Model is not fitted.")
-        return self.model.predict(X, num_iteration=num_iteration or self.model.best_iteration)
+    c_tbl = (
+        df.groupby(lane_col, as_index=False)
+          .apply(_c_stats)
+          .reset_index(drop=True)
+    )
 
-    # --------- 保存/読込 ----------
-    def save(self, path: str) -> None:
-        if self.model is None:
-            raise RuntimeError("Model is not fitted.")
-        self.model.save_model(path)
-
-    @classmethod
-    def load(cls, path: str) -> "STRegressor":
-        booster = lgb.Booster(model_file=path)
-        reg = cls()
-        reg.model = booster
-        # feature名は格納されているが、外部から参照したい場合は Booster.feature_name() を使う
-        reg.feature_names_ = booster.feature_name()
-        return reg
-
-
-# ---------------------- 簡易評価 ----------------------
-def rmse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    y_true = np.asarray(y_true, dtype=float)
-    y_pred = np.asarray(y_pred, dtype=float)
-    return float(np.sqrt(np.mean((y_true - y_pred) ** 2)))
+    return {"rc": rc_tbl, "r": r_tbl, "c": c_tbl}
 
 
-def group_rmse(meta: pd.DataFrame, y_true: np.ndarray, y_pred: np.ndarray,
-               group_cols: Iterable[str] = ("hd", "jcd")) -> pd.DataFrame:
+def build_features_for_training(
+    hist_df: pd.DataFrame,
+    ref_end: str,
+    cfg: STConfig,
+    hd_col: str = "hd",
+    reg_col: str = "regno",
+    lane_col: str = "lane",
+    st_col: str = "st",
+) -> Tuple[pd.DataFrame, List[str]]:
     """
-    日別/場別などで RMSE を集計する補助。
+    学習用に特徴を構築。ターゲット列 'y' を含むDataFrameを返す。
     """
-    df = meta.copy()
-    df["y_true"] = y_true
-    df["y_pred"] = y_pred
-    out = []
-    for keys, g in df.groupby(list(group_cols), as_index=False):
-        out.append({**({c: g.iloc[0][c] for c in group_cols}), "rmse": rmse(g["y_true"], g["y_pred"])})
-    return pd.DataFrame(out)
+    tables = _build_historical_tables(hist_df, ref_end, cfg, hd_col, reg_col, lane_col, st_col)
+
+    df = hist_df[[hd_col, reg_col, lane_col, st_col]].dropna().copy()
+    df[lane_col] = df[lane_col].astype(int)
+    df[st_col] = _clip_st(df[st_col].astype(float), cfg.st_clip_min, cfg.st_clip_max)
+
+    # マージ
+    df = df.merge(tables["rc"], on=[reg_col, lane_col], how="left")
+    df = df.merge(tables["r"],  on=[reg_col],           how="left")
+    df = df.merge(tables["c"],  on=[lane_col],          how="left")
+
+    # 目的変数
+    df["y"] = df[st_col].astype(float)
+
+    # 欠損補完（極端な欠損はコース平均との差/分散で埋める）
+    for col in ["st_rc_mu", "st_rc_var", "st_rc_roll_s", "st_rc_roll_l",
+                "st_r_mu", "st_r_var", "st_r_roll_s", "st_r_roll_l",
+                "st_c_mu", "st_c_var",
+                "n_rc", "n_r", "n_c"]:
+        if col in df.columns:
+            if col.startswith("st_"):
+                df[col] = df[col].fillna(df["st_c_mu"] if "mu" in col else 0.0)
+            else:
+                df[col] = df[col].fillna(0.0)
+
+    # 特徴リスト
+    feat_cols = [
+        "st_rc_mu","st_rc_var","st_rc_roll_s","st_rc_roll_l",
+        "st_r_mu","st_r_var","st_r_roll_s","st_r_roll_l",
+        "st_c_mu","st_c_var",
+        "n_rc","n_r","n_c",
+        # 補助的に lane を数値特徴として入れる
+        lane_col
+    ]
+    return df[[hd_col, reg_col, lane_col, "y"] + feat_cols].copy(), feat_cols
+
+
+# ========= 学習 / 保存 / ロード =========
+def train(
+    hist_df: pd.DataFrame,
+    ref_end: str,
+    cfg: STConfig = STConfig(),
+    hd_col: str = "hd",
+    reg_col: str = "regno",
+    lane_col: str = "lane",
+    st_col: str = "st",
+) -> Tuple[lgb.Booster, List[str]]:
+    """
+    過去実績から特徴を作り LightGBM で ST回帰モデルを学習。
+    """
+    train_df, feat_cols = build_features_for_training(hist_df, ref_end, cfg, hd_col, reg_col, lane_col, st_col)
+
+    X = train_df[feat_cols]
+    y = train_df["y"].values
+
+    ds = lgb.Dataset(X, label=y, feature_name=feat_cols, free_raw_data=True)
+    params = dict(
+        objective="regression",
+        metric="l2",
+        learning_rate=cfg.learning_rate,
+        num_leaves=cfg.num_leaves,
+        max_depth=cfg.max_depth,
+        min_data_in_leaf=cfg.min_data_in_leaf,
+        feature_fraction=cfg.feature_fraction,
+        bagging_fraction=cfg.bagging_fraction,
+        bagging_freq=cfg.bagging_freq,
+        lambda_l2=cfg.lambda_l2,
+        num_threads=cfg.num_threads,
+        seed=cfg.seed,
+        verbose=-1,
+        force_col_wise=True,
+    )
+    booster = lgb.train(
+        params,
+        ds,
+        num_boost_round=cfg.num_boost_round,
+        valid_sets=[ds],
+        valid_names=["train"],
+        callbacks=[lgb.log_evaluation(period=200)],
+    )
+    # 保存
+    PathLike(cfg.model_out).parent.mkdir(parents=True, exist_ok=True)  # type: ignore
+    booster.save_model(cfg.model_out)
+    meta = {"config": asdict(cfg), "feature_names": feat_cols, "ref_end": ref_end}
+    with open(cfg.meta_out, "w", encoding="utf-8") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
+    return booster, feat_cols
+
+
+def load(model_path: str) -> lgb.Booster:
+    return lgb.Booster(model_file=model_path)
+
+
+# ========= 推論（出走表に対して予測） =========
+def build_features_for_racecard(
+    racecard_df: pd.DataFrame,
+    history_df: pd.DataFrame,
+    ref_end: str,
+    cfg: STConfig = STConfig(),
+    hd_col: str = "hd",
+    reg_col: str = "regno",
+    lane_col: str = "lane",
+    st_col: str = "st",
+) -> Tuple[pd.DataFrame, List[str]]:
+    """
+    当日の出走表（racecard_df: hd, jcd, rno, lane, regno）に
+    過去実績（history_df: hd, lane, regno, st）から派生特徴を付与して返す。
+    """
+    tables = _build_historical_tables(history_df, ref_end, cfg, hd_col, reg_col, lane_col, st_col)
+
+    use = racecard_df.copy()
+    use[lane_col] = use[lane_col].astype(int)
+    use[reg_col] = use[reg_col].astype(str)
+
+    use = use.merge(tables["rc"], on=[reg_col, lane_col], how="left")
+    use = use.merge(tables["r"],  on=[reg_col],           how="left")
+    use = use.merge(tables["c"],  on=[lane_col],          how="left")
+
+    for col in ["st_rc_mu","st_rc_var","st_rc_roll_s","st_rc_roll_l",
+                "st_r_mu","st_r_var","st_r_roll_s","st_r_roll_l",
+                "st_c_mu","st_c_var","n_rc","n_r","n_c"]:
+        if col in use.columns:
+            if col.startswith("st_"):
+                use[col] = use[col].fillna(use["st_c_mu"] if "mu" in col else 0.0)
+            else:
+                use[col] = use[col].fillna(0.0)
+
+    feat_cols = [
+        "st_rc_mu","st_rc_var","st_rc_roll_s","st_rc_roll_l",
+        "st_r_mu","st_r_var","st_r_roll_s","st_r_roll_l",
+        "st_c_mu","st_c_var",
+        "n_rc","n_r","n_c",
+        lane_col
+    ]
+    return use, feat_cols
+
+
+def predict(
+    booster: lgb.Booster,
+    racecard_df: pd.DataFrame,
+    history_df: pd.DataFrame,
+    ref_end: str,
+    cfg: STConfig = STConfig(),
+    hd_col: str = "hd",
+    jcd_col: str = "jcd",
+    rno_col: str = "rno",
+    reg_col: str = "regno",
+    lane_col: str = "lane",
+    st_col: str = "st",
+) -> pd.DataFrame:
+    """
+    racecard_df（hd,jcd,rno,lane,regno ...）に対して ST を予測して返す。
+    出力: hd,jcd,rno,lane,regno,st_pred
+    """
+    feat_df, feat_cols = build_features_for_racecard(
+        racecard_df, history_df, ref_end, cfg, hd_col, reg_col, lane_col, st_col
+    )
+    X = feat_df[feat_cols]
+    st_pred = booster.predict(X, num_iteration=booster.best_iteration)
+    out = racecard_df[[hd_col, jcd_col, rno_col, lane_col, reg_col]].copy()
+    out["st_pred"] = st_pred
+    # 物理的にあり得ない極端値を丸める（学習クリップと同じレンジに）
+    out["st_pred"] = out["st_pred"].clip(cfg.st_clip_min, cfg.st_clip_max)
+    return out
+
+
+# ========= ちょい便利 =========
+class PathLike(str):
+    """str を pathlib.Path ライクに parent.mkdir したいだけの小道具"""
+    @property
+    def parent(self):
+        import os, pathlib
+        return pathlib.Path(os.path.dirname(self))
+
+
+# ========= 使い方メモ =========
+# 1) 学習
+#   hist = pd.read_parquet("data/history/results.parquet")  # 必須列: hd, regno, lane, st
+#   booster, feats = train(hist, ref_end="20240229", cfg=STConfig())
+#
+# 2) 推論
+#   race = pd.read_parquet("data/racecards/20240301.parquet")  # 必須列: hd,jcd,rno,regno,lane
+#   pred = predict(booster, race, hist, ref_end="20240229", cfg=STConfig())
+#   # pred: hd,jcd,rno,lane,regno,st_pred
