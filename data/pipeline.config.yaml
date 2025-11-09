@@ -1,7 +1,11 @@
+# data/pipeline.config.yaml  —  全差し替え版（v1）
+# ・まず ST 学習→予測だけを自動実行して data/st_out に出力
+# ・TopN/ROI 評価は pred_csv を渡した時だけ実行（任意）
+
 paths:
   data_dir: "data"
-  out_dir: "data/eval"
-  compose_dir: "data/compose"
+  out_dir: "data/eval"        # 評価の出力先
+  compose_dir: "data/compose" # 120通り合成CSVを置くなら
   odds_root: "public/odds/v1"
   results_dir: "public/results"
 
@@ -13,22 +17,44 @@ test:
   start: "20240201"
   end:   "20240229"
 
-# pred_csv を指定しなければ、↑期間で自動学習→予測して作る
+# ===== 予測入力（任意） =====
+# ↓を指定すると、そのCSV（hd,jcd,rno,combo,proba…）で TopN/ROI 評価だけ回します
+# 指定しない場合は ST だけ走ります（評価はスキップ）
 # inputs:
 #   pred_csv: "data/compose/preds_20240201_20240229_k120.csv"
 
+# ===== ST（スタート）モデル =====
+st:
+  enabled: true
+  shards_root: "data/shards"     # data/shards/**/st_rows.(parquet|csv|csv.gz) を探索
+  out_dir: "data/st_out"         # 出力: st_pred_YYYYMMDD_YYYYMMDD.csv
+  model_out: "data/models/st_lgbm.txt"
+  meta_out:  "data/models/st_lgbm.meta.json"
+  # 下記は src/boatpred/st_model.py の STConfig に従う（必要なら追加）
+  # st_clip_min: -0.20
+  # st_clip_max:  0.40
+  # half_life_racer: 240.0
+  # half_life_course: 240.0
+  # roll_short: 5
+  # roll_long: 20
+  # learning_rate: 0.05
+  # num_leaves: 63
+  # ...
+
+# ===== 評価（TopN/ROI）※ inputs.pred_csv がある時だけ実行 =====
 eval:
   topk: 18
   unit_stake: 100
-  rank_key: "proba"           # 並べをEVにしたいなら "ev"
+  rank_key: "proba"            # 並べ順をEVにするなら "ev"
   ev_min: 0.0
   ev_drop_if_missing_odds: false
-  load_odds_always: true      # 合成オッズやEV使うなら true
-  synth_odds_min: 0.0
-  min_odds_min: 0.0
-  ev_basket_min: 0.0
-  odds_coverage_min: 0
+  load_odds_always: true       # 合成オッズ/EV系を使うなら true
+  synth_odds_min: 0.0          # TopN 合成オッズ下限（0で無効）
+  min_odds_min: 0.0            # TopN 内最小オッズ下限（0で無効）
+  ev_basket_min: 0.0           # TopN 平均EV下限（0で無効）
+  odds_coverage_min: 0         # TopN でオッズ取得できている件数の下限（0で無効）
 
+# レース形状フィルタ（Top18ベース）
 filters:
   p1win_max: 1.0
   s18_min: 0.0
@@ -36,4 +62,5 @@ filters:
   min_non1_candidates_top18: 0
   daily_cap: 0
 
+# 互換用（現段階では未使用）
 model_out: "data/model_lgbm.txt"
