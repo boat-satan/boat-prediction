@@ -1,0 +1,37 @@
+name: Eval Single Metrics
+
+on:
+  workflow_dispatch:
+    inputs:
+      proba_csv:
+        description: "予測CSV（単一ファイル）またはCSVを含むディレクトリ"
+        required: true
+        default: "data/proba/single/2024/0301/proba_20240301_20240331.csv"
+      results_root:
+        description: "results JSONのルート"
+        required: true
+        default: "public/results"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas scikit-learn
+
+      - name: Run eval
+        run: |
+          python scripts/eval_single_metrics.py \
+            --proba_csv "${{ inputs.proba_csv }}" \
+            --results_root "${{ inputs.results_root }}"
