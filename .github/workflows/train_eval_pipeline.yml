@@ -1,0 +1,48 @@
+name: Train Eval Pipeline (Compose120 → Eval)
+
+on:
+  workflow_dispatch:
+    inputs:
+      config_path:
+        description: "設定ファイルパス"
+        required: false
+        default: "data/pipeline.config.yaml"
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy pyyaml lightgbm polars
+
+      - name: Run pipeline
+        run: |
+          python scripts/train_eval_pipeline.py --config "${{ github.event.inputs.config_path }}"
+
+      - name: Show result summary
+        run: |
+          echo "---- 最新 summary ----"
+          ls -lt data/eval/summary_*.json | head -n 3 || true
+          echo
+          tail -n 30 $(ls -t data/eval/summary_*.json | head -n 1) || true
+
+      - name: Commit & Push results
+        if: success()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/eval/*.json data/eval/*.csv || true
+          git commit -m "Add eval results [skip ci]" || echo "No changes to commit"
+          git push
