@@ -1,26 +1,29 @@
+paths:
+  data_dir: "data"
+  out_dir: "data/eval"
+  compose_dir: "data/compose"
+  odds_root: "public/odds/v1"
+  results_dir: "public/results"
+
 train:
   start: "20240101"
   end:   "20240130"
+
 test:
   start: "20240201"
   end:   "20240229"
 
-paths:
-  data_dir: "data"
-  out_dir: "data/eval"
-  odds_root: "public/odds/v1"
-  results_dir: "public/results"
-
-inputs:
-  pred_csv: "data/compose/preds_202402_k120.csv"
+# pred_csv を指定しなければ、↑期間で自動学習→予測して作る
+# inputs:
+#   pred_csv: "data/compose/preds_20240201_20240229_k120.csv"
 
 eval:
   topk: 18
   unit_stake: 100
-  rank_key: "proba"
+  rank_key: "proba"           # 並べをEVにしたいなら "ev"
   ev_min: 0.0
   ev_drop_if_missing_odds: false
-  load_odds_always: true
+  load_odds_always: true      # 合成オッズやEV使うなら true
   synth_odds_min: 0.0
   min_odds_min: 0.0
   ev_basket_min: 0.0
@@ -32,3 +35,5 @@ filters:
   one_head_ratio_top18_max: 1.0
   min_non1_candidates_top18: 0
   daily_cap: 0
+
+model_out: "data/model_lgbm.txt"
