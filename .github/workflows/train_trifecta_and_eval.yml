@@ -73,8 +73,13 @@ jobs:
             "${EXTRA[@]}"
 
       - name: Evaluate trifecta (accuracy & ROI if odds exist)
+        shell: bash
         run: |
-          OUT="data/proba/3t/${{ inputs.pred_start:0:4 }}/${{ inputs.pred_start:4:4 }}/trifecta_proba_${{ inputs.pred_start }}_${{ inputs.pred_end }}.csv"
+          PRED="${{ inputs.pred_start }}"
+          Y="${PRED:0:4}"
+          MD="${PRED:4:4}"
+          OUT="data/proba/3t/${Y}/${MD}/trifecta_proba_${{ inputs.pred_start }}_${{ inputs.pred_end }}.csv"
+          echo "Eval target: $OUT"
           python scripts/eval_trifecta.py \
             --proba_csv "$OUT" \
             --results_root public/results \
@@ -88,7 +93,9 @@ jobs:
           ls -lahR data/proba/3t || true
           echo "---- eval ----"
           ls -lahR data/eval || true
-          test -f data/eval/${{ inputs.pred_start }}_${{ inputs.pred_end }}/summary.json && cat data/eval/${{ inputs.pred_start }}_${{ inputs.pred_end }}/summary.json || true
+          START="${{ inputs.pred_start }}"
+          END="${{ inputs.pred_end }}"
+          cat "data/eval/${START}_${END}/summary.json" 2>/dev/null || true
 
       - name: Commit & push
         if: always()
