@@ -94,8 +94,8 @@ jobs:
 
           # 全レースTopN（フィルタOFF）
           filters:
-            p1win_max: 0.4
-            s18_min: 0.4
+            p1win_max: 0.45
+            s18_min: 0.45
             one_head_ratio_top18_max: 1.0
             min_non1_candidates_top18: 0
             exclude_one_head: false
