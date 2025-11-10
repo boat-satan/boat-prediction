@@ -87,14 +87,14 @@ jobs:
           unit_stake: 100
 
           # 並べ順は proba 固定（EVで買うなら rank_key を ev に変更）
-          rank_key: "ev"
+          rank_key: "proba"
 
           # 合成オッズ/バスケットを使うので常時オッズ読込可
           load_odds_always: ${{ inputs.load_odds_always }}
 
           # 全レースTopN（フィルタOFF）
           filters:
-            p1win_max: 0.5
+            p1win_max: 0.3
             s18_min: 0.3
             one_head_ratio_top18_max: 1.0
             min_non1_candidates_top18: 0
