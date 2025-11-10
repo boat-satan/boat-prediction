@@ -1,156 +1,174 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-place2/3（2着・3着）向け学習スクリプト（ラベル自動付与対応・全差し替え）
+place2/3（2着以内=place2 or 3着以内=place3）系 学習スクリプト（列スキーマ自動整形・全差し替え）
 
-入力: data/integrated/YYYY/MMDD/integrated_train.csv
-      （ラベル列が無ければ public/results の公式結果JSONから付与）
-出力: data/models/place23/model.txt, meta.json, feature_importance.csv
+- 入力: data/integrated/YYYY/MMDD/integrated_train.csv
+  ※日によって列が違っても OK（足りない列は自動で Null 追加 & 型揃え）
+
+- ラベル列の候補（いずれか必須）:
+    - 'label_place23' / 'label_top3' / 'is_place23' / 'is_top3' （1/0 または True/False）
+  ※見つからない場合は FATAL で終了
+
+- 出力:
+  モデル: data/models/place23/model.txt (+ meta.json / feature_importance.csv)
 """
 
 from __future__ import annotations
-import argparse, json, sys, glob, os
+import argparse, json, sys
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Dict, Iterable
 
 import polars as pl
 import pandas as pd
 import lightgbm as lgb
 
-ID_COLS = ["hd","jcd","rno","lane","regno"]
-# 学習に使う候補（存在しなければ自動スキップ）
-PREF_FEATS = [
-    "st_pred_sec","st_rel_sec","st_rank_in_race","dash_advantage","wall_weak_flag",
-    "proba_nige","proba_sashi","proba_makuri","proba_makuri_sashi","proba_win",
-    "wind_speed_m","wave_height_cm","is_strong_wind","is_crosswind",
-    "dash_attack_flag","course_avg_st","course_first_rate","course_3rd_rate",
-    "tenji_st","tenji_sec","tenji_rank","st_rank",
-    "motor_rate2","motor_rate3","boat_rate2","boat_rate3",
-    "power_lane","power_inner","power_outer","outer_over_inner",
-    "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
-]
-LABEL_CANDIDATES = ["label_place23", "label_top3", "is_place23", "is_top3"]
+# =========================
+# 設定
+# =========================
+LABEL_CANDIDATES: List[str] = ["label_place23", "label_top3", "is_place23", "is_top3"]
 
-def log(m: str): print(m, flush=True)
-def err(m: str): print(m, file=sys.stderr, flush=True)
-def ensure_parent(p: Path): p.parent.mkdir(parents=True, exist_ok=True); return p
+# 「この列はこの型で扱いたい」という希望（存在しない列は自動で追加）
+PREFERRED_DTYPES: Dict[str, pl.DataType] = {
+    # IDs / ints
+    "hd": pl.Int64, "jcd": pl.Int64, "rno": pl.Int64, "lane": pl.Int64, "regno": pl.Int64,
+    "racer_id": pl.Int64, "st_rank_in_race": pl.Int64, "st_rank": pl.Int64,
+    "tenji_rank": pl.Int64, "is_crosswind": pl.Int64, "is_strong_wind": pl.Int64,
+    "dash_attack_flag": pl.Int64, "wall_weak_flag": pl.Int64,
+    # strings
+    "decision4": pl.Utf8, "racer_name": pl.Utf8,
+    # floats（代表的なもの）
+    "st_pred_sec": pl.Float64, "st_rel_sec": pl.Float64, "dash_advantage": pl.Float64,
+    "proba_nige": pl.Float64, "proba_sashi": pl.Float64, "proba_makuri": pl.Float64, "proba_makuri_sashi": pl.Float64,
+    "proba_win": pl.Float64,
+    "wind_speed_m": pl.Float64, "wave_height_cm": pl.Float64,
+    "kimarite_sashi": pl.Float64, "kimarite_makuri": pl.Float64, "kimarite_makuri_sashi": pl.Float64, "kimarite_nuki": pl.Float64,
+    "power_lane": pl.Float64, "power_inner": pl.Float64, "power_outer": pl.Float64, "outer_over_inner": pl.Float64,
+    "tenji_st": pl.Float64, "tenji_sec": pl.Float64,
+    "boat_rate2": pl.Float64, "boat_rate3": pl.Float64, "motor_rate2": pl.Float64, "motor_rate3": pl.Float64,
+    "course_avg_st": pl.Float64, "course_first_rate": pl.Float64, "course_3rd_rate": pl.Float64,
+}
 
-def _ymd_paths(root: Path, d1: str, d2: str) -> list[Path]:
-    def ord8(s: str) -> int: return int(s[:4])*372 + int(s[4:6])*31 + int(s[6:8])
-    s_ord, e_ord = ord8(d1), ord8(d2)
-    out = []
-    for ydir in sorted(root.glob("[0-9]"*4)):
+# ============== ユーティリティ ==============
+def log(msg: str): print(msg, flush=True)
+def err(msg: str): print(msg, file=sys.stderr, flush=True)
+
+def ensure_parent(p: Path) -> Path:
+    p.parent.mkdir(parents=True, exist_ok=True)
+    return p
+
+def _ymd_paths(root: Path, yyyymmdd_from: str, yyyymmdd_to: str) -> list[Path]:
+    def to_ord(y, m, d): return y * 372 + m * 31 + d
+    s_y, s_m, s_d = int(yyyymmdd_from[:4]), int(yyyymmdd_from[4:6]), int(yyyymmdd_from[6:8])
+    e_y, e_m, e_d = int(yyyymmdd_to[:4]),   int(yyyymmdd_to[4:6]),   int(yyyymmdd_to[6:8])
+    s_ord, e_ord = to_ord(s_y, s_m, s_d), to_ord(e_y, e_m, e_d)
+
+    picked: list[Path] = []
+    for ydir in sorted(root.glob("[0-9]" * 4)):
         if not ydir.is_dir(): continue
         y = int(ydir.name)
-        for md in sorted(ydir.glob("[0-9]"*4)):
+        for md in sorted(ydir.glob("[0-9]" * 4)):
             if not md.is_dir(): continue
             m, d = int(md.name[:2]), int(md.name[2:])
-            od = y*372 + m*31 + d
+            od = to_ord(y, m, d)
             if s_ord <= od <= e_ord:
-                out.append(md)
-    return out
+                picked.append(md)
+    return picked
 
-def find_integrated_csvs(integrated_root: str, d1: str, d2: str) -> list[Path]:
-    files = []
-    for day in _ymd_paths(Path(integrated_root), d1, d2):
-        p = day / "integrated_train.csv"
-        if p.exists(): files.append(p)
+def find_integrated_csvs(integrated_root: str, start: str, end: str) -> list[Path]:
+    root = Path(integrated_root)
+    day_dirs = _ymd_paths(root, start, end)
+    files: list[Path] = []
+    for dd in day_dirs:
+        p = dd / "integrated_train.csv"
+        if p.exists():
+            files.append(p)
     return files
 
-def load_train(files: list[Path]) -> pl.DataFrame:
-    if not files: return pl.DataFrame()
-    lfs = [pl.scan_csv(str(p), ignore_errors=True) for p in files]
+# ============== スキーマ整形（核） ==============
+def read_header_cols(p: Path) -> List[str]:
+    # 最速のヘッダー取得（データは読まない）
+    try:
+        df0 = pl.read_csv(str(p), n_rows=0)
+        return df0.columns
+    except Exception:
+        # 万一でも空配列返し
+        return []
+
+def columns_union(files: Iterable[Path]) -> List[str]:
+    seen = []
+    seen_set = set()
+    for fp in files:
+        cols = read_header_cols(fp)
+        for c in cols:
+            if c not in seen_set:
+                seen.append(c); seen_set.add(c)
+    # 望む列順：既知の優先列 → 見つかったその他
+    preferred_order = list(PREFERRED_DTYPES.keys())
+    rest = [c for c in seen if c not in preferred_order]
+    return preferred_order + rest
+
+def dtype_for(col: str) -> pl.DataType:
+    # 既知で指定、なければ Float64 を既定（stringは上で指定してる）
+    return PREFERRED_DTYPES.get(col, pl.Float64)
+
+def scan_and_align(fp: Path, all_cols: List[str]) -> pl.LazyFrame:
+    lf = pl.scan_csv(str(fp), ignore_errors=True)
+    # 現在持っている列名
+    schema_names = set(lf.collect_schema().names())
+    exprs: List[pl.Expr] = []
+    for c in all_cols:
+        if c in schema_names:
+            exprs.append(pl.col(c).cast(dtype_for(c), strict=False).alias(c))
+        else:
+            # 欠損列を Null で追加し、型を合わせる
+            exprs.append(pl.lit(None, dtype=dtype_for(c)).alias(c))
+    return lf.select(exprs)
+
+def load_train(files: List[Path]) -> pl.DataFrame:
+    if not files:
+        return pl.DataFrame()
+    # 列の完全和集合を作る
+    all_cols = columns_union(files)
+    lfs = [scan_and_align(fp, all_cols) for fp in files]
+    log(f"[INFO] train files: {len(files)}")
     df = pl.concat(lfs).collect()
     log(f"[INFO] merged rows: {df.height}")
     return df
 
-# ---------- 公式結果JSONからラベル作成 ----------
-def _iter_results_jsons(results_root: Path, d1: str, d2: str) -> list[Path]:
-    # 日付範囲を走査して日付配下の *.json を拾う（ディープに再帰）
-    paths = []
-    for day in _ymd_paths(results_root, d1, d2):
-        # 例: public/results/YYYY/MMDD/**.json
-        paths.extend(day.rglob("*.json"))
-    return paths
-
-def build_labels_from_results(results_root: str, d1: str, d2: str) -> pl.DataFrame:
-    root = Path(results_root)
-    rows = []
-    for p in _iter_results_jsons(root, d1, d2):
-        try:
-            with p.open("r", encoding="utf-8") as f:
-                data = json.load(f)
-            meta = data.get("meta", {})
-            hd = int(meta.get("date") or meta.get("hd"))
-            jcd = int(meta.get("jcd"))
-            rno = int(meta.get("rno"))
-            for item in data.get("results", []):
-                lane = int(item.get("lane"))
-                rank_raw = item.get("rank")
-                # "1" or "F"/"L"/"妨"などあり得るので数字のみ
-                try:
-                    rank = int(rank_raw)
-                except:
-                    continue
-                rows.append((hd,jcd,rno,lane,rank))
-        except Exception:
-            continue
-    if not rows:
-        return pl.DataFrame()
-    return pl.DataFrame(rows, schema=["hd","jcd","rno","lane","rank"])
-
-def attach_labels(df: pl.DataFrame, results_root: str, d1: str, d2: str) -> pl.DataFrame:
-    # すでにラベルがあれば何もしない
+# ============== ラベル抽出 ==============
+def pick_label_column(df: pl.DataFrame) -> str:
     for c in LABEL_CANDIDATES:
         if c in df.columns:
-            return df
+            return c
+    return ""
 
-    log("[INFO] label columns not found; attaching from results json...")
-    lab = build_labels_from_results(results_root, d1, d2)
-    if lab.height == 0:
-        err("[FATAL] 公式結果JSONからラベルを作れませんでした。results_root/配下を確認してください。")
-        sys.exit(1)
+# ============== 特徴量選択 ==============
+ID_COLS = ["hd", "jcd", "rno", "lane", "regno"]
+EXCLUDE_COLS = set(ID_COLS + ["racer_id", "racer_name", "decision4"])  # ID/説明系は除外
 
-    # join
-    df2 = df.join(lab, on=["hd","jcd","rno","lane"], how="left")
-    if "rank" not in df2.columns:
-        err("[FATAL] rank付与に失敗しました（キー不一致）。hd/jcd/rno/lane の型と値を確認してください。")
-        sys.exit(1)
+def select_features(df: pl.DataFrame, label_col: str) -> tuple[pd.DataFrame, pd.Series, list[str]]:
+    cols = df.columns
+    feat_cols: List[str] = []
+    for c in cols:
+        if c in EXCLUDE_COLS or c == label_col:
+            continue
+        # 数値っぽい列を採用
+        dt = df.schema.get(c)
+        if isinstance(dt, pl.datatypes.DataTypeClass):
+            dt = str(dt)
+        if "Int" in str(dt) or "Float" in str(dt):
+            feat_cols.append(c)
 
-    df2 = df2.with_columns([
-        (pl.col("rank").is_in([2,3])).cast(pl.Int8).alias("is_place23"),
-        (pl.col("rank").is_in([1,2,3])).cast(pl.Int8).alias("is_top3"),
-    ])
-    return df2
-
-def pick_features(df: pl.DataFrame) -> Tuple[pl.DataFrame, list[str], str]:
-    # 使える特徴のみ
-    feats = [c for c in PREF_FEATS if c in df.columns]
-    if not feats:
-        err("[FATAL] 有効な特徴量が見つかりません。integrated_train.csv の列を確認してください。")
-        sys.exit(1)
-
-    # ラベル選定（優先順位）
-    label = None
-    for c in ["is_place23","is_top3","label_place23","label_top3"]:
-        if c in df.columns:
-            label = c
-            break
-    if label is None:
-        err(f"[FATAL] ラベル列が見つかりません（候補: {LABEL_CANDIDATES}）")
-        sys.exit(1)
-
-    # ID + label + features
-    keep = [c for c in ID_COLS if c in df.columns] + [label] + feats
-    out = df.select(keep)
-    return out, feats, label
-
-def train_lgb_binary(df: pl.DataFrame, feat_cols: list[str], label: str) -> Tuple[lgb.Booster, list[str], int]:
-    pdf = df.to_pandas(use_pyarrow_extension_array=False)
-    y = pdf[label].astype(int).values
+    # pandas へ
+    pdf = df.select(ID_COLS + feat_cols + [label_col]).to_pandas(use_pyarrow_extension_array=False)
+    y = pdf[label_col].astype(int)  # 1/0 を期待
     X = pdf[feat_cols]
+    return X, y, feat_cols
 
-    ds = lgb.Dataset(X, label=y, feature_name=list(feat_cols), free_raw_data=True)
+# ============== 学習 ==============
+def train_lgbm_classifier(X: pd.DataFrame, y: pd.Series, feat_cols: list[str]) -> lgb.Booster:
+    dtrain = lgb.Dataset(X, label=y, feature_name=list(feat_cols), free_raw_data=True)
     params = dict(
         objective="binary",
         metric="auc",
@@ -168,54 +186,58 @@ def train_lgb_binary(df: pl.DataFrame, feat_cols: list[str], label: str) -> Tupl
         force_col_wise=True,
     )
     booster = lgb.train(
-        params, ds, num_boost_round=600,
-        valid_sets=[ds], valid_names=["train"],
+        params,
+        dtrain,
+        num_boost_round=800,
+        valid_sets=[dtrain],
+        valid_names=["train"],
         callbacks=[lgb.log_evaluation(period=200)],
     )
-    pos = int(y.sum())
-    neg = int(len(y) - pos)
-    return booster, feat_cols, pos
+    return booster
 
+# ============== メイン ==============
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--integrated_root", default="data/integrated")
-    ap.add_argument("--results_root",    default="public/results")
-    ap.add_argument("--train_start",     required=True)
-    ap.add_argument("--train_end",       required=True)
-    ap.add_argument("--model_root",      default="data/models/place23")
+    ap.add_argument("--train_start", required=True)
+    ap.add_argument("--train_end", required=True)
+    ap.add_argument("--model_root", default="data/models/place23")
     args = ap.parse_args()
 
     files = find_integrated_csvs(args.integrated_root, args.train_start, args.train_end)
     if not files:
         err(f"[FATAL] integrated_train.csv が見つかりません: {args.integrated_root} {args.train_start}..{args.train_end}")
         sys.exit(1)
-    log(f"[INFO] train files: {len(files)}")
 
     df = load_train(files)
+    if df.height == 0:
+        err("[FATAL] 結合後の学習データが0件です。")
+        sys.exit(1)
 
-    # ラベル無ければ公式結果から付与
-    df = attach_labels(df, args.results_root, args.train_start, args.train_end)
+    label_col = pick_label_column(df)
+    if not label_col:
+        err(f"[FATAL] ラベル列が見つかりません（候補: {LABEL_CANDIDATES}）")
+        sys.exit(1)
 
-    df2, feat_cols, label = pick_features(df)
-    log(f"[INFO] target: {label}, features: {len(feat_cols)}")
+    X, y, feat_cols = select_features(df, label_col)
+    log(f"[INFO] features: {len(feat_cols)} -> {feat_cols[:12]}{'...' if len(feat_cols)>12 else ''}")
+    log(f"[INFO] train rows: {len(X)} label={label_col}")
 
-    booster, feats, pos = train_lgb_binary(df2, feat_cols, label)
-    log(f"[INFO] positives: {pos}, negatives: {int(df2.height - pos)}")
+    booster = train_lgbm_classifier(X, y, feat_cols)
 
     # 保存
-    model_root = Path(args.model_root)
-    model_path = ensure_parent(model_root / "model.txt")
-    meta_path  = ensure_parent(model_root / "meta.json")
-    fi_path    = ensure_parent(model_root / "feature_importance.csv")
+    model_path = ensure_parent(Path(args.model_root) / "model.txt")
+    meta_path  = ensure_parent(Path(args.model_root) / "meta.json")
+    fi_path    = ensure_parent(Path(args.model_root) / "feature_importance.csv")
 
     booster.save_model(str(model_path))
     log(f"[SAVE] model -> {model_path}")
 
     meta = {
         "train_range": [args.train_start, args.train_end],
-        "rows": int(df2.height),
-        "label": label,
-        "features": feats,
+        "rows": int(len(X)),
+        "label": label_col,
+        "features": feat_cols,
         "params": {
             "objective": "binary",
             "metric": "auc",
@@ -226,18 +248,16 @@ def main():
             "bagging_fraction": 0.9,
             "bagging_freq": 1,
             "lambda_l2": 1.0,
-            "num_boost_round": 600,
+            "num_boost_round": 800,
             "seed": 20240301,
         },
-        "pos_samples": pos,
-        "neg_samples": int(df2.height - pos),
     }
     with meta_path.open("w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     log(f"[SAVE] meta -> {meta_path}")
 
     fi = pd.DataFrame({
-        "feature": feats,
+        "feature": feat_cols,
         "gain": booster.feature_importance(importance_type="gain"),
         "split": booster.feature_importance(importance_type="split"),
     }).sort_values("gain", ascending=False)
