@@ -55,7 +55,7 @@ jobs:
           mkdir -p data/proba/trifecta
           mkdir -p data/eval/trifecta
 
-      # === 1) 2・3着モデルの学習 (integrated + results)
+      # 1) 2・3着モデルの学習
       - name: Train place2-3 model
         run: |
           echo "=== Training place2/3 model ==="
@@ -66,7 +66,7 @@ jobs:
             --train_end   "${{ inputs.train_end }}" \
             --model_root  data/models/place23
 
-      # === 2) 三連単確率の推論 (pred 範囲の integrated/**)
+      # 2) 三連単確率の推論
       - name: Infer trifecta probabilities
         shell: bash
         run: |
@@ -79,14 +79,14 @@ jobs:
 
           echo "=== Inferring trifecta probabilities ==="
           python scripts/infer_trifecta.py \
-            --integrated_root data/integrated \
-            --model_place23  data/models/place23/model.txt \
-            --pred_start     "${{ inputs.pred_start }}" \
-            --pred_end       "${{ inputs.pred_end }}" \
-            --out_root       data/proba/trifecta \
+            --staging_root data/integrated \
+            --pred_start   "${{ inputs.pred_start }}" \
+            --pred_end     "${{ inputs.pred_end }}" \
+            --model_root   data/models/place23 \
+            --out_root     data/proba/trifecta \
             "${EXTRA_P1[@]}"
 
-      # === 3) 三連単検証 (ROI, 的中率, TopNなど)
+      # 3) 検証
       - name: Evaluate trifecta results
         run: |
           echo "=== Evaluating trifecta results ==="
@@ -96,7 +96,6 @@ jobs:
             --pred_end        "${{ inputs.pred_end }}" \
             --report_out_root data/eval/trifecta
 
-      # === 4) 出力確認
       - name: Show outputs
         run: |
           echo "---- models ----"
@@ -108,7 +107,6 @@ jobs:
           echo "---- eval preview ----"
           find data/eval/trifecta -type f -maxdepth 3 -name "*.json" -print -exec sed -n '1,120p' {} \; || true
 
-      # === 5) Commit & push results
       - name: Commit & push outputs
         if: always()
         shell: bash
@@ -131,7 +129,7 @@ jobs:
             if git push; then
               exit 0
             fi
-            echo "Push failed. Retry $((n+1))/5..."
+            echo "Push failed. Retry $((n+1))/5)..."
             sleep $((2**n))
           done
           git push
