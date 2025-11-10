@@ -1,4 +1,4 @@
-name: Train Decision4 (NIGE/SASHI/MAKURI/MS)
+name: Train Decision4 Model
 
 on:
   workflow_dispatch:
@@ -10,15 +10,15 @@ on:
       train_end:
         description: "学習終了 (YYYYMMDD)"
         required: true
-        default: "20240131"
+        default: "20240229"
       test_start:
-        description: "テスト開始 (YYYYMMDD) - 任意"
-        required: false
-        default: ""
+        description: "テスト開始 (YYYYMMDD)"
+        required: true
+        default: "20240301"
       test_end:
-        description: "テスト終了 (YYYYMMDD) - 任意"
-        required: false
-        default: ""
+        description: "テスト終了 (YYYYMMDD)"
+        required: true
+        default: "20240331"
 
 concurrency:
   group: train-decision4-${{ github.ref }}
@@ -29,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -49,26 +48,16 @@ jobs:
           mkdir -p data/proba/decision4
           mkdir -p data/models/decision4
 
-      - name: Train Decision4 (with optional test)
-        shell: bash
+      - name: Train & Predict decision4
         run: |
-          set -euo pipefail
-
-          ARGS=(
-            --staging_root data/staging
-            --out_root     data/proba/decision4
-            --model_root   data/models/decision4
-            --train_start  "${{ inputs.train_start }}"
-            --train_end    "${{ inputs.train_end }}"
-          )
-
-          # 任意のテスト期間
-          if [[ -n "${{ inputs.test_start }}" && -n "${{ inputs.test_end }}" ]]; then
-            ARGS+=( --test_start "${{ inputs.test_start }}" --test_end "${{ inputs.test_end }}" )
-          fi
-
-          echo "[run] python scripts/train_decision4.py ${ARGS[*]}"
-          python scripts/train_decision4.py "${ARGS[@]}"
+          python scripts/train_decision4.py \
+            --staging_root data/staging \
+            --out_root data/proba/decision4 \
+            --model_root data/models/decision4 \
+            --train_start "${{ inputs.train_start }}" \
+            --train_end   "${{ inputs.train_end }}" \
+            --test_start  "${{ inputs.test_start }}" \
+            --test_end    "${{ inputs.test_end }}"
 
       - name: Show outputs
         run: |
@@ -77,17 +66,10 @@ jobs:
           echo "---- data/proba/decision4 ----"
           ls -lahR data/proba/decision4 || true
 
-      - name: Commit & push outputs (skip on detached HEAD)
+      - name: Commit & push outputs
         if: always()
-        shell: bash
         run: |
           set -euo pipefail
-          BRANCH="$(git rev-parse --abbrev-ref HEAD || echo HEAD)"
-          if [[ "$BRANCH" == "HEAD" ]]; then
-            echo "Detached HEAD: skipping git push to avoid 'HEAD:<branch>' error."
-            exit 0
-          fi
-
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f data/models/decision4 data/proba/decision4 || true
@@ -96,8 +78,6 @@ jobs:
             exit 0
           fi
           git commit -m "decision4: ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
-
-          # 軽いリトライ付き push
           for n in 0 1 2 3 4; do
             git pull --rebase && break || true
             echo "Pull failed. Retry $((n+1))/5..."
