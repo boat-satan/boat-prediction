@@ -94,12 +94,12 @@ jobs:
 
           # 全レースTopN（フィルタOFF）
           filters:
-            p1win_max: 0.4
+            p1win_max: 0.3
             s18_min: 0.0
             one_head_ratio_top18_max: 1.0
             min_non1_candidates_top18: 0
             exclude_one_head: false
-            drop_one_after_rank: true
+            drop_one_after_rank: false
             daily_cap: 0
 
           # 合成オッズ/EVバスケット閾値（スクリプト側で使用）
