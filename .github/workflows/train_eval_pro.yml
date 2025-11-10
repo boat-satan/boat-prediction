@@ -34,7 +34,7 @@ on:
       min_odds_min:
         description: "TopN内の最小オッズの下限（例: 8）"
         required: true
-        default: "8"
+        default: "0"
       ev_basket_min:
         description: "TopN平均EVの下限（例: 1.0）"
         required: true
@@ -95,7 +95,7 @@ jobs:
           # 全レースTopN（フィルタOFF）
           filters:
             p1win_max: 0.3
-            s18_min: 0.0
+            s18_min: 0.3
             one_head_ratio_top18_max: 1.0
             min_non1_candidates_top18: 0
             exclude_one_head: false
