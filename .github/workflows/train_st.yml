@@ -1,4 +1,4 @@
-name: Train ST (Start Time) Model
+name: Train & Predict ST (Start Time) Model
 
 on:
   workflow_dispatch:
@@ -11,6 +11,14 @@ on:
         description: "学習終了 (YYYYMMDD)"
         required: true
         default: "20240131"
+      test_start:
+        description: "推論開始 (YYYYMMDD)"
+        required: false
+        default: "20240201"
+      test_end:
+        description: "推論終了 (YYYYMMDD)"
+        required: false
+        default: "20240205"
       keep_penalized:
         description: "裁決あり(F/遅れなど)も学習に含める？ (true/false)"
         required: true
@@ -25,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -42,8 +51,9 @@ jobs:
         run: |
           mkdir -p data/staging
           mkdir -p data/models
+          mkdir -p data/proba/st
 
-      - name: Train ST model
+      - name: Train & Predict ST model
         shell: bash
         run: |
           set -euo pipefail
@@ -56,6 +66,8 @@ jobs:
             --staging_root data/staging \
             --train_start "${{ inputs.train_start }}" \
             --train_end   "${{ inputs.train_end }}" \
+            --test_start  "${{ inputs.test_start }}" \
+            --test_end    "${{ inputs.test_end }}" \
             --model_out   data/models/st_lgbm.txt \
             --meta_out    data/models/st_lgbm.meta.json \
             --fi_out      data/models/st_lgbm.feature_importance.csv \
@@ -69,6 +81,11 @@ jobs:
           sed -n '1,120p' data/models/st_lgbm.meta.json || true
           echo "---- feature importance (top 20) ----"
           (head -n 1 data/models/st_lgbm.feature_importance.csv && tail -n +2 data/models/st_lgbm.feature_importance.csv | sort -t, -k2,2nr | head -n 20) || true
+          echo "---- prediction preview ----"
+          find data/proba/st -type f -name "*.csv" | head -n 5 | while read f; do
+            echo "--- $f ---"
+            head -n 10 "$f"
+          done
 
       - name: Commit & push outputs
         if: always()
@@ -77,13 +94,12 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/models || true
+          git add -f data/models data/proba/st || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "st(train): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
-          # 軽いリトライ付きでpush
+          git commit -m "st(train+predict): ${GITHUB_WORKFLOW} ${GITHUB_RUN_NUMBER} [skip ci]"
           for n in 0 1 2 3 4; do
             git pull --rebase || true
             if git push; then
@@ -92,5 +108,4 @@ jobs:
             echo "Push failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
-          # 最後にもう一度だけ
           git push
