@@ -98,15 +98,21 @@ def train_lgbm_bin(X: pd.DataFrame, y: pd.Series, seed=20240301) -> lgb.Booster:
 
 def main():
     ap = argparse.ArgumentParser()
+    # 正式引数
     ap.add_argument("--integrated_root", default="data/integrated")
+    # 後方互換: 古いワークフローが --staging_root を渡しても受理
+    ap.add_argument("--staging_root", default=None, help="(compat) ignored if --integrated_root is set")
     ap.add_argument("--train_start", required=True)
     ap.add_argument("--train_end", required=True)
     ap.add_argument("--model_root", default="data/models/trifecta")
-    args = ap.parse_args()
+    args, unknown = ap.parse_known_args()
 
-    files = find_csvs(args.integrated_root, args.train_start, args.train_end, "integrated_train.csv")
+    # 互換マッピング
+    integrated_root = args.integrated_root or args.staging_root or "data/integrated"
+
+    files = find_csvs(integrated_root, args.train_start, args.train_end, "integrated_train.csv")
     if not files:
-        err(f"[FATAL] integrated_train.csv が見つかりません: {args.integrated_root} {args.train_start}..{args.train_end}")
+        err(f"[FATAL] integrated_train.csv が見つかりません: {integrated_root} {args.train_start}..{args.train_end}")
         sys.exit(1)
     log(f"[INFO] train files: {len(files)}")
     df = load_train(files)
