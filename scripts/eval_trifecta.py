@@ -1,184 +1,279 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+三連単 予測CSV を、public/results の実着順/配当で評価するスクリプト（安定版）
+
+- 入力:
+    --proba_csv:  infer_trifecta.py の出力 (例: data/proba/trifecta/2024/0301/trifecta_proba_20240301_20240331.csv)
+    --results_root: public/results ルート（省略可・デフォルト public/results）
+    --odds_root:    public/odds    ルート（未使用だが将来拡張のため残置）
+
+- 出力:
+    data/eval/trifecta/{YYYY}/{MMDD}/eval_{start}_{end}.json にメトリクスを保存
+      例のメトリクス: hit率 (top1/6/12/18), ROI (100円/点), 的中数, 投資/回収/レース数 等
+
+- 前提:
+    results JSON 例: public/results/2024/0319/01/12R.json
+      - meta.date = "YYYYMMDD"
+      - meta.jcd  = "01" (ゼロ埋め2)
+      - meta.rno  = 12
+      - payouts.trifecta.combo = "1-5-4"  があればそれを使用。無ければ results[].rank == "1","2","3" で生成
+      - payouts.trifecta.amount = 990  (100円基準払戻)
+"""
+
 from __future__ import annotations
-import argparse, json, sys, glob
+import argparse, json, re, sys
 from pathlib import Path
-from typing import Dict, Any, Tuple, List
+from typing import Dict, Tuple, List, Optional
 
 import polars as pl
-import numpy as np
 
-RACE_KEY = ["hd","jcd","rno"]
+# -----------------------------
+# ユーティリティ
+# -----------------------------
+def log(msg: str) -> None:
+    print(msg, flush=True)
 
-def log(*a): print(*a, flush=True)
-def err(*a): print(*a, file=sys.stderr, flush=True)
-def ensure_parent(p: Path): p.parent.mkdir(parents=True, exist_ok=True)
+def ensure_parent(p: Path) -> Path:
+    p.parent.mkdir(parents=True, exist_ok=True)
+    return p
 
-def load_proba(csv_path: Path) -> pl.DataFrame:
-    df = pl.read_csv(str(csv_path))
-    # 型
-    for c in ("hd","jcd"):
-        if c in df.columns: df = df.with_columns(pl.col(c).cast(pl.Utf8))
-    for c in ("rno","a_lane","b_lane","c_lane"):
-        if c in df.columns: df = df.with_columns(pl.col(c).cast(pl.Int64))
-    return df
-
-def _collect_results_json(results_root: Path, start: str, end: str) -> Dict[Tuple[str,str,int], Tuple[int,int,int]]:
+def parse_range_from_filename(p: Path) -> Tuple[str, str]:
     """
-    public/results/**/**/*.json を走査し、(hd,jcd,rno) -> (a_lane,b_lane,c_lane) を返す。
-    JSON 仕様:
-      {
-        "results":[ {"rank":"1","lane":"1",...}, {"rank":"2","lane":"3",...}, {"rank":"3","lane":"4",...}, ... ]
-      }
+    probaファイル名の末尾から YYYYMMDD_YYYYMMDD を抽出
+    例: trifecta_proba_20240301_20240331.csv
     """
-    out: Dict[Tuple[str,str,int], Tuple[int,int,int]] = {}
-    globs = [
-        str(results_root/"**"/"*.json"),
-        str(results_root/"**"|"*/*.json")  # best-effort
-    ]
-    files = []
-    for g in globs:
-        files.extend(glob.glob(g, recursive=True))
-    for fp in files:
+    m = re.search(r'(\d{8})_(\d{8})\.csv$', p.name)
+    if not m:
+        # フォールバック（エラーにはしない）
+        return ("00000000", "99999999")
+    return m.group(1), m.group(2)
+
+def in_range(date8: str, start: str, end: str) -> bool:
+    return start <= date8 <= end
+
+def _safe_int(s, default=None) -> Optional[int]:
+    try:
+        return int(s)
+    except Exception:
+        return default
+
+def _norm_two(s: str) -> str:
+    return str(s).zfill(2)
+
+# -----------------------------
+# 正解(的中)読み込み
+# -----------------------------
+def collect_truth(results_root: Path, start: str, end: str) -> Dict[Tuple[str, str, int], Dict]:
+    """
+    public/results/** から該当期間の正解情報を取得
+    key: (hd, jcd, rno)  ※ hdは8桁文字列、jcdはゼロ埋め2、rnoはint
+    value: {"combo": "1-5-4", "payout": 990}
+    """
+    truth: Dict[Tuple[str, str, int], Dict] = {}
+    if not results_root.exists():
+        log(f"[WARN] results_root not found: {results_root}")
+        return truth
+
+    # 再帰で *.json を舐める
+    for jf in results_root.rglob("*.json"):
         try:
-            import json as _json
-            with open(fp,"r",encoding="utf-8") as f:
-                data = _json.load(f)
-            # hd/jcd/rno をファイル名や中身から推測
-            # まず中身に meta があれば優先
-            if "meta" in data and all(k in data["meta"] for k in ("date","jcd","rno")):
-                hd = str(data["meta"]["date"])
-                jcd = str(data["meta"]["jcd"]).zfill(2)
-                rno = int(data["meta"]["rno"])
-            else:
-                # ファイルパスから抽出（YYYYMMDD を含むとして雑に）
-                import re
-                m = re.search(r"(\d{8}).*[/\\](\d{2}).*[/\\](\d{1,2})", fp)
-                if not m: 
-                    continue
-                hd, jcd, rno = m.group(1), m.group(2), int(m.group(3))
-            if not (start <= hd <= end): 
+            data = json.loads(jf.read_text(encoding="utf-8"))
+            meta = data.get("meta", {})
+            hd = str(meta.get("date") or "")
+            jcd = _norm_two(meta.get("jcd") or "")
+            rno = _safe_int(meta.get("rno"), None)
+
+            if not hd or jcd == "00" or rno is None:
                 continue
-            lanes = {}
-            for r in data.get("results", []):
-                rk = int(str(r.get("rank","0")).replace("着","")) if r.get("rank") else None
-                ln = int(r.get("lane")) if r.get("lane") else None
-                if rk in (1,2,3) and ln:
-                    lanes[rk] = ln
-            if len(lanes)==3:
-                out[(hd,jcd,rno)] = (lanes[1],lanes[2],lanes[3])
+            if not in_range(hd, start, end):
+                continue
+
+            # trifecta combo/payout を優先
+            combo = None
+            payout = None
+            payouts = data.get("payouts", {})
+            trifecta = payouts.get("trifecta")
+            if isinstance(trifecta, dict):
+                combo = trifecta.get("combo") or trifecta.get("comb")
+                payout = trifecta.get("amount")
+
+            # ない場合は results[].rank から生成
+            if not combo:
+                ranks = data.get("results", [])
+                top = [r for r in ranks if r.get("rank") in ("1", "2", "3")]
+                if len(top) >= 3:
+                    # rank=1,2,3 の lane を順に
+                    byrank = sorted(top, key=lambda x: int(x["rank"]))
+                    lanes = [str(b.get("lane")) for b in byrank[:3]]
+                    if all(lanes):
+                        combo = "-".join(lanes)
+                # payout は不明のまま
+
+            if not combo:
+                # 正解として扱えないのでスキップ
+                continue
+
+            truth[(hd, jcd, int(rno))] = {
+                "combo": combo,
+                "payout": payout,  # None の場合あり
+            }
         except Exception:
+            # 1ファイル壊れていても全体は続行
             continue
-    return out
 
-def topk_hit_rate(sorted_df: pl.DataFrame, truth_map: Dict[Tuple[str,str,int], Tuple[int,int,int]], K: int) -> Tuple[int,int]:
-    hits, total = 0, 0
-    for (hd,jcd,rno), g in sorted_df.groupby(RACE_KEY, maintain_order=True):
-        key = (hd,jcd,int(rno))
-        if key not in truth_map: 
-            continue
-        a,b,c = truth_map[key]
-        total += 1
-        topk = g.head(K)
-        ok = ((topk["a_lane"]==a) & (topk["b_lane"]==b) & (topk["c_lane"]==c)).any()
-        if bool(ok): hits += 1
-    return hits, total
+    return truth
 
-def roi_from_odds(sorted_df: pl.DataFrame, truth_map: Dict[Tuple[str,str,int], Tuple[int,int,int]], odds_root: Path, K: int=12) -> Tuple[float,int,int]:
+# -----------------------------
+# 評価ロジック
+# -----------------------------
+def evaluate_trifecta(
+    proba_csv: Path,
+    truth: Dict[Tuple[str, str, int], Dict],
+    top_ks: List[int] = [1, 6, 12, 18],
+    unit_stake: int = 100,
+) -> Dict:
     """
-    optional: public/odds/v1/YYYY/MMDD/jcd/{rno}R.json 形式などをできる範囲で拾う（存在すれば）
-    期待: json["trifecta"]["odds"]["a-b-c"] = 金額（100円あたりの払戻）
+    予測CSV（1行が ある三連単組の確率）を読み込み、
+    レース毎に proba 降順で Top-N を投票したと見なして評価。
+    期待列:
+        hd (str/int), jcd (str/int), rno (int), combo (str), proba (float)
+    ※ combo列名は "combo" or "comb" を検出して自動利用
     """
-    import json as _json, glob as _glob, re
-    bet = 0; ret = 0; races = 0
-    # ざっくり，各レースのTopKを均等100円
-    for (hd,jcd,rno), g in sorted_df.groupby(RACE_KEY, maintain_order=True):
-        key = (hd,jcd,int(rno))
-        if key not in truth_map: 
-            continue
-        a,b,c = truth_map[key]
-        # oddsファイル探索
-        y,md = hd[:4], hd[4:]
-        patterns = [
-            str(odds_root/y/md/jcd/f"{rno}R.json"),
-            str(odds_root/y/md/jcd/f"{rno}.json"),
-            str(odds_root/"**"/y/md/jcd/f"{rno}R.json"),
-        ]
-        target = None
-        for p in patterns:
-            got = _glob.glob(p, recursive=True)
-            if got:
-                target = got[0]; break
-        if not target: 
-            continue
-        try:
-            with open(target,"r",encoding="utf-8") as f:
-                js = _json.load(f)
-        except Exception:
-            continue
-        # 本命TopK
-        topk = g.head(K).to_dict(as_series=False)
-        cnt = len(topk["a_lane"])
-        if cnt==0: 
-            continue
-        bet += 100*cnt
-        races += 1
-        # 的中がTopKにあるか
-        for i in range(cnt):
-            aa,bb,cc = int(topk["a_lane"][i]), int(topk["b_lane"][i]), int(topk["c_lane"][i])
-            key_combo = f"{aa}-{bb}-{cc}"
-            # JSON 仕様に合わせて適宜調整（例: js["trifecta"]["odds"][key]）
-            try:
-                odds = None
-                if "trifecta" in js and "odds" in js["trifecta"]:
-                    odds = js["trifecta"]["odds"].get(key_combo)
-                if odds:
-                    if (aa,bb,cc)==(a,b,c):
-                        ret += int(odds)
-            except Exception:
-                pass
-    roi = (ret / bet) if bet>0 else 0.0
-    return roi, ret, bet
+    if not proba_csv.exists():
+        raise FileNotFoundError(f"proba_csv not found: {proba_csv}")
 
+    # CSVロード（大きくてもPolarsでOK）
+    df = pl.read_csv(proba_csv, infer_schema_length=10000)
+
+    # 列名の正規化
+    cols = {c.lower(): c for c in df.columns}
+    # 必須: hd, jcd, rno, combo/comb, proba
+    need_num = ["hd", "jcd", "rno", "proba"]
+    for k in need_num:
+        if k not in cols:
+            raise ValueError(f"[FATAL] required column '{k}' not found in {proba_csv.name}")
+    combo_col = cols.get("combo") or cols.get("comb")
+    if not combo_col:
+        raise ValueError(f"[FATAL] required column 'combo' (or 'comb') not found in {proba_csv.name}")
+
+    # 型整形
+    df = df.with_columns([
+        pl.col(cols["hd"]).cast(pl.Utf8).alias("hd"),
+        pl.col(cols["jcd"]).cast(pl.Utf8).alias("jcd"),
+        pl.col(cols["rno"]).cast(pl.Int64).alias("rno"),
+        pl.col(combo_col).cast(pl.Utf8).alias("combo"),
+        pl.col(cols["proba"]).cast(pl.Float64).alias("proba"),
+    ]).select(["hd", "jcd", "rno", "combo", "proba"])
+
+    # レース単位にランキング
+    grouped = df.sort(["hd", "jcd", "rno", "proba"], descending=[False, False, False, True]).group_by(["hd", "jcd", "rno"])
+
+    # 集計器の入れ物
+    stats = {
+        "topk": {},
+        "races_total": 0,
+        "races_scored": 0,
+        "unit_stake": unit_stake,
+    }
+    for k in top_ks:
+        stats["topk"][str(k)] = {
+            "hits": 0,
+            "races": 0,
+            "invest": 0,   # 円
+            "return": 0,   # 円
+            "hit_rate": 0.0,
+            "roi": 0.0,
+        }
+
+    # レースごとに評価
+    races = grouped.agg(
+        pl.col("combo").alias("combos"),
+        pl.col("proba").alias("probas"),
+    ).iter_rows(named=True)
+
+    for row in races:
+        hd, jcd, rno = row["hd"], _norm_two(row["jcd"]), int(row["rno"])
+        combos: List[str] = list(row["combos"])
+        # probas = row["probas"]  # 今は未使用
+
+        # 正解がなければスキップ
+        key = (hd, jcd, rno)
+        if key not in truth:
+            continue
+
+        stats["races_total"] += 1
+
+        gt_combo = truth[key]["combo"]
+        payout = truth[key].get("payout")  # None 可
+
+        # Top-N それぞれで評価
+        for k in top_ks:
+            topN = combos[:k]
+            s = stats["topk"][str(k)]
+            s["races"] += 1
+
+            # 投資：100円/点 × N点
+            invest = unit_stake * len(topN)
+            s["invest"] += invest
+
+            if gt_combo in topN:
+                s["hits"] += 1
+                # 払戻設定：payout が None なら 0（ROIは的中率評価中心）
+                if payout is not None:
+                    s["return"] += int(payout) * (unit_stake // 100)
+
+        stats["races_scored"] += 1
+
+    # 尤度計算
+    for k in top_ks:
+        s = stats["topk"][str(k)]
+        if s["races"] > 0:
+            s["hit_rate"] = s["hits"] / s["races"]
+        if s["invest"] > 0:
+            s["roi"] = s["return"] / s["invest"]
+
+    return stats
+
+# -----------------------------
+# メイン
+# -----------------------------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--proba_csv", required=True, help="infer_trifecta.py の出力CSV")
+    ap.add_argument("--proba_csv", required=True, help="三連単予測CSV（infer_trifecta.py の出力）")
     ap.add_argument("--results_root", default="public/results")
-    ap.add_argument("--odds_root", default="public/odds/v1", help="任意。存在すればROI算出")
+    ap.add_argument("--odds_root", default="public/odds")  # いまは未使用
+    ap.add_argument("--report_out_root", default="data/eval/trifecta")
+    ap.add_argument("--topks", default="1,6,12,18", help="評価するTop-N（カンマ区切り）")
+    ap.add_argument("--unit_stake", type=int, default=100)
     args = ap.parse_args()
 
-    proba = load_proba(Path(args.proba_csv))
-    # 時間範囲をCSV名から推測
-    import re, os
-    m = re.search(r"trifecta_proba_(\d{8})_(\d{8})\.csv$", os.path.basename(args.proba_csv))
-    start, end = (m.group(1), m.group(2)) if m else ("00000000","99999999")
+    proba_csv = Path(args.proba_csv)
+    start, end = parse_range_from_filename(proba_csv)
+    log(f"[INFO] Using proba_csv: {proba_csv}")
+    log(f"[INFO] Date range inferred: {start}..{end}")
 
-    truth = _collect_results_json(Path(args.results_root), start, end)
+    # 正解集計
+    truth = collect_truth(Path(args.results_root), start, end)
     if not truth:
-        err("[WARN] 結果JSONが見つからないため、精度算出はスキップします。")
-        sys.exit(0)
+        log(f"[WARN] truth not found in {args.results_root} for {start}..{end}")
 
-    # レース内降順
-    sorted_df = proba.sort(by=RACE_KEY+["proba_3t"], descending=[False,False,False,True])
+    # 評価
+    topks = [int(x) for x in str(args.topks).split(",") if x.strip()]
+    stats = evaluate_trifecta(
+        proba_csv=proba_csv,
+        truth=truth,
+        top_ks=topks,
+        unit_stake=args.unit_stake,
+    )
 
-    res: Dict[str,Any] = {}
-    for k in (1,3,6,12,18):
-        hit, tot = topk_hit_rate(sorted_df, truth, k)
-        res[f"Top{k}_hit_rate"] = {"hit": hit, "total": tot, "rate": (hit/tot if tot>0 else None)}
+    # 保存
+    y, md = (start[:4] if len(start) >= 8 else "0000"), (start[4:8] if len(start) >= 8 else "0000")
+    out_path = ensure_parent(Path(args.report_out_root) / y / md / f"eval_{start}_{end}.json")
+    with out_path.open("w", encoding="utf-8") as f:
+        json.dump(stats, f, ensure_ascii=False, indent=2)
 
-    # ROI (あれば)
-    roi, ret, bet = roi_from_odds(sorted_df, truth, Path(args.odds_root), K=12)
-    if bet>0:
-        res["ROI@Top12_even100"] = {"roi": roi, "return": ret, "bet": bet}
-
-    # 出力
-    y,md = start[:4], start[4:]
-    outdir = Path("data/eval")/f"{start}_{end}"
-    ensure_parent(outdir/"_.keep")
-    with open(outdir/"summary.json","w",encoding="utf-8") as f:
-        json.dump(res,f,ensure_ascii=False,indent=2)
-    log(json.dumps(res, ensure_ascii=False, indent=2))
-    log(f"[WRITE] {outdir/'summary.json'}")
+    log(f"[WRITE] {out_path}")
 
 if __name__ == "__main__":
     main()
