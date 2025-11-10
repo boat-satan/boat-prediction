@@ -66,6 +66,19 @@ jobs:
             --train_end   "${{ inputs.train_end }}" \
             --model_root  data/models/place23
 
+      # 1.5) infer 用のモデル別名を用意（place2/place3 を期待するスクリプトに合わせる）
+      - name: Prepare model aliases
+        run: |
+          set -euo pipefail
+          if [ -f data/models/place23/model.txt ]; then
+            cp -f data/models/place23/model.txt data/models/place23/place2.txt
+            cp -f data/models/place23/model.txt data/models/place23/place3.txt
+          else
+            echo "FATAL: data/models/place23/model.txt not found" >&2
+            exit 1
+          fi
+          ls -lah data/models/place23
+
       # 2) 三連単確率の推論
       - name: Infer trifecta probabilities
         shell: bash
