@@ -1,191 +1,222 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-三連単 確率推論（コンボ行で出力）
-入力: data/integrated/YYYY/MMDD/integrated_pro.csv （pred_start..pred_end の日付範囲）
-必要列（存在する分だけ使う/不足は無視）:
-  hd,jcd,rno,lane,regno,racer_id,racer_name,
-  p1_win (または proba_win),
-  st_pred_sec, st_rank_in_race, dash_advantage, wall_weak_flag, ...
-  ほか place2/3 モデルが使う特徴（存在すれば）
+三連単 確率CSVの検証（TopN的中率/ROI/ログロス）
+- 入力その1: 直接CSV指定 (--proba_csv)
+  例: data/proba/trifecta/2024/0301/trifecta_proba_20240301_20240331.csv
+  必須列: hd,jcd,rno,combo,proba
 
-出力: data/proba/trifecta/YYYY/MMDD/trifecta_proba_{pred_start}_{pred_end}.csv
-  列: hd,jcd,rno,combo,proba
+- 入力その2: 範囲＋ルート指定 (--proba_root, --pred_start, --pred_end)
+  例: proba_root=data/proba/trifecta, start=20240301, end=20240331
+      → data/proba/trifecta/2024/0301/trifecta_proba_20240301_20240331.csv
+
+- 正解: public/results/YYYY/PPDD/PP/RR.json （既存構成）
+  trifectaオッズは payouts.trifecta.amount を使用（なければ金額は None）
+
+- 出力: data/eval/trifecta/YYYY/MMDD/trifecta_eval_{start}_{end}.json
 """
 
 from __future__ import annotations
-import argparse, sys, itertools
+import argparse, json, math, sys, re
 from pathlib import Path
+from typing import Dict, List, Tuple, Optional
 import polars as pl
-import numpy as np
-import lightgbm as lgb
 
 def log(m: str): print(m, flush=True)
 def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
-# --------------- I/O ---------------
-def _date_dirs(root: Path, s: str, e: str) -> list[Path]:
-    s_ord = int(s[:4]) * 372 + int(s[4:6]) * 31 + int(s[6:8])
-    e_ord = int(e[:4]) * 372 + int(e[4:6]) * 31 + int(e[6:8])
-    picked = []
-    for ydir in sorted(root.glob("[0-9]"*4)):
-        y = int(ydir.name)
-        for md in sorted(ydir.glob("[0-9]"*4)):
-            m, d = int(md.name[:2]), int(md.name[2:])
-            ordv = y*372 + m*31 + d
-            if s_ord <= ordv <= e_ord:
-                picked.append(md)
-    return picked
+# ---------- helpers ----------
+def _infer_range_from_filename(csv_path: Path) -> Tuple[str,str]:
+    # ...trifecta_proba_YYYYMMDD_YYYYMMDD.csv
+    m = re.search(r"trifecta_proba_(\d{8})_(\d{8})\.csv$", csv_path.name)
+    if not m:
+        raise ValueError(f"[FATAL] cannot infer date range from filename: {csv_path.name}")
+    return m.group(1), m.group(2)
 
-def _read_integrated(root: Path, s: str, e: str) -> pl.DataFrame:
-    dirs = _date_dirs(root, s, e)
-    files = [d/"integrated_pro.csv" for d in dirs if (d/"integrated_pro.csv").exists()]
-    if not files:
-        raise SystemExit(f"[FATAL] integrated_pro.csv が見つかりません: {root} {s}..{e}")
-    # スキーマ差異吸収: まず全列読み込み、足りない列は追加してから縦結合
-    frames = []
-    all_cols = set()
-    scans = []
-    for f in files:
-        lf = pl.scan_csv(str(f), ignore_errors=True)
-        scans.append(lf)
-        all_cols |= set(lf.collect_schema().names())
-    # 代表順序
-    all_cols = list(all_cols)
-    for lf in scans:
-        have = set(lf.collect_schema().names())
-        add_exprs = [pl.lit(None).alias(c) for c in all_cols if c not in have]
-        frames.append(lf.select([pl.col(c) for c in have] + add_exprs).select([pl.col(c) for c in all_cols]))
-    return pl.concat(frames).collect()
+def _dlist(start: str, end: str) -> List[str]:
+    sy, sm, sd = int(start[:4]), int(start[4:6]), int(start[6:8])
+    ey, em, ed = int(end[:4]), int(end[4:6]), int(end[6:8])
+    s_ord = sy*372 + sm*31 + sd
+    e_ord = ey*372 + em*31 + ed
+    out = []
+    y = sy
+    m = sm
+    d = sd
+    for ordv in range(s_ord, e_ord+1):
+        out.append(f"{y:04d}{m:02d}{d:02d}")
+        # 擬似進行
+        d += 1
+        if d > 31:
+            d = 1; m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
 
-# --------------- features ---------------
-ID = ["hd","jcd","rno","lane","regno","racer_id","racer_name"]
-# place2/3 の入力に使う“無難な”特徴（あれば使う）
-FEATS = [
-    "st_pred_sec","st_rel_sec","st_rank_in_race","dash_advantage","wall_weak_flag",
-    "proba_nige","proba_sashi","proba_makuri","proba_makuri_sashi",
-    "wind_speed_m","wave_height_cm","is_strong_wind","is_crosswind",
-    "power_lane","power_inner","power_outer","outer_over_inner",
-    "course_avg_st","course_first_rate","course_3rd_rate",
-    "motor_rate2","motor_rate3","boat_rate2","boat_rate3",
-    "tenji_st","tenji_sec","tenji_rank","st_rank","dash_attack_flag",
-]
-
-def _safe_cols(df: pl.DataFrame, cols: list[str]) -> list[str]:
-    return [c for c in cols if c in df.columns]
-
-def _p1_col(df: pl.DataFrame, use_flag: bool) -> str:
-    # 明示フラグ or 自動
-    for cand in (["p1_win","proba_win"] if use_flag else ["p1_win","proba_win"]):
-        if cand in df.columns: return cand
-    raise SystemExit("[FATAL] p1（勝率）列が見つかりません（p1_win / proba_win など）")
-
-# --------------- modeling ---------------
-def _load_booster(path: Path) -> lgb.Booster|None:
-    if not path.exists(): return None
-    return lgb.Booster(model_file=str(path))
-
-def _predict_rows(bst: lgb.Booster|None, pdf) -> np.ndarray:
-    if bst is None or pdf.shape[0] == 0:
-        return np.zeros((pdf.shape[0],), dtype=float)
-    return bst.predict(pdf)
-
-# --------------- trifecta assembly ---------------
-def infer_trifecta(df: pl.DataFrame, model_root: Path, use_p1_flag: bool) -> pl.DataFrame:
-    # 整形
-    id_cols = _safe_cols(df, ID)
-    feat_cols = _safe_cols(df, FEATS)
-    p1col = _p1_col(df, use_p1_flag)
-
-    # 型
+def _read_proba_csv(proba_csv: Path) -> pl.DataFrame:
+    if not proba_csv.exists():
+        raise SystemExit(f"[FATAL] proba_csv not found: {proba_csv}")
+    df = pl.read_csv(str(proba_csv), infer_schema_length=0)
+    need = ["hd","jcd","rno","combo","proba"]
+    for c in need:
+        if c not in df.columns:
+            raise ValueError(f"[FATAL] required column '{c}' not found in {proba_csv.name}. found={list(df.columns)}")
+    # 型整備
     df = df.with_columns([
-        pl.col("hd").cast(pl.Utf8) if "hd" in df.columns else pl.lit(""),
-        pl.col("jcd").cast(pl.Utf8) if "jcd" in df.columns else pl.lit(""),
-        pl.col("rno").cast(pl.Int64) if "rno" in df.columns else pl.lit(0),
+        pl.col("hd").cast(pl.Utf8),
+        pl.col("jcd").cast(pl.Utf8),
+        pl.col("rno").cast(pl.Int64),
+        pl.col("combo").cast(pl.Utf8),
+        pl.col("proba").cast(pl.Float64),
     ])
+    return df
 
-    # LightGBM モデル読み込み
-    b2 = _load_booster(model_root/"place2.txt")
-    b3 = _load_booster(model_root/"place3.txt")
-    if b2 is None or b3 is None:
-        raise SystemExit(f"[FATAL] place2/place3 モデルが見つかりません: {model_root}")
+def _truth_combo_amount(results_root: Path, hd: str, jcd: str, rno: int) -> Tuple[Optional[str], Optional[float]]:
+    # public/results/YYYY/PPDD/PP/RR.json
+    y = hd[:4]; md = hd[4:8]; pp = jcd
+    path = results_root / y / md / pp / f"{rno}R.json"
+    if not path.exists():
+        return None, None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None, None
 
-    # レース単位に分割
-    out_rows = []
+    # 正解 combo
+    trifecta = (data.get("payouts") or {}).get("trifecta")
+    combo = None
+    amount = None
+    if isinstance(trifecta, dict):
+        combo = trifecta.get("combo")
+        amt = trifecta.get("amount")
+        if isinstance(amt, (int, float)):
+            amount = float(amt)
+
+    # combo が無い場合は results[].rank から組み立て（1-2-3着の lane ）
+    if not combo:
+        results = data.get("results") or []
+        # rank "1","2","3" の lane を拾う
+        top = {}
+        for row in results:
+            r = str(row.get("rank","")).strip()
+            if r in ("1","2","3"):
+                ln = str(row.get("lane","")).strip()
+                if ln:
+                    top[int(r)] = ln
+        if len(top) == 3:
+            combo = f"{top[1]}-{top[2]}-{top[3]}"
+
+    return combo, amount
+
+def _neg_logloss(p: float) -> float:
+    p = min(max(p, 1e-15), 1.0)
+    return -math.log(p)
+
+def evaluate_trifecta(proba_csv: Path, results_root: Path, report_out_root: Path) -> Path:
+    df = _read_proba_csv(proba_csv)
+    start, end = _infer_range_from_filename(proba_csv)
+    log(f"[INFO] Date range inferred: {start}..{end}")
+
+    # レースごとに結合しやすい形へ
+    # truth 辞書: (hd,jcd,rno) -> (combo, amount)
+    truth: Dict[Tuple[str,str,int], Tuple[Optional[str], Optional[float]]] = {}
+    for d in _dlist(start, end):
+        # jcd/rno は proba 側から辿るため、ここでは日付だけ進める
+        pass
+
+    # proba 側のユニークキーで走査しつつ truth を引く
+    keys = df.select(["hd","jcd","rno"]).unique().iter_rows()
+    for hd, jcd, rno in keys:
+        c, amt = _truth_combo_amount(results_root, hd, jcd, int(rno))
+        truth[(hd, jcd, int(rno))] = (c, amt)
+
+    # 評価
+    TOPNS = [1, 3, 6, 12, 18, 36, 120]
+    cnt = {n: 0 for n in TOPNS}
+    tot = 0
+    logloss_sum = 0.0
+    roi_bet_sum = {n: 0.0 for n in TOPNS}
+    roi_ret_sum = {n: 0.0 for n in TOPNS}
+
     for (hd, jcd, rno), g in df.group_by(["hd","jcd","rno"], maintain_order=True):
-        g = g.sort("lane")  # lane=1..6 想定
-        lanes = g["lane"].to_list()
-        if len(lanes) < 3:
+        g = g.sort("proba", descending=True)
+        t_combo, t_amount = truth.get((hd, jcd, int(rno)), (None, None))
+        if t_combo is None:
+            # 正解不明のレースは評価から除外
             continue
+        tot += 1
 
-        # P1: そのまま抽出
-        p1 = g[p1col].to_numpy().astype(float)
-        p1 = np.clip(p1, 1e-12, 1.0)
+        # 正解確率
+        p_true_row = g.filter(pl.col("combo") == t_combo)
+        if p_true_row.height == 0:
+            p_true = 1e-15
+        else:
+            p_true = float(p_true_row["proba"][0])
+        logloss_sum += _neg_logloss(p_true)
 
-        # P2(j|i), P3(k|i,j) を LGBMで推定
-        # 特徴は “選ばれうる艇” の行を入れて bst.predict
-        X = g.select(feat_cols).to_pandas(use_pyarrow_extension_array=False)
+        # TopN 的中/ROI（均等BET=1）
+        for N in TOPNS:
+            topN = g.head(N)
+            roi_bet_sum[N] += float(topN.height)  # N 口
+            if t_combo in set(topN["combo"].to_list()):
+                cnt[N] += 1
+                if t_amount is not None:
+                    # 払戻は「100円あたり金額」を想定 → 1口=100でベットしている前提なら amount をそのまま加算
+                    roi_ret_sum[N] += float(t_amount)
 
-        # 全コンボ 6P3
-        best = []
-        for i in range(len(lanes)):
-            # 2着候補
-            idx_others = [t for t in range(len(lanes)) if t != i]
-            # P2: モデルは「2着確率」を各艇の row に対して出す前提（ない場合は一様）
-            p2_all = _predict_rows(b2, X.iloc[idx_others])  # shape (5,)
-            if np.all(p2_all == 0):
-                p2_all = np.ones_like(p2_all) / len(p2_all)
-            p2_all = p2_all / (p2_all.sum() + 1e-12)
+    if tot == 0:
+        raise SystemExit("[FATAL] no races to evaluate (truth not found).")
 
-            for j_rel, j in enumerate(idx_others):
-                # 3着候補
-                idx_others2 = [t for t in idx_others if t != j]
-                p3_all = _predict_rows(b3, X.iloc[idx_others2])
-                if np.all(p3_all == 0):
-                    p3_all = np.ones_like(p3_all) / len(p3_all)
-                p3_all = p3_all / (p3_all.sum() + 1e-12)
-
-                for k_rel, k in enumerate(idx_others2):
-                    prob = float(p1[i] * p2_all[j_rel] * p3_all[k_rel])
-                    combo = f"{lanes[i]}-{lanes[j]}-{lanes[k]}"
-                    best.append((combo, prob))
-
-        # 正規化 & 上位のみ（全件でもOK。CSVサイズ抑制したいなら上位N）
-        if not best:
-            continue
-        combos, probs = zip(*best)
-        probs = np.array(probs, dtype=float)
-        probs /= probs.sum() + 1e-12
-
-        # そのまま全部吐く（必要なら[:100]などに制限可能）
-        for c, p in zip(combos, probs):
-            out_rows.append({"hd":hd, "jcd":jcd, "rno":int(rno), "combo":c, "proba":float(p)})
-
-    return pl.DataFrame(out_rows)
-
-# --------------- main ---------------
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--staging_root", default="data/integrated")
-    ap.add_argument("--pred_start", required=True)
-    ap.add_argument("--pred_end", required=True)
-    ap.add_argument("--model_root", default="data/models/place23")
-    ap.add_argument("--out_root", default="data/proba/trifecta")
-    ap.add_argument("--use_proba_win", action="store_true", help="p1=proba_win/p1_win を使用")
-    args = ap.parse_args()
-
-    root = Path(args.staging_root)
-    df = _read_integrated(root, args.pred_start, args.pred_end)
-    pred = infer_trifecta(df, Path(args.model_root), args.use_proba_win)
+    # まとめ
+    report = {
+        "range": [start, end],
+        "races_evaluated": tot,
+        "logloss": logloss_sum / tot,
+        "topN": [
+            {
+                "N": N,
+                "hit": cnt[N],
+                "rate": cnt[N] / tot,
+                "bets": roi_bet_sum[N],
+                "returns": roi_ret_sum[N],
+                "roi": (roi_ret_sum[N] / roi_bet_sum[N]) if roi_bet_sum[N] > 0 else None
+            }
+            for N in TOPNS
+        ]
+    }
 
     # 保存
-    y, md = args.pred_start[:4], args.pred_start[4:8]
-    out_dir = Path(args.out_root)/y/md
-    ensure_parent(out_dir/"x")
-    out_csv = out_dir/f"trifecta_proba_{args.pred_start}_{args.pred_end}.csv"
-    pred.write_csv(str(out_csv))
-    log(f"[WRITE] {out_csv} rows={pred.height}")
+    y, md = start[:4], start[4:8]
+    out = report_out_root / y / md / f"trifecta_eval_{start}_{end}.json"
+    ensure_parent(out)
+    out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    log(f"[WRITE] {out}")
+    return out
+
+# ---------- main ----------
+def main():
+    ap = argparse.ArgumentParser()
+    # 新: 直接CSV指定
+    ap.add_argument("--proba_csv", default=None)
+    ap.add_argument("--results_root", default="public/results")
+    ap.add_argument("--report_out_root", default="data/eval/trifecta")
+    # 旧インターフェイス互換
+    ap.add_argument("--proba_root", default="data/proba/trifecta")
+    ap.add_argument("--pred_start", default=None)
+    ap.add_argument("--pred_end", default=None)
+    args = ap.parse_args()
+
+    # 入力解決
+    if args.proba_csv:
+        proba_csv = Path(args.proba_csv)
+    else:
+        if not (args.pred_start and args.pred_end):
+            ap.error("either --proba_csv or (--proba_root & --pred_start & --pred_end) is required")
+        y, md = args.pred_start[:4], args.pred_start[4:8]
+        proba_csv = Path(args.proba_root) / y / md / f"trifecta_proba_{args.pred_start}_{args.pred_end}.csv"
+
+    log(f"[INFO] Using proba_csv: {proba_csv}")
+    evaluate_trifecta(proba_csv, Path(args.results_root), Path(args.report_out_root))
 
 if __name__ == "__main__":
     main()
