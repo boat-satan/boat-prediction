@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ST（スタートタイミング）予測モデル学習＋推論スクリプト（事後情報除外版）
+ST（スタートタイミング）予測モデル学習 + 推論（最小変更・事後情報除外版）
 
 入力: data/staging/YYYY/MMDD/st_train.csv
-出力:
-  学習モデル: data/models/st_lgbm.txt (+ meta.json, feature_importance.csv)
-  推論結果 :  data/proba/st/YYYY/MMDD/st_pred_{test_start}_{test_end}.csv
+学習出力: data/models/st_lgbm.txt, meta.json, feature_importance.csv
+予測出力(任意): data/proba/st/YYYY/MMDD/st_pred_{test_start}_{test_end}.csv
 
 特徴量: 展示ST・展示F情報・ランク・コース傾向など（事前データのみ）
 除外: st_is_f, st_is_late, st_penalized, st_observed（事後情報）
+
+★差分要点
+- lane の重複を避けるため、特徴側は lane→lane_feat に統一（ID側には lane を残す）
+- --test_start/--test_end を指定した場合のみ、同スクリプトで推論CSVも出力
 """
 
 from __future__ import annotations
@@ -26,7 +29,6 @@ import lightgbm as lgb
 # Utility
 # ======================================================
 def ensure_parent(p: Path) -> None:
-    """親ディレクトリを作成"""
     p.parent.mkdir(parents=True, exist_ok=True)
 
 
@@ -64,12 +66,11 @@ def read_staging_days(staging_root: Path, d1: str, d2: str) -> pl.LazyFrame:
 
 
 # ======================================================
-# 特徴量定義
+# 特徴量定義（据え置き）
 # ======================================================
 ID_COLS = ["hd", "jcd", "rno", "lane", "regno"]
 TARGET = "st_sec"
 
-# --- 事前に利用可能な安全な特徴量 ---
 FEATURES: List[str] = [
     "tenji_st_sec",
     "tenji_is_f",
@@ -79,16 +80,18 @@ FEATURES: List[str] = [
     "course_avg_st",
     "course_first_rate",
     "course_3rd_rate",
-    "lane",  # スタート位置
+    "lane",  # ← 特徴としては lane_feat にリネームして出力
 ]
 
 
 # ======================================================
-# 学習テーブル構築
+# 学習テーブル構築（lane重複を lane_feat で回避）
 # ======================================================
-def build_training_table(lf: pl.LazyFrame, drop_missing_target: bool = True) -> tuple[pl.DataFrame, List[str]]:
-    """学習/推論用 DataFrame 構築"""
-    # 欠損・型補正
+def build_training_table(
+    lf: pl.LazyFrame,
+    drop_missing_target: bool = True,
+) -> tuple[pl.DataFrame, List[str]]:
+    """学習用 DataFrame 構築（lane重複を lane_feat で回避）"""
     lf = lf.with_columns([
         pl.col("tenji_is_f").cast(pl.Int64).fill_null(0),
         pl.col("tenji_rank").cast(pl.Int64).fill_null(0),
@@ -104,17 +107,46 @@ def build_training_table(lf: pl.LazyFrame, drop_missing_target: bool = True) -> 
     if drop_missing_target:
         lf = lf.filter(pl.col(TARGET).is_not_null())
 
-    # 出力列（lane重複対策で別名付与）
-    out_exprs: List[pl.Expr] = [pl.col(c) for c in ID_COLS if c in lf.collect_schema().names()]
+    # ID列（laneはそのままIDとして残す）
+    out_exprs: List[pl.Expr] = [pl.col(c).alias(c) for c in ID_COLS if c in lf.collect_schema().names()]
     if TARGET in lf.collect_schema().names():
         out_exprs.append(pl.col(TARGET))
+
+    # 特徴（lane は lane_feat に）
     feature_cols: List[str] = []
     for c in FEATURES:
-        out_exprs.append(pl.col(c).alias(c))
-        feature_cols.append(c)
+        if c == "lane":
+            out_exprs.append(pl.col("lane").cast(pl.Int64).alias("lane_feat"))
+            feature_cols.append("lane_feat")
+        else:
+            out_exprs.append(pl.col(c).alias(c))
+            feature_cols.append(c)
 
     df = lf.select(out_exprs).collect()
     return df, feature_cols
+
+
+# ======================================================
+# テストテーブル（推論用）
+# ======================================================
+def build_test_table(lf: pl.LazyFrame, feat_cols: Sequence[str]) -> pl.DataFrame:
+    """推論用に ID + 特徴（lane→lane_feat）を揃えて収集"""
+    if lf is None or (isinstance(lf, pl.LazyFrame) and len(lf.collect_schema().names()) == 0):
+        return pl.DataFrame()
+
+    exprs: List[pl.Expr] = []
+    # ID
+    for c in ID_COLS:
+        if c in lf.collect_schema().names():
+            exprs.append(pl.col(c).alias(c))
+    # 特徴（学習時に確定した名前で）
+    for c in feat_cols:
+        if c == "lane_feat":
+            exprs.append(pl.col("lane").cast(pl.Int64, strict=False).alias("lane_feat"))
+        else:
+            exprs.append(pl.col(c).cast(pl.Float64, strict=False).alias(c))
+
+    return lf.select(exprs).collect()
 
 
 # ======================================================
@@ -155,21 +187,6 @@ def train_lgbm(df: pl.DataFrame, feature_cols: Sequence[str]) -> tuple[lgb.Boost
 
 
 # ======================================================
-# 推論
-# ======================================================
-def predict_st(booster: lgb.Booster, df: pl.DataFrame, feature_cols: List[str]) -> pl.DataFrame:
-    if df.height == 0:
-        return pl.DataFrame()
-
-    X = df.select(feature_cols).to_pandas(use_pyarrow_extension_array=False)
-    preds = booster.predict(X)
-
-    out = df.select([c for c in ID_COLS if c in df.columns])
-    out = out.with_columns(pl.Series("st_sec_pred", preds))
-    return out
-
-
-# ======================================================
 # Main
 # ======================================================
 def main():
@@ -177,17 +194,20 @@ def main():
     ap.add_argument("--staging_root", default="data/staging")
     ap.add_argument("--train_start", required=True)
     ap.add_argument("--train_end", required=True)
-    ap.add_argument("--test_start", default=None)
-    ap.add_argument("--test_end", default=None)
-
     ap.add_argument("--model_out", default="data/models/st_lgbm.txt")
     ap.add_argument("--meta_out", default="data/models/st_lgbm.meta.json")
     ap.add_argument("--fi_out", default="data/models/st_lgbm.feature_importance.csv")
+    # 予測（任意）
+    ap.add_argument("--test_start", default=None)
+    ap.add_argument("--test_end", default=None)
+    ap.add_argument("--proba_out_root", default="data/proba/st")
+    # YAML互換（保持のみ）
+    ap.add_argument("--keep_penalized", action="store_true")
     args = ap.parse_args()
 
     staging_root = Path(args.staging_root)
 
-    # ---------- 学習 ----------
+    # ===== Train =====
     lf_train = read_staging_days(staging_root, args.train_start, args.train_end)
     df_train, feature_cols = build_training_table(lf_train, drop_missing_target=True)
 
@@ -199,6 +219,7 @@ def main():
 
     booster, feats = train_lgbm(df_train, feature_cols)
 
+    # Save model/meta/FI
     model_out = Path(args.model_out)
     meta_out  = Path(args.meta_out)
     fi_out    = Path(args.fi_out)
@@ -238,21 +259,28 @@ def main():
     fi.to_csv(fi_out, index=False)
     print(f"[SAVE] feature importance -> {fi_out}")
 
-    # ---------- 推論 ----------
+    # ===== Predict (optional) =====
     if args.test_start and args.test_end:
         lf_test = read_staging_days(staging_root, args.test_start, args.test_end)
-        df_test, _ = build_training_table(lf_test, drop_missing_target=False)
+        df_test = build_test_table(lf_test, feats)
 
         if df_test.height == 0:
-            print("[WARN] 推論対象データが0件です。", file=sys.stderr)
+            print("[WARN] テスト範囲に推論対象がありません。", file=sys.stderr)
             return
 
-        pred = predict_st(booster, df_test, feature_cols)
+        # 予測
+        X_test = df_test.select(feats).to_pandas(use_pyarrow_extension_array=False)
+        y_pred = booster.predict(X_test)  # shape (n,)
+
+        out_df = df_test.select(ID_COLS).with_columns([
+            pl.lit(y_pred).alias("pred_st_sec"),
+        ])
+
         y = args.test_start[:4]; md = args.test_start[4:8]
-        out_csv = Path(f"data/proba/st/{y}/{md}/st_pred_{args.test_start}_{args.test_end}.csv")
+        out_csv = Path(args.proba_out_root) / y / md / f"st_pred_{args.test_start}_{args.test_end}.csv"
         ensure_parent(out_csv)
-        pred.write_csv(str(out_csv))
-        print(f"[WRITE] {out_csv} rows={pred.height}")
+        out_df.write_csv(str(out_csv))
+        print(f"[WRITE] {out_csv} rows={out_df.height}")
 
 
 if __name__ == "__main__":
