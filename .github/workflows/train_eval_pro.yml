@@ -87,7 +87,7 @@ jobs:
           unit_stake: 100
 
           # 並べ順は proba 固定（EVで買うなら rank_key を ev に変更）
-          rank_key: "proba"
+          rank_key: "ev"
 
           # 合成オッズ/バスケットを使うので常時オッズ読込可
           load_odds_always: ${{ inputs.load_odds_always }}
