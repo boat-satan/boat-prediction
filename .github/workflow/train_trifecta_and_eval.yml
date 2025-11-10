@@ -1,0 +1,110 @@
+name: Train & Infer & Eval (Trifecta)
+
+on:
+  workflow_dispatch:
+    inputs:
+      train_start:
+        description: "学習開始 (YYYYMMDD)"
+        required: true
+        default: "20240101"
+      train_end:
+        description: "学習終了 (YYYYMMDD)"
+        required: true
+        default: "20240131"
+      pred_start:
+        description: "予測開始 (YYYYMMDD)"
+        required: true
+        default: "20240201"
+      pred_end:
+        description: "予測終了 (YYYYMMDD)"
+        required: true
+        default: "20240229"
+      use_proba_win:
+        description: "P1にproba_winを使う？(true/false)"
+        required: true
+        default: "true"
+
+concurrency:
+  group: trifecta-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install polars pandas lightgbm pyarrow
+
+      - name: Defensive mkdirs
+        run: |
+          mkdir -p data/staging data/models/trifecta data/proba/3t data/eval
+
+      - name: Train place2/3 models
+        run: |
+          python scripts/train_place23.py \
+            --staging_root data/staging \
+            --train_start "${{ inputs.train_start }}" \
+            --train_end   "${{ inputs.train_end }}" \
+            --model_root  data/models/trifecta
+
+      - name: Infer trifecta probabilities
+        run: |
+          EXTRA=()
+          if [[ "${{ inputs.use_proba_win }}" == "true" ]]; then
+            EXTRA+=(--use_proba_win)
+          fi
+          python scripts/infer_trifecta.py \
+            --staging_root data/staging \
+            --pred_start "${{ inputs.pred_start }}" \
+            --pred_end   "${{ inputs.pred_end }}" \
+            --model_root data/models/trifecta \
+            --out_root   data/proba/3t \
+            "${EXTRA[@]}"
+
+      - name: Evaluate trifecta (accuracy & ROI if odds exist)
+        run: |
+          OUT="data/proba/3t/${{ inputs.pred_start:0:4 }}/${{ inputs.pred_start:4:4 }}/trifecta_proba_${{ inputs.pred_start }}_${{ inputs.pred_end }}.csv"
+          python scripts/eval_trifecta.py \
+            --proba_csv "$OUT" \
+            --results_root public/results \
+            --odds_root public/odds/v1 || true
+
+      - name: Show outputs
+        run: |
+          echo "---- models ----"
+          ls -lahR data/models/trifecta || true
+          echo "---- proba ----"
+          ls -lahR data/proba/3t || true
+          echo "---- eval ----"
+          ls -lahR data/eval || true
+          test -f data/eval/${{ inputs.pred_start }}_${{ inputs.pred_end }}/summary.json && cat data/eval/${{ inputs.pred_start }}_${{ inputs.pred_end }}/summary.json || true
+
+      - name: Commit & push
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/models/trifecta data/proba/3t data/eval || true
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "trifecta: train/infer/eval ${GITHUB_RUN_NUMBER} [skip ci]"
+          for n in 0 1 2 3 4; do
+            git pull --rebase || true
+            if git push; then exit 0; fi
+            echo "retry push $((n+1))/5"; sleep $((2**n))
+          done
+          git push
