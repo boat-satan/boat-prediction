@@ -4,28 +4,28 @@ on:
   workflow_dispatch:
     inputs:
       train_start:
-        description: "学習開始 (YYYYMMDD)"
+        description: "学習開始 (YYYYMMDD) … integrated の学習期間"
         required: true
         default: "20240101"
       train_end:
         description: "学習終了 (YYYYMMDD)"
         required: true
-        default: "20240131"
+        default: "20240229"
       pred_start:
-        description: "予測開始 (YYYYMMDD)"
+        description: "予測開始 (YYYYMMDD) … integrated に存在する期間"
         required: true
-        default: "20240201"
+        default: "20240301"
       pred_end:
         description: "予測終了 (YYYYMMDD)"
         required: true
-        default: "20240229"
+        default: "20240331"
       use_proba_win:
-        description: "P1にproba_winを使う？(true/false)"
+        description: "P1に proba_win を使う？ (true/false)"
         required: true
         default: "true"
 
 concurrency:
-  group: trifecta-${{ github.ref }}
+  group: trifecta-train-infer-eval-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -44,74 +44,87 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install polars pandas lightgbm pyarrow
+          pip install polars pandas numpy scikit-learn lightgbm pyarrow
 
-      - name: Defensive mkdirs
+      - name: Prepare dirs
         run: |
-          mkdir -p data/staging data/models/trifecta data/proba/3t data/eval
+          mkdir -p data/integrated
+          mkdir -p data/models/place23
+          mkdir -p data/proba/trifecta
+          mkdir -p data/eval/trifecta
 
-      - name: Train place2/3 models
+      # ===== 1) 2・3着モデルの学習（学習データは data/integrated/** を使用） =====
+      - name: Train place2-3 model
         run: |
           python scripts/train_place23.py \
-            --staging_root data/staging \
+            --integrated_root data/integrated \
             --train_start "${{ inputs.train_start }}" \
             --train_end   "${{ inputs.train_end }}" \
-            --model_root  data/models/trifecta
+            --model_root  data/models/place23
 
-      - name: Infer trifecta probabilities
-        run: |
-          EXTRA=()
-          if [[ "${{ inputs.use_proba_win }}" == "true" ]]; then
-            EXTRA+=(--use_proba_win)
-          fi
-          python scripts/infer_trifecta.py \
-            --staging_root data/staging \
-            --pred_start "${{ inputs.pred_start }}" \
-            --pred_end   "${{ inputs.pred_end }}" \
-            --model_root data/models/trifecta \
-            --out_root   data/proba/3t \
-            "${EXTRA[@]}"
-
-      - name: Evaluate trifecta (accuracy & ROI if odds exist)
+      # ===== 2) 三連単確率の推論（pred 範囲の integrated/** を使用） =====
+      - name: Infer trifecta probs
         shell: bash
         run: |
-          PRED="${{ inputs.pred_start }}"
-          Y="${PRED:0:4}"
-          MD="${PRED:4:4}"
-          OUT="data/proba/3t/${Y}/${MD}/trifecta_proba_${{ inputs.pred_start }}_${{ inputs.pred_end }}.csv"
-          echo "Eval target: $OUT"
+          set -euo pipefail
+          USE_P1="${{ inputs.use_proba_win }}"
+          # boolean入力をフラグに変換
+          EXTRA_P1=()
+          if [[ "${USE_P1}" == "true" ]]; then
+            EXTRA_P1+=(--use_proba_win)
+          fi
+
+          python scripts/infer_trifecta.py \
+            --integrated_root data/integrated \
+            --model_place23  data/models/place23/model.txt \
+            --pred_start     "${{ inputs.pred_start }}" \
+            --pred_end       "${{ inputs.pred_end }}" \
+            --out_root       data/proba/trifecta \
+            "${EXTRA_P1[@]}"
+
+      # ===== 3) 検証（リターン/的中/TopN等） =====
+      - name: Eval trifecta
+        run: |
           python scripts/eval_trifecta.py \
-            --proba_csv "$OUT" \
-            --results_root public/results \
-            --odds_root public/odds/v1 || true
+            --proba_root      data/proba/trifecta \
+            --pred_start      "${{ inputs.pred_start }}" \
+            --pred_end        "${{ inputs.pred_end }}" \
+            --report_out_root data/eval/trifecta
 
       - name: Show outputs
         run: |
           echo "---- models ----"
-          ls -lahR data/models/trifecta || true
-          echo "---- proba ----"
-          ls -lahR data/proba/3t || true
-          echo "---- eval ----"
-          ls -lahR data/eval || true
-          START="${{ inputs.pred_start }}"
-          END="${{ inputs.pred_end }}"
-          cat "data/eval/${START}_${END}/summary.json" 2>/dev/null || true
+          ls -lahR data/models/place23 || true
+          echo "---- proba (trifecta) ----"
+          ls -lahR data/proba/trifecta || true
+          echo "---- eval (trifecta) ----"
+          ls -lahR data/eval/trifecta || true
+          echo "---- eval preview ----"
+          find data/eval/trifecta -type f -maxdepth 3 -name "*.json" -print -exec sed -n '1,120p' {} \; || true
 
-      - name: Commit & push
+      - name: Commit & push outputs
         if: always()
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f data/models/trifecta data/proba/3t data/eval || true
+
+          git add -f data/models/place23 data/proba/trifecta data/eval/trifecta || true
+
           if git diff --cached --quiet; then
-            echo "No changes."
+            echo "No changes to commit."
             exit 0
           fi
-          git commit -m "trifecta: train/infer/eval ${GITHUB_RUN_NUMBER} [skip ci]"
+
+          git commit -m "trifecta: train/infer/eval ${GITHUB_WORKFLOW} #${GITHUB_RUN_NUMBER} [skip ci]"
+
           for n in 0 1 2 3 4; do
             git pull --rebase || true
-            if git push; then exit 0; fi
-            echo "retry push $((n+1))/5"; sleep $((2**n))
+            if git push; then
+              exit 0
+            fi
+            echo "Push failed. Retry $((n+1))/5..."
+            sleep $((2**n))
           done
           git push
