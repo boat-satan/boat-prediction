@@ -66,19 +66,6 @@ jobs:
             --train_end   "${{ inputs.train_end }}" \
             --model_root  data/models/place23
 
-      # 1.5) infer 用のモデル別名を用意（place2/place3 を期待するスクリプトに合わせる）
-      - name: Prepare model aliases
-        run: |
-          set -euo pipefail
-          if [ -f data/models/place23/model.txt ]; then
-            cp -f data/models/place23/model.txt data/models/place23/place2.txt
-            cp -f data/models/place23/model.txt data/models/place23/place3.txt
-          else
-            echo "FATAL: data/models/place23/model.txt not found" >&2
-            exit 1
-          fi
-          ls -lah data/models/place23
-
       # 2) 三連単確率の推論
       - name: Infer trifecta probabilities
         shell: bash
@@ -99,15 +86,33 @@ jobs:
             --out_root     data/proba/trifecta \
             "${EXTRA_P1[@]}"
 
-      # 3) 検証
+          echo "---- generated proba files ----"
+          find data/proba/trifecta -type f -name "trifecta_proba_*.csv" -print || true
+
+      # 3) 検証（--proba_csv を明示指定）
       - name: Evaluate trifecta results
+        shell: bash
         run: |
+          set -euo pipefail
+          PRED_START="${{ inputs.pred_start }}"
+          PRED_END="${{ inputs.pred_end }}"
+          Y="${PRED_START:0:4}"
+          MD="${PRED_START:4:4}"   # MMDD
+
+          PROBA_CSV="data/proba/trifecta/${Y}/${MD}/trifecta_proba_${PRED_START}_${PRED_END}.csv"
           echo "=== Evaluating trifecta results ==="
+          echo "Using proba_csv: ${PROBA_CSV}"
+
+          if [[ ! -f "${PROBA_CSV}" ]]; then
+            echo "[FATAL] proba csv not found: ${PROBA_CSV}"
+            echo "Available files under data/proba/trifecta:"
+            find data/proba/trifecta -type f -name "*.csv" -print || true
+            exit 1
+          fi
+
           python scripts/eval_trifecta.py \
-            --proba_root      data/proba/trifecta \
-            --pred_start      "${{ inputs.pred_start }}" \
-            --pred_end        "${{ inputs.pred_end }}" \
-            --report_out_root data/eval/trifecta
+            --proba_csv    "${PROBA_CSV}" \
+            --results_root public/results
 
       - name: Show outputs
         run: |
