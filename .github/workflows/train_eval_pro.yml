@@ -96,7 +96,7 @@ jobs:
           filters:
             p1win_max: 1
             s18_min: 0
-            one_head_ratio_top18_max: 1.0
+            one_head_ratio_top18_max: 0.25
             min_non1_candidates_top18: 0
             exclude_one_head: false
             drop_one_after_rank: false
