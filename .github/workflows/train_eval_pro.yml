@@ -22,7 +22,7 @@ on:
       topk:
         description: "TopN 買い目数（18推奨）"
         required: true
-        default: "18"
+        default: "20"
       load_odds_always:
         description: "常時オッズ読込（合成オッズ/EVバスケット用）"
         required: true
@@ -34,7 +34,7 @@ on:
       min_odds_min:
         description: "TopN内の最小オッズの下限（例: 8）"
         required: true
-        default: "0.0"
+        default: "8"
       ev_basket_min:
         description: "TopN平均EVの下限（例: 1.0）"
         required: true
@@ -87,7 +87,7 @@ jobs:
           unit_stake: 100
 
           # 並べ順は proba 固定（EVで買うなら rank_key を ev に変更）
-          rank_key: "ev"
+          rank_key: "proba"
 
           # 合成オッズ/バスケットを使うので常時オッズ読込可
           load_odds_always: ${{ inputs.load_odds_always }}
