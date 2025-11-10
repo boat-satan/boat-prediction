@@ -2,20 +2,16 @@
 # -*- coding: utf-8 -*-
 """
 決まり手(4分類: NIGE/SASHI/MAKURI/MAKURI_SASHI) 学習・推論 一体スクリプト
-- 物理制約を学習前整形と推論時の両方で適用
-  * lane==1 : 決まり手は NIGE のみ（学習では NIGE 以外をNIGEに矯正）
-  * lane!=1 : NIGE は成立しない（学習では NIGE 行を除去）
+- 学習前整形と推論後に物理制約を適用
+  * lane==1 : 決まり手は NIGE のみ（学習では NIGE 以外を NIGE に矯正）
+  * lane!=1 : NIGE は成立しない（学習では NIGE を除去）
+- Polars で dtype が混在しても落ちないように安全キャスト
 
-入出力想定:
-  入力: data/staging/YYYY/MMDD/decision4_train.csv （日付範囲で集約）
-        必須列: hd,jcd,rno,lane,decision4
-        主要特徴: 下記 FEATURES に存在する列は自動で使う（足りない分は無視）
+入出力:
+  入力: data/staging/YYYY/MMDD/decision4_train.csv
   出力:
-    - 予測CSV: data/proba/decision4/{YYYY}/{MMDD}/proba_{test_start}_{test_end}.csv
-        列: hd,jcd,rno,lane,racer_id,racer_name,proba_nige,proba_sashi,proba_makuri,proba_makuri_sashi
-    - モデル:  data/models/decision4/model.txt
-    - メタ:    data/models/decision4/meta.json
-    - 特徴量重要度: data/models/decision4/feature_importance.csv
+    data/proba/decision4/{YYYY}/{MMDD}/proba_{test_start}_{test_end}.csv
+    data/models/decision4/model.txt / meta.json / feature_importance.csv
 """
 
 from __future__ import annotations
@@ -36,7 +32,6 @@ LABEL2ID = {k:i for i,k in enumerate(LABELS)}
 
 ID_COLS = ["hd","jcd","rno","lane","racer_id","racer_name"]
 
-# 使えるものだけ自動で使う。存在しない列は無視。
 FEATURES_PREF = [
     "tenji_sec","tenji_rank","st_rank",
     "course_avg_st","course_first_rate","course_3rd_rate",
@@ -45,19 +40,18 @@ FEATURES_PREF = [
     "kimarite_makuri","kimarite_sashi","kimarite_makuri_sashi","kimarite_nuki",
     "power_lane","power_inner","power_outer","outer_over_inner",
     "dash_attack_flag","is_strong_wind","is_crosswind",
-    "lane",  # 衝突防止のため後で lane_feat に退避
+    "lane",  # -> lane_feat に退避
 ]
 
-# ----------------------------
-# ユーティリティ
-# ----------------------------
 def log(msg: str): print(msg, flush=True)
 def err(msg: str): print(msg, file=sys.stderr, flush=True)
-
 def ensure_parent(p: Path) -> Path:
     p.parent.mkdir(parents=True, exist_ok=True)
     return p
 
+# ----------------------------
+# ファイル探索
+# ----------------------------
 def _ymd_dirs(root: Path, d1: str, d2: str) -> list[Path]:
     def ord3(y,m,d): return y*372 + m*31 + d
     s = (int(d1[:4]), int(d1[4:6]), int(d1[6:8]))
@@ -66,12 +60,10 @@ def _ymd_dirs(root: Path, d1: str, d2: str) -> list[Path]:
     out = []
     for ydir in sorted(root.glob("[0-9]"*4)):
         if not ydir.is_dir(): continue
-        y = int(ydir.name)
         for md in sorted(ydir.glob("[0-9]"*4)):
             if not md.is_dir(): continue
-            m, d = int(md.name[:2]), int(md.name[2:])
-            o = ord3(y,m,d)
-            if s_ord <= o <= e_ord:
+            y = int(ydir.name); m = int(md.name[:2]); d = int(md.name[2:])
+            if s_ord <= ord3(y,m,d) <= e_ord:
                 out.append(md)
     return out
 
@@ -83,63 +75,73 @@ def find_csvs(staging_root: Path, start: str, end: str, fname="decision4_train.c
             files.append(p)
     return files
 
-# ----------------------------
-# データ読み込み・整形
-# ----------------------------
 def load_pool(paths: list[Path]) -> pl.DataFrame:
     if not paths:
         return pl.DataFrame()
     lfs = [pl.scan_csv(str(p), ignore_errors=True) for p in paths]
     return pl.concat(lfs).collect(streaming=True)
 
+# ----------------------------
+# 前処理（物理制約を学習ラベルへ）
+# ----------------------------
 def apply_physical_constraints_labels(df: pl.DataFrame) -> pl.DataFrame:
-    """
-    学習ラベルに物理制約を適用:
-      - lane==1 & decision4!=NIGE -> NIGE に矯正
-      - lane!=1 & decision4==NIGE -> 行を除去
-      - その他 -> そのまま
-    """
-    # 型
-    cast_map = {"lane": pl.Int64, "decision4": pl.Utf8}
-    for c,dt in cast_map.items():
-        if c in df.columns:
-            df = df.with_columns(pl.col(c).cast(dt, strict=False))
+    # 型の安定化
+    casts = {}
+    if "lane" in df.columns: casts["lane"] = pl.Int64
+    if "decision4" in df.columns: casts["decision4"] = pl.Utf8
+    if casts:
+        df = df.with_columns([pl.col(k).cast(v, strict=False) for k,v in casts.items()])
+
     # lane==1 で NIGE 以外 → NIGE
-    df = df.with_columns(
-        pl.when((pl.col("lane")==1) & (pl.col("decision4")!="NIGE"))
-          .then(pl.lit("NIGE"))
-          .otherwise(pl.col("decision4")).alias("decision4")
-    )
-    # lane!=1 で NIGE は除去
-    df = df.filter(~((pl.col("lane")!=1) & (pl.col("decision4")=="NIGE")))
-    # 4ラベル以外は除外
-    df = df.filter(pl.col("decision4").is_in(LABELS))
+    if {"lane","decision4"}.issubset(df.columns):
+        df = df.with_columns(
+            pl.when((pl.col("lane")==1) & (pl.col("decision4")!="NIGE"))
+              .then(pl.lit("NIGE"))
+              .otherwise(pl.col("decision4"))
+              .alias("decision4")
+        )
+        # lane!=1 で NIGE は除去
+        df = df.filter(~((pl.col("lane")!=1) & (pl.col("decision4")=="NIGE")))
+
+    # 4ラベル以外は除去（念のため）
+    df = df.filter(pl.col("decision4").cast(pl.Utf8, strict=False).is_in(LABELS))
     return df
 
+# ----------------------------
+# 特徴選択（衝突回避 & ラベルID安全変換）
+# ----------------------------
 def select_features(df: pl.DataFrame):
     cols = set(df.columns)
     if "decision4" not in cols:
         raise RuntimeError("入力に 'decision4' 列がありません。")
 
-    feats: list[str] = []
-    for c in FEATURES_PREF:
-        if c in cols:
-            feats.append(c)
-    # lane の衝突回避
-    out_cols: list[pl.Expr] = []
+    feats: list[str] = [c for c in FEATURES_PREF if c in cols]
+
+    exprs: list[pl.Expr] = []
+    # ID列
     for c in ID_COLS:
         if c in cols:
-            out_cols.append(pl.col(c).alias(c))
+            exprs.append(pl.col(c).alias(c))
+    # 特徴列（lane -> lane_feat）
     for c in feats:
         if c == "lane":
-            out_cols.append(pl.col("lane").alias("lane_feat"))
+            exprs.append(pl.col("lane").cast(pl.Int64, strict=False).alias("lane_feat"))
         else:
-            out_cols.append(pl.col(c).alias(c))
-    # ラベルID
-    out_cols.append(pl.col("decision4").map_elements(lambda x: LABEL2ID.get(x, None)).alias("label_id"))
-    out = df.select(out_cols)
-    out = out.filter(pl.col("label_id").is_not_null())
-    # 特徴名決定
+            exprs.append(pl.col(c).alias(c))
+
+    # ラベルID: when/then で安全に数値化（map_elements は使わない）
+    label_expr = (
+        pl.when(pl.col("decision4").cast(pl.Utf8, strict=False) == "NIGE").then(pl.lit(LABEL2ID["NIGE"]))
+         .when(pl.col("decision4").cast(pl.Utf8, strict=False) == "SASHI").then(pl.lit(LABEL2ID["SASHI"]))
+         .when(pl.col("decision4").cast(pl.Utf8, strict=False) == "MAKURI").then(pl.lit(LABEL2ID["MAKURI"]))
+         .when(pl.col("decision4").cast(pl.Utf8, strict=False) == "MAKURI_SASHI").then(pl.lit(LABEL2ID["MAKURI_SASHI"]))
+         .otherwise(None)
+         .alias("label_id")
+    )
+    exprs.append(label_expr)
+
+    out = df.select(exprs).filter(pl.col("label_id").is_not_null())
+
     feature_cols = [("lane_feat" if f=="lane" else f) for f in feats]
     return out, feature_cols
 
@@ -147,8 +149,8 @@ def select_features(df: pl.DataFrame):
 # 学習・推論
 # ----------------------------
 def fit_lgbm(train_df: pl.DataFrame, feature_cols: Sequence[str]) -> lgb.Booster:
-    pdf = train_df.select(feature_cols + ["label_id"]).to_pandas(use_pyarrow_extension_array=False)
-    X = pdf[feature_cols]
+    pdf = train_df.select(list(feature_cols) + ["label_id"]).to_pandas(use_pyarrow_extension_array=False)
+    X = pdf[list(feature_cols)]
     y = pdf["label_id"].astype(int).values
     dtrain = lgb.Dataset(X, label=y, feature_name=list(feature_cols), free_raw_data=True)
     params = dict(
@@ -177,36 +179,31 @@ def fit_lgbm(train_df: pl.DataFrame, feature_cols: Sequence[str]) -> lgb.Booster
     return booster
 
 def enforce_physical_constraints_on_probs(pdf_pred: pd.DataFrame) -> pd.DataFrame:
-    """
-    推論後確率に物理制約を適用:
-      - lane==1: NIGE=1, others=0 （元のNIGEが0/NaNでも1に寄せる）
-      - lane!=1: NIGE=0、SASHI/MAKURI/MS を再正規化（和0のときは等分）
-    """
     Pn, Ps, Pm, Pms = "proba_nige","proba_sashi","proba_makuri","proba_makuri_sashi"
     lane = pdf_pred["lane"].astype(int).values
 
-    # lane==1
     mask1 = (lane == 1)
     pdf_pred.loc[mask1, [Ps,Pm,Pms]] = 0.0
     pdf_pred.loc[mask1, [Pn]] = 1.0
 
-    # lane!=1
     maskx = ~mask1
     pdf_pred.loc[maskx, [Pn]] = 0.0
     s = (pdf_pred.loc[maskx, [Ps,Pm,Pms]].fillna(0.0)).sum(axis=1)
-    # 和>0 → 正規化、和==0 → 等分
     nz = s > 0
     pdf_pred.loc[maskx & nz, [Ps,Pm,Pms]] = pdf_pred.loc[maskx & nz, [Ps,Pm,Pms]].div(s[nz], axis=0)
     pdf_pred.loc[maskx & ~nz, [Ps,Pm,Pms]] = 1.0/3
-
     return pdf_pred
 
 def predict_blocks(booster: lgb.Booster, test_df: pl.DataFrame, feature_cols: Sequence[str]) -> pd.DataFrame:
-    keep = [c for c in ID_COLS if c in test_df.columns]
-    X = test_df.select(feature_cols).to_pandas(use_pyarrow_extension_array=False)
-    ids = test_df.select(keep + (["lane_feat"] if "lane_feat" in test_df.columns else [])).to_pandas(use_pyarrow_extension_array=False)
+    keep_ids = [c for c in ID_COLS if c in test_df.columns]
+    # lane → lane_feat が学習側で使われている場合に備えて合わせる
+    if "lane" in test_df.columns and "lane_feat" not in test_df.columns:
+        test_df = test_df.with_columns(pl.col("lane").alias("lane_feat"))
 
-    proba = booster.predict(X, num_iteration=booster.best_iteration)  # shape (n,4)
+    X = test_df.select(feature_cols).to_pandas(use_pyarrow_extension_array=False)
+    ids = test_df.select(keep_ids + (["lane_feat"] if "lane_feat" in test_df.columns else [])).to_pandas(use_pyarrow_extension_array=False)
+
+    proba = booster.predict(X, num_iteration=booster.best_iteration)
     out = pd.DataFrame({
         "proba_nige":   proba[:, LABEL2ID["NIGE"]],
         "proba_sashi":  proba[:, LABEL2ID["SASHI"]],
@@ -214,12 +211,13 @@ def predict_blocks(booster: lgb.Booster, test_df: pl.DataFrame, feature_cols: Se
         "proba_makuri_sashi": proba[:, LABEL2ID["MAKURI_SASHI"]],
     })
     pdf = pd.concat([ids.reset_index(drop=True), out], axis=1)
-    # lane_feat を lane へ（存在すれば）
+
+    # lane_feat → lane
     if "lane" not in pdf.columns and "lane_feat" in pdf.columns:
         pdf["lane"] = pdf["lane_feat"].astype(int)
-    # 物理制約適用
+
     pdf = enforce_physical_constraints_on_probs(pdf)
-    # 整列
+
     order = [c for c in ["hd","jcd","rno","lane","racer_id","racer_name",
                          "proba_nige","proba_sashi","proba_makuri","proba_makuri_sashi"] if c in pdf.columns]
     return pdf[order]
@@ -243,13 +241,11 @@ def main():
     ap.add_argument("--staging_root", default="data/staging")
     ap.add_argument("--model_root",   default="data/models/decision4")
     ap.add_argument("--out_root",     default="data/proba/decision4")
-
     ap.add_argument("--train_start",  default="20240101")
     ap.add_argument("--train_end",    default="20240131")
     ap.add_argument("--test_start",   default="20240201")
     ap.add_argument("--test_end",     default="20240229")
-
-    ap.add_argument("--model_out",    default=None, help="モデル保存先を単一ファイルで指定（省略時は model_root/model.txt）")
+    ap.add_argument("--model_out",    default=None)
     args = ap.parse_args()
 
     cfg = Cfg(
@@ -263,9 +259,8 @@ def main():
         model_out=args.model_out,
     )
 
-    # 学習ファイル収集
-    train_files = find_csvs(Path(cfg.staging_root), cfg.train_start, cfg.train_end, fname="decision4_train.csv")
-    test_files  = find_csvs(Path(cfg.staging_root), cfg.test_start,  cfg.test_end,  fname="decision4_train.csv")  # 推論も同じスキーマ
+    train_files = find_csvs(Path(cfg.staging_root), cfg.train_start, cfg.train_end, "decision4_train.csv")
+    test_files  = find_csvs(Path(cfg.staging_root), cfg.test_start,  cfg.test_end,  "decision4_train.csv")
 
     if not train_files:
         err(f"[FATAL] 学習CSVが見つかりません: {cfg.staging_root} [{cfg.train_start}..{cfg.train_end}]")
@@ -280,10 +275,10 @@ def main():
         err("[FATAL] 学習データが空です。")
         sys.exit(1)
 
-    # 物理制約をラベルに適用
+    # 物理制約（学習ラベル）
     df_train = apply_physical_constraints_labels(df_train_raw)
 
-    # 特徴選択
+    # 特徴/ラベルID抽出（安全）
     df_train2, feat_cols = select_features(df_train)
     if df_train2.height == 0:
         err("[FATAL] 整形後の学習データが空です。")
@@ -291,7 +286,6 @@ def main():
 
     log(f"[INFO] train rows: {df_train2.height}, features: {len(feat_cols)} -> {feat_cols}")
 
-    # 学習
     booster = fit_lgbm(df_train2, feat_cols)
 
     # 保存
@@ -319,7 +313,6 @@ def main():
     log(f"[WRITE] meta -> {meta_path}")
 
     # FI
-    import numpy as np
     fi = pd.DataFrame({
         "feature": feat_cols,
         "gain": booster.feature_importance(importance_type="gain"),
@@ -328,17 +321,14 @@ def main():
     fi.to_csv(fi_path, index=False)
     log(f"[WRITE] feature importance -> {fi_path}")
 
-    # 推論（存在する場合）
+    # 推論
     if test_files:
         df_test_raw = load_pool(test_files)
-        df_test = df_test_raw  # 推論ではラベル不要
-        # 特徴の列名調整（lane -> lane_feat）
-        keep_ids = [c for c in ID_COLS if c in df_test.columns]
-        # lane_feat への退避
+        df_test = df_test_raw
+        # lane → lane_feat を準備（学習との整合）
         if "lane" in df_test.columns and "lane_feat" not in df_test.columns:
             df_test = df_test.with_columns(pl.col("lane").alias("lane_feat"))
-        # 必要列のみ
-        need = list(set(keep_ids + feat_cols))
+        need = list(set([c for c in ID_COLS if c in df_test.columns] + feat_cols))
         df_test2 = df_test.select([c for c in need if c in df_test.columns])
 
         pdf = predict_blocks(booster, df_test2, feat_cols)
