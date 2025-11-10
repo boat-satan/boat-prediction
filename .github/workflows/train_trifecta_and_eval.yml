@@ -1,18 +1,18 @@
-name: Train & Infer & Eval (Trifecta)
+name: Train & Infer & Eval (Trifecta, full stable)
 
 on:
   workflow_dispatch:
     inputs:
       train_start:
-        description: "学習開始 (YYYYMMDD) … integrated の学習期間"
+        description: "学習開始 (YYYYMMDD) – integrated 学習期間"
         required: true
-        default: "20240101"
+        default: "20240301"
       train_end:
         description: "学習終了 (YYYYMMDD)"
         required: true
-        default: "20240229"
+        default: "20240331"
       pred_start:
-        description: "予測開始 (YYYYMMDD) … integrated に存在する期間"
+        description: "予測開始 (YYYYMMDD) – integrated に存在する期間"
         required: true
         default: "20240301"
       pred_end:
@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -49,31 +50,34 @@ jobs:
       - name: Prepare dirs
         run: |
           mkdir -p data/integrated
+          mkdir -p public/results
           mkdir -p data/models/place23
           mkdir -p data/proba/trifecta
           mkdir -p data/eval/trifecta
 
-      # ===== 1) 2・3着モデルの学習（学習データは data/integrated/** を使用） =====
+      # === 1) 2・3着モデルの学習 (integrated + results)
       - name: Train place2-3 model
         run: |
+          echo "=== Training place2/3 model ==="
           python scripts/train_place23.py \
             --integrated_root data/integrated \
+            --results_root   public/results \
             --train_start "${{ inputs.train_start }}" \
             --train_end   "${{ inputs.train_end }}" \
             --model_root  data/models/place23
 
-      # ===== 2) 三連単確率の推論（pred 範囲の integrated/** を使用） =====
-      - name: Infer trifecta probs
+      # === 2) 三連単確率の推論 (pred 範囲の integrated/**)
+      - name: Infer trifecta probabilities
         shell: bash
         run: |
           set -euo pipefail
           USE_P1="${{ inputs.use_proba_win }}"
-          # boolean入力をフラグに変換
           EXTRA_P1=()
           if [[ "${USE_P1}" == "true" ]]; then
             EXTRA_P1+=(--use_proba_win)
           fi
 
+          echo "=== Inferring trifecta probabilities ==="
           python scripts/infer_trifecta.py \
             --integrated_root data/integrated \
             --model_place23  data/models/place23/model.txt \
@@ -82,15 +86,17 @@ jobs:
             --out_root       data/proba/trifecta \
             "${EXTRA_P1[@]}"
 
-      # ===== 3) 検証（リターン/的中/TopN等） =====
-      - name: Eval trifecta
+      # === 3) 三連単検証 (ROI, 的中率, TopNなど)
+      - name: Evaluate trifecta results
         run: |
+          echo "=== Evaluating trifecta results ==="
           python scripts/eval_trifecta.py \
             --proba_root      data/proba/trifecta \
             --pred_start      "${{ inputs.pred_start }}" \
             --pred_end        "${{ inputs.pred_end }}" \
             --report_out_root data/eval/trifecta
 
+      # === 4) 出力確認
       - name: Show outputs
         run: |
           echo "---- models ----"
@@ -102,6 +108,7 @@ jobs:
           echo "---- eval preview ----"
           find data/eval/trifecta -type f -maxdepth 3 -name "*.json" -print -exec sed -n '1,120p' {} \; || true
 
+      # === 5) Commit & push results
       - name: Commit & push outputs
         if: always()
         shell: bash
