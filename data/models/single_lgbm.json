@@ -21,7 +21,9 @@
     "num_threads": 0,
     "seed": 20240301,
     "normalize": true,
-    "temperature": 1.0
+    "temperature": 1.0,
+    "eval_mode": true,
+    "eval_topk": "1,2,3"
   },
   "feature_names": [
     "course_first_rate",
@@ -30,13 +32,26 @@
     "tenji_st_sec",
     "tenji_rank",
     "st_rank",
-    "st_sec",
-    "st_is_f",
-    "st_is_late",
-    "st_penalized",
-    "st_observed",
-    "tenji_is_f",
-    "tenji_f_over_sec"
+    "wind_speed_m",
+    "wave_height_cm",
+    "racer_id",
+    "tenji_st",
+    "tenji_sec",
+    "motor_rate2",
+    "motor_rate3",
+    "boat_rate2",
+    "boat_rate3",
+    "kimarite_makuri",
+    "kimarite_sashi",
+    "kimarite_makuri_sashi",
+    "kimarite_nuki",
+    "power_lane",
+    "power_inner",
+    "power_outer",
+    "outer_over_inner",
+    "dash_attack_flag",
+    "is_strong_wind",
+    "is_crosswind"
   ],
-  "train_rows": 56952
+  "train_rows": 51924
 }
