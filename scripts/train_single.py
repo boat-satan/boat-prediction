@@ -1,21 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-単勝モデル 学習・推論＋（ログ専用の）検証モード 〈全置き換え版〉
+単勝モデル 学習・推論＋（ログ専用の）検証モード 〈全置き換え版 / column互換強化〉
 
-- 互換引数を広く受け付ける（--start/--end, --pred_start/--pred_end, --proba_root など）
-- is_win を results JSON から自動付与（既存に is_win があれば尊重）
+- 列名のゆらぎを自動吸収（例: regno ← racer_id / tenji_st_sec ← tenji_st or tenji_sec）
+- is_win を結果JSONから自動付与（既存is_winがあれば尊重）
 - staging CSV を日付範囲で自動探索
-- LightGBM で学習し、テスト範囲があれば確率CSV出力
-- --eval_mode=true なら「検証指標を GitHub Actions ログにだけ表示」（ファイルには書かない）
-
-入出力:
-  入力: data/staging/YYYY/MMDD/*single*.csv（推奨: single_train.csv）
-  ラベル: public/results/YYYY/MMDD/{jcd}/{rno}R.json → 1着 lane
-  出力:
-    - モデル: data/models/single/model.txt（または --model_out）
-    - メタ:   data/models/single/meta.json
-    - 予測:   data/proba/single/YYYY/MMDD/proba_{test_start}_{test_end}.csv
+- LightGBMで学習し、テスト範囲があれば確率CSV出力
+- --eval_mode=true なら「検証指標をログにのみ出力」（ファイルは書かない）
 """
 
 from __future__ import annotations
@@ -32,7 +24,6 @@ import polars as pl
 try:
     import pandas as pd
 except Exception:
-    # フォールバック（環境依存回避）
     import pandas as pd
 
 import lightgbm as lgb
@@ -41,12 +32,12 @@ import lightgbm as lgb
 # -------------------- utils --------------------
 def log(msg: str): print(msg, flush=True)
 def err(msg: str): print(msg, file=sys.stderr, flush=True)
+
 def ensure_parent(p: Path) -> Path:
     p.parent.mkdir(parents=True, exist_ok=True)
     return p
 
 def to_ord(y: int, m: int, d: int) -> int:
-    # 月31日固定の簡易ordinal（範囲フィルタ用。順序性だけ満たせばOK）
     return y * 372 + m * 31 + d
 
 def ymd_to_ord(yyyymmdd: str) -> int:
@@ -54,7 +45,6 @@ def ymd_to_ord(yyyymmdd: str) -> int:
     return to_ord(y, m, d)
 
 def parse_year_md_from_dir(day_dir: Path) -> Tuple[int, int, int]:
-    # day_dir = .../YYYY/MMDD
     y = int(day_dir.parent.name)
     md = day_dir.name
     m, d = int(md[:2]), int(md[2:])
@@ -88,14 +78,13 @@ class TrainConfig:
     # オプション
     normalize: bool = True
     temperature: float = 1.0
-    # 検証モード（ログ専用出力）
+    # 検証モード
     eval_mode: bool = False
-    eval_topk: str = "1,3,6,12"  # ログ表示するTopK
+    eval_topk: str = "1,3,6,12"
 
 
 # -------------------- file discovery --------------------
 def _list_day_dirs(root: Path) -> List[Path]:
-    # root/YYYY/MMDD
     out = []
     for ydir in sorted(root.glob("[0-9]" * 4)):
         if not ydir.is_dir(): continue
@@ -119,7 +108,6 @@ def find_staging_csvs(staging_root: str, start: str, end: str) -> List[Path]:
     day_dirs = pick_day_dirs_by_range(root, start, end)
     files: List[Path] = []
     for dd in day_dirs:
-        # 優先順: single_train.csv -> *single*.csv -> *_train.csv
         cand = [
             dd / "single_train.csv",
             *map(Path, glob.glob(str(dd / "*single*.csv"))),
@@ -140,9 +128,8 @@ def _winner_lane_from_results(result_json_path: Path) -> Optional[int]:
             js = json.load(f)
         for rec in js.get("results", []):
             if str(rec.get("rank")) == "1":
-                lane = rec.get("lane")
                 try:
-                    return int(lane)
+                    return int(rec.get("lane"))
                 except Exception:
                     return None
     except Exception:
@@ -150,23 +137,15 @@ def _winner_lane_from_results(result_json_path: Path) -> Optional[int]:
     return None
 
 def build_winner_index(results_root: str, candidate_days: List[Path]) -> Dict[Tuple[str,str,int], int]:
-    """
-    key: (hd, jcd, rno) -> winner_lane
-    results_root: public/results
-    candidate_days: data/staging/YYYY/MMDD ディレクトリ（日付抽出）
-    """
     index: Dict[Tuple[str,str,int], int] = {}
     rroot = Path(results_root) if results_root else None
     if not rroot or not rroot.exists():
         return index
-
     for dd in candidate_days:
         year = dd.parent.name
         md = dd.name
         res_day_dir = rroot / year / md
-        if not res_day_dir.exists():
-            continue
-        # 形: public/results/YYYY/MMDD/{jcd}/{rno}R.json
+        if not res_day_dir.exists(): continue
         for jcd_dir in res_day_dir.glob("*"):
             if not jcd_dir.is_dir(): continue
             jcd = jcd_dir.name
@@ -178,29 +157,79 @@ def build_winner_index(results_root: str, candidate_days: List[Path]) -> Dict[Tu
                     continue
                 lane = _winner_lane_from_results(rfile)
                 if lane is not None:
-                    index[(year + md, jcd, rno)] = lane  # hd="YYYYMMDD"
+                    index[(year + md, jcd, rno)] = lane
     return index
 
 
-# -------------------- dataset load & feature select --------------------
-BASE_ID_COLS = ["hd","jcd","rno","lane","regno"]
-# 最初はコアだけ（増やすのはいつでもできる）
-PREF_FEATURES = [
+# -------------------- schema harmonization --------------------
+# 標準化後に必ず存在させたいID列
+BASE_ID_COLS_STD = ["hd", "jcd", "rno", "lane", "regno"]
+
+# 代表的に使う特徴量（後で自動拡張あり）
+PREF_FEATURES_STD = [
     "course_first_rate", "course_3rd_rate", "course_avg_st",
     "tenji_st_sec", "tenji_rank", "st_rank",
     "wind_speed_m", "wave_height_cm",
 ]
 
+def _first_present(cols: List[str], available: set) -> Optional[str]:
+    for c in cols:
+        if c in available:
+            return c
+    return None
+
+def harmonize_columns(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    データセットの列名ゆらぎを標準化:
+      - regno ← racer_id
+      - tenji_st_sec ← tenji_st or tenji_sec
+    無ければ0で埋める（学習で悪影響を最小化）
+    """
+    avail = set(df.columns)
+    exprs: List[pl.Expr] = []
+
+    # regno
+    if "regno" not in avail:
+        alias = _first_present(["racer_id", "登録番号", "選手ID"], avail)
+        if alias:
+            exprs.append(pl.col(alias).cast(pl.Int64, strict=False).alias("regno"))
+        else:
+            exprs.append(pl.lit(0, dtype=pl.Int64).alias("regno"))
+
+    # tenji_st_sec
+    if "tenji_st_sec" not in avail:
+        # 候補: tenji_st（ST秒） or tenji_sec（展示タイム秒）
+        alias = _first_present(["tenji_st", "tenji_sec", "展示ST", "展示タイム"], avail)
+        if alias:
+            exprs.append(pl.col(alias).cast(pl.Float64, strict=False).alias("tenji_st_sec"))
+        else:
+            exprs.append(pl.lit(0.0).cast(pl.Float64).alias("tenji_st_sec"))
+
+    # tenji_rank / st_rank はそのまま（無ければ後段fill_nullで0）
+
+    if exprs:
+        df = df.with_columns(exprs)
+
+    return df
+
+
+# -------------------- dataset load & feature select --------------------
 def load_dataset(paths: List[Path]) -> pl.DataFrame:
-    if not paths: return pl.DataFrame()
-    lfs = [pl.scan_csv(str(p), ignore_errors=True) for p in paths]
-    return pl.concat(lfs).collect(streaming=True)
+    if not paths:
+        return pl.DataFrame()
+    # Deprecation回避のため read_csv に統一
+    dfs = []
+    for p in paths:
+        try:
+            dfs.append(pl.read_csv(str(p), ignore_errors=True))
+        except Exception as e:
+            err(f"[WARN] read_csv failed: {p} ({e})")
+    if not dfs:
+        return pl.DataFrame()
+    df = pl.concat(dfs, how="vertical_relaxed")
+    return df
 
 def add_is_win_from_results(df: pl.DataFrame, results_root: Optional[str], day_dirs: List[Path]) -> pl.DataFrame:
-    """
-    df に is_win 列がなければ results から補完して追加。
-    既に is_win があれば尊重（上書きしない）。
-    """
     if "is_win" in df.columns:
         return df
     if not results_root:
@@ -212,34 +241,41 @@ def add_is_win_from_results(df: pl.DataFrame, results_root: Optional[str], day_d
         log("[WARN] winner index 空: is_win 付与スキップ")
         return df
 
-    def winner_lane_expr() -> pl.Expr:
-        return (pl.struct(["hd","jcd","rno","lane"])
-                  .map_elements(lambda s: 1 if index.get((str(s["hd"]), str(s["jcd"]), int(s["rno"]))) == int(s["lane"]) else 0)
-                  .alias("is_win"))
     try:
-        return df.with_columns([winner_lane_expr()])
+        df2 = df.with_columns([
+            pl.struct(["hd","jcd","rno","lane"]).map_elements(
+                lambda s: 1 if index.get((str(s["hd"]), str(s["jcd"]), int(s["rno"]))) == int(s["lane"]) else 0
+            ).alias("is_win")
+        ])
+        return df2
     except Exception as e:
         err(f"[WARN] is_win 付与失敗: {e}")
         return df
 
 def select_features(df: pl.DataFrame):
+    # 必要な標準列を作る
+    df = harmonize_columns(df)
+
     cols = set(df.columns)
     if "is_win" not in cols:
         raise RuntimeError("入力に 'is_win' 列がありません。（results からの自動付与も失敗）")
 
-    use_feats: List[str] = [c for c in PREF_FEATURES if c in cols]
-    # 数値列を追加（ID/ラベル以外）
+    # 推奨特徴量 + 数値列（ID/ラベル除外）
+    use_feats: List[str] = [c for c in PREF_FEATURES_STD if c in cols]
     for c, dt in df.schema.items():
-        if c in BASE_ID_COLS or c == "is_win":
+        if c in BASE_ID_COLS_STD or c == "is_win":
             continue
         dt_str = str(dt)
         if ("Int" in dt_str) or ("Float" in dt_str):
             if c not in use_feats:
                 use_feats.append(c)
+
     if len(use_feats) > 64:
         use_feats = use_feats[:64]
 
-    dfx = df.select(BASE_ID_COLS + ["is_win"] + use_feats).fill_null(0)
+    # 選択（存在列のみ）
+    select_cols = [c for c in (BASE_ID_COLS_STD + ["is_win"] + use_feats) if c in cols]
+    dfx = df.select(select_cols).fill_null(0)
     pdf = dfx.to_pandas()
     return pdf, use_feats
 
@@ -273,7 +309,8 @@ def predict_df(booster: lgb.Booster, test_pd, feat_cols, temperature: float = 1.
         logit = np.log(p_ / (1 - p_))
         logit /= float(temperature)
         p = 1 / (1 + np.exp(-logit))
-    out = test_pd[BASE_ID_COLS].copy()
+    out = test_pd[["hd","jcd","rno","lane","regno"]].copy() if "regno" in test_pd.columns \
+        else test_pd[["hd","jcd","rno","lane"]].copy()
     out["proba_win"] = p
     return out
 
@@ -294,24 +331,17 @@ def safe_logloss(y_true, y_prob) -> Optional[float]:
         return None
 
 def compute_topk_hits(pred_df: pd.DataFrame, test_df: pd.DataFrame, topk_list: List[int]) -> List[Tuple[int,float]]:
-    """
-    レース単位（hd,jcd,rno）で proba_win 上位kの中に is_win=1 が含まれる率（TopKヒット率）
-    """
-    # 真値（各レースの勝ちlane）
     truth_by_race = (test_df.loc[test_df["is_win"]==1, ["hd","jcd","rno","lane"]]
                            .rename(columns={"lane":"truth_lane"}))
     df = pred_df.merge(truth_by_race, on=["hd","jcd","rno"], how="inner")
     if df.empty:
         return [(k, float("nan")) for k in topk_list]
 
-    # レースごとに proba 降順インデックス
     hits = []
     for k in topk_list:
-        # 各レース上位kの lane セット
         topk = (df.sort_values(["hd","jcd","rno","proba_win"], ascending=[True,True,True,False])
                   .groupby(["hd","jcd","rno"])
                   .head(k))
-        # truth 含有チェック
         m = topk.assign(in_topk=(topk["lane"]==topk["truth_lane"]).astype(int)) \
                 .groupby(["hd","jcd","rno"])["in_topk"].max()
         hit_rate = float(m.mean()) if len(m)>0 else float("nan")
@@ -338,8 +368,8 @@ def main():
     # 互換（旧ワークフロー）
     ap.add_argument("--pred_start",     default=None)  # -> test_start
     ap.add_argument("--pred_end",       default=None)  # -> test_end
-    ap.add_argument("--model_out",      default=None)  # モデル保存ファイル明示
-    ap.add_argument("--proba_out_root", default=None)  # -> out_root
+    ap.add_argument("--model_out",      default=None)
+    ap.add_argument("--proba_out_root", default=None)
 
     # さらに古い書式
     ap.add_argument("--start",        default=None)   # -> train_start
@@ -347,7 +377,7 @@ def main():
     ap.add_argument("--proba_root",   default=None)   # -> out_root
     ap.add_argument("--inplace",      default=None)   # 無視
 
-    # 検証モード（ログだけ）
+    # 検証モード（ログのみ）
     ap.add_argument("--eval_mode",     type=lambda x: str(x).lower()=="true", default=False,
                     help="検証指標をGitHub Actionsログにのみ表示（ファイル出力なし）")
     ap.add_argument("--eval_topk",     default="1,3,6,12",
@@ -386,7 +416,6 @@ def main():
         err(f"[FATAL] train CSV が見つかりません: {cfg.staging_root} [{cfg.train_start}..{cfg.train_end}]")
         sys.exit(1)
 
-    # day_dirs（is_win付与に使う）
     train_day_dirs = sorted({p.parent for p in train_files})
     test_day_dirs  = sorted({p.parent for p in test_files}) if test_files else []
 
@@ -400,7 +429,8 @@ def main():
         err("[FATAL] 学習データが空です。")
         sys.exit(1)
 
-    # is_win 自動付与（存在すれば上書きしない）
+    # 列標準化 & is_win 付与
+    df_train = harmonize_columns(df_train)
     df_train = add_is_win_from_results(df_train, cfg.results_root, train_day_dirs)
     train_pd, feat_cols = select_features(df_train)
     log(f"[INFO] features used: {len(feat_cols)} -> {feat_cols[:10]}{'...' if len(feat_cols)>10 else ''}")
@@ -433,11 +463,12 @@ def main():
         log("[WARN] テストデータが空です。予測・評価はスキップ。")
         return
 
-    # is_win 付与（評価用）。存在していれば尊重。
-    df_test = add_is_win_from_results(df_test_raw, cfg.results_root, test_day_dirs)
+    # 列標準化 & is_win（評価用）
+    df_test = harmonize_columns(df_test_raw)
+    df_test = add_is_win_from_results(df_test, cfg.results_root, test_day_dirs)
 
     # 予測用に列整形
-    keep_cols = list({*BASE_ID_COLS, *feat_cols, *(['is_win'] if 'is_win' in df_test.columns else [])})
+    keep_cols = set(["hd","jcd","rno","lane","regno","is_win"] + feat_cols)
     keep_cols = [c for c in keep_cols if c in df_test.columns]
     df_test2 = df_test.select(keep_cols).fill_null(0)
     test_pd = df_test2.to_pandas()
@@ -445,28 +476,25 @@ def main():
     # 推論
     pred = predict_df(booster, test_pd, feat_cols, temperature=cfg.temperature)
 
-    # 予測CSV出力（従来どおり）
+    # 予測CSV出力
     y = cfg.test_start[:4]; md = cfg.test_start[4:8]
     out_dir = Path(cfg.out_root) / y / md
     out_csv = ensure_parent(out_dir / f"proba_{cfg.test_start}_{cfg.test_end}.csv")
     pred.to_csv(out_csv, index=False)
     log(f"[WRITE] {out_csv} rows={len(pred)}")
 
-    # ------- 検証モード（ログ出力のみ） -------
+    # ------- 検証（ログのみ） -------
     if cfg.eval_mode:
         if "is_win" not in test_pd.columns:
-            log("[WARN] eval_mode: is_win が無いので評価をスキップ（resultsが未取得の可能性）")
+            log("[WARN] eval_mode: is_win が無いので評価スキップ（results未取得の可能性）")
             return
 
-        # 対象レース（返還/不成立で is_win が全0 になる等の異常は除外）
-        # 正常レース判定：各レースで is_win==1 がちょうど1件
         g = test_pd.groupby(["hd","jcd","rno"])["is_win"].sum()
         valid_keys = g.index[g.values == 1]
         if len(valid_keys) == 0:
             log("[WARN] eval_mode: 正常レースが見つからないため評価スキップ")
             return
 
-        # valid レースのみで評価
         valid_df = test_pd.merge(
             pd.DataFrame(valid_keys.tolist(), columns=["hd","jcd","rno"]),
             on=["hd","jcd","rno"], how="inner"
@@ -483,34 +511,26 @@ def main():
         logloss = safe_logloss(y_true, y_prob)
 
         # TopK
-        topk_list = []
-        for t in str(cfg.eval_topk).split(","):
-            t = t.strip()
-            if t.isdigit():
-                topk_list.append(int(t))
+        try:
+            topk_list = [int(t.strip()) for t in str(cfg.eval_topk).split(",") if t.strip().isdigit()]
+        except Exception:
+            topk_list = [1,3,6,12]
         if not topk_list:
             topk_list = [1,3,6,12]
 
-        topk_hits = compute_topk_hits(valid_pred.merge(valid_df[["hd","jcd","rno","is_win","lane"]],
-                                                       on=["hd","jcd","rno","lane"], how="left"),
-                                      valid_df, topk_list)
+        merged = valid_pred.merge(valid_df[["hd","jcd","rno","is_win","lane"]],
+                                  on=["hd","jcd","rno","lane"], how="left")
+        topk_hits = compute_topk_hits(merged, valid_df, topk_list)
 
-        # ログ出力（ファイル保存はしない）
         log("\n===== Eval (単勝モデル / log-only) =====")
         log(f"test_range        : {cfg.test_start} .. {cfg.test_end}")
         log(f"valid_races       : {len(valid_keys)} / total_rows={len(valid_df)}")
         if auc is not None:     log(f"AUC               : {auc:.6f}")
         if logloss is not None: log(f"LogLoss           : {logloss:.6f}")
-
-        # Top1は別表示（= rank1 的中率）
-        top1 = next((h for k,h in topk_hits if k==1), None)
-        if top1 is not None:
-            log(f"Top1正解率        : {top1*100:.2f}%")
-
-        # 追加TopK
         for k, hit in topk_hits:
-            if k == 1: continue
-            log(f"Top{k}ヒット率     : {hit*100:.2f}%")
+            label = "Top1正解率" if k == 1 else f"Top{k}ヒット率"
+            if hit == hit:  # not NaN
+                log(f"{label:16s}: {hit*100:.2f}%")
         log("=========================================\n")
 
 
