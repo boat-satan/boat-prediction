@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-単勝モデル 学習・推論 (フル互換 & 全差し替え版)
+単勝モデル 学習・推論＋（ログ専用の）検証モード 〈全置き換え版〉
 
 - 互換引数を広く受け付ける（--start/--end, --pred_start/--pred_end, --proba_root など）
 - is_win を results JSON から自動付与（既存に is_win があれば尊重）
 - staging CSV を日付範囲で自動探索
 - LightGBM で学習し、テスト範囲があれば確率CSV出力
+- --eval_mode=true なら「検証指標を GitHub Actions ログにだけ表示」（ファイルには書かない）
 
 入出力:
   入力: data/staging/YYYY/MMDD/*single*.csv（推奨: single_train.csv）
-  ラベル: public/results/YYYY/MMDD/{jcd}/{rno}R.json から 1着 lane を取得
+  ラベル: public/results/YYYY/MMDD/{jcd}/{rno}R.json → 1着 lane
   出力:
     - モデル: data/models/single/model.txt（または --model_out）
     - メタ:   data/models/single/meta.json
@@ -30,10 +31,9 @@ import polars as pl
 
 try:
     import pandas as pd
-    _HAS_PYARROW = True
 except Exception:
+    # フォールバック（環境依存回避）
     import pandas as pd
-    _HAS_PYARROW = False
 
 import lightgbm as lgb
 
@@ -88,6 +88,9 @@ class TrainConfig:
     # オプション
     normalize: bool = True
     temperature: float = 1.0
+    # 検証モード（ログ専用出力）
+    eval_mode: bool = False
+    eval_topk: str = "1,3,6,12"  # ログ表示するTopK
 
 
 # -------------------- file discovery --------------------
@@ -150,7 +153,7 @@ def build_winner_index(results_root: str, candidate_days: List[Path]) -> Dict[Tu
     """
     key: (hd, jcd, rno) -> winner_lane
     results_root: public/results
-    candidate_days: data/staging/YYYY/MMDD ディレクトリのリスト（日付抽出に使う）
+    candidate_days: data/staging/YYYY/MMDD ディレクトリ（日付抽出）
     """
     index: Dict[Tuple[str,str,int], int] = {}
     rroot = Path(results_root) if results_root else None
@@ -161,7 +164,7 @@ def build_winner_index(results_root: str, candidate_days: List[Path]) -> Dict[Tu
         year = dd.parent.name
         md = dd.name
         res_day_dir = rroot / year / md
-        if not res_day_dir.exists():  # ない日はスキップ
+        if not res_day_dir.exists():
             continue
         # 形: public/results/YYYY/MMDD/{jcd}/{rno}R.json
         for jcd_dir in res_day_dir.glob("*"):
@@ -195,33 +198,28 @@ def load_dataset(paths: List[Path]) -> pl.DataFrame:
 
 def add_is_win_from_results(df: pl.DataFrame, results_root: Optional[str], day_dirs: List[Path]) -> pl.DataFrame:
     """
-    df に is_win 列がなければ results から補完して追加する。
-    既に is_win があればそのまま返す。
+    df に is_win 列がなければ results から補完して追加。
+    既に is_win があれば尊重（上書きしない）。
     """
     if "is_win" in df.columns:
         return df
-
     if not results_root:
-        log("[WARN] results_root が未指定のため is_win を付与できません（既存列も無し）。")
+        log("[WARN] results_root 未指定: is_win 付与スキップ")
         return df
 
     index = build_winner_index(results_root, day_dirs)
     if not index:
-        log("[WARN] winner index が空です。is_win は付与されません。")
+        log("[WARN] winner index 空: is_win 付与スキップ")
         return df
 
-    # hd は "YYYYMMDD" を想定
     def winner_lane_expr() -> pl.Expr:
-        # join 的なことを udf なしでやるのは難しいので map_rows 相当で処理
         return (pl.struct(["hd","jcd","rno","lane"])
                   .map_elements(lambda s: 1 if index.get((str(s["hd"]), str(s["jcd"]), int(s["rno"]))) == int(s["lane"]) else 0)
                   .alias("is_win"))
-
     try:
-        df2 = df.with_columns([winner_lane_expr()])
-        return df2
+        return df.with_columns([winner_lane_expr()])
     except Exception as e:
-        err(f"[WARN] is_win 付与に失敗: {e}")
+        err(f"[WARN] is_win 付与失敗: {e}")
         return df
 
 def select_features(df: pl.DataFrame):
@@ -238,12 +236,11 @@ def select_features(df: pl.DataFrame):
         if ("Int" in dt_str) or ("Float" in dt_str):
             if c not in use_feats:
                 use_feats.append(c)
-    # 冗長なら上限（適宜調整）
     if len(use_feats) > 64:
         use_feats = use_feats[:64]
 
     dfx = df.select(BASE_ID_COLS + ["is_win"] + use_feats).fill_null(0)
-    pdf = dfx.to_pandas()  # pyarrow 拡張は使わない（環境依存を減らす）
+    pdf = dfx.to_pandas()
     return pdf, use_feats
 
 
@@ -269,10 +266,8 @@ def fit_lgb(train_pd, feat_cols, cfg: TrainConfig) -> lgb.Booster:
 def predict_df(booster: lgb.Booster, test_pd, feat_cols, temperature: float = 1.0):
     X = test_pd[feat_cols]
     p = booster.predict(X, num_iteration=booster.best_iteration)
-    # 温度スケーリング（>0、1.0で等価）
     if temperature and temperature > 0 and temperature != 1.0:
         import numpy as np
-        # ロジット変換
         eps = 1e-12
         p_ = np.clip(p, eps, 1 - eps)
         logit = np.log(p_ / (1 - p_))
@@ -281,6 +276,47 @@ def predict_df(booster: lgb.Booster, test_pd, feat_cols, temperature: float = 1.
     out = test_pd[BASE_ID_COLS].copy()
     out["proba_win"] = p
     return out
+
+
+# -------------------- eval (log-only) --------------------
+def safe_auc(y_true, y_score) -> Optional[float]:
+    try:
+        from sklearn.metrics import roc_auc_score
+        return float(roc_auc_score(y_true, y_score))
+    except Exception:
+        return None
+
+def safe_logloss(y_true, y_prob) -> Optional[float]:
+    try:
+        from sklearn.metrics import log_loss
+        return float(log_loss(y_true, y_prob, labels=[0,1]))
+    except Exception:
+        return None
+
+def compute_topk_hits(pred_df: pd.DataFrame, test_df: pd.DataFrame, topk_list: List[int]) -> List[Tuple[int,float]]:
+    """
+    レース単位（hd,jcd,rno）で proba_win 上位kの中に is_win=1 が含まれる率（TopKヒット率）
+    """
+    # 真値（各レースの勝ちlane）
+    truth_by_race = (test_df.loc[test_df["is_win"]==1, ["hd","jcd","rno","lane"]]
+                           .rename(columns={"lane":"truth_lane"}))
+    df = pred_df.merge(truth_by_race, on=["hd","jcd","rno"], how="inner")
+    if df.empty:
+        return [(k, float("nan")) for k in topk_list]
+
+    # レースごとに proba 降順インデックス
+    hits = []
+    for k in topk_list:
+        # 各レース上位kの lane セット
+        topk = (df.sort_values(["hd","jcd","rno","proba_win"], ascending=[True,True,True,False])
+                  .groupby(["hd","jcd","rno"])
+                  .head(k))
+        # truth 含有チェック
+        m = topk.assign(in_topk=(topk["lane"]==topk["truth_lane"]).astype(int)) \
+                .groupby(["hd","jcd","rno"])["in_topk"].max()
+        hit_rate = float(m.mean()) if len(m)>0 else float("nan")
+        hits.append((k, hit_rate))
+    return hits
 
 
 # -------------------- main --------------------
@@ -305,11 +341,17 @@ def main():
     ap.add_argument("--model_out",      default=None)  # モデル保存ファイル明示
     ap.add_argument("--proba_out_root", default=None)  # -> out_root
 
-    # さらに古い書式（今回エラーを出していた系）
+    # さらに古い書式
     ap.add_argument("--start",        default=None)   # -> train_start
     ap.add_argument("--end",          default=None)   # -> train_end
     ap.add_argument("--proba_root",   default=None)   # -> out_root
     ap.add_argument("--inplace",      default=None)   # 無視
+
+    # 検証モード（ログだけ）
+    ap.add_argument("--eval_mode",     type=lambda x: str(x).lower()=="true", default=False,
+                    help="検証指標をGitHub Actionsログにのみ表示（ファイル出力なし）")
+    ap.add_argument("--eval_topk",     default="1,3,6,12",
+                    help="ログ出力するTopK（カンマ区切り）例: '1,3,6,12,18,30'")
 
     args = ap.parse_args()
 
@@ -333,6 +375,7 @@ def main():
         train_start=train_start, train_end=train_end,
         test_start=test_start,   test_end=test_end,
         normalize=args.normalize, temperature=args.temperature,
+        eval_mode=args.eval_mode, eval_topk=args.eval_topk
     )
 
     # 入力収集
@@ -351,6 +394,7 @@ def main():
     if test_files:
         log(f"[INFO] test  files: {len(test_files)}")
 
+    # ------- 学習 -------
     df_train = load_dataset(train_files)
     if df_train.height == 0:
         err("[FATAL] 学習データが空です。")
@@ -379,24 +423,95 @@ def main():
     log(f"[WRITE] {model_path}")
     log(f"[WRITE] {meta_path}")
 
-    # 予測（テスト範囲があれば）
-    if test_files:
-        df_test = load_dataset(test_files)
-        if df_test.height == 0:
-            log("[WARN] テストデータが空です。予測はスキップします。")
-            return
-        # is_win は不要だが、残っていても問題なし
-        keep_cols = BASE_ID_COLS + feat_cols + (["is_win"] if "is_win" in df_test.columns else [])
-        df_test2 = df_test.select([c for c in keep_cols if c in df_test.columns]).fill_null(0)
-        test_pd = df_test2.to_pandas()
+    # ------- 予測（テスト範囲があれば） -------
+    if not test_files:
+        log("[INFO] テストデータなし。予測・評価はスキップ。")
+        return
 
-        pred = predict_df(booster, test_pd, feat_cols, temperature=cfg.temperature)
-        # 出力
-        y = cfg.test_start[:4]; md = cfg.test_start[4:8]
-        out_dir = Path(cfg.out_root) / y / md
-        out_csv = ensure_parent(out_dir / f"proba_{cfg.test_start}_{cfg.test_end}.csv")
-        pred.to_csv(out_csv, index=False)
-        log(f"[WRITE] {out_csv} rows={len(pred)}")
+    df_test_raw = load_dataset(test_files)
+    if df_test_raw.height == 0:
+        log("[WARN] テストデータが空です。予測・評価はスキップ。")
+        return
+
+    # is_win 付与（評価用）。存在していれば尊重。
+    df_test = add_is_win_from_results(df_test_raw, cfg.results_root, test_day_dirs)
+
+    # 予測用に列整形
+    keep_cols = list({*BASE_ID_COLS, *feat_cols, *(['is_win'] if 'is_win' in df_test.columns else [])})
+    keep_cols = [c for c in keep_cols if c in df_test.columns]
+    df_test2 = df_test.select(keep_cols).fill_null(0)
+    test_pd = df_test2.to_pandas()
+
+    # 推論
+    pred = predict_df(booster, test_pd, feat_cols, temperature=cfg.temperature)
+
+    # 予測CSV出力（従来どおり）
+    y = cfg.test_start[:4]; md = cfg.test_start[4:8]
+    out_dir = Path(cfg.out_root) / y / md
+    out_csv = ensure_parent(out_dir / f"proba_{cfg.test_start}_{cfg.test_end}.csv")
+    pred.to_csv(out_csv, index=False)
+    log(f"[WRITE] {out_csv} rows={len(pred)}")
+
+    # ------- 検証モード（ログ出力のみ） -------
+    if cfg.eval_mode:
+        if "is_win" not in test_pd.columns:
+            log("[WARN] eval_mode: is_win が無いので評価をスキップ（resultsが未取得の可能性）")
+            return
+
+        # 対象レース（返還/不成立で is_win が全0 になる等の異常は除外）
+        # 正常レース判定：各レースで is_win==1 がちょうど1件
+        g = test_pd.groupby(["hd","jcd","rno"])["is_win"].sum()
+        valid_keys = g.index[g.values == 1]
+        if len(valid_keys) == 0:
+            log("[WARN] eval_mode: 正常レースが見つからないため評価スキップ")
+            return
+
+        # valid レースのみで評価
+        valid_df = test_pd.merge(
+            pd.DataFrame(valid_keys.tolist(), columns=["hd","jcd","rno"]),
+            on=["hd","jcd","rno"], how="inner"
+        )
+        valid_pred = pred.merge(
+            pd.DataFrame(valid_keys.tolist(), columns=["hd","jcd","rno"]),
+            on=["hd","jcd","rno"], how="inner"
+        )
+
+        y_true = valid_df["is_win"].astype(int).values
+        y_prob = valid_pred["proba_win"].values
+
+        auc = safe_auc(y_true, y_prob)
+        logloss = safe_logloss(y_true, y_prob)
+
+        # TopK
+        topk_list = []
+        for t in str(cfg.eval_topk).split(","):
+            t = t.strip()
+            if t.isdigit():
+                topk_list.append(int(t))
+        if not topk_list:
+            topk_list = [1,3,6,12]
+
+        topk_hits = compute_topk_hits(valid_pred.merge(valid_df[["hd","jcd","rno","is_win","lane"]],
+                                                       on=["hd","jcd","rno","lane"], how="left"),
+                                      valid_df, topk_list)
+
+        # ログ出力（ファイル保存はしない）
+        log("\n===== Eval (単勝モデル / log-only) =====")
+        log(f"test_range        : {cfg.test_start} .. {cfg.test_end}")
+        log(f"valid_races       : {len(valid_keys)} / total_rows={len(valid_df)}")
+        if auc is not None:     log(f"AUC               : {auc:.6f}")
+        if logloss is not None: log(f"LogLoss           : {logloss:.6f}")
+
+        # Top1は別表示（= rank1 的中率）
+        top1 = next((h for k,h in topk_hits if k==1), None)
+        if top1 is not None:
+            log(f"Top1正解率        : {top1*100:.2f}%")
+
+        # 追加TopK
+        for k, hit in topk_hits:
+            if k == 1: continue
+            log(f"Top{k}ヒット率     : {hit*100:.2f}%")
+        log("=========================================\n")
 
 
 if __name__ == "__main__":
