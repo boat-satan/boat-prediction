@@ -10,15 +10,35 @@ on:
       train_end:
         description: "学習終了 (YYYYMMDD)"
         required: true
-        default: "20240131"
+        default: "20240229"
       pred_start:
         description: "予測開始 (YYYYMMDD)"
         required: true
-        default: "20240201"
+        default: "20240301"
       pred_end:
         description: "予測終了 (YYYYMMDD)"
         required: true
-        default: "20240229"
+        default: "20240331"
+      eval_mode:
+        description: "検証モード（Actionsログ出力のみ）true/false"
+        required: true
+        default: "true"
+      eval_topk:
+        description: "ログ表示するTopK（カンマ区切り）例: 1,3,6,12,18,30"
+        required: true
+        default: "1,3,6,12"
+      temperature:
+        description: "温度スケール（確率校正用、1.0で等価）"
+        required: true
+        default: "1.0"
+      model_out:
+        description: "モデル出力パス（空なら既定: data/models/single/model.txt）"
+        required: false
+        default: "data/models/single_lgbm.txt"
+      proba_out_root:
+        description: "予測CSV出力ルート（空なら既定: data/proba/single）"
+        required: false
+        default: "data/proba/single"
 
 concurrency:
   group: train-single-${{ github.ref }}
@@ -29,6 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -40,10 +61,11 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install polars pandas lightgbm pyarrow
+          pip install numpy polars pandas lightgbm pyarrow scikit-learn
 
-      - name: Train single model & predict
+      - name: Train single model & predict (+log-only eval)
         run: |
+          set -euo pipefail
           python scripts/train_single.py \
             --staging_root data/staging \
             --results_root public/results \
@@ -51,8 +73,11 @@ jobs:
             --train_end    "${{ inputs.train_end }}" \
             --pred_start   "${{ inputs.pred_start }}" \
             --pred_end     "${{ inputs.pred_end }}" \
-            --model_out data/models/single_lgbm.txt \
-            --proba_out_root data/proba/single
+            --model_out    "${{ inputs.model_out }}" \
+            --proba_out_root "${{ inputs.proba_out_root }}" \
+            --temperature  "${{ inputs.temperature }}" \
+            --eval_mode    "${{ inputs.eval_mode }}" \
+            --eval_topk    "${{ inputs.eval_topk }}"
 
       - name: Show outputs
         run: |
@@ -68,13 +93,18 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 予測・モデル成果物のみステージング
           git add -f data/models data/proba/single || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "single: train=${{ inputs.train_start }}..${{ inputs.train_end }} pred=${{ inputs.pred_start }}..${{ inputs.pred_end }} [skip ci]"
-          # 軽いリトライ付き push
+
+          git commit -m "single(win): train=${{ inputs.train_start }}..${{ inputs.train_end }} pred=${{ inputs.pred_start }}..${{ inputs.pred_end }} T=${{ inputs.temperature }} eval=${{ inputs.eval_mode }} [skip ci]"
+
+          # 軽いリトライ付き push（競合時はrebase）
           for n in 0 1 2 3 4; do
             if git pull --rebase; then
               git push && exit 0
@@ -82,4 +112,6 @@ jobs:
             echo "Pull failed. Retry $((n+1))/5..."
             sleep $((2**n))
           done
-          git push
+
+          # 最後の一回
+          git push || true
