@@ -1,0 +1,93 @@
+name: Build Synth Single Odds from 3T
+
+on:
+  workflow_dispatch:
+    inputs:
+      odds_root:
+        description: "三連単オッズJSONのルートディレクトリ"
+        required: false
+        default: "public/odds/v1"
+      out_csv:
+        description: "出力CSVパス"
+        required: false
+        default: "data/derived/synth_single_from_3t.csv"
+
+permissions:
+  contents: write
+
+# 同一ブランチでは常に1本だけ実行（push競合の軽減）
+concurrency:
+  group: synth-single-${{ github.repository }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  build-synth-single:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # push前にrebaseできるように全履歴取得
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build synth single odds from 3T
+        run: |
+          set -euo pipefail
+
+          ODDS_ROOT="${{ github.event.inputs.odds_root }}"
+          OUT_CSV="${{ github.event.inputs.out_csv }}"
+
+          echo "[INFO] ODDS_ROOT: ${ODDS_ROOT}"
+          echo "[INFO] OUT_CSV  : ${OUT_CSV}"
+
+          # スクリプト実行
+          node scripts/build_synth_single_from_3t.js "${ODDS_ROOT}" "${OUT_CSV}"
+
+      - name: Show git status / diff
+        run: |
+          set -euo pipefail
+          echo "[INFO] git status:"
+          git status
+          echo
+          echo "[INFO] git diff (short):"
+          git diff --stat || true
+
+      - name: Check if there are changes
+        id: diffcheck
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "[INFO] No changes. Nothing to commit."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "[INFO] Changes detected."
+          fi
+
+      - name: Commit and push
+        if: steps.diffcheck.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+
+          # Git user 設定
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          OUT_CSV="${{ github.event.inputs.out_csv }}"
+          git add "${OUT_CSV}"
+
+          git commit -m "chore: update synth single odds from 3T"
+
+          # リモート更新を取り込んでから push（競合軽減）
+          BRANCH="${GITHUB_REF_NAME:-${{ github.ref_name }}}"
+
+          echo "[INFO] Pull --rebase from origin/${BRANCH} ..."
+          git pull --rebase origin "${BRANCH}" || true
+
+          echo "[INFO] Push to origin/${BRANCH} ..."
+          git push origin "${BRANCH}"
