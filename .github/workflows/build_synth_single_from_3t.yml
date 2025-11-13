@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # push前にrebaseできるように全履歴取得
 
@@ -39,13 +39,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          ODDS_ROOT="${{ github.event.inputs.odds_root }}"
-          OUT_CSV="${{ github.event.inputs.out_csv }}"
+          ODDS_ROOT="${{ inputs.odds_root }}"
+          OUT_CSV="${{ inputs.out_csv }}"
 
           echo "[INFO] ODDS_ROOT: ${ODDS_ROOT}"
           echo "[INFO] OUT_CSV  : ${OUT_CSV}"
 
-          # スクリプト実行
           node scripts/build_synth_single_from_3t.js "${ODDS_ROOT}" "${OUT_CSV}"
 
       - name: Show git status / diff
@@ -74,17 +73,15 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Git user 設定
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          OUT_CSV="${{ github.event.inputs.out_csv }}"
-          git add "${OUT_CSV}"
+          OUT_CSV="${{ inputs.out_csv }}"
 
+          git add "${OUT_CSV}"
           git commit -m "chore: update synth single odds from 3T"
 
-          # リモート更新を取り込んでから push（競合軽減）
-          BRANCH="${GITHUB_REF_NAME:-${{ github.ref_name }}}"
+          BRANCH="${{ github.ref_name }}"
 
           echo "[INFO] Pull --rebase from origin/${BRANCH} ..."
           git pull --rebase origin "${BRANCH}" || true
